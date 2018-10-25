@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
 	<wb-module deploy-name="JPARecipeMeetup">
 		<wb-resource deploy-path="/" source-path="src/main/java"/>
 	</wb-module>
-=======
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-	<wb-module deploy-name="JPARecipeMeetup"/>
->>>>>>> 32a44e596dc804fdc186b3c9d63c71629024ce02
 </project-modules>
