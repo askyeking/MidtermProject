@@ -58,5 +58,10 @@ class RecipeCommentTest {
 		assertEquals("Blake", rc.getRecipeCommentOwner().getFirstName());
 		assertEquals("Shelton", rc.getRecipeCommentOwner().getLastName());
 	}
+	
+	@Test
+	void testRecipeCommentIsOnRecipe() {
+		assertEquals("Chicken fried steak", rc.getRecipeCommentedOn().getTitle());
+	}
 
 }
