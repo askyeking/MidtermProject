@@ -38,14 +38,15 @@ class RecipeCommentTest {
 	void tearDown() throws Exception {
 		em.close();
 	}
+	
 	@Test
 	void test() {
 		assertEquals(1, rc.getUserId());
 		assertEquals(3, rc.getRecipeId());
 		assertEquals("Too much meat for my taste", rc.getComment());
 		assertEquals(true, rc.getActive());
-		assertEquals("2018-10-26",rc.getTimeStamp().toString().substring(0, 10));
-		System.out.println(rc.getTimeStamp());
+		assertEquals("2018-10-26 11:21:51",rc.getTimeStamp().toString().substring(0, 19));
+		System.out.println(rc.getTimeStamp().toString());
 	}
 
 }
