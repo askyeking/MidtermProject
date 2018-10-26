@@ -34,7 +34,7 @@ public class Address {
 	private List<User> users;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupAddress")
-	private Meetup meetup;
+	private List <Meetup> meetups;
 
 
 	public String getStreet() {
@@ -124,22 +124,12 @@ public class Address {
 		this.id = id;
 	}
 
-	public Meetup getMeetup() {
-		return meetup;
+	public List<Meetup> getMeetups() {
+		return meetups;
 	}
 
-	public void setMeetup(Meetup meetup) {
-		this.meetup = meetup;
+	public void setMeetups(List<Meetup> meetups) {
+		this.meetups = meetups;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

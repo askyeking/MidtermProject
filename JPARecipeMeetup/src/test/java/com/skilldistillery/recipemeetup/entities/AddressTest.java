@@ -54,7 +54,7 @@ class AddressTest {
 	
 	@Test
 	void testMappingMeetupAddressReturnsMeetup() {
-		assertEquals("",;
+		assertEquals(1, address.getMeetups().size());
 	}
 
 }
