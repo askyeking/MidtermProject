@@ -67,4 +67,10 @@ class MeetupTest {
 		assertEquals(2, meetup.getMeetupComments().size());
 	}
 	
+	@Test
+	void testMeetupHasAddress() {
+		assertEquals(expected, actual);
+		assertEquals(expected, actual);
+	}
+	
 }
