@@ -60,6 +60,8 @@ public class User {
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userMeetupCommentLikes")
 	private List<MeetupComment> likedMeetupComments;
 	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeLikes")
+	private List<Recipe> likedRecipes;
 	public User() {
 		super();
 	}
