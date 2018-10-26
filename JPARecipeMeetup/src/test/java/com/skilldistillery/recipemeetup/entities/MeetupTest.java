@@ -69,8 +69,8 @@ class MeetupTest {
 	
 	@Test
 	void testMeetupHasAddress() {
-		assertEquals(expected, actual);
-		assertEquals(expected, actual);
+		assertEquals(2, meetup.getMeetupAddress().getId());
+		assertEquals("Denver", meetup.getMeetupAddress().getCity());
 	}
 	
 }
