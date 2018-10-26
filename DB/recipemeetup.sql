@@ -416,9 +416,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `recipemeetupdb`;
-INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (1, 2, 2, '\"Great idea. I am looking forward to attending\"', DEFAULT, DEFAULT);
-INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (2, 1, 3, '\"I am so hyped', DEFAULT, DEFAULT);
-INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (3, 3, 2, '\"How do I get to your address. Google map gives no results.\"', DEFAULT, DEFAULT);
+INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (1, 2, 2, 'Great idea. I am looking forward to attending', DEFAULT, DEFAULT);
+INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (2, 1, 3, 'I am so hyped', DEFAULT, DEFAULT);
+INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (3, 3, 2, 'How do I get to your address. Google map gives no results.', DEFAULT, DEFAULT);
 
 COMMIT;
 
@@ -429,6 +429,7 @@ COMMIT;
 START TRANSACTION;
 USE `recipemeetupdb`;
 INSERT INTO `meetup_comment_like` (`meetup_comment_id`, `user_id`) VALUES (1, 1);
+INSERT INTO `meetup_comment_like` (`meetup_comment_id`, `user_id`) VALUES (3, 2);
 
 COMMIT;
 
@@ -448,9 +449,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `recipemeetupdb`;
-INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (1, 1, 3, '\"Too much meat for my taste\"', DEFAULT, DEFAULT);
-INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (2, 1, 3, '\"I am ok with this.\"', DEFAULT, DEFAULT);
-INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (3, 1, 3, '\"Is this even real or are you messing with us?\"', DEFAULT, DEFAULT);
+INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (1, 1, 3, 'Too much meat for my taste', DEFAULT, DEFAULT);
+INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (2, 1, 3, 'I am ok with this.', DEFAULT, DEFAULT);
+INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (3, 1, 3, 'Don\'t like it at all.', DEFAULT, DEFAULT);
 
 COMMIT;
 
@@ -478,6 +479,9 @@ INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 2);
 INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 3);
 INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 5);
 INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 7);
+INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 6);
+INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (2, 6);
+INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (3, 4);
 
 COMMIT;
 
