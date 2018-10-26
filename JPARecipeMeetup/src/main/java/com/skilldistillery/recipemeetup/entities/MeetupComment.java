@@ -43,6 +43,9 @@ public class MeetupComment {
 	@JoinColumn(name="user_id")
 	private User meetupCommentOwner;
 	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name="meetup_id")
+	private Meetup meetupCommentedOn;
 	
 	public MeetupComment() {
 		super();
@@ -131,5 +134,13 @@ public class MeetupComment {
 
 	public void setMeetupCommentOwner(User meetupCommentOwner) {
 		this.meetupCommentOwner = meetupCommentOwner;
+	}
+
+	public Meetup getMeetupCommentedOn() {
+		return meetupCommentedOn;
+	}
+
+	public void setMeetupCommentedOn(Meetup meetupCommentedOn) {
+		this.meetupCommentedOn = meetupCommentedOn;
 	}
 }
