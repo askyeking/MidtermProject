@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
@@ -19,7 +20,7 @@ class AddressTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception{
-		emf = Persistence.createEntityManagerFactory("recipemeetupdb");
+		emf = Persistence.createEntityManagerFactory("recipemeetup");
 		
 	}
 	@BeforeEach
@@ -39,8 +40,11 @@ class AddressTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testAdressEntityFields() {
+		assertEquals("889 South Dampton Rd", address.getStreet());
+		assertEquals("Denver", address.getCity());
+		assertEquals("CO", address.getState());
+		assertEquals("80202", address.getPostalCode());
 	}
 
 }
