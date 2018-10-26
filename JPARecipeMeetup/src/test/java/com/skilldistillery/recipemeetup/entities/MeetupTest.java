@@ -60,9 +60,4 @@ class MeetupTest {
 		assertEquals("Shelton", meetup.getAttendees().get(0).getLastName());
 	}
 	
-	@Test
-	void testMeetupCommentAssociatedWithMeetup() {
-		assertEquals("")
-	}
-	
 }
