@@ -63,8 +63,8 @@ public class Recipe {
 	@JoinColumn(name="author_id")
 	private User recipeOwner;
 	
-	
-	
+	@ManyToMany(mappedBy="favoriteRecipes")
+	private List<User> usersWhoFavorited;
 	
 	
 	
@@ -232,6 +232,14 @@ public class Recipe {
 
 	public void setRecipeOwner(User recipeOwner) {
 		this.recipeOwner = recipeOwner;
+	}
+
+	public List<User> getUsersWhoFavorited() {
+		return usersWhoFavorited;
+	}
+
+	public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
+		this.usersWhoFavorited = usersWhoFavorited;
 	}
 	
 	
