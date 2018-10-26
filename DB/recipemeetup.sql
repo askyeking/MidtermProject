@@ -387,13 +387,113 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `favorite_recipe`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `favorite_recipe` (`user_id`, `recipe_id`) VALUES (1, 1);
+INSERT INTO `favorite_recipe` (`user_id`, `recipe_id`) VALUES (2, 2);
+INSERT INTO `favorite_recipe` (`user_id`, `recipe_id`) VALUES (3, 2);
+INSERT INTO `favorite_recipe` (`user_id`, `recipe_id`) VALUES (4, 2);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `meetup`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `recipemeetupdb`;
-INSERT INTO `meetup` (`id`, `title`, `address_id`, `description`, `date_created`, `img_url`, `author_id`, `active`, `start_time`, `end_time`, `maximum_attendance`) VALUES (1, 'French Food in Denver', 7, 'Let\'s get together and make some Creme Brule!', DEFAULT, NULL, 3, DEFAULT, '2018-11-09 12:00:00', '2018-11-09 18:00:00', 6);
+INSERT INTO `meetup` (`id`, `title`, `address_id`, `description`, `date_created`, `img_url`, `author_id`, `active`, `start_time`, `end_time`, `maximum_attendance`) VALUES (1, 'French Food in Denver', 2, 'Let\'s get together and make some Creme Brule!', DEFAULT, NULL, 3, DEFAULT, '2018-11-09 12:00:00', '2018-11-09 18:00:00', 6);
 INSERT INTO `meetup` (`id`, `title`, `address_id`, `description`, `date_created`, `img_url`, `author_id`, `active`, `start_time`, `end_time`, `maximum_attendance`) VALUES (2, 'Raleigh Mexican Delish!', 9, 'Let\'s get together and make chicken tostadas, tacos and of course Salsa.', DEFAULT, NULL, 7, DEFAULT, '2018-12-01 20:00:00', NULL, 15);
 INSERT INTO `meetup` (`id`, `title`, `address_id`, `description`, `date_created`, `img_url`, `author_id`, `active`, `start_time`, `end_time`, `maximum_attendance`) VALUES (3, 'Grill and Chill Denver', 1, 'My daughter had a wedding last week and there is so much food left unprepared. Let\'s grill it and eat it together! There are many vegan options as well.', DEFAULT, NULL, 2, DEFAULT, '2018-10-12 15:00:00', '2018-10-11 12:00:00', 25);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `meetup_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (1, 2, 2, '\"Great idea. I am looking forward to attending\"', DEFAULT, DEFAULT);
+INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (2, 1, 3, '\"I am so hyped', DEFAULT, DEFAULT);
+INSERT INTO `meetup_comment` (`id`, `user_id`, `meetup_id`, `text_content`, `post_date`, `active`) VALUES (3, 3, 2, '\"How do I get to your address. Google map gives no results.\"', DEFAULT, DEFAULT);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `meetup_comment_like`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `meetup_comment_like` (`meetup_comment_id`, `user_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `meetup_recipe`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `meetup_recipe` (`meetup_id`, `recipe_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `recipe_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (1, 1, 3, '\"Too much meat for my taste\"', DEFAULT, DEFAULT);
+INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (2, 1, 3, '\"I am ok with this.\"', DEFAULT, DEFAULT);
+INSERT INTO `recipe_comment` (`id`, `user_id`, `recipe_id`, `comment`, `timestamp`, `active`) VALUES (3, 1, 3, '\"Is this even real or are you messing with us?\"', DEFAULT, DEFAULT);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `recipe_comment_like`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `recipe_comment_like` (`recipe_comment_id`, `user_id`) VALUES (1, 3);
+INSERT INTO `recipe_comment_like` (`recipe_comment_id`, `user_id`) VALUES (1, 5);
+INSERT INTO `recipe_comment_like` (`recipe_comment_id`, `user_id`) VALUES (1, 6);
+INSERT INTO `recipe_comment_like` (`recipe_comment_id`, `user_id`) VALUES (2, 4);
+INSERT INTO `recipe_comment_like` (`recipe_comment_id`, `user_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `recipe_like`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 2);
+INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 3);
+INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 5);
+INSERT INTO `recipe_like` (`recipe_id`, `user_id`) VALUES (1, 7);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `user_meetup`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (1, 1);
+INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (2, 1);
+INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (3, 1);
+INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (4, 1);
+INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (5, 2);
+INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (6, 2);
+INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (7, 2);
 
 COMMIT;
 
