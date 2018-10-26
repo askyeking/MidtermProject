@@ -54,6 +54,11 @@ class UserTest {
 		assertEquals("French Food in Denver", user.getMeetupsAttended().get(0).getTitle());
 	}
 	
+	@Test
+	void test_user_has_liked_meetup_comments() {
+		assertEquals("Great idea. I am looking forward to attending", user.getLikedMeetupComments().get(0).getTextContent());
+	}
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();

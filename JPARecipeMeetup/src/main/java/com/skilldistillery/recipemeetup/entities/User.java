@@ -62,6 +62,16 @@ public class User {
 	
 	
 	
+	public List<MeetupComment> getLikedMeetupComments() {
+		return likedMeetupComments;
+	}
+
+
+	public void setLikedMeetupComments(List<MeetupComment> likedMeetupComments) {
+		this.likedMeetupComments = likedMeetupComments;
+	}
+
+
 	public List<Meetup> getMeetupsAttended() {
 		return meetupsAttended;
 	}
