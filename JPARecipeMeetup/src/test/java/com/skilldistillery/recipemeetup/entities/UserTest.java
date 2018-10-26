@@ -49,6 +49,11 @@ class UserTest {
 		assertEquals(user.getMeetupsOwned().get(0).getTitle(),"Grill and Chill Denver");
 	}
 	
+	@Test
+	void test_user_has_attended_meetups() {
+		assertEquals("French Food in Denver", user.getMeetupsAttended().get(0).getTitle());
+	}
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();

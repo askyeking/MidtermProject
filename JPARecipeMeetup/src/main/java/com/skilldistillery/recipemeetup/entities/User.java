@@ -57,6 +57,16 @@ public class User {
 	private List<Meetup> meetupsAttended;
 	
 
+	public List<Meetup> getMeetupsAttended() {
+		return meetupsAttended;
+	}
+
+
+	public void setMeetupsAttended(List<Meetup> meetupsAttended) {
+		this.meetupsAttended = meetupsAttended;
+	}
+
+
 	public List<Meetup> getMeetupsOwned() {
 		return meetupsOwned;
 	}
