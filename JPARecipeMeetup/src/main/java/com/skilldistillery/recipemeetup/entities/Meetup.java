@@ -35,8 +35,7 @@ public class Meetup {
 	
 	private String description;
 	
-	@Column(name="author_id")
-	private int authorID;
+	
 	
 	@Column(name="maximum_attendance")
 	private int maxAttendance;
@@ -71,7 +70,6 @@ public class Meetup {
 		this.createDate = createDate;
 		this.imgURL = imgURL;
 		this.description = description;
-		this.authorID = authorID;
 		this.maxAttendance = maxAttendance;
 		this.active = active;
 		this.startTime = startTime;
@@ -126,13 +124,7 @@ public class Meetup {
 		this.imgURL = imgURL;
 	}
 
-	public int getAuthorID() {
-		return authorID;
-	}
-
-	public void setAuthorID(int authorID) {
-		this.authorID = authorID;
-	}
+	
 
 	public int getMaxAttendance() {
 		return maxAttendance;
@@ -193,7 +185,7 @@ public class Meetup {
 	@Override
 	public String toString() {
 		return "Meetup [id=" + id + ", title=" + title + ", addressID=" + addressID + ", createDate=" + createDate
-				+ ", imgURL=" + imgURL + ", description=" + description + ", authorID=" + authorID + ", maxAttendance=" + maxAttendance + ", active="
+				+ ", imgURL=" + imgURL + ", description=" + description + ", authorID=" + ", maxAttendance=" + maxAttendance + ", active="
 				+ active + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 
