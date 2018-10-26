@@ -61,6 +61,12 @@ class MeetupCommentTest {
 		assertEquals(1,mc.getMeetupCommentOwner().getLikedMeetupComments().size());
 		assertEquals(2, mc.getMeetupCommentOwner().getId());
 	}
-
+	
+	
+	@Test
+	void testMeetupCommentAssociatedWithMeetup() {
+		assertEquals("Raleigh Mexican Delish!", mc.getMeetupCommentedOn().getTitle());
 	}
+
+}
 	
