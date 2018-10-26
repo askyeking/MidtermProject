@@ -66,6 +66,17 @@ public class User {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeOwner")
 	private List<Recipe> recipesPosted;
 	
+	
+	public List<Recipe> getRecipesPosted() {
+		return recipesPosted;
+	}
+
+
+	public void setRecipesPosted(List<Recipe> recipesPosted) {
+		this.recipesPosted = recipesPosted;
+	}
+
+
 	public User() {
 		super();
 	}

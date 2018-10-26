@@ -75,6 +75,13 @@ class UserTest {
 		user = null;
 		
 	}
+	
+	@Test
+	void test_user_has_posted_recipes() {
+		assertEquals("Mexico", user.getRecipesPosted().get(0).getCountry());
+		assertEquals(1, user.getRecipesPosted().get(0).getId());
+	}
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
