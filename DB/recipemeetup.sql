@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `post_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `img_url` VARCHAR(45) NULL DEFAULT NULL,
   `author_id` INT(11) NOT NULL,
-  `active` TINYINT(1) NOT NULL DEFAULT '0',
+  `active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `author_id_idx` (`author_id` ASC),
   CONSTRAINT `fk_recipe_user`
@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `recipe_comment` (
   `recipe_id` INT(11) NOT NULL,
   `comment` VARCHAR(250) NOT NULL,
   `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ACTIVE` TINYINT(1) NOT NULL DEFAULT '1',
+  `active` TINYINT(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   INDEX `fk_recipe_comment_user_idx` (`user_id` ASC),
   INDEX `fk_recipe_comment_recipe_idx` (`recipe_id` ASC),
@@ -339,15 +339,21 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'fduser'@'localhost'
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 -- -----------------------------------------------------
 -- Data for table `address`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `recipemeetupdb`;
-INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (1, '10393 great st', 'Denver', 'CO', '80104');
-INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (2, '324 fdsa lane', 'Denver', 'CO', '80004');
-INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (3, '23 dfbrt st', 'Seattle', 'WA', '90104');
-INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (4, '4663 South Monaco St', 'Denver', 'CO', '80237');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (1, '889 South Dampton Rd', 'Denver', 'CO', '80202');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (2, '10393 Mississipi Rd', 'Denver', 'CO', '80101');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (3, '100 Boise St', 'Denver', 'CO', '80104');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (4, '4301 Seattle ln', 'Denver', 'CO', '80401');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (5, '4555 Dylan Rd', 'Raleigh', 'NC', '27629');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (6, '863 Art St', 'Raleigh', 'NC', '27662');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (7, '200 Columbia Rd', 'Raleigh', 'NC', '27696');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (8, '400 Beachwalk Bvd', 'Raleigh', 'NC', '27607');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `postal_code`) VALUES (9, '1033 Federal St', 'Raleigh', 'NC', '27601');
 
 COMMIT;
 
@@ -357,10 +363,35 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `recipemeetupdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (1, 'idontknow', 'hashedpass', '1993-07-03', 'Bob', 'Dylan', 1, NULL, DEFAULT, DEFAULT, DEFAULT, NULL, 'sdfaf@dfsfd.com');
-INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (2, 'blake123', 'hashedPass2', '1994-05-03', 'Blake', 'Longfield', 4, 'Fun, blonde, tall, German heritage', DEFAULT, DEFAULT, DEFAULT, 'FACEBOOK.COM', 'blake.longfield@gmail.com');
-INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (3, 'newel001', 'hashedPass3', '1988-04-04', 'Newel', 'Miole', 2, 'Fun, European, cool guy. Love all food. I left the military but my eating habits didn\'t change. #YOLO', DEFAULT, DEFAULT, DEFAULT, NULL, 'newel.miole@yahoo.com');
-INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (4, 'askyeking', 'hashedPass4', '1992-07-17', 'Anthony', 'King', 1, 'Boring, metal loving, will not eat natural foods, favorite delicacy: pizza with anchovies', DEFAULT, DEFAULT, DEFAULT, NULL, 'anthony.king@me.com');
-INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (5, 'novakisnotamerican', 'hashedPass5', '1993-11-26', 'Novak', 'D', 3, 'Bad handwriting, can\'t pronounce the word vegatable. Loves long walks on the beach', DEFAULT, DEFAULT, DEFAULT, NULL, 'Novak.d@hotmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (1, 'blake234', 'hashedPass1', '1997-03-05', 'Blake', 'Shelton', 1, 'Fun, Smart, love cooking casseroles.', DEFAULT, DEFAULT, DEFAULT, NULL, 'blake@gmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (2, 'anthony_prince', 'Prince', '1989-02-01', 'Anthony', 'Prince', 2, 'Love for fine American cuisine.', DEFAULT, DEFAULT, DEFAULT, NULL, 'aprince@yahoo.com');
+INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (3, 'newel1', 'aAse3G2013', '1988-03-08', 'Newel', 'New', 3, 'Love European food. They even used to call me the European kid.', DEFAULT, DEFAULT, DEFAULT, NULL, 'newel@hotmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (4, 'novienov', 'AcTb432yESV460', '1994-10-16', 'Novak', 'Longsurnameovich', 4, 'Any food is good food. Any place is a good place to make it with fun people.', DEFAULT, DEFAULT, DEFAULT, NULL, 'novinov@aol.com');
+INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (5, 'codjones', 'jones1', '1955-06-12', 'Code', 'Jones', 5, 'I love southern food with a healthy spin.', DEFAULT, DEFAULT, DEFAULT, NULL, 'cody@codyjones.com');
+INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (6, 'jakiechan123', 'finePass101', '1970-12-21', 'Jack', 'Bryan', 6, 'I love inviting friends over for dinner. I\'ll cook anything from Pad Thai to fried ice cream.', DEFAULT, DEFAULT, DEFAULT, NULL, 'codejones@gmail.com');
+INSERT INTO `user` (`id`, `username`, `password`, `date_of_birth`, `first_name`, `last_name`, `address_id`, `description`, `create_date`, `active`, `admin`, `img-url`, `email`) VALUES (7, 'cletus23', 'osgdfs23', '1988-10-13', 'Cletus', 'McAlister', 8, NULL, DEFAULT, DEFAULT, DEFAULT, NULL, 'bryan.mcalister@gmail.com');
 
 COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `recipe`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `recipe` (`id`, `title`, `country`, `description`, `ingredients`, `serving_size`, `cook_time`, `instructions`, `category`, `post_date`, `img_url`, `author_id`, `active`) VALUES (1, 'Chicken quesadilla', 'Mexico', NULL, 'corn tortilla, chicken, etc.', '4', NULL, 'put meat inside of tortilla.', 'Mexican', DEFAULT, NULL, 1, DEFAULT);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `meetup`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `recipemeetupdb`;
+INSERT INTO `meetup` (`id`, `title`, `address_id`, `description`, `date_created`, `img_url`, `author_id`, `active`, `start_time`, `end_time`, `maximum_attendance`) VALUES (1, 'French Food in Denver', 7, 'Let\'s get together and make some Creme Brule!', DEFAULT, NULL, 3, DEFAULT, '2018-11-09 12:00:00', '2018-11-09 18:00:00', 6);
+INSERT INTO `meetup` (`id`, `title`, `address_id`, `description`, `date_created`, `img_url`, `author_id`, `active`, `start_time`, `end_time`, `maximum_attendance`) VALUES (2, 'Raleigh Mexican Delish!', 9, 'Let\'s get together and make chicken tostadas, tacos and of course Salsa.', DEFAULT, NULL, 7, DEFAULT, '2018-12-01 20:00:00', NULL, 15);
+INSERT INTO `meetup` (`id`, `title`, `address_id`, `description`, `date_created`, `img_url`, `author_id`, `active`, `start_time`, `end_time`, `maximum_attendance`) VALUES (3, 'Grill and Chill Denver', 1, 'My daughter had a wedding last week and there is so much food left unprepared. Let\'s grill it and eat it together! There are many vegan options as well.', DEFAULT, NULL, 2, DEFAULT, '2018-10-12 15:00:00', '2018-10-11 12:00:00', 25);
+
+COMMIT;
+
