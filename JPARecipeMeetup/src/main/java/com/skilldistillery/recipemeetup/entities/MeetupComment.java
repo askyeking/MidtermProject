@@ -57,6 +57,8 @@ public class MeetupComment {
 		this.postDate = postDate;
 		this.active = active;
 	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -132,5 +134,13 @@ public class MeetupComment {
 	public String toString() {
 		return "MeetupComment [id=" + id + ", userID=" + userID + ", meetupID=" + meetupID + ", textContent="
 				+ textContent + ", postDate=" + postDate + ", active=" + active + "]";
+	}
+
+	public List<User> getUserMeetupCommentLikes() {
+		return userMeetupCommentLikes;
+	}
+
+	public void setUserMeetupCommentLikes(List<User> userMeetupCommentLikes) {
+		this.userMeetupCommentLikes = userMeetupCommentLikes;
 	}
 }
