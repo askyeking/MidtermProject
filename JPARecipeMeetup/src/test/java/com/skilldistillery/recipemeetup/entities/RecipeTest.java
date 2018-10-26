@@ -21,7 +21,7 @@ class RecipeTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("recipemeetupdb");
+		emf = Persistence.createEntityManagerFactory("recipemeetup");
 	}
 
 	
@@ -31,14 +31,11 @@ class RecipeTest {
 		recipe = em.find(Recipe.class, 1);
 	}
 	
-
 	@Test
 	void test_Recipe_is_in_the_database() {
 		assertEquals("Chicken quesadilla", recipe.getTitle());
 		assertEquals("Mexico", recipe.getCountry());
-		assertEquals("Mexico", recipe.getCountry());
 		assertEquals("corn tortilla, chicken, etc.", recipe.getIngredients());
-		assertEquals(4, recipe.getServingSize());
 	}
 
 	@AfterEach

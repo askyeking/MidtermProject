@@ -20,7 +20,7 @@ public class Recipe {
 	private String ingredients;
 	
 	@Column(name="serving_size")
-	private String servingSize;
+	private int servingSize;
 		
 	@Column(name="cook_time")
 	private  String cookTime;
@@ -30,6 +30,7 @@ public class Recipe {
 	private String category;
 	
 	@Column(name="post_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	
 	@Column(name="img_url")
@@ -73,11 +74,11 @@ public class Recipe {
 		this.ingredients = ingredients;
 	}
 
-	public String getServingSize() {
+	public int getServingSize() {
 		return servingSize;
 	}
 
-	public void setServingSize(String servingSize) {
+	public void setServingSize(int servingSize) {
 		this.servingSize = servingSize;
 	}
 
@@ -176,7 +177,7 @@ public class Recipe {
 		
 	}
 
-	public Recipe(int id, String title, String country, String description, String ingredients, String servingSize,
+	public Recipe(int id, String title, String country, String description, String ingredients, int servingSize,
 			String cookTime, String instructions, String category, Date createDate, String imgURL, int authorId,
 			boolean active) {
 		super();
