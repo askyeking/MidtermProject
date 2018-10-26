@@ -379,7 +379,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `recipemeetupdb`;
-INSERT INTO `recipe` (`id`, `title`, `country`, `description`, `ingredients`, `serving_size`, `cook_time`, `instructions`, `category`, `post_date`, `img_url`, `author_id`, `active`) VALUES (1, 'Chicken quesadilla', 'Mexico', NULL, 'corn tortilla, chicken, etc.', '4', NULL, 'put meat inside of tortilla.', 'Mexican', DEFAULT, NULL, 1, DEFAULT);
+INSERT INTO `recipe` (`id`, `title`, `country`, `description`, `ingredients`, `serving_size`, `cook_time`, `instructions`, `category`, `post_date`, `img_url`, `author_id`, `active`) VALUES (1, 'Chicken quesadilla', 'Mexico', NULL, 'corn tortilla, chicken, etc.', '4', NULL, 'put meat inside of tortilla.', '\"Quick meal\"', DEFAULT, NULL, 1, DEFAULT);
+INSERT INTO `recipe` (`id`, `title`, `country`, `description`, `ingredients`, `serving_size`, `cook_time`, `instructions`, `category`, `post_date`, `img_url`, `author_id`, `active`) VALUES (2, 'Cevapcici', 'Serbia', NULL, 'beef, beef, and beef. And garlic.', '10', NULL, 'put meat on the grill. Add garlic.', '\"Grilled\"', DEFAULT, NULL, 4, DEFAULT);
+INSERT INTO `recipe` (`id`, `title`, `country`, `description`, `ingredients`, `serving_size`, `cook_time`, `instructions`, `category`, `post_date`, `img_url`, `author_id`, `active`) VALUES (3, 'Chicken fried steak', 'US', NULL, 'bread, chese, gravy, chicken tenders.', '4', NULL, 'make it nice and tasty.', '\"Fried\"', DEFAULT, NULL, 3, DEFAULT);
 
 COMMIT;
 
