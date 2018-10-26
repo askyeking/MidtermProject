@@ -49,7 +49,12 @@ class RecipeTest {
 		assertEquals(4, recipe.getServingSize());
 		assertEquals("put meat inside of tortilla.", recipe.getInstructions());
 		assertEquals("\"Quick meal\"", recipe.getCategory());
-		assertEquals("2018-10-26 11:21:07", recipe.getCreateDate().toString().substring(0, 19));
+		assertEquals("2018-10-", recipe.getCreateDate().toString().substring(0, 8));
 	}
 
+	@Test
+	void testRecipeLikeMappedToUser() {
+		assertEquals(5,recipe.getRecipeLikes().size());
+		assertEquals("Anthony",recipe.getRecipeLikes().get(0).getFirstName());
+	}
 }
