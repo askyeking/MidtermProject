@@ -1,6 +1,7 @@
 package com.skilldistillery.recipemeetup.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -54,6 +57,11 @@ public class Meetup {
 	@JoinColumn(name="author_id")
 	private User meetupOwner;
 	
+	@ManyToMany
+	@JoinTable(name="user_meetup",
+	joinColumns=@JoinColumn(name="meetup_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> attendees;
 	
 	
 
