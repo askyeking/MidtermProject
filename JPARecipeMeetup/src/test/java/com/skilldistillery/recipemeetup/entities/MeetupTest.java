@@ -54,4 +54,10 @@ class MeetupTest {
 		assertEquals("New", meetup.getMeetupOwner().getLastName());
 	}
 	
+	@Test
+	void testMeetupAttendeesPopulates() {
+		assertEquals("Blake", meetup.getAttendees().get(0).getFirstName());
+		assertEquals("Shelton", meetup.getAttendees().get(0).getLastName());
+	}
+	
 }
