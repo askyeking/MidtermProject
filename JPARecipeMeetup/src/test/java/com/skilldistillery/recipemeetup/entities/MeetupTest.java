@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class MeetupTest {
 	private static EntityManagerFactory emf;
@@ -33,8 +33,8 @@ class MeetupTest {
 		assertEquals("French Food in Denver", meetup.getTitle());
 		assertEquals("Let's get together and make some Creme Brule!", meetup.getDescription());
 		assertEquals("2018-10-26 09:47:19", meetup.getCreateDate());
-		assertEquals("2018-11-09 12:00:00", meetup.getStartTime());
-		assertEquals("2018-11-09 18:00:00", meetup.getEndTime());
+		assertEquals("2018-11-09 12:00:00", meetup.getStartTime().toString());
+		assertEquals("2018-11-09 18:00:00", meetup.getEndTime().toString());
 		assertEquals(6, meetup.getMaxAttendance());
 		
 	}
