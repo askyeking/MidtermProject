@@ -52,5 +52,11 @@ class RecipeCommentTest {
 		assertEquals("Blake", rc.getRecipeCommentOwner().getFirstName());
 		assertEquals("Shelton", rc.getRecipeCommentOwner().getLastName());
 	}
+	
+	@Test
+	void testRecipeCommentLikesHaveListOfOwners() {
+		assertEquals("Blake", rc.getRecipeCommentOwner().getFirstName());
+		assertEquals("Shelton", rc.getRecipeCommentOwner().getLastName());
+	}
 
 }

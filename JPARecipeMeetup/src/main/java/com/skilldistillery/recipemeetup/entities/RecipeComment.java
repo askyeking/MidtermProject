@@ -44,6 +44,10 @@ public class RecipeComment {
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> userRecipeCommentLikes;
 	
+	@ManyToOne
+	@JoinColumn(name="recipe_id")
+	private Recipe recipeCommentedOn;
+	
 	public int getId() {
 		return id;
 	}
@@ -120,6 +124,22 @@ public class RecipeComment {
 
 	public void setRecipeCommentOwner(User recipeCommentOwner) {
 		this.recipeCommentOwner = recipeCommentOwner;
+	}
+
+	public List<User> getUserRecipeCommentLikes() {
+		return userRecipeCommentLikes;
+	}
+
+	public void setUserRecipeCommentLikes(List<User> userRecipeCommentLikes) {
+		this.userRecipeCommentLikes = userRecipeCommentLikes;
+	}
+
+	public Recipe getRecipeCommentedOn() {
+		return recipeCommentedOn;
+	}
+
+	public void setRecipeCommentedOn(Recipe recipeCommentedOn) {
+		this.recipeCommentedOn = recipeCommentedOn;
 	}
 
 }
