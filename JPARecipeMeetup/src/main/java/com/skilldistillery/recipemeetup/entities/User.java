@@ -46,7 +46,7 @@ public class User {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
-	@OneToMany(mappedBy="meetupOwner")
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupOwner")
 	private List<Meetup> meetupsOwned;
 	
 	public User() {
@@ -56,7 +56,12 @@ public class User {
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="attendees")
 	private List<Meetup> meetupsAttended;
 	
-
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userMeetupCommentLikes")
+	private List<MeetupComment> likedMeetupComments;
+	
+	
+	
 	public List<Meetup> getMeetupsAttended() {
 		return meetupsAttended;
 	}
