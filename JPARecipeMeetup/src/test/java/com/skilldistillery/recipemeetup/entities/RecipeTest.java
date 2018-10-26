@@ -57,4 +57,11 @@ class RecipeTest {
 		assertEquals(5,recipe.getRecipeLikes().size());
 		assertEquals("Anthony",recipe.getRecipeLikes().get(0).getFirstName());
 	}
+	
+	
+	@Test
+	void testRecipeHasOwner() {
+		assertEquals("Blake",recipe.getRecipeOwner().getFirstName());
+		assertEquals("Shelton", recipe.getRecipeOwner().getLastName());
+	}
 }
