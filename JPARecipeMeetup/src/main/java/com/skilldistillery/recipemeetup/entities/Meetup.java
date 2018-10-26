@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -48,6 +50,13 @@ public class Meetup {
 	@Column(name="end_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endTime;
+	
+	@ManyToOne
+	@JoinColumn(name="meetup")
+	private User meetupOwner;
+	
+	
+	
 
 	public Meetup() {
 		super();
@@ -157,6 +166,8 @@ public class Meetup {
 		this.endTime = endTime;
 	}
 
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -184,5 +195,17 @@ public class Meetup {
 		return "Meetup [id=" + id + ", title=" + title + ", addressID=" + addressID + ", createDate=" + createDate
 				+ ", imgURL=" + imgURL + ", description=" + description + ", authorID=" + authorID + ", maxAttendance=" + maxAttendance + ", active="
 				+ active + ", startTime=" + startTime + ", endTime=" + endTime + "]";
+	}
+
+	public User getMeetupOwner() {
+		return meetupOwner;
+	}
+
+	public void setMeetupOwner(User meetupOwner) {
+		this.meetupOwner = meetupOwner;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }
