@@ -11,9 +11,9 @@
 <body>
 	<c:choose>
 		<c:when test="${not empty user and user.active}">
-			<%-- <c:if test="${user.admin }" --%>
 			
 			Login Successful!
+			<c:if test="${user.admin }">Admin login</c:if>
 		</c:when>
 		<c:otherwise>
 			Failed to login
