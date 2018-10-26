@@ -39,7 +39,7 @@ class RecipeTest {
 		assertEquals(4, recipe.getServingSize());
 		assertEquals("put meat inside of tortilla.", recipe.getInstructions());
 		assertEquals("\"Quick meal\"", recipe.getCategory());
-		assertEquals("2018-10-26 10:49:28.0", recipe.getCreateDate().toString());
+		assertEquals("2018-10-26 11:21:07", recipe.getCreateDate().toString().substring(0, 19));
 	}
 
 	@AfterEach
