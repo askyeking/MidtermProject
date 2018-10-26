@@ -44,8 +44,7 @@ public class Recipe {
 	@Column(name="img_url")
 	private String imgURL;
 	
-	@Column(name="author_id")
-	private int authorId;
+	
 	
 	@Column(name="post_date")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -57,6 +56,7 @@ public class Recipe {
 	joinColumns=@JoinColumn(name="recipe_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> recipeLikes;
+	
 	
 	
 	
@@ -142,13 +142,7 @@ public class Recipe {
 		this.imgURL = imgURL;
 	}
 
-	public int getAuthorId() {
-		return authorId;
-	}
 
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
 
 	public boolean isActive() {
 		return active;
@@ -190,7 +184,7 @@ public class Recipe {
 		return "recipe [id=" + id + ", title=" + title + ", country=" + country + ", description=" + description
 				+ ", ingredients=" + ingredients + ", servingSize=" + servingSize + ", cookTime=" + cookTime
 				+ ", instructions=" + instructions + ", category=" + category + ", createDate=" + createDate + ", imgURL="
-				+ imgURL + ", authorId=" + authorId + ", active=" + active + "]";
+				+ imgURL + ", authorId=" + ", active=" + active + "]";
 	}
 	
 	public Recipe() {
@@ -212,8 +206,15 @@ public class Recipe {
 		this.category = category;
 		this.createDate = createDate;
 		this.imgURL = imgURL;
-		this.authorId = authorId;
 		this.active = active;
+	}
+
+	public List<User> getRecipeLikes() {
+		return recipeLikes;
+	}
+
+	public void setRecipeLikes(List<User> recipeLikes) {
+		this.recipeLikes = recipeLikes;
 	}
 	
 	

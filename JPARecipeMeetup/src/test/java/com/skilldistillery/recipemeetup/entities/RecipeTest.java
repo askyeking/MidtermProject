@@ -31,6 +31,16 @@ class RecipeTest {
 		recipe = em.find(Recipe.class, 1);
 	}
 	
+	@AfterEach
+	void tearDown() throws Exception {
+		em.close();
+	}
+	
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		emf.close();
+	}
+	
 	@Test
 	void test_Recipe_is_in_the_database() {
 		assertEquals("Chicken quesadilla", recipe.getTitle());
@@ -42,13 +52,4 @@ class RecipeTest {
 		assertEquals("2018-10-26 11:21:07", recipe.getCreateDate().toString().substring(0, 19));
 	}
 
-	@AfterEach
-	void tearDown() throws Exception {
-		em.close();
-	}
-	
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-		emf.close();
-	}
 }
