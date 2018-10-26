@@ -67,8 +67,11 @@ public class Meetup {
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupCommentedOn")
 	private List<MeetupComment> meetupComments;
-	
 
+	@ManyToOne
+	@JoinColumn(name="address_id")
+	private Address meetupAddress;
+	
 	public Meetup() {
 		super();
 	}
@@ -135,8 +138,15 @@ public class Meetup {
 	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
 	}
-
 	
+
+	public Address getMeetupAddress() {
+		return meetupAddress;
+	}
+
+	public void setMeetupAddress(Address meetupAddress) {
+		this.meetupAddress = meetupAddress;
+	}
 
 	public int getMaxAttendance() {
 		return maxAttendance;
