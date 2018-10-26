@@ -32,10 +32,13 @@ class RecipeTest {
 	}
 	
 
-
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void test_Recipe_is_in_the_database() {
+		assertEquals("Chicken quesadilla", recipe.getTitle());
+		assertEquals("Mexico", recipe.getCountry());
+		assertEquals("Mexico", recipe.getCountry());
+		assertEquals("corn tortilla, chicken, etc.", recipe.getIngredients());
+		assertEquals(4, recipe.getServingSize());
 	}
 
 	@AfterEach
