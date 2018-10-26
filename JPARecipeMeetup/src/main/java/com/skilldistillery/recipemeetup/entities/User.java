@@ -84,8 +84,8 @@ public class User {
 	private List<RecipeComment> recipeComments;
 	
 	
-	
-	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userRecipeCommentLikes")
+	private List<RecipeComment> likedRecipeComments;
 	
 	
 	
