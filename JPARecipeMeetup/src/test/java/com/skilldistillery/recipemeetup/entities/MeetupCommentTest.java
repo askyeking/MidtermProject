@@ -51,6 +51,12 @@ class MeetupCommentTest {
 		assertEquals(true, mc.isActive());
 	}
 	
+	@Test
+	void testMeetupCommentMappingsWithMeetup() {
+		assertEquals(1, mc.getUserMeetupCommentLikes().size());
+		assertEquals("Blake", mc.getUserMeetupCommentLikes().get(0).getFirstName());
+	}
+	
 
 	}
 	
