@@ -52,7 +52,7 @@ public class Meetup {
 	private Date endTime;
 	
 	@ManyToOne
-	@JoinColumn(name="meetup")
+	@JoinColumn(name="author_id")
 	private User meetupOwner;
 	
 	
