@@ -44,6 +44,10 @@ public class RecipeComment {
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> userRecipeCommentLikes;
 	
+	@ManyToOne
+	@JoinColumn(name="recipe_id")
+	private User recipeCommentOn;
+	
 	public int getId() {
 		return id;
 	}
