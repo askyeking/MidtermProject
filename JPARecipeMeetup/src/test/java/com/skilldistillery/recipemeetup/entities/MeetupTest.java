@@ -32,7 +32,7 @@ class MeetupTest {
 	void test_meetup_is_in_the_database() {
 		assertEquals("French Food in Denver", meetup.getTitle());
 		assertEquals("Let's get together and make some Creme Brule!", meetup.getDescription());
-		assertEquals("2018-10-26 09:47:19", meetup.getCreateDate());
+		assertEquals("2018-10-26 11:21:07", meetup.getCreateDate().toString().substring(0, 21));
 		assertEquals("2018-11-09 12:00:00", meetup.getStartTime().toString());
 		assertEquals("2018-11-09 18:00:00", meetup.getEndTime().toString());
 		assertEquals(6, meetup.getMaxAttendance());
