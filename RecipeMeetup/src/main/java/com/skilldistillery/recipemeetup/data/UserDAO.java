@@ -4,6 +4,6 @@ import com.skilldistillery.recipemeetup.entities.User;
 
 public interface UserDAO {
 	
-	User loginUser (String userName, String password);
+	User loginUser (String username, String password);
 
 }
