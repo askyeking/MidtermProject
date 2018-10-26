@@ -66,6 +66,14 @@ class RecipeTest {
 	}
 	
 	@Test
+	void testRecipeHasRecipeCommentsList() {
+		assertNotNull(recipe.getRecipeComments());
+		assertEquals(1, recipe.getRecipeComments().get(0).getId());
+		
+		assertEquals("Too much meat for my taste", recipe.getRecipeComments().get(0).getComment());
+	}
+	
+	@Test
 	void testRecipeHasUsersWhoFavorited() {
 		assertEquals("Blake",recipe.getUsersWhoFavorited().get(0).getFirstName());
 		assertEquals(1, recipe.getUsersWhoFavorited().size());

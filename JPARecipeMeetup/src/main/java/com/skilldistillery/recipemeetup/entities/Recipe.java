@@ -97,6 +97,18 @@ public class Recipe {
 		this.description = description;
 	}
 
+	public List<RecipeComment> getRecipeComments() {
+		return recipeComments;
+	}
+
+	public void setRecipeComments(List<RecipeComment> recipeComments) {
+		this.recipeComments = recipeComments;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getIngredients() {
 		return ingredients;
 	}
