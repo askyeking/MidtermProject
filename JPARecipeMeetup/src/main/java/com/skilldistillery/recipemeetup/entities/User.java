@@ -16,6 +16,13 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class User {
+	
+	
+	public User() {
+		super();
+	}
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -73,6 +80,16 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name="recipe_id"))
 	private List<Recipe> favoriteRecipes;
 	
+	public List<Recipe> getFavoriteRecipes() {
+		return favoriteRecipes;
+	}
+
+
+	public void setFavoriteRecipes(List<Recipe> favoriteRecipes) {
+		this.favoriteRecipes = favoriteRecipes;
+	}
+
+
 	public List<Recipe> getRecipesPosted() {
 		return recipesPosted;
 	}
@@ -83,9 +100,6 @@ public class User {
 	}
 
 
-	public User() {
-		super();
-	}
 	
 	
 	public List<Recipe> getLikedRecipes() {
