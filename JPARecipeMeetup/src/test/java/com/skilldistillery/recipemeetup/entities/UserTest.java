@@ -57,6 +57,7 @@ class UserTest {
 	@Test
 	void test_user_has_liked_meetup_comments() {
 		assertEquals("Great idea. I am looking forward to attending", user.getLikedMeetupComments().get(0).getTextContent());
+		assertEquals(em.find(MeetupComment.class, 1), user.getLikedMeetupComments().get(0));
 	}
 	
 	@AfterEach
