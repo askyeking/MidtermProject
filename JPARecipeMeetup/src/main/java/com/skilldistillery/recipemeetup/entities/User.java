@@ -62,6 +62,10 @@ public class User {
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeLikes")
 	private List<Recipe> likedRecipes;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeOwner")
+	private List<Recipe> recipesPosted;
+	
 	public User() {
 		super();
 	}
