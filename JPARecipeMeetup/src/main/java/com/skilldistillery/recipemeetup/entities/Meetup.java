@@ -83,7 +83,7 @@ public class Meetup {
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -207,5 +207,13 @@ public class Meetup {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public List<User> getAttendees() {
+		return attendees;
+	}
+
+	public void setAttendees(List<User> attendees) {
+		this.attendees = attendees;
 	}
 }
