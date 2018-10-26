@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class Recipe {
 
@@ -31,6 +33,7 @@ public class Recipe {
 	
 	@Column(name="post_date")
 	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
 	private Date createDate;
 	
 	@Column(name="img_url")
