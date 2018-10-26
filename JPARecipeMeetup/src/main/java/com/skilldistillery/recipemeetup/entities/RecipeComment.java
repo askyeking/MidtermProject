@@ -46,7 +46,7 @@ public class RecipeComment {
 	
 	@ManyToOne
 	@JoinColumn(name="recipe_id")
-	private User recipeCommentOn;
+	private Recipe recipeCommentedOn;
 	
 	public int getId() {
 		return id;
@@ -124,6 +124,22 @@ public class RecipeComment {
 
 	public void setRecipeCommentOwner(User recipeCommentOwner) {
 		this.recipeCommentOwner = recipeCommentOwner;
+	}
+
+	public List<User> getUserRecipeCommentLikes() {
+		return userRecipeCommentLikes;
+	}
+
+	public void setUserRecipeCommentLikes(List<User> userRecipeCommentLikes) {
+		this.userRecipeCommentLikes = userRecipeCommentLikes;
+	}
+
+	public Recipe getRecipeCommentedOn() {
+		return recipeCommentedOn;
+	}
+
+	public void setRecipeCommentedOn(Recipe recipeCommentedOn) {
+		this.recipeCommentedOn = recipeCommentedOn;
 	}
 
 }
