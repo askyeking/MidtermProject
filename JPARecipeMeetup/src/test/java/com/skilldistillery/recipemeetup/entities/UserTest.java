@@ -97,8 +97,8 @@ class UserTest {
 	@Test
 	void test_user_has_liked_recipe_comments() {
 		
-		assertEquals(expected, actual);
-		assertEquals(expected, actual);
+		assertEquals(1, user.getLikedRecipeComments().get(0).getId());
+		assertEquals(1, user.getLikedRecipeComments().size());
 	}
 	
 	

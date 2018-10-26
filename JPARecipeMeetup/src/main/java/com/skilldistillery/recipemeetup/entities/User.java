@@ -122,6 +122,16 @@ public class User {
 
 	
 	
+	public List<RecipeComment> getLikedRecipeComments() {
+		return likedRecipeComments;
+	}
+
+
+	public void setLikedRecipeComments(List<RecipeComment> likedRecipeComments) {
+		this.likedRecipeComments = likedRecipeComments;
+	}
+
+
 	public List<Recipe> getLikedRecipes() {
 		return likedRecipes;
 	}
