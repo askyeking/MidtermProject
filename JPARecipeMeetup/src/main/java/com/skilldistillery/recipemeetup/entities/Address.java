@@ -1,10 +1,13 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -25,6 +28,9 @@ public class Address {
 	public int getId() {
 		return id;
 	}
+	
+	@OneToMany(mappedBy="address")
+	private List<User> users;
 
 
 	public String getStreet() {
@@ -49,6 +55,14 @@ public class Address {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	public String getPostalCode() {

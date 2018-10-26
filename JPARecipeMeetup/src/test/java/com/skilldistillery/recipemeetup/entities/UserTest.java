@@ -38,6 +38,11 @@ class UserTest {
 		assertEquals("blake@gmail.com", user.getEmail());
 	}
 	
+	@Test
+	void test_mapping_User_Address() {
+		assertEquals(em.find(Address.class, 1), user.getAddress());
+	}
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();

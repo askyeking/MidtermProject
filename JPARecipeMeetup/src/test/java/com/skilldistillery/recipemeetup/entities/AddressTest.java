@@ -46,5 +46,10 @@ class AddressTest {
 		assertEquals("CO", address.getState());
 		assertEquals("80202", address.getPostalCode());
 	}
+	
+	@Test
+	void testMappingAddressUserReturnsFullUserList() {
+		assertEquals("Blake",address.getUsers().get(0).getFirstName());
+	}
 
 }

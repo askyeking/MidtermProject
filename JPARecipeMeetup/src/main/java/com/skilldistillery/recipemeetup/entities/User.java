@@ -1,10 +1,15 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -35,16 +40,20 @@ public class User {
 	
 	private String email;
 	
-	@Column(name="address_id")
-	private int addressID;
-
+	@ManyToOne
+	@JoinColumn(name="address_id")
+	private Address address;
+	
+	@OneToMany(mappedBy="meetupOwner")
+	private List<Meetup> meetupsOwned;
+	
 	public User() {
 		super();
 	}
 
 	public User(int id, String username, String password, String dateOfBirth, String firstName, String lastName,
 			String description, String createDate, boolean active, boolean admin, String imgURL, String email,
-			int addressID) {
+			Address address) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -58,7 +67,7 @@ public class User {
 		this.admin = admin;
 		this.imgURL = imgURL;
 		this.email = email;
-		this.addressID = addressID;
+		this.address = address;
 	}
 
 	public int getId() {
@@ -157,12 +166,13 @@ public class User {
 		this.email = email;
 	}
 
-	public int getAddressID() {
-		return addressID;
+
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddressID(int addressID) {
-		this.addressID = addressID;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
@@ -191,7 +201,8 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", dateOfBirth=" + dateOfBirth
 				+ ", firstName=" + firstName + ", lastName=" + lastName + ", description=" + description
-				+ ", createDate=" + createDate + ", active=" + active + ", admin=" + admin + ", imgURL=" + imgURL + "]";
+				+ ", createDate=" + createDate + ", active=" + active + ", admin=" + admin + ", imgURL=" + imgURL
+				+ ", email=" + email + ", address=" + address.getCity() + "]";
 	}
 
 }
