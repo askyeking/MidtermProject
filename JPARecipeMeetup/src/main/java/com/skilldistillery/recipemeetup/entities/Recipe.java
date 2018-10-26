@@ -1,8 +1,18 @@
 package com.skilldistillery.recipemeetup.entities;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -30,19 +40,26 @@ public class Recipe {
 	private String instructions;
 	
 	private String category;
-	
-	@Column(name="post_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date createDate;
-	
+	private boolean active;
 	@Column(name="img_url")
 	private String imgURL;
 	
 	@Column(name="author_id")
 	private int authorId;
 	
-	private boolean active;
+	@Column(name="post_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
+	private Date createDate;
+	
+	@ManyToMany
+	@JoinTable(name="recipe_like",
+	joinColumns=@JoinColumn(name="recipe_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> recipeLikes;
+	
+	
+	
 	
 	
 	public String getTitle() {
