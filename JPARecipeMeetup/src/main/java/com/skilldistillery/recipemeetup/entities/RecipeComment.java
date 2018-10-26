@@ -11,7 +11,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-public class recipeComment {
+public class RecipeComment {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,10 +31,6 @@ public class recipeComment {
 	
 	private Boolean active;
 	
-	
-	
-	
-
 	public int getId() {
 		return id;
 	}
@@ -89,9 +85,9 @@ public class recipeComment {
 				+ ", timeStamp=" + timeStamp + ", active=" + active + "]";
 	}
 	
-	public recipeComment() {}
+	public RecipeComment() {}
 
-	public recipeComment(int id, int userId, int recipeId, String comment, Date timeStamp, Boolean active) {
+	public RecipeComment(int id, int userId, int recipeId, String comment, Date timeStamp, Boolean active) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -117,7 +113,7 @@ public class recipeComment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		recipeComment other = (recipeComment) obj;
+		RecipeComment other = (RecipeComment) obj;
 		if (id != other.id)
 			return false;
 		return true;
