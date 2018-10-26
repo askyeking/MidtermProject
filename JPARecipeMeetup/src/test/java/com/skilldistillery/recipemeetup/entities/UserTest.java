@@ -6,13 +6,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class UserTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private User user; 
@@ -32,9 +33,9 @@ class UserTest {
 	void test_user_is_in_the_database() {
 		assertEquals("Blake", user.getFirstName());
 		assertEquals("Shelton" , user.getLastName());
-		assertEquals("Blake234", user.getUsername());
+		assertEquals("blake234", user.getUsername());
 		assertEquals("1997-03-05", user.getDateOfBirth());
-		assertEquals("Blake@gmail.com", user.getEmail());
+		assertEquals("blake@gmail.com", user.getEmail());
 	}
 	
 	@AfterEach
@@ -46,4 +47,5 @@ class UserTest {
 	static void tearDownAfterClass() throws Exception {
 		emf.close();
 	}
+	
 }
