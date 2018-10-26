@@ -80,6 +80,26 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name="recipe_id"))
 	private List<Recipe> favoriteRecipes;
 	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentOwner")
+	private List<RecipeComment> recipeComments;
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<RecipeComment> getRecipeComments() {
+		return recipeComments;
+	}
+
+
+	public void setRecipeComments(List<RecipeComment> recipeComments) {
+		this.recipeComments = recipeComments;
+	}
+
+
 	public List<Recipe> getFavoriteRecipes() {
 		return favoriteRecipes;
 	}
