@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -66,6 +67,11 @@ public class User {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeOwner")
 	private List<Recipe> recipesPosted;
 	
+	@ManyToMany
+	@JoinTable(name="favorite_recipe",
+	joinColumns=@JoinColumn(name="user_id"),
+	inverseJoinColumns=@JoinColumn(name="recipe_id"))
+	private List<Recipe> favoriteRecipes;
 	
 	public List<Recipe> getRecipesPosted() {
 		return recipesPosted;
