@@ -3,6 +3,7 @@ package com.skilldistillery.recipemeetup.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -51,11 +53,18 @@ public class Recipe {
 	@CreationTimestamp
 	private Date createDate;
 	
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinTable(name="recipe_like",
 	joinColumns=@JoinColumn(name="recipe_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> recipeLikes;
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name="author_id")
+	private User recipeOwner;
+	
+	
+	
 	
 	
 	
@@ -215,6 +224,14 @@ public class Recipe {
 
 	public void setRecipeLikes(List<User> recipeLikes) {
 		this.recipeLikes = recipeLikes;
+	}
+
+	public User getRecipeOwner() {
+		return recipeOwner;
+	}
+
+	public void setRecipeOwner(User recipeOwner) {
+		this.recipeOwner = recipeOwner;
 	}
 	
 	
