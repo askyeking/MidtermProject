@@ -75,6 +75,16 @@ public class User {
 	}
 
 
+	public List<MeetupComment> getMeetupCommentsPosted() {
+		return meetupCommentsPosted;
+	}
+
+
+	public void setMeetupCommentsPosted(List<MeetupComment> meetupCommentsPosted) {
+		this.meetupCommentsPosted = meetupCommentsPosted;
+	}
+
+
 	public List<Meetup> getMeetupsAttended() {
 		return meetupsAttended;
 	}
