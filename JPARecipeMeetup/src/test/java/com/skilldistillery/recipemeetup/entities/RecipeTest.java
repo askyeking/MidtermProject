@@ -64,4 +64,10 @@ class RecipeTest {
 		assertEquals("Blake",recipe.getRecipeOwner().getFirstName());
 		assertEquals("Shelton", recipe.getRecipeOwner().getLastName());
 	}
+	
+	@Test
+	void testRecipeHasUsersWhoFavorited() {
+		assertEquals("Blake",recipe.getUsersWhoFavorited().get(0).getFirstName());
+		assertEquals(1, recipe.getUsersWhoFavorited().size());
+	}
 }
