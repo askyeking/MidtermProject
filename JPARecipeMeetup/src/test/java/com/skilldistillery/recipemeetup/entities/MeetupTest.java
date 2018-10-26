@@ -19,7 +19,7 @@ class MeetupTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("recipemeetupdb");		
+		emf = Persistence.createEntityManagerFactory("recipemeetup");		
 	}
 
 	@BeforeEach
