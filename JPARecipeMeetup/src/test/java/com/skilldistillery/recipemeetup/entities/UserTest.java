@@ -63,7 +63,7 @@ class UserTest {
 	@Test
 	void test_user_has_meetup_comments() {
 		assertEquals("I am so hyped", user.getMeetupCommentsPosted().get(0).getTextContent());
-		assertEquals(3, user.getMeetupCommentsPosted().get(0).getId());
+		assertEquals(2, user.getMeetupCommentsPosted().get(0).getId());
 	}
 	
 	@AfterEach
