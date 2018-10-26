@@ -66,6 +66,15 @@ class UserTest {
 		assertEquals(2, user.getMeetupCommentsPosted().get(0).getId());
 	}
 	
+	@Test
+	void test_user_has_liked_recipes() {
+		user = em.find(User.class, 6);   
+		assertEquals(2, user.getLikedRecipes().size());
+		assertEquals(1, user.getLikedRecipes().get(0).getId());
+		
+		user = null;
+		
+	}
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
