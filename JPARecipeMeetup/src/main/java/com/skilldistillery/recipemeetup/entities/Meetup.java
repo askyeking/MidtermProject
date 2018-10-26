@@ -18,7 +18,7 @@ public class Meetup {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String name;
+	private String title;
 
 	@Column(name = "address_id")
 	private int addressID;
@@ -30,6 +30,8 @@ public class Meetup {
 	
 	@Column(name="img_url")
 	private String imgURL;
+	
+	private String description;
 	
 	@Column(name="author_id")
 	private int authorID;
@@ -51,14 +53,15 @@ public class Meetup {
 		super();
 	}
 
-	public Meetup(int id, String name, int addressID, Date createDate, String imgURL, int authorID, int maxAttendance,
+	public Meetup(int id, String title, int addressID, Date createDate, String imgURL, String description, int authorID, int maxAttendance,
 			boolean active, Date startTime, Date endTime) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.title = title;
 		this.addressID = addressID;
 		this.createDate = createDate;
 		this.imgURL = imgURL;
+		this.description = description;
 		this.authorID = authorID;
 		this.maxAttendance = maxAttendance;
 		this.active = active;
@@ -74,12 +77,20 @@ public class Meetup {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.title = title;
 	}
 
 	public int getAddressID() {
@@ -170,8 +181,8 @@ public class Meetup {
 
 	@Override
 	public String toString() {
-		return "Meetup [id=" + id + ", name=" + name + ", addressID=" + addressID + ", createDate=" + createDate
-				+ ", imgURL=" + imgURL + ", authorID=" + authorID + ", maxAttendance=" + maxAttendance + ", active="
+		return "Meetup [id=" + id + ", title=" + title + ", addressID=" + addressID + ", createDate=" + createDate
+				+ ", imgURL=" + imgURL + ", description=" + description + ", authorID=" + authorID + ", maxAttendance=" + maxAttendance + ", active="
 				+ active + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
 }
