@@ -2,11 +2,14 @@ package com.skilldistillery.recipemeetup.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,12 +24,6 @@ public class RecipeComment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="user_id")
-	private int userId;
-
-	@Column(name="recipe_id")
-	private int recipeId;
-	
 	private String comment;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -35,28 +32,16 @@ public class RecipeComment {
 	
 	private Boolean active;
 	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name="user_id")
+	private User recipeCommentOwner;
+	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public int getRecipeId() {
-		return recipeId;
-	}
-
-	public void setRecipeId(int recipeId) {
-		this.recipeId = recipeId;
 	}
 
 	public String getComment() {
@@ -85,7 +70,7 @@ public class RecipeComment {
 
 	@Override
 	public String toString() {
-		return "recipeComment [id=" + id + ", userId=" + userId + ", recipeId=" + recipeId + ", comment=" + comment
+		return "recipeComment [id=" + id + ", comment=" + comment
 				+ ", timeStamp=" + timeStamp + ", active=" + active + "]";
 	}
 	
@@ -94,8 +79,6 @@ public class RecipeComment {
 	public RecipeComment(int id, int userId, int recipeId, String comment, Date timeStamp, Boolean active) {
 		super();
 		this.id = id;
-		this.userId = userId;
-		this.recipeId = recipeId;
 		this.comment = comment;
 		this.timeStamp = timeStamp;
 		this.active = active;
@@ -121,6 +104,14 @@ public class RecipeComment {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public User getRecipeCommentOwner() {
+		return recipeCommentOwner;
+	}
+
+	public void setRecipeCommentOwner(User recipeCommentOwner) {
+		this.recipeCommentOwner = recipeCommentOwner;
 	}
 	
 	
