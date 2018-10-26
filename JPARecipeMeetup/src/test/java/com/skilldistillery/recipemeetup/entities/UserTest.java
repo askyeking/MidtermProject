@@ -88,6 +88,15 @@ class UserTest {
 		assertEquals(1, user.getFavoriteRecipes().get(0).getId());
 	}
 	
+	@Test
+	void test_user_has_recipe_comments() {
+		assertEquals(3, user.getRecipeComments().size());
+		assertEquals(1, user.getRecipeComments().get(0).getId());
+	}
+	
+	
+	
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
