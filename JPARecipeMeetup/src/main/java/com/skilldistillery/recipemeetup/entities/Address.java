@@ -1,23 +1,26 @@
 package com.skilldistillery.recipemeetup.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+@Entity
 public class Address {
 	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int id;
+	private int id;
 	
-	String street;
-	String city;
-	String state;
+	private String street;
+	private String city;
+	private String state;
 	
 	@Column(name="postal_code")
-	String postalCode;
+	private String postalCode;
 
 	public int getId() {
 		return id;

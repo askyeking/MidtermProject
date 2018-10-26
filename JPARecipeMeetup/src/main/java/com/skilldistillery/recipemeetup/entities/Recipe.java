@@ -11,21 +11,21 @@ public class Recipe {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	private String name;
+	private String title;
 	
 	private String country;
 	
 	private String description;
 	
-	private String ingredient;
+	private String ingredients;
 	
-	@Column(name="serving_time")
+	@Column(name="serving_size")
 	private String servingSize;
 		
 	@Column(name="cook_time")
 	private  String cookTime;
 	
-	private String instruction;
+	private String instructions;
 	
 	private String category;
 	
@@ -41,12 +41,12 @@ public class Recipe {
 	private boolean active;
 	
 	
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getCountry() {
@@ -65,12 +65,12 @@ public class Recipe {
 		this.description = description;
 	}
 
-	public String getIngredient() {
-		return ingredient;
+	public String getIngredients() {
+		return ingredients;
 	}
 
-	public void setIngredient(String ingredient) {
-		this.ingredient = ingredient;
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
 	}
 
 	public String getServingSize() {
@@ -89,12 +89,12 @@ public class Recipe {
 		this.cookTime = cookTime;
 	}
 
-	public String getInstruction() {
-		return instruction;
+	public String getInstructions() {
+		return instructions;
 	}
 
-	public void setInstruction(String instruction) {
-		this.instruction = instruction;
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
 	}
 
 	public String getCategory() {
@@ -166,9 +166,9 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "recipe [id=" + id + ", name=" + name + ", country=" + country + ", description=" + description
-				+ ", ingredient=" + ingredient + ", servingSize=" + servingSize + ", cookTime=" + cookTime
-				+ ", instruction=" + instruction + ", category=" + category + ", createDate=" + createDate + ", imgURL="
+		return "recipe [id=" + id + ", title=" + title + ", country=" + country + ", description=" + description
+				+ ", ingredients=" + ingredients + ", servingSize=" + servingSize + ", cookTime=" + cookTime
+				+ ", instructions=" + instructions + ", category=" + category + ", createDate=" + createDate + ", imgURL="
 				+ imgURL + ", authorId=" + authorId + ", active=" + active + "]";
 	}
 	
@@ -176,18 +176,18 @@ public class Recipe {
 		
 	}
 
-	public Recipe(int id, String name, String country, String description, String ingredient, String servingSize,
-			String cookTime, String instruction, String category, Date createDate, String imgURL, int authorId,
+	public Recipe(int id, String title, String country, String description, String ingredients, String servingSize,
+			String cookTime, String instructions, String category, Date createDate, String imgURL, int authorId,
 			boolean active) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.title = title;
 		this.country = country;
 		this.description = description;
-		this.ingredient = ingredient;
+		this.ingredients = ingredients;
 		this.servingSize = servingSize;
 		this.cookTime = cookTime;
-		this.instruction = instruction;
+		this.instructions = instructions;
 		this.category = category;
 		this.createDate = createDate;
 		this.imgURL = imgURL;
