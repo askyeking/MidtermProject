@@ -50,8 +50,8 @@ class MeetupTest {
 	
 	@Test
 	void testMeetupAndUserMappingForMeetupOwner() {
-		assertEquals("Blake",meetup.getMeetupOwner().getFirstName());
-		assertEquals("Shelton", meetup.getMeetupOwner().getLastName());
+		assertEquals("Newel",meetup.getMeetupOwner().getFirstName());
+		assertEquals("New", meetup.getMeetupOwner().getLastName());
 	}
 	
 }
