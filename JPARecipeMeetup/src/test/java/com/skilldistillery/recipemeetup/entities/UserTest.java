@@ -43,6 +43,12 @@ class UserTest {
 		assertEquals(em.find(Address.class, 1), user.getAddress());
 	}
 	
+	@Test
+	void test_mapping_User_Meetup() {
+		user = em.find(User.class, 2);
+		assertEquals(user.getMeetupsOwned().get(0).getTitle(),"Grill and Chill Denver");
+	}
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();

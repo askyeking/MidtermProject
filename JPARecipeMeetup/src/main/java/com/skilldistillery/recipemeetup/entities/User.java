@@ -50,6 +50,17 @@ public class User {
 	public User() {
 		super();
 	}
+	
+
+	public List<Meetup> getMeetupsOwned() {
+		return meetupsOwned;
+	}
+
+
+	public void setMeetupsOwned(List<Meetup> meetupsOwned) {
+		this.meetupsOwned = meetupsOwned;
+	}
+
 
 	public User(int id, String username, String password, String dateOfBirth, String firstName, String lastName,
 			String description, String createDate, boolean active, boolean admin, String imgURL, String email,
