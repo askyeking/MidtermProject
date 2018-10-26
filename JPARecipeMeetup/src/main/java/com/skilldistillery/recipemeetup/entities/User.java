@@ -56,6 +56,9 @@ public class User {
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="attendees")
 	private List<Meetup> meetupsAttended;
 	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupCommentOwner")
+	private List<MeetupComment> meetupCommentsPosted;
+	
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userMeetupCommentLikes")
 	private List<MeetupComment> likedMeetupComments;
