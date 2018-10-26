@@ -67,10 +67,12 @@ class RecipeTest {
 	
 	@Test
 	void testRecipeHasRecipeCommentsList() {
+		recipe = em.find(Recipe.class, 3);
 		assertNotNull(recipe.getRecipeComments());
 		assertEquals(1, recipe.getRecipeComments().get(0).getId());
 		
 		assertEquals("Too much meat for my taste", recipe.getRecipeComments().get(0).getComment());
+		recipe = null;
 	}
 	
 	@Test
