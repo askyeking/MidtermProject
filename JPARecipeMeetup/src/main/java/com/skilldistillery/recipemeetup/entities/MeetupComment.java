@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,6 +45,11 @@ public class MeetupComment {
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> userMeetupCommentLikes;
 	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name="user_id")
+	private User meetupCommentOwner;
+	
+	
 	public MeetupComment() {
 		super();
 	}
@@ -57,8 +63,6 @@ public class MeetupComment {
 		this.postDate = postDate;
 		this.active = active;
 	}
-	
-	
 
 	public int getId() {
 		return id;
@@ -142,5 +146,13 @@ public class MeetupComment {
 
 	public void setUserMeetupCommentLikes(List<User> userMeetupCommentLikes) {
 		this.userMeetupCommentLikes = userMeetupCommentLikes;
+	}
+
+	public User getMeetupCommentOwner() {
+		return meetupCommentOwner;
+	}
+
+	public void setMeetupCommentOwner(User meetupCommentOwner) {
+		this.meetupCommentOwner = meetupCommentOwner;
 	}
 }
