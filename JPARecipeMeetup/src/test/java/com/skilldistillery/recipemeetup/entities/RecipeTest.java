@@ -36,6 +36,10 @@ class RecipeTest {
 		assertEquals("Chicken quesadilla", recipe.getTitle());
 		assertEquals("Mexico", recipe.getCountry());
 		assertEquals("corn tortilla, chicken, etc.", recipe.getIngredients());
+		assertEquals(4, recipe.getServingSize());
+		assertEquals("put meat inside of tortilla.", recipe.getInstructions());
+		assertEquals("\"Quick meal\"", recipe.getCategory());
+		assertEquals("2018-10-26 10:49:28.0", recipe.getCreateDate().toString());
 	}
 
 	@AfterEach
