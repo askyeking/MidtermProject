@@ -36,7 +36,7 @@ public class Meetup {
 	@Column(name="author_id")
 	private int authorID;
 	
-	@Column(name="max_attendance")
+	@Column(name="maximum_attendance")
 	private int maxAttendance;
 	
 	private boolean active;
