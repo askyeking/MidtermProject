@@ -6,9 +6,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Welcome!</title>
 </head>
 <body>
+	<c:choose>
+		<c:when test="${not empty user and user.active}">
+			
+			Login Successful!
+			<c:if test="${user.admin }">Admin login</c:if>
+		</c:when>
+		<c:otherwise>
+			Failed to login
+		</c:otherwise>
+	</c:choose>
 
 </body>
 </html>
