@@ -27,9 +27,6 @@ public class Meetup {
 
 	private String title;
 
-	@Column(name = "address_id")
-	private int addressID;
-
 	@Column(name = "date_created")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
@@ -76,12 +73,13 @@ public class Meetup {
 		super();
 	}
 
-	public Meetup(int id, String title, int addressID, Date createDate, String imgURL, String description, int authorID, int maxAttendance,
-			boolean active, Date startTime, Date endTime) {
+	
+	public Meetup(int id, String title, Date createDate, String imgURL, String description, int maxAttendance,
+			boolean active, Date startTime, Date endTime, User meetupOwner, List<User> attendees,
+			List<MeetupComment> meetupComments, Address meetupAddress) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.addressID = addressID;
 		this.createDate = createDate;
 		this.imgURL = imgURL;
 		this.description = description;
@@ -89,8 +87,12 @@ public class Meetup {
 		this.active = active;
 		this.startTime = startTime;
 		this.endTime = endTime;
+		this.meetupOwner = meetupOwner;
+		this.attendees = attendees;
+		this.meetupComments = meetupComments;
+		this.meetupAddress = meetupAddress;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -115,13 +117,6 @@ public class Meetup {
 		this.title = title;
 	}
 
-	public int getAddressID() {
-		return addressID;
-	}
-
-	public void setAddressID(int addressID) {
-		this.addressID = addressID;
-	}
 
 	public Date getCreateDate() {
 		return createDate;
@@ -214,7 +209,7 @@ public class Meetup {
 
 	@Override
 	public String toString() {
-		return "Meetup [id=" + id + ", title=" + title + ", addressID=" + addressID + ", createDate=" + createDate
+		return "Meetup [id=" + id + ", title=" + title + ", createDate=" + createDate
 				+ ", imgURL=" + imgURL + ", description=" + description + ", authorID=" + ", maxAttendance=" + maxAttendance + ", active="
 				+ active + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
