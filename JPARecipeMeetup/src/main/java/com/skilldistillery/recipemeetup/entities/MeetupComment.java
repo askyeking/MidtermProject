@@ -24,12 +24,6 @@ public class MeetupComment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="user_id")
-	private int userID;
-		
-	@Column(name="meetup_id")
-	private int meetupID;
-	
 	@Column(name="text_content")
 	private String textContent;
 	
@@ -54,11 +48,9 @@ public class MeetupComment {
 		super();
 	}
 
-	public MeetupComment(int id, int userID, int meetupID, String textContent, Date postDate, boolean active) {
+	public MeetupComment(int id,  String textContent, Date postDate, boolean active) {
 		super();
 		this.id = id;
-		this.userID = userID;
-		this.meetupID = meetupID;
 		this.textContent = textContent;
 		this.postDate = postDate;
 		this.active = active;
@@ -72,21 +64,6 @@ public class MeetupComment {
 		this.id = id;
 	}
 
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-	public int getMeetupID() {
-		return meetupID;
-	}
-
-	public void setMeetupID(int meetupID) {
-		this.meetupID = meetupID;
-	}
 
 	public String getTextContent() {
 		return textContent;
@@ -136,7 +113,7 @@ public class MeetupComment {
 
 	@Override
 	public String toString() {
-		return "MeetupComment [id=" + id + ", userID=" + userID + ", meetupID=" + meetupID + ", textContent="
+		return "MeetupComment [id=" + id + ", userID=" +  ", meetupID=" +", textContent="
 				+ textContent + ", postDate=" + postDate + ", active=" + active + "]";
 	}
 
