@@ -1,8 +1,21 @@
 package com.skilldistillery.recipemeetup.entities;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -30,19 +43,34 @@ public class Recipe {
 	private String instructions;
 	
 	private String category;
+	private boolean active;
+	@Column(name="img_url")
+	private String imgURL;
+	
+	
 	
 	@Column(name="post_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date createDate;
 	
-	@Column(name="img_url")
-	private String imgURL;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinTable(name="recipe_like",
+	joinColumns=@JoinColumn(name="recipe_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> recipeLikes;
 	
-	@Column(name="author_id")
-	private int authorId;
+	@ManyToOne
+	@JoinColumn(name="author_id")
+	private User recipeOwner;
 	
-	private boolean active;
+	@ManyToMany(mappedBy="favoriteRecipes")
+	private List<User> usersWhoFavorited;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentedOn")
+	private List<RecipeComment> recipeComments;
+	
+	
 	
 	
 	public String getTitle() {
@@ -67,6 +95,18 @@ public class Recipe {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<RecipeComment> getRecipeComments() {
+		return recipeComments;
+	}
+
+	public void setRecipeComments(List<RecipeComment> recipeComments) {
+		this.recipeComments = recipeComments;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getIngredients() {
@@ -125,13 +165,7 @@ public class Recipe {
 		this.imgURL = imgURL;
 	}
 
-	public int getAuthorId() {
-		return authorId;
-	}
 
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
 
 	public boolean isActive() {
 		return active;
@@ -173,7 +207,7 @@ public class Recipe {
 		return "recipe [id=" + id + ", title=" + title + ", country=" + country + ", description=" + description
 				+ ", ingredients=" + ingredients + ", servingSize=" + servingSize + ", cookTime=" + cookTime
 				+ ", instructions=" + instructions + ", category=" + category + ", createDate=" + createDate + ", imgURL="
-				+ imgURL + ", authorId=" + authorId + ", active=" + active + "]";
+				+ imgURL + ", authorId=" + ", active=" + active + "]";
 	}
 	
 	public Recipe() {
@@ -195,8 +229,31 @@ public class Recipe {
 		this.category = category;
 		this.createDate = createDate;
 		this.imgURL = imgURL;
-		this.authorId = authorId;
 		this.active = active;
+	}
+
+	public List<User> getRecipeLikes() {
+		return recipeLikes;
+	}
+
+	public void setRecipeLikes(List<User> recipeLikes) {
+		this.recipeLikes = recipeLikes;
+	}
+
+	public User getRecipeOwner() {
+		return recipeOwner;
+	}
+
+	public void setRecipeOwner(User recipeOwner) {
+		this.recipeOwner = recipeOwner;
+	}
+
+	public List<User> getUsersWhoFavorited() {
+		return usersWhoFavorited;
+	}
+
+	public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
+		this.usersWhoFavorited = usersWhoFavorited;
 	}
 	
 	

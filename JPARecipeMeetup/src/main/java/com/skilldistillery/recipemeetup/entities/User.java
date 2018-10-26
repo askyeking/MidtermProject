@@ -9,12 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
 public class User {
+	
+	
+	public User() {
+		super();
+	}
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -49,9 +57,6 @@ public class User {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupOwner")
 	private List<Meetup> meetupsOwned;
 	
-	public User() {
-		super();
-	}
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="attendees")
 	private List<Meetup> meetupsAttended;
@@ -63,8 +68,80 @@ public class User {
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userMeetupCommentLikes")
 	private List<MeetupComment> likedMeetupComments;
 	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeLikes")
+	private List<Recipe> likedRecipes;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeOwner")
+	private List<Recipe> recipesPosted;
+	
+	@ManyToMany
+	@JoinTable(name="favorite_recipe",
+	joinColumns=@JoinColumn(name="user_id"),
+	inverseJoinColumns=@JoinColumn(name="recipe_id"))
+	private List<Recipe> favoriteRecipes;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentOwner")
+	private List<RecipeComment> recipeComments;
 	
 	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userRecipeCommentLikes")
+	private List<RecipeComment> likedRecipeComments;
+	
+	
+	
+	
+	public List<RecipeComment> getRecipeComments() {
+		return recipeComments;
+	}
+
+
+	public void setRecipeComments(List<RecipeComment> recipeComments) {
+		this.recipeComments = recipeComments;
+	}
+
+
+	public List<Recipe> getFavoriteRecipes() {
+		return favoriteRecipes;
+	}
+
+
+	public void setFavoriteRecipes(List<Recipe> favoriteRecipes) {
+		this.favoriteRecipes = favoriteRecipes;
+	}
+
+
+	public List<Recipe> getRecipesPosted() {
+		return recipesPosted;
+	}
+
+
+	public void setRecipesPosted(List<Recipe> recipesPosted) {
+		this.recipesPosted = recipesPosted;
+	}
+
+
+	
+	
+	public List<RecipeComment> getLikedRecipeComments() {
+		return likedRecipeComments;
+	}
+
+
+	public void setLikedRecipeComments(List<RecipeComment> likedRecipeComments) {
+		this.likedRecipeComments = likedRecipeComments;
+	}
+
+
+	public List<Recipe> getLikedRecipes() {
+		return likedRecipes;
+	}
+
+
+	public void setLikedRecipes(List<Recipe> likedRecipes) {
+		this.likedRecipes = likedRecipes;
+	}
+
+
 	public List<MeetupComment> getLikedMeetupComments() {
 		return likedMeetupComments;
 	}
@@ -72,6 +149,16 @@ public class User {
 
 	public void setLikedMeetupComments(List<MeetupComment> likedMeetupComments) {
 		this.likedMeetupComments = likedMeetupComments;
+	}
+
+
+	public List<MeetupComment> getMeetupCommentsPosted() {
+		return meetupCommentsPosted;
+	}
+
+
+	public void setMeetupCommentsPosted(List<MeetupComment> meetupCommentsPosted) {
+		this.meetupCommentsPosted = meetupCommentsPosted;
 	}
 
 

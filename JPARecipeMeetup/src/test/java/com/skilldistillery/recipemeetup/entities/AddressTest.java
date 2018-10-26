@@ -51,5 +51,10 @@ class AddressTest {
 	void testMappingAddressUserReturnsFullUserList() {
 		assertEquals("Blake",address.getUsers().get(0).getFirstName());
 	}
+	
+	@Test
+	void testMappingMeetupAddressReturnsMeetup() {
+		assertEquals(1, address.getMeetups().size());
+	}
 
 }

@@ -60,4 +60,17 @@ class MeetupTest {
 		assertEquals("Shelton", meetup.getAttendees().get(0).getLastName());
 	}
 	
+	@Test
+	void testMeetupHasMeetupCommentList() {
+		meetup = em.find(Meetup.class, 2);
+		assertEquals(1, meetup.getMeetupComments().get(0).getId());
+		assertEquals(2, meetup.getMeetupComments().size());
+	}
+	
+	@Test
+	void testMeetupHasAddress() {
+		assertEquals(2, meetup.getMeetupAddress().getId());
+		assertEquals("Denver", meetup.getMeetupAddress().getCity());
+	}
+	
 }

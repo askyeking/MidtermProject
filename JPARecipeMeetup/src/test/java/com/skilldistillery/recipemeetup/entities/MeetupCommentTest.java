@@ -44,8 +44,6 @@ class MeetupCommentTest {
 
 	@Test
 	void test() {
-		assertEquals(2, mc.getUserID());
-		assertEquals(2, mc.getMeetupID());
 		assertEquals("Great idea. I am looking forward to attending", mc.getTextContent());
 		assertEquals("2018-10-", mc.getPostDate().toString().substring(0,8 ));
 		assertEquals(true, mc.isActive());
@@ -57,6 +55,18 @@ class MeetupCommentTest {
 		assertEquals("Blake", mc.getUserMeetupCommentLikes().get(0).getFirstName());
 	}
 	
-
+	@Test
+	void testMeetupCommentUserMappingAssociation() {
+		assertEquals("Anthony",mc.getMeetupCommentOwner().getFirstName());
+		assertEquals(1,mc.getMeetupCommentOwner().getLikedMeetupComments().size());
+		assertEquals(2, mc.getMeetupCommentOwner().getId());
 	}
+	
+	
+	@Test
+	void testMeetupCommentAssociatedWithMeetup() {
+		assertEquals("Raleigh Mexican Delish!", mc.getMeetupCommentedOn().getTitle());
+	}
+
+}
 	

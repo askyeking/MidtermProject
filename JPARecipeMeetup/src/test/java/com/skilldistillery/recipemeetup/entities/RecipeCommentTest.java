@@ -40,13 +40,28 @@ class RecipeCommentTest {
 	}
 	
 	@Test
-	void test() {
-		assertEquals(1, rc.getUserId());
-		assertEquals(3, rc.getRecipeId());
+	void testRecipeCommentEntityMappings() {
 		assertEquals("Too much meat for my taste", rc.getComment());
 		assertEquals(true, rc.getActive());
 		assertEquals("2018-10-",rc.getTimeStamp().toString().substring(0, 8));
 		System.out.println(rc.getTimeStamp().toString());
+	}
+	
+	@Test
+	void testRecipeCommentHasOwner() {
+		assertEquals("Blake", rc.getRecipeCommentOwner().getFirstName());
+		assertEquals("Shelton", rc.getRecipeCommentOwner().getLastName());
+	}
+	
+	@Test
+	void testRecipeCommentLikesHaveListOfOwners() {
+		assertEquals("Blake", rc.getRecipeCommentOwner().getFirstName());
+		assertEquals("Shelton", rc.getRecipeCommentOwner().getLastName());
+	}
+	
+	@Test
+	void testRecipeCommentIsOnRecipe() {
+		assertEquals("Chicken fried steak", rc.getRecipeCommentedOn().getTitle());
 	}
 
 }

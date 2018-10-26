@@ -60,6 +60,48 @@ class UserTest {
 		assertEquals(em.find(MeetupComment.class, 1), user.getLikedMeetupComments().get(0));
 	}
 	
+	@Test
+	void test_user_has_meetup_comments() {
+		assertEquals("I am so hyped", user.getMeetupCommentsPosted().get(0).getTextContent());
+		assertEquals(2, user.getMeetupCommentsPosted().get(0).getId());
+	}
+	
+	@Test
+	void test_user_has_liked_recipes() {
+		user = em.find(User.class, 6);   
+		assertEquals(2, user.getLikedRecipes().size());
+		assertEquals(1, user.getLikedRecipes().get(0).getId());
+		
+		user = null;
+		
+	}
+	
+	@Test
+	void test_user_has_posted_recipes() {
+		assertEquals("Mexico", user.getRecipesPosted().get(0).getCountry());
+		assertEquals(1, user.getRecipesPosted().get(0).getId());
+	}
+	
+	@Test
+	void test_user_has_favorite_recipes() {
+		assertEquals("Chicken quesadilla", user.getFavoriteRecipes().get(0).getTitle());
+		assertEquals(1, user.getFavoriteRecipes().get(0).getId());
+	}
+	
+	@Test
+	void test_user_has_recipe_comments() {
+		assertEquals(3, user.getRecipeComments().size());
+		assertEquals(1, user.getRecipeComments().get(0).getId());
+	}
+	
+	@Test
+	void test_user_has_liked_recipe_comments() {
+		
+		assertEquals(1, user.getLikedRecipeComments().get(0).getId());
+		assertEquals(1, user.getLikedRecipeComments().size());
+	}
+	
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();

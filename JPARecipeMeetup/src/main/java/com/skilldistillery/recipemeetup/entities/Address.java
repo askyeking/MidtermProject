@@ -2,6 +2,7 @@ package com.skilldistillery.recipemeetup.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,9 @@ public class Address {
 	
 	@OneToMany(mappedBy="address")
 	private List<User> users;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupAddress")
+	private List <Meetup> meetups;
 
 
 	public String getStreet() {
@@ -114,15 +118,18 @@ public class Address {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Meetup> getMeetups() {
+		return meetups;
+	}
+
+	public void setMeetups(List<Meetup> meetups) {
+		this.meetups = meetups;
+	}
 
 }
