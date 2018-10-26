@@ -1,12 +1,17 @@
 package com.skilldistillery.recipemeetup.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,6 +38,12 @@ public class MeetupComment {
 	
 	private boolean active;
 
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinTable(name="meetup_comment_like",
+	joinColumns=@JoinColumn(name="meetup_comment_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> userMeetupCommentLikes;
+	
 	public MeetupComment() {
 		super();
 	}
