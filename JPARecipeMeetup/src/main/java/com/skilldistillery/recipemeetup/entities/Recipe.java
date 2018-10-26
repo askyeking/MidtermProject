@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -59,14 +60,15 @@ public class Recipe {
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> recipeLikes;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne
 	@JoinColumn(name="author_id")
 	private User recipeOwner;
 	
 	@ManyToMany(mappedBy="favoriteRecipes")
 	private List<User> usersWhoFavorited;
 	
-	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentedOn")
+	private List<RecipeComment> recipeComments;
 	
 	
 	
