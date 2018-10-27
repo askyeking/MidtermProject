@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.User;
 
@@ -80,7 +81,11 @@ public class MeetupDAOImpl implements MeetupDAO {
 	}
 	
 	@Override
-	public Meetup createMeetup(Meetup meetup) { 
+	public Meetup createMeetup(Meetup meetup, User user, Address address) {
+		// Inside controller set authorId to User ID
+		em.persist(address);
+		meetup.setMeetupAddress(address);
+		meetup.setMeetupOwner(user);
 		em.persist(meetup);
 		em.flush();
 		return meetup;
