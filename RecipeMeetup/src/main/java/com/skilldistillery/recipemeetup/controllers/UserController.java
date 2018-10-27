@@ -83,8 +83,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(path= "register.do", method = RequestMethod.POST)
-	public ModelAndView RegisterUser (HttpSession session) {
+	public ModelAndView RegisterUser (User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		User newUser = userDAO.createUser(user);
 		return mv;
 	}
 }
