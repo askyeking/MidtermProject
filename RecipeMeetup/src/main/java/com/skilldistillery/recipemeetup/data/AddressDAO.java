@@ -1,5 +1,5 @@
 package com.skilldistillery.recipemeetup.data;
 
-public class DummyDao {
+public interface AddressDAO {
 
 }
