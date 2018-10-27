@@ -16,6 +16,7 @@ import com.skilldistillery.recipemeetup.data.MeetupDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
+import com.skilldistillery.recipemeetup.entities.User;
 
 @Controller
 public class HomeController {
@@ -27,19 +28,17 @@ public class HomeController {
 	
 	
 	@RequestMapping(path= "showRecentPost.do", method = RequestMethod.GET)
-	public ModelAndView showMore(Model model, HttpSession session, Errors errors) {
+	public ModelAndView showMore(Model model, HttpSession session, Errors errors, User user) {
 		ModelAndView mv = new ModelAndView();
 		List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
 		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
 		mv.addObject("recentMeetup", recentMeetups);
 		mv.addObject("recentRecipe", recentRecipes);
+		mv.addObject("user", user);
 		mv.setViewName("/WEB-INF/views/home.jsp");
 		
 		return mv;
-		
-		
+				
 	}
 	
-	
-
 }
