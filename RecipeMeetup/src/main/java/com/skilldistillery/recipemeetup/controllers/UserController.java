@@ -86,4 +86,17 @@ public class UserController {
 
 		return mv;
 	}
+	
+	
+	@RequestMapping(path="userProfile.do", method=RequestMethod.GET)
+	public ModelAndView showProfile( HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User activeUser = (User) session.getAttribute("loggedInUser");
+//		mv.addObject(activeUser);
+		mv.setViewName("WEB-INF/views/profilePage.jsp");
+		
+		
+		
+		return mv;
+	}
 }
