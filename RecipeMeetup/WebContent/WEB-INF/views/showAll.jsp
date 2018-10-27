@@ -48,7 +48,7 @@
 	<br>
 	<br>
 	<br>
-	<c:choose>
+	<%-- <c:choose>
 		<c:when test="${not empty user and user.active}">
 			
 			Login Successful!
@@ -57,7 +57,7 @@
 		<c:otherwise>
 
 		</c:otherwise>
-	</c:choose>
+	</c:choose> --%>
 
 	<c:choose>
 		<c:when test="${not empty meetups}">
@@ -76,9 +76,7 @@
 
 			</c:forEach>
 			<br>
-			<form action=showAllMeetups.do method="GET">
-				<input type="submit" value="Show More">
-			</form>
+			
 			<hr>
 
 		</c:when>
@@ -97,9 +95,7 @@
 				</form>
 			</c:forEach>
 			<br>
-			<form action=showAllRecipes.do method="GET">
-				<input type="submit" value="Show More">
-			</form>
+			
 			<hr>
 		</c:when>
 	</c:choose>
