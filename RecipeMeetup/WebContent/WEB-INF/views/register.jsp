@@ -24,11 +24,14 @@
 		<h1>Last Name</h1><br>
 		<input type="text" name="lastName" value="" />
 		<h1>Date of Birth</h1><br>
-		<input type="text" class="date" name="dateOfBirth" value="" />
+		<input type="date" class="date" name="dateOfBirth" value="" />
 		<h1>Address</h1>
 		<input type="text" name="street" value="" />
 		<input type="text" name="city" value="" />
 		<input type="text" name="state" value="" />
+		<br>
+		<h1>Tell us a little about yourself</h1>
+		<input type="text" name="aboutMe" value="" />
 		<br>
 		<input type="submit" value="Submit" />
 	</form>
