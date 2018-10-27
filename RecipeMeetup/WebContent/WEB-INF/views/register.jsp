@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<title>Navigation Bar</title>
+	<title>Navigation Bar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"
@@ -27,15 +27,14 @@
 		<a class="navbar-brand" href="#">Name of Website</a>
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-			<form class="form-inline" action="/action_page.php">
-			</form>
+			<form class="form-inline" action="/action_page.php"></form>
 		</ul>
 	</nav>
 
-<h3>REGISTER HOMEPAGE</h3>
+	<h3>REGISTER HOMEPAGE</h3>
 
-	<form action="registrationLink.do" method="GET">
-	<br>
+	<form action="register.do" method="GET">
+		<br>
 		<h3>User name</h3>
 		<input type="text" name="username" value="" /><br>
 		<h3>Password</h3>
@@ -49,21 +48,14 @@
 		<h3>Date of Birth</h3>
 		<input type="text" class="date" name="dateOfBirth" value="" /><br>
 		<h3>Address</h3>
-		<input type="text" name="street" value="Street" /><br>
-		<input type="text" name="city" value="City" /><br>
-		<input type="text" name="state" value="State" /><br>
+		<input type="text" name="street" value="Street" /><br> <input
+			type="text" name="city" value="City" /><br> <input type="text"
+			name="state" value="State" /><br>
 		<h3>Tell us a little about yourself</h3>
-		<input type="text" name="aboutMe" maxlength="250" style="height:200px"; />
-		<br>
-		
-		<input type="submit" value="Submit">
+		<input type="text" name="aboutMe" maxlength="250"
+			style="height: 200px" ; /> <br> <input type="submit"
+			value="Submit">
 	</form>
-		
-		<form action="register.do" method="GET">
-				<input type="hidden" name="id" /> <br> 
-				<input type="submit" value="Submit" />
-		
-		
-	</form>
+
 </body>
 </html>
