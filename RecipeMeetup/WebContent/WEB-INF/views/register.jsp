@@ -46,12 +46,12 @@
 		<h3>Last Name</h3>
 		<input type="text" name="lastName" value="" maxlength="45" required /><br>
 		<h3>Date of Birth</h3>
-		<input type="date" class="date" name="dateOfBirth" value="" required /><br>
+		<input type="date" name="dateOfBirth" value="" required /><br>
 		<h3>Address</h3>
 		<input type="text" name="street" value="Street" maxlength="190" required /><br>
 		<input type="text" name="city" value="City" maxlength="100" required /><br> <input
 			type="text" name="state" value="State" maxlength="2" required /><br>
-		<input type="number" name="postalCode" value="PostalCode" maxlength="11" required /><br>
+		<input type="number" name="postalCode" value="PostalCode" min="00000" max="99999" required /><br>
 		
 		<h3>Tell us a little about yourself</h3>
 		<input type="text" name="aboutMe" maxlength="250"
