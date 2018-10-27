@@ -26,8 +26,8 @@ public class HomeController {
 	private RecipeDAO recipeDAO;
 	
 	
-	@RequestMapping(path= "showRecentPost.do", method = RequestMethod.GET)
-	public ModelAndView showMore(Model model, HttpSession session, Errors errors) {
+	@RequestMapping(path= "home.do", method = RequestMethod.GET)
+	public ModelAndView showMore(Model model, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
 		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
