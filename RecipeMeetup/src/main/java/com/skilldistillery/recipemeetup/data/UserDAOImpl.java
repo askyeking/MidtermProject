@@ -3,6 +3,7 @@ package com.skilldistillery.recipemeetup.data;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -34,12 +35,20 @@ public class UserDAOImpl implements UserDAO {
 	public User isLegitimateUsername(String username) {
 		User user =null;
 		String query = "SELECT u FROM User u WHERE u.username = :username";
+		
+		try {
 		user = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
+		}
+		catch(NoResultException e) {
+			user = null;
+		}
+		
 		return user;
 	}
 
 	@Override
 	public User createUser(User user) {
+		em.persist(user.getAddress());
 		em.persist(user);
 		em.flush();
 		
