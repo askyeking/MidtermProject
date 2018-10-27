@@ -32,18 +32,20 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User isLegitimateUsername(String username) {
-		User user =null;
+	public User isLegitimateUsername(User user) {
+		
+		String username = user.getUsername();
+		User retrievedUser =null;
 		String query = "SELECT u FROM User u WHERE u.username = :username";
 		
 		try {
-		user = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
+		retrievedUser = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
 		}
 		catch(NoResultException e) {
-			user = null;
+			retrievedUser = null;
 		}
 		
-		return user;
+		return retrievedUser;
 	}
 
 	@Override

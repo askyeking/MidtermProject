@@ -8,7 +8,7 @@ public interface UserDAO {
 
 	User loginUser(User user);
 
-	User isLegitimateUsername(String username);
+	User isLegitimateUsername(User user);
 
 	User createUser(User user);
 
