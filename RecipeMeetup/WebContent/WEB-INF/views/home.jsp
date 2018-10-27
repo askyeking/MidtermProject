@@ -13,7 +13,7 @@
 		<c:when test="${not empty user and user.active}">
 			
 			Login Successful!
-			<c:if test="${user.admin }">Admin login</c:if>
+			<c:if test="${loggedInUser.admin }">Admin login</c:if>
 		</c:when>
 		<c:otherwise>
 		</c:otherwise>
