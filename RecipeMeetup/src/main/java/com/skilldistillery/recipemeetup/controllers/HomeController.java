@@ -47,6 +47,7 @@ public class HomeController {
 		List<Meetup> allMeetups = meetupDAO.findAllMeetups();
 		mv.addObject("meetups", allMeetups);
 		mv.setViewName("/WEB-INF/views/showAll.jsp");
+		
 		return mv;
 		
 	}
@@ -57,6 +58,29 @@ public class HomeController {
 		List<Recipe> allRecipes = recipeDAO.showMoreRecipes();
 		mv.addObject("recipes", allRecipes);
 		mv.setViewName("/WEB-INF/views/showAll.jsp");
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(path="createMeetup.do", method=RequestMethod.POST)
+	public ModelAndView createMeetup(Meetup meetup, Model model, HttpSession session, User user) {
+		ModelAndView mv = new ModelAndView();
+		Meetup newMeetup = meetupDAO.createMeetup(meetup);
+		mv.addObject("meetup", newMeetup);
+		mv.setViewName("/WEB-INF/views/createMeetup.jsp");
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(path="createRecipe.do", method=RequestMethod.POST)
+	public ModelAndView createRecipe(Recipe recipe, Model model, HttpSession session, User user) {
+		ModelAndView mv = new ModelAndView();
+		Recipe newRecipe = recipeDAO.createRecipe(recipe);
+		mv.addObject("recipe", newRecipe);
+		mv.setViewName("/WEB-INF/views/createRecipe.jsp");
+		
 		return mv;
 		
 	}
