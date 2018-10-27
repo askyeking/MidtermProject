@@ -27,7 +27,7 @@ public class UserController {
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView homePage(@RequestParam(value = "username") String username,
-			@RequestParam(value = "password") String password, HttpSession session, Errors errors) {
+			@RequestParam(value = "password") String password, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User validUser = userDAO.isLegitimateUsername(username);
 		if (validUser != null && validUser.getActive()) {
@@ -40,11 +40,11 @@ public class UserController {
 				session.setAttribute("loggedInUser", user);
 				mv.addObject("user", user);
 			}else {
-				errors.rejectValue("user", "error.password");
+//				errors.rejectValue("user", "error.password");
 				
 			}
 		} else {
-			errors.rejectValue("user", "error.username");
+//			errors.rejectValue("user", "error.username");
 
 		}
 
