@@ -42,6 +42,7 @@ public class UserController {
 		}
 
 		if (validUser != null && validUser.getActive()) {
+			validUser = null;
 			try {
 			validUser = userDAO.loginUser(user);
 			}
@@ -54,20 +55,20 @@ public class UserController {
 //				model.addAttribute("user", validUser);
 //						mv.addObject("user", user);
 //						mv.setViewName("redirect:home.do");
-				return new ModelAndView("redirect:home.do");
+				mv.setViewName("redirect:home.do");
 			} else {
-				error.rejectValue("password", "required", "error message");
+				error.rejectValue("password", "error.password", "error message");
 				mv.setViewName("WEB-INF/views/login.jsp");
-				return mv;
 			}
 
 		}
 
 		else {
-			error.rejectValue("username", "required", "error message");
+			error.rejectValue("username", "error.username", "error message");
 			mv.setViewName("WEB-INF/views/login.jsp");
-			return mv;
 		}
+		
+		return mv;
 	}
 
 	@RequestMapping(path = "home.do", method = RequestMethod.GET)
