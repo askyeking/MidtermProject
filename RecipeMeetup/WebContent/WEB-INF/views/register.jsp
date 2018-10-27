@@ -33,7 +33,7 @@
 
 	<h3>REGISTER HOMEPAGE</h3>
 
-	<form action="register.do" method="GET">
+	<form action="register.do" method="POST">
 		<br>
 		<h3>User name</h3>
 		<input type="text" name="username" value="" required /><br>
