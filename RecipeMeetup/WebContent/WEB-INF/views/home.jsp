@@ -41,7 +41,7 @@
 					<option value="category_id">Ingredient</option>
 					<input type="submit" value="Search" />
 				</select>
-				<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+				<li class="nav-item"><a class="nav-link" href="userProfile.do">Profile</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
 
 			</form>
