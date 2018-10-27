@@ -6,7 +6,7 @@ import com.skilldistillery.recipemeetup.entities.User;
 
 public interface UserDAO {
 
-	User loginUser(String username, String password);
+	User loginUser(User user);
 
 	User isLegitimateUsername(String username);
 

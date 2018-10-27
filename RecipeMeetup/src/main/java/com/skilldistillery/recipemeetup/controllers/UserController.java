@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import com.skilldistillery.recipemeetup.entities.User;
 
 @Controller
 public class UserController {
+	private boolean loggedIn;
 
 	@Autowired
 	private UserDAO userDAO;
@@ -28,51 +30,57 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public ModelAndView loginPage(@RequestParam(value = "username") String username,
-			@RequestParam(value = "password") String password, HttpSession session, ModelMap model) {
+	public ModelAndView loginPage( User user,Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		
-		User user = null;
+
+//			User user = null;
+		User validUser = null;
 		try {
-			User validUser = userDAO.isLegitimateUsername(username);
+		validUser = userDAO.isLegitimateUsername(user.getUsername());
+		}
+		catch(NoResultException e) {
+		}
 
-			if (validUser != null && validUser.getActive()) {
-				try {
-					user = userDAO.loginUser(username, password);
-
-				} catch (NoResultException e) {
-					mv.setViewName("WEB-INF/views/login.jsp");
-					return mv;
-				}
-
-				if (user != null) {
-					boolean loggedIn = true;
-					session.setAttribute("loggedIn", loggedIn);
-					session.setAttribute("loggedInUser", user);
-					model.addAttribute("user", user);
-//					mv.addObject("user", user);
-//					mv.setViewName("redirect:home.do");
-					return new ModelAndView("redirect:home.do", model);
-				}
+		if (validUser != null && validUser.getActive()) {
+			try {
+			validUser = userDAO.loginUser(user);
+			}
+			catch (NoResultException e) {
+			}
+			if (validUser != null) {
+				loggedIn = true;
+				session.setAttribute("loggedIn", loggedIn);
+				session.setAttribute("loggedInUser", validUser);
+//				model.addAttribute("user", validUser);
+//						mv.addObject("user", user);
+//						mv.setViewName("redirect:home.do");
+				return new ModelAndView("redirect:home.do");
+			} else {
+				error.rejectValue("password", "required", "error message");
+				mv.setViewName("WEB-INF/views/login.jsp");
+				return mv;
 			}
 
-		} catch (NoResultException e) {
+		}
+
+		else {
+			error.rejectValue("username", "required", "error message");
 			mv.setViewName("WEB-INF/views/login.jsp");
 			return mv;
 		}
-		
-		mv.setViewName("WEB-INF/views/login.jsp");
-		return mv;
-
 	}
 
 	@RequestMapping(path = "home.do", method = RequestMethod.GET)
-	public ModelAndView homePage(HttpSession session) {
+	public ModelAndView homePage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/home.jsp");
 		return mv;
 	}
 
-//	@RequestMapping(path="register.do" method = RequestMethod)
-
+	@RequestMapping(path = "register.do", method = RequestMethod.GET)
+	public ModelAndView Register(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/register.jsp");
+		return mv;
+	}
 }
