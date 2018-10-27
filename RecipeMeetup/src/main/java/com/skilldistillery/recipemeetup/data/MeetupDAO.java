@@ -19,5 +19,7 @@ public interface MeetupDAO {
 
 	Meetup setActiveToFalse(Meetup meetup);
 
+	List<Meetup> findRecentMeetups();
+
 	
 }
