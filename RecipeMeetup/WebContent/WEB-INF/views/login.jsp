@@ -48,9 +48,9 @@
 	</div>
 	
 	<form:form action="login.do" modelAttribute="user" method="POST">
-		<input type="text" path="username" />
+		<input type="text" path="username" name="username" />
 		<br>
-		<input type="text" path="password" />
+		<input type="text" path="password" name="password" />
 		<br>
 		<input type="submit" value="Login" />
 		<br>

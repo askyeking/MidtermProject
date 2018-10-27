@@ -33,6 +33,7 @@ public class UserController {
 	public ModelAndView loginPage( User user,Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 
+		System.out.println(user.toString());
 //			User user = null;
 		User validUser = null;
 		try {
@@ -64,7 +65,7 @@ public class UserController {
 		}
 
 		else {
-			error.rejectValue("username", "error.username", "error message");
+			error.rejectValue("username", "error.username", "error message 2");
 			mv.setViewName("WEB-INF/views/login.jsp");
 		}
 		
@@ -78,7 +79,7 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path = "register.do", method = RequestMethod.GET)
+	@RequestMapping(path = "registrationLink.do", method = RequestMethod.GET)
 	public ModelAndView Register(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/register.jsp");
