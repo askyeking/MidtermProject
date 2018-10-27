@@ -47,17 +47,17 @@
 		<h3>Sign In!</h3>
 	</div>
 	
-	<form:form action="login.do" method="POST">
-		<input type="text" name="username" value="Username" />
+	<form:form action="login.do" modelAttribute="user" method="POST">
+		<input type="text" path="username" />
 		<br>
-		<input type="text" name="password" value="Password" />
+		<input type="text" path="password" />
 		<br>
 		<input type="submit" value="Login" />
 		<br>
-		<form:errors path="username" />
-		<form:errors path="password" />
+<%-- 		<form:errors path="username" />
+		<form:errors path="password" /> --%>
 		<form:errors path="username">Invalid Username</form:errors>
-		<form:errors path="password">Bad password</form:errors>
+		<form:errors path="password">Invalid password</form:errors>
 	</form:form>
 	<form:form action="register.do" method="POST">
 		<input type="submit" value="Register" />
