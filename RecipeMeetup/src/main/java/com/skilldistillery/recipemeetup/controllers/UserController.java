@@ -77,7 +77,7 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path = "register.do", method = RequestMethod.GET)
+	@RequestMapping(path = "register.do", method = RequestMethod.POST)
 	public ModelAndView Register(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/register.jsp");
