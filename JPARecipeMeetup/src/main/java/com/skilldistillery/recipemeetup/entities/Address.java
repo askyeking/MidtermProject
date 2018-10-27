@@ -30,7 +30,7 @@ public class Address {
 		return id;
 	}
 	
-	@OneToMany(mappedBy="address")
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="address")
 	private List<User> users;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupAddress")

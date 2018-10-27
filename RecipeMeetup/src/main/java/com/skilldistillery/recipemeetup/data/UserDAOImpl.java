@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.User;
 
 @Transactional
@@ -49,8 +50,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User createUser(User user) {
-		em.persist(user.getAddress());
+	public User createUser(User user, Address address) {
+		System.out.println(address);
+		em.persist(address);
+		user.setAddress(address);
+		System.out.println(user.toString());
 		em.persist(user);
 		em.flush();
 		

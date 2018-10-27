@@ -36,28 +36,30 @@
 	<form action="register.do" method="POST">
 		<br>
 		<h3>User name</h3>
-		<input type="text" name="username" value="" required /><br>
+		<input type="text" name="username" value="" maxlength="45" required /><br>
 		<h3>Password</h3>
-		<input type="password" name="password" value="" required /><br>
+		<input type="password" name="password" value="" maxlength="45" required /><br>
 		<h3>Email</h3>
-		<input type="text" name="email" value="" required /><br>
+		<input type="email" name="email" value="" maxlength="100" required /><br>
 		<h3>First Name</h3>
-		<input type="text" name="firstName" value="" required /><br>
+		<input type="text" name="firstName" value="" maxlength="45" required /><br>
 		<h3>Last Name</h3>
-		<input type="text" name="lastName" value="" required /><br>
+		<input type="text" name="lastName" value="" maxlength="45" required /><br>
 		<h3>Date of Birth</h3>
-		<input type="text" class="date" name="dateOfBirth" value="" required /><br>
+		<input type="date" name="dateOfBirth" value="" required /><br>
 		<h3>Address</h3>
-		<input type="text" name="street" value="Street" required /><br>
-		<input type="text" name="city" value="City" required /><br> <input
-			type="text" name="state" value="State" required /><br>
+		<input type="text" name="street" value="Street" maxlength="190" required /><br>
+		<input type="text" name="city" value="City" maxlength="100" required /><br> <input
+			type="text" name="state" value="State" maxlength="2" required /><br>
+		<input type="number" name="postalCode" value="PostalCode" min="00000" max="99999" required /><br>
+		
 		<h3>Tell us a little about yourself</h3>
 		<input type="text" name="aboutMe" maxlength="250"
 			style="height: 200px" /> <br> 
 		<h3>Set your profile picture</h3>	
-		<input type="url" name="imageURL" maxlength="250">
+		<input type="url" name="imageURL" maxlength="45"><br><br><br>
 		
-		<input type="submit" value="Submit" /> 
+		<input type="submit" value="Submit" size="big" /> 
 	</form>
 
 </body>

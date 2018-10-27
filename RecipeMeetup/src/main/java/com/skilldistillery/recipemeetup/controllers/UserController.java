@@ -5,15 +5,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.recipemeetup.data.UserDAO;
+import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.User;
 
 @Controller
@@ -30,31 +28,22 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public ModelAndView loginPage( User user,Errors error, HttpSession session) {
+	public ModelAndView loginPage(User user, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 
-//			User user = null;
-		User validUser = null;
-		try {
-		validUser = userDAO.isLegitimateUsername(user);
-		}
-		catch(NoResultException e) {
-		}
+			User validUser = null;
+			validUser = userDAO.isLegitimateUsername(user);
 
 		if (validUser != null && validUser.getActive()) {
 			validUser = null;
 			try {
-			validUser = userDAO.loginUser(user);
-			}
-			catch (NoResultException e) {
+				validUser = userDAO.loginUser(user);
+			} catch (NoResultException e) {
 			}
 			if (validUser != null) {
 				loggedIn = true;
 				session.setAttribute("loggedIn", loggedIn);
 				session.setAttribute("loggedInUser", validUser);
-//				model.addAttribute("user", validUser);
-//						mv.addObject("user", user);
-//						mv.setViewName("redirect:home.do");
 				mv.setViewName("redirect:home.do");
 			} else {
 				error.rejectValue("password", "error.password", "error message");
@@ -67,15 +56,34 @@ public class UserController {
 			error.rejectValue("username", "error.username", "error message");
 			mv.setViewName("WEB-INF/views/login.jsp");
 		}
-		
+
 		return mv;
 	}
-
 	
-	@RequestMapping(path = "register.do", method = RequestMethod.GET)
-	public ModelAndView Register(HttpSession session) {
+	@RequestMapping(path="registrationLink.do", method = RequestMethod.GET)
+	private String registrationPage(HttpSession session) {
+		return "WEB-INF/views/register.jsp";
+	}
+
+	@RequestMapping(path = "register.do", method = RequestMethod.POST)
+	public ModelAndView Register(User user, Address address, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/views/register.jsp");
+
+		User isUserValid = userDAO.isLegitimateUsername(user);
+		
+		if (isUserValid != null) {
+			error.rejectValue("username", "error.username", "error message");
+			mv.setViewName("WEB-INF/views/register.jsp");
+		} else {
+			user = userDAO.createUser(user, address);
+			mv.addObject("user", user);
+			loggedIn = true;
+			session.setAttribute("loggedIn", loggedIn);
+			session.setAttribute("loggedInUser", user);
+
+			mv.setViewName("redirect:home.do");
+		}
+
 		return mv;
 	}
 }
