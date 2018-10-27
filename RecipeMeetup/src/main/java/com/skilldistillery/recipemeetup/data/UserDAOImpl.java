@@ -18,9 +18,13 @@ public class UserDAOImpl implements UserDAO {
 	private EntityManager em;
 
 	@Override
-	public User loginUser(String username, String password) {
+	public User loginUser(User user) {
+		String username = user.getUsername();
+		String password = user.getPassword();
+		user = null;
+		
 		String query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
-		User user = em.createQuery(query, User.class).setParameter("username", username)
+		user = em.createQuery(query, User.class).setParameter("username", username)
 				.setParameter("password", password).getSingleResult();
 
 		return user;
@@ -28,8 +32,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User isLegitimateUsername(String username) {
+		User user =null;
 		String query = "SELECT u FROM User u WHERE u.username = :username";
-		User user = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
+		user = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
 		return user;
 	}
 

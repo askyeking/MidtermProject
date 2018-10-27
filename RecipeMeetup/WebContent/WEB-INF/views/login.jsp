@@ -54,6 +54,8 @@
 		<br>
 		<input type="submit" value="Login" />
 		<br>
+		<form:errors path="username"/>
+		<form:errors path="password"/>
 	</form:form>
 	<form:form action="register.do" method="POST">
 		<input type="submit" value="Register" />
