@@ -81,7 +81,7 @@
 
 			</c:forEach>
 			<br>
-			<form action = showAllMeetups.do method="GET">
+			<form action = "showAllMeetups.do" method="GET">
 			<input type = "submit" value = "Show More">
 			</form>
 			<hr>
@@ -102,7 +102,7 @@
 				</form>
 			</c:forEach>
 			<br>
-			<form action = showAllRecipes.do method="GET">
+			<form action = "showAllRecipes.do" method="GET">
 			<input type = "submit" value = "Show More">
 			</form>
 			<hr>
