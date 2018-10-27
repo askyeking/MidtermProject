@@ -12,13 +12,11 @@
 
 <h3>Profile Page</h3>
 	
-	 	<form action="userProfilePage.do" method="GET">
 	 	
-	 	<p>${user.firstName} ${user.lastName}</p>
+	 	<p>${loggedInUser.firstName} <br>${loggedInUser.lastName}</p>
 	 	
-	 	<p>${user.description}
+	 	<p>${loggedInUser.description}</p>
 	 	
-	 	</form>
 
 </body>
 </html>
