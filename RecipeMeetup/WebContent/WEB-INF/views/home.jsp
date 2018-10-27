@@ -47,7 +47,10 @@
 			</form>
 		</ul>
 	</nav>
-
+<br>
+<br>
+<br>
+<br>
 	<c:choose>
 		<c:when test="${not empty user and user.active}">
 			
@@ -63,16 +66,26 @@
 
 	<c:choose>
 		<c:when test="${not empty recentMeetup}">
+		<hr>
 			<c:forEach items="${recentMeetup}" var="meetup">
 
-				<p>Meetup: ${meetup.title}</p>
+				<p>Meetup: ${meetup.title}<br>
+					${meetup.description}<br>
+				</p>
+				
 
-				<%-- <form action="meetupDetails.do" method="GET">
+				<form action="meetupDetails.do" method="GET">
 					<input type="hidden" name="id" value="${meetup.title}" /> <input
 						type="submit" value="Details" />
-				</form> --%>
+				</form> 
 
 			</c:forEach>
+			<br>
+			<form action = "showAllMeetups.do" method="GET">
+			<input type = "submit" value = "Show More">
+			</form>
+			<hr>
+			
 		</c:when>
 	</c:choose>
 
@@ -80,12 +93,19 @@
 		<c:when test="${not empty recentRecipe}">
 			<c:forEach items="${recentRecipe}" var="recipe">
 			
-				<p>Recipe: ${recipe.title }</p>
-				<%-- <form action="recipeDetails.do" method="GET">
+				<p>Recipe: ${recipe.title }<br>
+					${recipe.ingredients }<br>
+				</p>
+				<form action="recipeDetails.do" method="GET">
 					<input type="hidden" name="id" value="${recipe.title}" /> <input
 						type="submit" value="Details" />
-				</form> --%>
+				</form>
 			</c:forEach>
+			<br>
+			<form action = "showAllRecipes.do" method="GET">
+			<input type = "submit" value = "Show More">
+			</form>
+			<hr>
 		</c:when>
 	</c:choose>
 

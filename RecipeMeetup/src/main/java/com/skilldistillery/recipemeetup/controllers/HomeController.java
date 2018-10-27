@@ -41,4 +41,25 @@ public class HomeController {
 				
 	}
 	
+	@RequestMapping(path="showAllMeetups.do", method=RequestMethod.GET)
+	public ModelAndView showAllMeetups(Model model, HttpSession session, User user) {
+		ModelAndView mv = new ModelAndView();
+		List<Meetup> allMeetups = meetupDAO.findAllMeetups();
+		mv.addObject("meetups", allMeetups);
+		mv.setViewName("/WEB-INF/views/showAll.jsp");
+		return mv;
+		
+	}
+	
+	@RequestMapping(path="showAllRecipes.do", method=RequestMethod.GET)
+	public ModelAndView showAllRecipes(Model model, HttpSession session, User user) {
+		ModelAndView mv = new ModelAndView();
+		List<Recipe> allRecipes = recipeDAO.showMoreRecipes();
+		mv.addObject("recipes", allRecipes);
+		mv.setViewName("/WEB-INF/views/showAll.jsp");
+		return mv;
+		
+	}
+
+	
 }
