@@ -10,8 +10,6 @@
 <title>Home</title>
 
 
-
-
 </head>
 <body style="height: 1500px">
 	
@@ -32,6 +30,7 @@
 
 	<c:choose>
 		<c:when test="${not empty meetups}">
+		<h3>Meetups</h3>
 			<hr>
 			<c:forEach items="${meetups}" var="meetup">
 
@@ -55,10 +54,13 @@
 
 	<c:choose>
 		<c:when test="${not empty recipes}">
+		<h3>Recipes</h3>
+		<hr>
 			<c:forEach items="${recipes}" var="recipe">
 
 				<p>
-					Recipe: ${recipe.title }<br> ${recipe.ingredients }<br>
+					Recipe: ${recipe.title }<br> 
+					Ingredients: ${recipe.ingredients }<br>
 				</p>
 				<form action="recipeDetails.do" method="GET">
 					<input type="hidden" name="id" value="${recipe.title}" /> <input

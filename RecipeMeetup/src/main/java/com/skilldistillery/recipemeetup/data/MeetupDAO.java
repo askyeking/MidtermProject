@@ -2,7 +2,9 @@ package com.skilldistillery.recipemeetup.data;
 
 import java.util.List;
 
+import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.Meetup;
+import com.skilldistillery.recipemeetup.entities.User;
 
 public interface MeetupDAO {
 
@@ -13,7 +15,7 @@ public interface MeetupDAO {
 
 	boolean deleteMeetup(Meetup meetup);
 
-	Meetup createMeetup(Meetup meetup);
+	Meetup createMeetup(Meetup meetup, User user, Address address);
 
 	Meetup updateMeetup(Meetup meetup);
 

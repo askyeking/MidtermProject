@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="NavBar.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,24 @@
 </head>
 <body>
 
+<br>
+<br>
+<br>
+<br>
+
 <h3>Profile Page</h3>
 	
+	 	<form action = "createRecipe.do" method="POST">
+			<input type = "submit" value = "Create A New Recipe">
+			</form>
+			<form action = "createMeetup.do" method="POST">
+			<input type = "submit" value = "Create A New Meetup">
+			</form>
 	 	
-	 	<p>${loggedInUser.firstName} <br>${loggedInUser.lastName}</p>
+	 	<p>User: ${loggedInUser.firstName} ${loggedInUser.lastName}</p>
 	 	
-	 	<p>${loggedInUser.description}</p>
+	 	<p>About you: ${loggedInUser.description}</p>
+	 	
 	 	
 
 </body>
