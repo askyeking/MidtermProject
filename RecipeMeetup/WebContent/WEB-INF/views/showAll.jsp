@@ -10,8 +10,6 @@
 <title>Home</title>
 
 
-
-
 </head>
 <body style="height: 1500px">
 	
