@@ -6,10 +6,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome!</title>
+<title>Home</title>
 </head>
 <body>
 
+<title>Navigation Bar</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
@@ -25,15 +37,13 @@
 					<option value="category_id">Ingredient</option>
 					<input type="submit" value="Search" />
 				</select>
-			<li class="nav-item"><a class="nav-link" href="#">Register</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
 			
 			</form>
 		</ul>
 	</nav>
-
-
-
-
+	
 	<c:choose>
 		<c:when test="${not empty user and user.active}">
 			
@@ -44,9 +54,9 @@
 			
 		</c:otherwise>
 	</c:choose>
-			<%-- <form:errors path="username">Invalid Username</form:errors>
+			<form:errors path="username">Invalid Username</form:errors>
 			<form:errors path="password">Bad password</form:errors>
-	 --%>
+	
 	 
 	 
 

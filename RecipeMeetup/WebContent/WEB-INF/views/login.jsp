@@ -46,7 +46,7 @@
 	<div class="container-fluid" style="margin-top: 80px">
 		<h3>Sign In!</h3>
 	</div>
-
+	
 	<form:form action="login.do" method="POST">
 		<input type="text" name="username" value="Username" />
 		<br>
