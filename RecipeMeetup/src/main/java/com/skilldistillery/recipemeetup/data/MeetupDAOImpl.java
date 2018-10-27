@@ -80,9 +80,10 @@ public class MeetupDAOImpl implements MeetupDAO {
 	}
 	
 	@Override
-	public void createMeetup(Meetup meetup) { 
+	public Meetup createMeetup(Meetup meetup) { 
 		em.persist(meetup);
 		em.flush();
+		return meetup;
 	}
 	
 	@Override

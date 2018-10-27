@@ -13,7 +13,7 @@ public interface MeetupDAO {
 
 	boolean deleteMeetup(Meetup meetup);
 
-	void createMeetup(Meetup meetup);
+	Meetup createMeetup(Meetup meetup);
 
 	Meetup updateMeetup(Meetup meetup);
 
