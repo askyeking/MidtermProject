@@ -30,32 +30,28 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public ModelAndView loginPage( User user,Errors error, HttpSession session) {
+	public ModelAndView loginPage(User user, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
 		System.out.println(user.getUsername());
-//			User user = null;
+
 		User validUser = null;
 		try {
-		validUser = userDAO.isLegitimateUsername(user.getUsername());
-		}
-		catch(NoResultException e) {
+			validUser = userDAO.isLegitimateUsername(user.getUsername());
+		} catch (NoResultException e) {
 		}
 
 		if (validUser != null && validUser.getActive()) {
 			validUser = null;
 			try {
-			validUser = userDAO.loginUser(user);
-			}
-			catch (NoResultException e) {
+				validUser = userDAO.loginUser(user);
+			} catch (NoResultException e) {
 			}
 			if (validUser != null) {
 				loggedIn = true;
 				session.setAttribute("loggedIn", loggedIn);
 				session.setAttribute("loggedInUser", validUser);
-//				model.addAttribute("user", validUser);
-//						mv.addObject("user", user);
-//						mv.setViewName("redirect:home.do");
+				mv.addObject("user", user);
+				mv.setViewName("redirect:home.do");
 				mv.setViewName("redirect:home.do");
 			} else {
 				error.rejectValue("password", "error.password", "error message");
@@ -68,7 +64,7 @@ public class UserController {
 			error.rejectValue("username", "error.username", "error message 2");
 			mv.setViewName("WEB-INF/views/login.jsp");
 		}
-		
+
 		return mv;
 	}
 
