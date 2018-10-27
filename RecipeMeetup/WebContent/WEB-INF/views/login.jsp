@@ -38,7 +38,7 @@
 					<option value="category_id">Ingredient</option>
 					<input type="submit" value="Search" />
 				</select>
-				<li class="nav-item"><a class="nav-link" href="#">Register</a></li>
+				<li class="nav-item"><a class="nav-link" href="registrationLink.do">Register</a></li>
 
 			</form>
 		</ul>
@@ -53,17 +53,11 @@
 		<input type="text" path="password" name="password" />
 		<br>
 		<input type="submit" value="Login" />
-		<br>
+		<br><br>
 <%-- 		<form:errors path="username" />
 		<form:errors path="password" /> --%>
 		<form:errors path="username">Invalid Username</form:errors>
 		<form:errors path="password">Invalid password</form:errors>
-	</form:form>
-	<form:form action="register.do" method="POST">
-		<input type="submit" value="Register" />
-		<br>
-		<br>
-		<br>
 	</form:form>
 
 	<form>
