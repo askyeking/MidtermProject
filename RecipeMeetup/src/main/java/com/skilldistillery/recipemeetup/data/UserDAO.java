@@ -6,4 +6,6 @@ public interface UserDAO {
 	
 	User loginUser (String username, String password);
 
+	User isLegitimateUsername(String username);
+
 }

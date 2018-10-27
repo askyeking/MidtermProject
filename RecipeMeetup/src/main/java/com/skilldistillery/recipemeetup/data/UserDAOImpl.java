@@ -23,7 +23,15 @@ public class UserDAOImpl implements UserDAO {
 				.setParameter("password", password)
 				.getSingleResult();
 				
-		em.close();
+		return user;
+	}
+
+	@Override
+	public User isLegitimateUsername(String username) {
+		String query = "SELECT u FROM User u WHERE u.username = :username";
+		User user = em.createQuery(query, User.class)
+				.setParameter("username", username)
+				.getSingleResult();
 		return user;
 	}
 	

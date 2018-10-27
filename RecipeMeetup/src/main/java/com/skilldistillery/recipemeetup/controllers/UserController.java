@@ -25,24 +25,30 @@ public class UserController {
 
 	}
 
-	@RequestMapping(path = "login.do", method = RequestMethod.GET)
-	public ModelAndView homePage(@RequestParam(value = "username") String username, 
-			                     @RequestParam(value = "password") String password,
-			                     HttpSession session, Errors errors) {
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	public ModelAndView homePage(@RequestParam(value = "username") String username,
+			@RequestParam(value = "password") String password, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		
-		User user = userDAO.loginUser(username, password);
+		User validUser = userDAO.isLegitimateUsername(username);
+		if (validUser != null && validUser.getActive()) {
 
-//		if (loggedInUser == null) {
-//			
-//		} else {
-//			errors.rejectValue("user", "error.username", "Invalid Username");
-//		}
-		boolean loggedIn = true;
-		session.setAttribute("loggedIn", loggedIn);
-		mv.addObject("user", user);
+			User user = userDAO.loginUser(username, password);
+
+			if (user != null) {
+				boolean loggedIn = true;
+				session.setAttribute("loggedIn", loggedIn);
+				session.setAttribute("loggedInUser", user);
+				mv.addObject("user", user);
+			}else {
+//				errors.rejectValue("user", "error.password");
+				
+			}
+		} else {
+//			errors.rejectValue("user", "error.username");
+
+		}
+
 		mv.setViewName("WEB-INF/views/home.jsp");
-
 		return mv;
 
 	}

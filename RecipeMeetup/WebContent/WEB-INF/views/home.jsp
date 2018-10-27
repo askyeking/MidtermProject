@@ -16,9 +16,11 @@
 			<c:if test="${user.admin }">Admin login</c:if>
 		</c:when>
 		<c:otherwise>
-			Failed to login
 		</c:otherwise>
 	</c:choose>
+			<%-- <form:errors path="username">Invalid Username</form:errors>
+			<form:errors path="password">Bad password</form:errors>
+	 --%>
 
 </body>
 </html>
