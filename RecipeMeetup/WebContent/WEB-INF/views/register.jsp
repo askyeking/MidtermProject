@@ -34,30 +34,34 @@
 
 <h3>REGISTER HOMEPAGE</h3>
 
-	<form action="register.do" method="POST">
-		<h1>User name</h1> <br>
-		<input type="text" name="username" value="" />
-		<h1>Password</h1><br>
-		<input type="password" name="password" value="" />
-		<h1>Email</h1><br>
-		<input type="text" name="email" value="" />
-		<h1>First Name</h1><br>
-		<input type="text" name="firstName" value="" />
-		<h1>Last Name</h1><br>
-		<input type="text" name="lastName" value="" />
-		<h1>Date of Birth</h1><br>
-		<input type="date" class="date" name="dateOfBirth" value="" />
-		<h1>Address</h1>
-		<input type="text" name="street" value="" />
-		<input type="text" name="city" value="" />
-		<input type="text" name="state" value="" />
+	<form action="registrationLink.do" method="GET">
+	<br>
+		<h3>User name</h3>
+		<input type="text" name="username" value="" /><br>
+		<h3>Password</h3>
+		<input type="password" name="password" value="" /><br>
+		<h3>Email</h3>
+		<input type="text" name="email" value="" /><br>
+		<h3>First Name</h3>
+		<input type="text" name="firstName" value="" /><br>
+		<h3>Last Name</h3>
+		<input type="text" name="lastName" value="" /><br>
+		<h3>Date of Birth</h3>
+		<input type="text" class="date" name="dateOfBirth" value="" /><br>
+		<h3>Address</h3>
+		<input type="text" name="street" value="Street" /><br>
+		<input type="text" name="city" value="City" /><br>
+		<input type="text" name="state" value="State" /><br>
+		<h3>Tell us a little about yourself</h3>
+		<input type="text" name="aboutMe" maxlength="250" style="height:200px"; />
 		<br>
-		<h1>Tell us a little about yourself</h1>
-		<input type="text" style="height:200px;font-size:14pt; name="aboutMe" maxlength="250" value="" />
-		<br>
-		<input type="submit" value="Submit" />
 	</form>
-
-
+		
+		<form action="register.do" method="GET">
+				<input type="hidden" name="id" /> <br> 
+				<input type="submit" value="Submit" />
+		
+		
+	</form>
 </body>
 </html>

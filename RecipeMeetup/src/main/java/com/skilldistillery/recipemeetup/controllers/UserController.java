@@ -79,7 +79,11 @@ public class UserController {
 		return mv;
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(path = "registrationLink.do", method = RequestMethod.GET)
+=======
+	@RequestMapping(path = "register.do", method = RequestMethod.POST)
+>>>>>>> 79f2123563d4468a91e757ffe669dfa8b0542544
 	public ModelAndView Register(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/register.jsp");
