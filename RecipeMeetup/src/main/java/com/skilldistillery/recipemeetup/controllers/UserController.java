@@ -36,7 +36,7 @@ public class UserController {
 //			User user = null;
 		User validUser = null;
 		try {
-		validUser = userDAO.isLegitimateUsername(user.getUsername());
+		validUser = userDAO.isLegitimateUsername(user);
 		}
 		catch(NoResultException e) {
 		}
