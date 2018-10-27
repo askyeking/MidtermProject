@@ -37,24 +37,25 @@
 	<form action="registrationLink.do" method="GET">
 	<br>
 		<h3>User name</h3>
-		<input type="text" name="username" value="" /><br>
+		<input type="text" name="username" value="" required/><br>
 		<h3>Password</h3>
-		<input type="password" name="password" value="" /><br>
+		<input type="password" name="password" value="" required/><br>
 		<h3>Email</h3>
-		<input type="text" name="email" value="" /><br>
+		<input type="text" name="email" value="" required/><br>
 		<h3>First Name</h3>
-		<input type="text" name="firstName" value="" /><br>
+		<input type="text" name="firstName" value="" required/><br>
 		<h3>Last Name</h3>
-		<input type="text" name="lastName" value="" /><br>
+		<input type="text" name="lastName" value="" required/><br>
 		<h3>Date of Birth</h3>
-		<input type="text" class="date" name="dateOfBirth" value="" /><br>
+		<input type="text" class="date" name="dateOfBirth" value="" required/><br>
 		<h3>Address</h3>
-		<input type="text" name="street" value="Street" /><br>
-		<input type="text" name="city" value="City" /><br>
-		<input type="text" name="state" value="State" /><br>
+		<input type="text" name="street" value="Street" required/><br>
+		<input type="text" name="city" value="City" required/><br>
+		<input type="text" name="state" value="State" required/><br>
 		<h3>Tell us a little about yourself</h3>
-		<input type="text" name="aboutMe" maxlength="250" style="height:200px"; />
+		<input type="text" name="aboutMe" maxlength="250" style="height:200px" />
 		<br>
+		<input type="url" name="imageURL" maxlength="250" />
 	</form>
 		
 		<form action="register.do" method="GET">
