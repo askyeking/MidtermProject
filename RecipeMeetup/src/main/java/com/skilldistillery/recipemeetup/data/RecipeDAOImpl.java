@@ -19,9 +19,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 	private EntityManager em;
 
 	@Override
-	public void createRecipe(Recipe recipe) {
+	public Recipe createRecipe(Recipe recipe) {
 		em.persist(recipe);
 		em.flush();
+		return recipe;
 	}
 
 	@Override
