@@ -19,9 +19,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 	private EntityManager em;
 
 	@Override
-	public void createRecipe(Recipe recipe) {
+	public Recipe createRecipe(Recipe recipe) {
 		em.persist(recipe);
 		em.flush();
+		return recipe;
 	}
 
 	@Override
@@ -38,6 +39,15 @@ public class RecipeDAOImpl implements RecipeDAO {
 		return moreRecipes;
 	}
 
+	@Override
+	public List<Recipe> showRecentRecipes() {
+		String query = "SELECT recipes FROM Recipe recipes ORDER BY createDate DESC LIMIT 5";
+		List<Recipe> recentRecipes = em.createQuery(query, Recipe.class)
+				.getResultList();
+				
+		return recentRecipes;
+	}
+	
 	@Override
 	public Recipe updateRecipe(Recipe updatedRecipe) {
 		Recipe editRecipe = em.find(Recipe.class, updatedRecipe);
@@ -90,6 +100,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		}		
 		return isRecipeActive;
 	}
+
 
 
 }

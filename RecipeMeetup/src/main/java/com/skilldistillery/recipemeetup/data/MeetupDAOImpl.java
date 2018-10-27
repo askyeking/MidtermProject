@@ -80,15 +80,25 @@ public class MeetupDAOImpl implements MeetupDAO {
 	}
 	
 	@Override
-	public void createMeetup(Meetup meetup) { 
+	public Meetup createMeetup(Meetup meetup) { 
 		em.persist(meetup);
 		em.flush();
+		return meetup;
 	}
 	
 	@Override
 	public Meetup setActiveToFalse(Meetup meetup) {
 		meetup.setActive(false);
 		return meetup;
+		
+	}
+	
+	@Override
+	public List<Meetup> findRecentMeetups(){
+		String jpql = "SELECT meetup from Meetup meetup ORDER BY meetup.createDate LIMIT 5";
+		//select * from meetup order by date_created asc limit 5;
+		List<Meetup> recentMeetups = em.createQuery(jpql, Meetup.class).getResultList();
+		return recentMeetups;
 		
 	}
 	

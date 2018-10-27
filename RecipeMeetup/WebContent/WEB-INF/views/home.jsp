@@ -10,7 +10,12 @@
 </head>
 <body>
 
-<title>Navigation Bar</title>
+<div class="row"><
+<div class="col-8">
+<!-- <img id="narrows" alt="" src="media/narrows.jpg" > -->
+</div>
+
+	<title>Navigation Bar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"
@@ -37,13 +42,13 @@
 					<option value="category_id">Ingredient</option>
 					<input type="submit" value="Search" />
 				</select>
-			<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-			
+				<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+
 			</form>
 		</ul>
 	</nav>
-	
+
 	<c:choose>
 		<c:when test="${not empty user and user.active}">
 			
@@ -51,14 +56,40 @@
 			<c:if test="${loggedInUser.admin }">Admin login</c:if>
 		</c:when>
 		<c:otherwise>
-			
+
 		</c:otherwise>
 	</c:choose>
-			<form:errors path="username">Invalid Username</form:errors>
-			<form:errors path="password">Bad password</form:errors>
-	
-	 
-	 
+	<form:errors path="username">Invalid Username</form:errors>
+	<form:errors path="password">Bad password</form:errors>
+
+	<c:choose>
+		<c:when test="${not empty recentMeetups}">
+			<c:forEach items="${recentMeetups}" var="meetup">
+
+				<p>Meetup: ${meetup.title}</p>
+
+				<form action="meetupDetails.do" method="GET">
+					<input type="hidden" name="id" value="${meetup.title}" /> <input
+						type="submit" value="Details" />
+				</form>
+
+			</c:forEach>
+		</c:when>
+	</c:choose>
+
+	<c:choose>
+		<c:when test="${not empty recentRecipes}">
+			<c:forEach items="${recentRecipes}" var="recipe">
+			
+				<p>Recipe: ${recipe.title }</p>
+				<form action="recipeDetails.do" method="GET">
+					<input type="hidden" name="id" value="${recipe.title}" /> <input
+						type="submit" value="Details" />
+				</form>
+			</c:forEach>
+		</c:when>
+	</c:choose>
+
 
 </body>
 </html>
