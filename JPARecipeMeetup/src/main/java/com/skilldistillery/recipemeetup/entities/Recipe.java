@@ -167,7 +167,7 @@ public class Recipe {
 
 
 
-	public boolean isActive() {
+	public boolean getActive() {
 		return active;
 	}
 
