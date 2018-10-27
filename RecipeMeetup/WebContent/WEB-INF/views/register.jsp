@@ -55,6 +55,8 @@
 		<h3>Tell us a little about yourself</h3>
 		<input type="text" name="aboutMe" maxlength="250" style="height:200px"; />
 		<br>
+		
+		<input type="submit" value="Submit">
 	</form>
 		
 		<form action="register.do" method="GET">
