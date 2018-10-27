@@ -16,7 +16,7 @@
 		<h1>User name</h1> <br>
 		<input type="text" name="username" value="" />
 		<h1>Password</h1><br>
-		<input type="text" name="password" value="" />
+		<input type="password" name="password" value="" />
 		<h1>Email</h1><br>
 		<input type="text" name="email" value="" />
 		<h1>First Name</h1><br>
@@ -24,7 +24,11 @@
 		<h1>Last Name</h1><br>
 		<input type="text" name="lastName" value="" />
 		<h1>Date of Birth</h1><br>
-		<input type="text" name="dateOfBirth" value="" />
+		<input type="text" class="date" name="dateOfBirth" value="" />
+		<h1>Address</h1>
+		<input type="text" name="street" value="" />
+		<input type="text" name="city" value="" />
+		<input type="text" name="state" value="" />
 		<br>
 		<input type="submit" value="Submit" />
 	</form>
