@@ -10,7 +10,7 @@ public interface UserDAO {
 
 	User isLegitimateUsername(String username);
 
-	void createUser(User user);
+	User createUser(User user);
 
 	User updateUser(User updatedUser);
 
