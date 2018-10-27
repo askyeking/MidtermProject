@@ -10,6 +10,11 @@
 </head>
 <body>
 
+<div class="row"><
+<div class="col-8">
+<!-- <img id="narrows" alt="" src="media/narrows.jpg" > -->
+</div>
+
 	<title>Navigation Bar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

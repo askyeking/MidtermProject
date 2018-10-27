@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<title>Navigation Bar</title>
+	<title>Navigation Bar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"
@@ -27,37 +27,52 @@
 		<a class="navbar-brand" href="#">Name of Website</a>
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-			<form class="form-inline" action="/action_page.php">
-			</form>
+			<form class="form-inline" action="/action_page.php"></form>
 		</ul>
 	</nav>
 
-<h3>REGISTER HOMEPAGE</h3>
+	<h3>REGISTER HOMEPAGE</h3>
 
-	<form action="register.do" method="POST">
-		<h1>User name</h1> <br>
-		<input type="text" name="username" value="" />
-		<h1>Password</h1><br>
-		<input type="password" name="password" value="" />
-		<h1>Email</h1><br>
-		<input type="text" name="email" value="" />
-		<h1>First Name</h1><br>
-		<input type="text" name="firstName" value="" />
-		<h1>Last Name</h1><br>
-		<input type="text" name="lastName" value="" />
-		<h1>Date of Birth</h1><br>
-		<input type="date" class="date" name="dateOfBirth" value="" />
-		<h1>Address</h1>
-		<input type="text" name="street" value="" />
-		<input type="text" name="city" value="" />
-		<input type="text" name="state" value="" />
+	<form action="register.do" method="GET">
 		<br>
-		<h1>Tell us a little about yourself</h1>
-		<input type="text" style="height:200px;font-size:14pt; name="aboutMe" maxlength="250" value="" />
+		<h3>User name</h3>
+		<input type="text" name="username" value="" required/><br>
+		<h3>Password</h3>
+		<input type="password" name="password" value="" required/><br>
+		<h3>Email</h3>
+		<input type="text" name="email" value="" required/><br>
+		<h3>First Name</h3>
+		<input type="text" name="firstName" value="" required/><br>
+		<h3>Last Name</h3>
+		<input type="text" name="lastName" value="" required/><br>
+		<h3>Date of Birth</h3>
+		<input type="text" class="date" name="dateOfBirth" value="" required/><br>
+		<h3>Address</h3>
+<<<<<<< HEAD
+		<input type="text" name="street" value="Street" required/><br>
+		<input type="text" name="city" value="City" required/><br>
+		<input type="text" name="state" value="State" required/><br>
+		<h3>Tell us a little about yourself</h3>
+		<input type="text" name="aboutMe" maxlength="250" style="height:200px" />
 		<br>
-		<input type="submit" value="Submit" />
+		<input type="url" name="imageURL" maxlength="250" />
 	</form>
-
+		
+		<form action="register.do" method="GET">
+				<input type="hidden" name="id" /> <br> 
+				<input type="submit" value="Submit" />
+		
+		
+=======
+		<input type="text" name="street" value="Street" /><br> <input
+			type="text" name="city" value="City" /><br> <input type="text"
+			name="state" value="State" /><br>
+		<h3>Tell us a little about yourself</h3>
+		<input type="text" name="aboutMe" maxlength="250"
+			style="height: 200px" ; /> <br> <input type="submit"
+			value="Submit">
+>>>>>>> 309f1fa37811a4aa647c697b3459a27331c71227
+	</form>
 
 </body>
 </html>

@@ -38,7 +38,7 @@
 					<option value="category_id">Ingredient</option>
 					<input type="submit" value="Search" />
 				</select>
-				<li class="nav-item"><a class="nav-link" href="#">Register</a></li>
+				<li class="nav-item"><a class="nav-link" href="registrationLink.do">Register</a></li>
 
 			</form>
 		</ul>
@@ -47,30 +47,50 @@
 		<h3>Sign In!</h3>
 	</div>
 	
-	<form:form action="login.do" method="POST">
-		<input type="text" name="username" value="Username" />
+	<form:form action="login.do" modelAttribute="user" method="POST">
+		<input type="text" path="username" name="username" />
 		<br>
-		<input type="text" name="password" value="Password" />
+		<input type="text" path="password" name="password" />
 		<br>
 		<input type="submit" value="Login" />
-		<br>
-		<form:errors path="username" />
-		<form:errors path="password" />
+		<br><br>
+<%-- 		<form:errors path="username" />
+		<form:errors path="password" /> --%>
 		<form:errors path="username">Invalid Username</form:errors>
-		<form:errors path="password">Bad password</form:errors>
-	</form:form>
-	<form:form action="register.do" method="POST">
-		<input type="submit" value="Register" />
-		<br>
-		<br>
-		<br>
+		<form:errors path="password">Invalid password</form:errors>
 	</form:form>
 
 	<form>
 
 		<h3>Recent Posts</h3>
 			
-		<p></p>
+		<c:choose>
+		<c:when test="${not empty recentMeetups}">
+			<c:forEach items="${recentMeetups}" var="meetup">
+
+				<p>Meetup: ${meetup.title}</p>
+
+				<form action="meetupDetails.do" method="GET">
+					<input type="hidden" name="id" value="${meetup.title}" /> <input
+						type="submit" value="Details" />
+				</form>
+
+			</c:forEach>
+		</c:when>
+	</c:choose>
+
+	<c:choose>
+		<c:when test="${not empty recentRecipes}">
+			<c:forEach items="${recentRecipes}" var="recipe">
+			
+				<p>Recipe: ${recipe.title }</p>
+				<form action="recipeDetails.do" method="GET">
+					<input type="hidden" name="id" value="${recipe.title}" /> <input
+						type="submit" value="Details" />
+				</form>
+			</c:forEach>
+		</c:when>
+	</c:choose>
 
 		<br>
 
