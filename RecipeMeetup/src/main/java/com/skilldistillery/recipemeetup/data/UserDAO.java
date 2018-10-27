@@ -2,6 +2,7 @@ package com.skilldistillery.recipemeetup.data;
 
 import java.util.List;
 
+import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.User;
 
 public interface UserDAO {
@@ -10,7 +11,7 @@ public interface UserDAO {
 
 	User isLegitimateUsername(User user);
 
-	User createUser(User user);
+	User createUser(User user, Address address);
 
 	User updateUser(User updatedUser);
 
