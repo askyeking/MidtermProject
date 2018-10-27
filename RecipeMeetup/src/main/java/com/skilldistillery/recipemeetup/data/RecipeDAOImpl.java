@@ -41,8 +41,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public List<Recipe> showRecentRecipes() {
-		String query = "SELECT recipes FROM Recipe recipes ORDER BY createDate DESC LIMIT 5";
+		String query = "SELECT recipes FROM Recipe recipes ORDER BY createDate DESC";
 		List<Recipe> recentRecipes = em.createQuery(query, Recipe.class)
+				.setMaxResults(5)
 				.getResultList();
 				
 		return recentRecipes;
