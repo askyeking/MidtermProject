@@ -58,8 +58,6 @@
 
 		</c:otherwise>
 	</c:choose>
-	<form:errors path="username">Invalid Username</form:errors>
-	<form:errors path="password">Bad password</form:errors>
 
 	<c:choose>
 		<c:when test="${not empty meetups}">
