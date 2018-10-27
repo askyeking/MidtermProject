@@ -6,9 +6,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Profile</title>
 </head>
 <body>
+
+<h3>Profile Page</h3>
+	
+	 	<form action="userProfilePage.do" method="GET">
+	 	
+	 	<p>${user.firstName} ${user.lastName}</p>
+	 	
+	 	<p>${user.description}
+	 	
+	 	</form>
 
 </body>
 </html>

@@ -9,6 +9,9 @@
 <title>Login</title>
 </head>
 <body>
+
+
+
 	<form:form action="login.do" method="POST">
 		<input type="text" name="username" value="Username"/><br>
 		<input type="text" name="password" value="Password"/><br>
