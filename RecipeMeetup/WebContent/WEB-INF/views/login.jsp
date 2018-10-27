@@ -70,7 +70,33 @@
 
 		<h3>Recent Posts</h3>
 			
-		<p></p>
+		<c:choose>
+		<c:when test="${not empty recentMeetups}">
+			<c:forEach items="${recentMeetups}" var="meetup">
+
+				<p>Meetup: ${meetup.title}</p>
+
+				<form action="meetupDetails.do" method="GET">
+					<input type="hidden" name="id" value="${meetup.title}" /> <input
+						type="submit" value="Details" />
+				</form>
+
+			</c:forEach>
+		</c:when>
+	</c:choose>
+
+	<c:choose>
+		<c:when test="${not empty recentRecipes}">
+			<c:forEach items="${recentRecipes}" var="recipe">
+			
+				<p>Recipe: ${recipe.title }</p>
+				<form action="recipeDetails.do" method="GET">
+					<input type="hidden" name="id" value="${recipe.title}" /> <input
+						type="submit" value="Details" />
+				</form>
+			</c:forEach>
+		</c:when>
+	</c:choose>
 
 		<br>
 
