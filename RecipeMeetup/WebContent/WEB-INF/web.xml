@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>RecipeMeetup</display-name>
 	<welcome-file-list>
-		<welcome-file>home.do</welcome-file>
+		<welcome-file>index.do</welcome-file>
 	</welcome-file-list>
 
 	<!-- The front controller of this Spring Web application, responsible for handling all application requests -->

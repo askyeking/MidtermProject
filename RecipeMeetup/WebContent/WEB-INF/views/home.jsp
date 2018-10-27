@@ -13,12 +13,14 @@
 		<c:when test="${not empty user and user.active}">
 			
 			Login Successful!
-			<c:if test="${user.admin }">Admin login</c:if>
+			<c:if test="${loggedInUser.admin }">Admin login</c:if>
 		</c:when>
 		<c:otherwise>
-			Failed to login
 		</c:otherwise>
 	</c:choose>
+			<%-- <form:errors path="username">Invalid Username</form:errors>
+			<form:errors path="password">Bad password</form:errors>
+	 --%>
 
 </body>
 </html>
