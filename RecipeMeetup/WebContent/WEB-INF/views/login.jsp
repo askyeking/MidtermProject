@@ -26,7 +26,7 @@
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
-		<ul class="navbar-nav">
+<%-- 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Recipes</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Meetups</a></li>
@@ -37,8 +37,8 @@
 					<option value="category_id">Keyword</option>
 					<option value="category_id">Ingredient</option>
 					<input type="submit" value="Search" />
-				</select>
-				<li class="nav-item"><a class="nav-link" href="registrationLink.do">Register</a></li>
+				</select> --%>
+				<a class="nav-link" href="registrationLink.do">Register</a>
 
 			</form>
 		</ul>
@@ -48,9 +48,9 @@
 	</div>
 	
 	<form:form action="login.do" modelAttribute="user" method="POST">
-		<input type="text" path="username" name="username" />
+		<input type="text" path="username" name="username" value="username" />
 		<br>
-		<input type="text" path="password" name="password" />
+		<input type="text" path="password" name="password" value="password" />
 		<br>
 		<input type="submit" value="Login" />
 		<br><br>
@@ -100,7 +100,7 @@
 
 		<h3>About Us</h3>
 		<p>
-			<strong>Blake Longfield, Anthony King, Newel, Novak</strong>
+			<strong>Blake Longfield, Anthony King, Newel, Novak Dobrosavljevic</strong>
 		</p>
 		<p>We are awesome and plan on making $1 bil a piece</p>
 	</form>
