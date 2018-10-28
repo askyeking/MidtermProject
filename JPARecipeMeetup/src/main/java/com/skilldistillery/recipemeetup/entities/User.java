@@ -167,6 +167,25 @@ public class User {
         meetupComment.removeUserMeetupCommentLiker(this);
         }
     }
+    //adds a user to a list of users who have liked that recipe
+    public void addLikedRecipe(Recipe recipe) {
+        if(likedRecipes== null) {
+        	likedRecipes = new ArrayList<>();
+        }
+        
+        if(!likedRecipes.contains(recipe)) {
+        	likedRecipes.add(recipe);
+            recipe.addRecipeLikers(this);
+        }
+        
+    }
+    
+    public void removeLikedRecipe(Recipe recipe) {
+        if(likedRecipes != null && likedRecipes.contains(recipe)) {
+        	likedRecipes.remove(recipe);
+        recipe.removeRecipeLikers(this);
+        }
+    }
     
     
 	
