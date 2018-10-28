@@ -159,13 +159,12 @@ public class User {
         	likedMeetupComments.add(meetupComment);
             meetupComment.addUserMeetupCommentLiker(this);
         }
-        
     }
     
     public void removeMeetupCommentLike(MeetupComment meetupComment) {
         if(likedMeetupComments != null && likedMeetupComments.contains(meetupComment)) {
         	likedMeetupComments.remove(meetupComment);
-        meetupComment.removeUserMeetCommentLiker(this);
+        meetupComment.removeUserMeetupCommentLiker(this);
         }
     }
     
