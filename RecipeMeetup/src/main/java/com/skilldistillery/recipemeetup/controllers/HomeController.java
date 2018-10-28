@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.recipemeetup.data.MeetupDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
+import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
@@ -81,16 +81,16 @@ public class HomeController {
 		
 	}
 	
-	/*@RequestMapping(path="createMeetup.do", method=RequestMethod.POST)
-	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user) {
+	@RequestMapping(path="addedMeetup.do", method=RequestMethod.POST)
+	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user, Address address) {
 		ModelAndView mv = new ModelAndView();
-		Meetup newMeetup = meetupDAO.createMeetup(meetup);
+		Meetup newMeetup = meetupDAO.createMeetup(meetup, user, address);
 		mv.addObject("meetup", newMeetup);
 		mv.setViewName("/WEB-INF/views/home.jsp");
 		
 		return mv;
 		
-	}*/
+	}
 	
 	@RequestMapping(path="addedRecipe.do", method=RequestMethod.POST)
 	public ModelAndView postRecipe(Recipe recipe, Model model, HttpSession session, User user) {
