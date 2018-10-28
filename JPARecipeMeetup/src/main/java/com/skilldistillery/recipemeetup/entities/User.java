@@ -187,6 +187,55 @@ public class User {
         }
     }
     
+    //add recipe to recipes owned by user
+    public void addRecipeOwnedByUser(Recipe recipe) {
+        if(recipesPosted==null) {
+        	recipesPosted = new ArrayList<>();
+        }
+        
+        if(!recipesPosted.contains(recipe)) {
+        	recipesPosted.add(recipe);
+            if(recipe.getRecipeOwner() != null) {
+                recipe.getRecipeOwner().getRecipesPosted().remove(recipe);
+            }
+        }
+        
+        recipe.setRecipeOwner(this);
+    }
+    
+    public void removeRecipeOwnedByUser(Recipe recipe) {
+        recipe.setRecipeOwner(null);
+        if(recipesPosted!=null) {
+        	recipesPosted.remove(recipe);
+        }
+    }
+    
+    //add
+    public void addRecipeComment(RecipeComment recipeComment) {
+        if(recipeComments==null) {
+        	recipeComments = new ArrayList<>();
+        }
+        
+        if(!recipeComments.contains(recipeComment)) {
+        	recipeComments.add(recipeComment);
+            if(recipeComment.getRecipeCommentedOn() != null) {
+                recipeComment.getRecipeCommentedOn().getRecipeComments().remove(recipeComment);
+            }
+        }
+        
+        meetup.setMeetupOwner(this);
+    }
+    
+    public void removeRecipeComment(RecipeComment recipeComment) {
+        recipeComment.setMeetupOwner(null);
+        if(recipeComments!=null) {
+        	recipeComments.remove(recipeComment);
+        }
+    }
+    
+    
+    
+    
     
 	
 	public List<RecipeComment> getRecipeComments() {
