@@ -51,7 +51,7 @@ public class RecipeComment {
 	private Recipe recipeCommentedOn;
 	
 	
-	public void addUserMeetupCommentLiker(User commentLiker) {
+	public void addUserRecipeCommentLiker(User commentLiker) {
         if(userRecipeCommentLikers== null) {
             userRecipeCommentLikers = new ArrayList<>();
         }
@@ -63,7 +63,7 @@ public class RecipeComment {
         
     }
     
-    public void removeUserMeetupCommentLiker(User commentLiker) {
+    public void removeUserRecipeCommentLiker(User commentLiker) {
         if(userRecipeCommentLikers != null && userRecipeCommentLikers.contains(commentLiker)) {
         userRecipeCommentLikers.remove(commentLiker);
         commentLiker.removeRecipeCommentLike(this);
