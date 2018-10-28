@@ -90,9 +90,9 @@ public class HomeController {
 		
 		return mv;
 		
-	}
+	}*/
 	
-	@RequestMapping(path="createRecipe.do", method=RequestMethod.POST)
+	@RequestMapping(path="addedRecipe.do", method=RequestMethod.POST)
 	public ModelAndView postRecipe(Recipe recipe, Model model, HttpSession session, User user) {
 		ModelAndView mv = new ModelAndView();
 		Recipe newRecipe = recipeDAO.createRecipe(recipe);
@@ -101,7 +101,7 @@ public class HomeController {
 		
 		return mv;
 		
-	}*/
+	}
 
 	
 }
