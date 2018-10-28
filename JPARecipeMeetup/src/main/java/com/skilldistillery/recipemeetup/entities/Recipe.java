@@ -90,6 +90,26 @@ public class Recipe {
         recipeLiker.removeLikedRecipe(this);
         }
     }
+    
+    
+    public void addUserWhoFavorited(User userWhoFavorited) {
+        if(usersWhoFavorited== null) {
+            usersWhoFavorited = new ArrayList<>();
+        }
+        
+        if(!usersWhoFavorited.contains(userWhoFavorited)) {
+            usersWhoFavorited.add(userWhoFavorited);
+            userWhoFavorited.addfavoriteRecipe(this);
+        }
+        
+    }
+    
+    public void removeAttendee(User userWhoFavorited) {
+        if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
+        usersWhoFavorited.remove(userWhoFavorited);
+        userWhoFavorited.removefavoriteRecipe(this);
+        }
+    }
 	
 	
 	public String getTitle() {
