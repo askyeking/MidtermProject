@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class MeetupComment {
 	@JoinTable(name="meetup_comment_like",
 	joinColumns=@JoinColumn(name="meetup_comment_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
-	private List<User> userMeetupCommentLikes;
+	private List<User> userMeetupCommentLikers;
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="user_id")
@@ -46,6 +47,26 @@ public class MeetupComment {
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="meetup_id")
 	private Meetup meetupCommentedOn;
+	
+	
+	public void addUserMeetupCommentLiker(User commentLiker) {
+        if(userMeetupCommentLikers== null) {
+            userMeetupCommentLikers = new ArrayList<>();
+        }
+        
+        if(!userMeetupCommentLikers.contains(commentLiker)) {
+            userMeetupCommentLikers.add(commentLiker);
+            commentLiker.addMeetupCommentLike(this);
+        }
+        
+    }
+    
+    public void removeUserMeetupCommentLiker(User commentLiker) {
+        if(userMeetupCommentLikers != null && userMeetupCommentLikers.contains(commentLiker)) {
+        userMeetupCommentLikers.remove(commentLiker);
+        commentLiker.removeMeetupCommentLike(this);
+        }
+    }
 	
 	public MeetupComment() {
 		super();
@@ -121,11 +142,11 @@ public class MeetupComment {
 	}
 
 	public List<User> getUserMeetupCommentLikes() {
-		return userMeetupCommentLikes;
+		return userMeetupCommentLikers;
 	}
 
 	public void setUserMeetupCommentLikes(List<User> userMeetupCommentLikes) {
-		this.userMeetupCommentLikes = userMeetupCommentLikes;
+		this.userMeetupCommentLikers = userMeetupCommentLikes;
 	}
 
 	public User getMeetupCommentOwner() {
