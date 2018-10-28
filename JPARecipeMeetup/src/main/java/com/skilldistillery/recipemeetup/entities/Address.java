@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -35,7 +36,28 @@ public class Address {
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupAddress")
 	private List <Meetup> meetups;
-
+	
+	 public void addUser(User user) {
+	        if(users==null) {
+	            users = new ArrayList<>();
+	        }
+	        
+	        if(!users.contains(user)) {
+	            users.add(user);
+	            if(user.getAddress() != null) {
+	                user.getAddress().getUsers().remove(user);
+	            }
+	        }
+	        
+	        user.setAddress(this);
+	    }
+	    
+	    public void removeUser(User user) {
+	        user.setAddress(null);
+	        if(users!=null) {
+	            users.remove(user);
+	        }
+	    }
 
 	public String getStreet() {
 		return street;

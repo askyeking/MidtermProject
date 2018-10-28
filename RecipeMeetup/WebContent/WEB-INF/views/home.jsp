@@ -9,11 +9,10 @@
 <meta charset="UTF-8">
 <title>Home</title>
 
-<<!-- div class="row"><
+<!-- div class="row"><
 <div class="col-8">
 <img id="narrows" alt="" src="media/narrows.jpg" >
 </div> -->
-
 
 </head>
 <body style="height: 1500px">
@@ -21,6 +20,14 @@
 <br>
 <br>
 <br>
+
+<form action = "createRecipe.do" method="POST">
+			<input type = "submit" value = "Create A New Recipe">
+			</form>
+<form action = "createMeetup.do" method="POST">
+			<input type = "submit" value = "Create A New Meetup">
+			</form>
+			
 	<c:choose>
 		<c:when test="${not empty user and user.active}">
 			
@@ -37,6 +44,7 @@
 	<c:choose>
 		<c:when test="${not empty recentMeetup}">
 		<hr>
+		
 			<c:forEach items="${recentMeetup}" var="meetup">
 
 				<p>Meetup: ${meetup.title}<br>

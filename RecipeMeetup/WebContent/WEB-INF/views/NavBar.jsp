@@ -21,9 +21,9 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Recipes</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Meetups</a></li>
+			<li class="nav-item"><a class="nav-link" href="home.do">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="showAllRecipes.do">Recipes</a></li>
+			<li class="nav-item"><a class="nav-link" href="showAllMeetups.do">Meetups</a></li>
 			<form class="form-inline" action="/action_page.php">
 				<input class="form-control" type="text" placeholder="Search by...">
 				<select name="category">

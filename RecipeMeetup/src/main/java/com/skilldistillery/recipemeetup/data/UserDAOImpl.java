@@ -52,11 +52,13 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User createUser(User user, Address address) {
 		System.out.println(address);
-		em.persist(address);
+		address.addUser(user);
 		user.setAddress(address);
-		System.out.println(user.toString());
-		em.persist(user);
+		System.out.println(address);
+		em.persist(address);
+//		em.persist(user);
 		em.flush();
+		System.out.println(address);
 		
 		return user;
 
