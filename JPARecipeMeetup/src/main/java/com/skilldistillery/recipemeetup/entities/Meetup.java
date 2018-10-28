@@ -69,6 +69,8 @@ public class Meetup {
 	@JoinColumn(name="address_id")
 	private Address meetupAddress;
 	
+	
+	
 	public Meetup() {
 		super();
 	}
