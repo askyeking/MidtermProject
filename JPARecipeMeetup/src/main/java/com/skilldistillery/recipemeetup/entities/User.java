@@ -223,18 +223,34 @@ public class User {
             }
         }
         
-        meetup.setMeetupOwner(this);
+        recipeComment.setRecipeCommentOwner(this);
     }
     
     public void removeRecipeComment(RecipeComment recipeComment) {
-        recipeComment.setMeetupOwner(null);
+        recipeComment.setRecipeCommentOwner(null);
         if(recipeComments!=null) {
         	recipeComments.remove(recipeComment);
         }
     }
     
+    public void addRecipeCommentLike(RecipeComment recipeComment) {
+        if(likedRecipeComments== null) {
+        	likedRecipeComments = new ArrayList<>();
+        }
+        
+        if(!likedRecipeComments.contains(recipeComment)) {
+        	likedRecipeComments.add(recipeComment);
+            recipeComment.addRecipeCommentLiker(this);
+        }
+        
+    }
     
-    
+    public void removeRecipeCommentLike(RecipeComment recipeComment) {
+        if(likedRecipeComments != null && likedRecipeComments.contains(recipeComment)) {
+        	likedRecipeComments.remove(recipeComment);
+        recipeComment.removeRecipeCommentLiker(this);
+        }
+    }
     
     
 	
