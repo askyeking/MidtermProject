@@ -104,7 +104,7 @@ public class Recipe {
         
     }
     
-    public void removeAttendee(User userWhoFavorited) {
+    public void removeUserWhoFavorited(User userWhoFavorited) {
         if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
         usersWhoFavorited.remove(userWhoFavorited);
         userWhoFavorited.removeFavoriteRecipe(this);
