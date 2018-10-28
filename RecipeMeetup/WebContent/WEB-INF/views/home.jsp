@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Home</title>
 
-<<!-- div class="row"><
+<!-- div class="row"><
 <div class="col-8">
 <img id="narrows" alt="" src="media/narrows.jpg" >
 </div> -->
