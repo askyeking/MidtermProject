@@ -13,7 +13,7 @@
 
 	<h3>Create a New Meetup</h3>
 
-	<form action="createMeetup.do" method="POST">
+	<form action="addedMeetup.do" method="POST">
 		<br>
 		<h3>Meetup Name</h3>
 		<input type="text" name="title" value="" maxlength="45" required /><br>

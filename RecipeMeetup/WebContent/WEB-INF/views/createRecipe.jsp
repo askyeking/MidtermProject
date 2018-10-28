@@ -13,7 +13,7 @@
 
 	<h3>Post a New Recipe</h3>
 
-	<form action="createRecipe.do" method="POST">
+	<form action="addedRecipe.do" method="POST">
 		<br>
 		<h3>Recipe Name</h3>
 		<input type="text" name="title" value="" maxlength="45" required /><br>
@@ -35,7 +35,7 @@
 		<input type="text" name="category" value="" required /><br>
 		<h3>Origin</h3>
 		
-		<!-- <select name="productId">
+		<select name="country">
     <option value="AF">Afghanistan</option>
 	<option value="AX">Åland Islands</option>
 	<option value="AL">Albania</option>
@@ -285,9 +285,9 @@
 	<option value="YE">Yemen</option>
 	<option value="ZM">Zambia</option>
 	<option value="ZW">Zimbabwe</option>
-  		</select> -->
+  		</select> 
 		
-		<input type="text" name="country" value="" /><br>
+
 		<h3>Instructions</h3>
 		<input type="text" name="instructions" maxlength="250"
 			style="height: 100px" required/> <br>

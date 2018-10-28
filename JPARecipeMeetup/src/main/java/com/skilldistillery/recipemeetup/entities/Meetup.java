@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -69,7 +70,24 @@ public class Meetup {
 	@JoinColumn(name="address_id")
 	private Address meetupAddress;
 	
-	
+	 public void addAttendee(User attendee) {
+	        if(attendees== null) {
+	            attendees = new ArrayList<>();
+	        }
+	        
+	        if(!attendees.contains(attendee)) {
+	            attendees.add(attendee);
+	            attendee.addMeetupAttended(this);
+	        }
+	        
+	    }
+	    
+	    public void removeAttendee(User attendee ) {
+	        if(attendees != null && attendees.contains(attendee)) {
+	        attendees.remove(attendee);
+	        attendee.removeMeetupAttended(this);
+	        }
+	    }
 	
 	public Meetup() {
 		super();

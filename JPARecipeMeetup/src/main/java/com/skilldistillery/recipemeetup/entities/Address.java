@@ -58,6 +58,30 @@ public class Address {
 	            users.remove(user);
 	        }
 	    }
+	    
+	    
+	    
+	    public void addMeetups(Meetup meetup) {
+	    	if(meetups==null) {
+	    		meetups = new ArrayList<>();
+	    	}
+	    	
+	    	if(!meetups.contains(meetup)) {
+	    		meetups.add(meetup);
+	    		if(meetup.getMeetupAddress() != null) {
+	    			meetup.getMeetupAddress().getMeetups().remove(meetup);
+	    		}
+	    	}
+	    	
+	    	meetup.setMeetupAddress(this);
+	    }
+	    
+	    public void removeMeetups(Meetup meetup) {
+	    	meetup.setMeetupAddress(null);
+	    	if(meetups!=null) {
+	    		meetups.remove(meetup);
+	    	}
+	    }
 
 	public String getStreet() {
 		return street;
