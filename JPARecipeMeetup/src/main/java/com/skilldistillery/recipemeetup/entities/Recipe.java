@@ -99,7 +99,7 @@ public class Recipe {
         
         if(!usersWhoFavorited.contains(userWhoFavorited)) {
             usersWhoFavorited.add(userWhoFavorited);
-            userWhoFavorited.addfavoriteRecipe(this);
+            userWhoFavorited.addFavoriteRecipe(this);
         }
         
     }
@@ -107,7 +107,7 @@ public class Recipe {
     public void removeAttendee(User userWhoFavorited) {
         if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
         usersWhoFavorited.remove(userWhoFavorited);
-        userWhoFavorited.removefavoriteRecipe(this);
+        userWhoFavorited.removeFavoriteRecipe(this);
         }
     }
 	

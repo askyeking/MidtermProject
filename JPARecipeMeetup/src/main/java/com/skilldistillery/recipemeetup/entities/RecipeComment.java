@@ -39,7 +39,7 @@ public class RecipeComment {
 	@JoinTable(name="recipe_comment_like",
 	joinColumns=@JoinColumn(name="recipe_comment_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
-	private List<User> userRecipeCommentLikers;
+	private List<User> recipeCommentLikers;
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="user_id")
@@ -51,21 +51,21 @@ public class RecipeComment {
 	private Recipe recipeCommentedOn;
 	
 	
-	public void addUserRecipeCommentLiker(User commentLiker) {
-        if(userRecipeCommentLikers== null) {
-            userRecipeCommentLikers = new ArrayList<>();
+	public void addRecipeCommentLiker(User commentLiker) {
+        if(recipeCommentLikers== null) {
+            recipeCommentLikers = new ArrayList<>();
         }
         
-        if(!userRecipeCommentLikers.contains(commentLiker)) {
-            userRecipeCommentLikers.add(commentLiker);
+        if(!recipeCommentLikers.contains(commentLiker)) {
+            recipeCommentLikers.add(commentLiker);
             commentLiker.addRecipeCommentLike(this);
         }
         
     }
     
-    public void removeUserRecipeCommentLiker(User commentLiker) {
-        if(userRecipeCommentLikers != null && userRecipeCommentLikers.contains(commentLiker)) {
-        userRecipeCommentLikers.remove(commentLiker);
+    public void removeRecipeCommentLiker(User commentLiker) {
+        if(recipeCommentLikers != null && recipeCommentLikers.contains(commentLiker)) {
+        recipeCommentLikers.remove(commentLiker);
         commentLiker.removeRecipeCommentLike(this);
         }
     }
@@ -150,11 +150,11 @@ public class RecipeComment {
 	}
 
 	public List<User> getUserRecipeCommentLikes() {
-		return userRecipeCommentLikers;
+		return recipeCommentLikers;
 	}
 
 	public void setUserRecipeCommentLikes(List<User> userRecipeCommentLikes) {
-		this.userRecipeCommentLikers = userRecipeCommentLikes;
+		this.recipeCommentLikers = userRecipeCommentLikes;
 	}
 
 	public Recipe getRecipeCommentedOn() {
