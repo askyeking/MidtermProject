@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class Recipe {
 	@JoinTable(name="recipe_like",
 	joinColumns=@JoinColumn(name="recipe_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
-	private List<User> recipeLikes;
+	private List<User> recipeLikers;
 	
 	@ManyToOne
 	@JoinColumn(name="author_id")
@@ -71,6 +72,24 @@ public class Recipe {
 	private List<RecipeComment> recipeComments;
 	
 	
+	public void addRecipeLikers(User recipeLiker) {
+        if(recipeLikers== null) {
+            recipeLikers = new ArrayList<>();
+        }
+        
+        if(!recipeLikers.contains(recipeLiker)) {
+            recipeLikers.add(recipeLiker);
+            recipeLiker.addLikedRecipe(this);
+        }
+        
+    }
+    
+    public void removeRecipeLikers(User recipeLiker) {
+        if(recipeLikers != null && recipeLikers.contains(recipeLiker)) {
+        recipeLikers.remove(recipeLiker);
+        recipeLiker.removeLikedRecipe(this);
+        }
+    }
 	
 	
 	public String getTitle() {
@@ -233,11 +252,11 @@ public class Recipe {
 	}
 
 	public List<User> getRecipeLikes() {
-		return recipeLikes;
+		return recipeLikers;
 	}
 
 	public void setRecipeLikes(List<User> recipeLikes) {
-		this.recipeLikes = recipeLikes;
+		this.recipeLikers = recipeLikes;
 	}
 
 	public User getRecipeOwner() {
