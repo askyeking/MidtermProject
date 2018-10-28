@@ -210,7 +210,7 @@ public class User {
         }
     }
     
-    //add
+    //add recipe comment to recipe
     public void addRecipeComment(RecipeComment recipeComment) {
         if(recipeComments==null) {
         	recipeComments = new ArrayList<>();
@@ -233,6 +233,7 @@ public class User {
         }
     }
     
+    //add like to list of recipe comments
     public void addRecipeCommentLike(RecipeComment recipeComment) {
         if(likedRecipeComments== null) {
         	likedRecipeComments = new ArrayList<>();
@@ -252,6 +253,25 @@ public class User {
         }
     }
     
+    //add recipe to favorite list
+    public void addFavoriteRecipe(Recipe recipe) {
+        if(favoriteRecipes== null) {
+        	favoriteRecipes = new ArrayList<>();
+        }
+        
+        if(!favoriteRecipes.contains(recipe)) {
+        	favoriteRecipes.add(recipe);
+            recipe.addUserWhoFavorited(this);
+        }
+        
+    }
+    
+    public void removeFavoriteRecipe(Recipe recipe) {
+        if(favoriteRecipes != null && favoriteRecipes.contains(recipe)) {
+        	favoriteRecipes.remove(recipe);
+        	recipe.removeUserWhoFavorited(this);
+        }
+    }
     
 	
 	public List<RecipeComment> getRecipeComments() {
