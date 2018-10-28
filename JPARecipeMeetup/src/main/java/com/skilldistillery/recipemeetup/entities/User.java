@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,11 +18,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class User {
 	
-	
 	public User() {
 		super();
 	}
-	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -57,13 +56,11 @@ public class User {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupOwner")
 	private List<Meetup> meetupsOwned;
 	
-	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="attendees")
 	private List<Meetup> meetupsAttended;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupCommentOwner")
 	private List<MeetupComment> meetupCommentsPosted;
-	
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userMeetupCommentLikes")
 	private List<MeetupComment> likedMeetupComments;
@@ -87,45 +84,79 @@ public class User {
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userRecipeCommentLikes")
 	private List<RecipeComment> likedRecipeComments;
 	
-	
-	
+	//add to meetups owned by user
+	public void addMeetupOwned(Meetup meetup) {
+        if(meetupsOwned==null) {
+        	meetupsOwned = new ArrayList<>();
+        }
+        
+        if(!meetupsOwned.contains(meetup)) {
+        	meetupsOwned.add(meetup);
+            if(meetup.getMeetupOwner() != null) {
+                meetup.getMeetupOwner().getMeetupsOwned().remove(meetup);
+            }
+        }
+        
+        meetup.setMeetupOwner(this);
+    }
+    
+	//add attendees to meetup owned by user
+    public void removeMeetupOwned(Meetup meetup) {
+        meetup.setMeetupOwner(null);
+        if(meetupsOwned!=null) {
+        	meetupsOwned.remove(meetup);
+        }
+    }
+    
+    public void addMeetupAttended(Meetup meetup) {
+        if(meetupsAttended== null) {
+        	meetupsAttended = new ArrayList<>();
+        }
+        
+        if(!meetupsAttended.contains(meetup)) {
+        	meetupsAttended.add(meetup);
+            meetup.addAttendee(this);
+        }
+        
+    }
+    
+    public void removeMeetupAttended(Meetup meetup) {
+        if(meetupsAttended != null && meetupsAttended.contains(meetup)) {
+        	meetupsAttended.remove(meetup);
+        meetup.removeAttendee(this);
+        }
+    }
+    
+    
+    
 	
 	public List<RecipeComment> getRecipeComments() {
 		return recipeComments;
 	}
 
-
 	public void setRecipeComments(List<RecipeComment> recipeComments) {
 		this.recipeComments = recipeComments;
 	}
-
 
 	public List<Recipe> getFavoriteRecipes() {
 		return favoriteRecipes;
 	}
 
-
 	public void setFavoriteRecipes(List<Recipe> favoriteRecipes) {
 		this.favoriteRecipes = favoriteRecipes;
 	}
-
 
 	public List<Recipe> getRecipesPosted() {
 		return recipesPosted;
 	}
 
-
 	public void setRecipesPosted(List<Recipe> recipesPosted) {
 		this.recipesPosted = recipesPosted;
 	}
-
-
-	
 	
 	public List<RecipeComment> getLikedRecipeComments() {
 		return likedRecipeComments;
 	}
-
 
 	public void setLikedRecipeComments(List<RecipeComment> likedRecipeComments) {
 		this.likedRecipeComments = likedRecipeComments;
