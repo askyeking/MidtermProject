@@ -112,6 +112,29 @@ public class Recipe {
     }
 	
 	
+    public void addRecipeComment(RecipeComment recipeComment) {
+    	if(recipeComments==null) {
+    		recipeComments = new ArrayList<>();
+    	}
+    	
+    	if(!recipeComments.contains(recipeComment)) {
+    		recipeComments.add(recipeComment);
+    		if(recipeComment.getRecipeCommentedOn() != null) {
+    			recipeComment.getRecipeCommentedOn().getRecipeComments().remove(recipeComment);
+    		}
+    	}
+    	
+    	recipeComment.setRecipeCommentedOn(this);
+    }
+    
+    public void removeRecipeComment(RecipeComment recipeComment) {
+    	recipeComment.setRecipeCommentedOn(null);
+    	if(recipeComments!=null) {
+    		recipeComments.remove(recipeComment);
+    	}
+    }
+    
+    
 	public String getTitle() {
 		return title;
 	}
