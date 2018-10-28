@@ -88,6 +88,29 @@ public class Meetup {
 	        attendee.removeMeetupAttended(this);
 	        }
 	    }
+	    
+	    
+	    public void addMeetupComment(MeetupComment meetupComment) {
+	    	if(meetupComments==null) {
+	    		meetupComments = new ArrayList<>();
+	    	}
+	    	
+	    	if(!meetupComments.contains(meetupComment)) {
+	    		meetupComments.add(meetupComment);
+	    		if(meetupComment.getMeetupCommentedOn() != null) {
+	    			meetupComment.getMeetupCommentedOn().getMeetupComments().remove(meetupComment);
+	    		}
+	    	}
+	    	
+	    	meetupComment.setMeetupCommentedOn(this);
+	    }
+	    
+	    public void removeMeetupComment(MeetupComment meetupComment) {
+	    	meetupComment.setMeetupCommentedOn(null);
+	    	if(meetupComments!=null) {
+	    		meetupComments.remove(meetupComment);
+	    	}
+	    }
 	
 	public Meetup() {
 		super();
