@@ -90,8 +90,51 @@ public class Recipe {
         recipeLiker.removeLikedRecipe(this);
         }
     }
+    
+    
+    public void addUserWhoFavorited(User userWhoFavorited) {
+        if(usersWhoFavorited== null) {
+            usersWhoFavorited = new ArrayList<>();
+        }
+        
+        if(!usersWhoFavorited.contains(userWhoFavorited)) {
+            usersWhoFavorited.add(userWhoFavorited);
+            userWhoFavorited.addfavoriteRecipe(this);
+        }
+        
+    }
+    
+    public void removeAttendee(User userWhoFavorited) {
+        if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
+        usersWhoFavorited.remove(userWhoFavorited);
+        userWhoFavorited.removefavoriteRecipe(this);
+        }
+    }
 	
 	
+    public void addRecipeComment(RecipeComment recipeComment) {
+    	if(recipeComments==null) {
+    		recipeComments = new ArrayList<>();
+    	}
+    	
+    	if(!recipeComments.contains(recipeComment)) {
+    		recipeComments.add(recipeComment);
+    		if(recipeComment.getRecipeCommentedOn() != null) {
+    			recipeComment.getRecipeCommentedOn().getRecipeComments().remove(recipeComment);
+    		}
+    	}
+    	
+    	recipeComment.setRecipeCommentedOn(this);
+    }
+    
+    public void removeRecipeComment(RecipeComment recipeComment) {
+    	recipeComment.setRecipeCommentedOn(null);
+    	if(recipeComments!=null) {
+    		recipeComments.remove(recipeComment);
+    	}
+    }
+    
+    
 	public String getTitle() {
 		return title;
 	}
