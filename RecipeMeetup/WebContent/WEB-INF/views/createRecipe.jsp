@@ -13,6 +13,9 @@
 </head>
 <body>
 
+	<c:choose>
+		<c:when test="${not empty loggedInUser }">
+
 	<h3>Post a New Recipe</h3>
 
 	<form action="addedRecipe.do" method="POST">
@@ -299,5 +302,24 @@
 		<input type="submit" value="Submit" /> 
 	</form>
 
+
+
+		</c:when>
+		<c:otherwise>
+		<br><br><br><br><br><br>
+			<h3>Only a logged in user can view this page.</h3>
+				
+				<form:form action="index.do" modelAttribute="user" method="GET">
+					<input type="submit" value="Login" />
+				</form:form>
+
+				
+				<form:form action="registrationLink.do" modelAttribute="user"
+					method="GET">
+					<input type="submit" value="Register" />
+				</form:form>
+			
+		</c:otherwise>
+		</c:choose>
 </body>
 </html>
