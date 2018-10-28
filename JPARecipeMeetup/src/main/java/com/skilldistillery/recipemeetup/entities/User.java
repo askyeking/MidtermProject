@@ -53,6 +53,12 @@ public class User {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
+	@ManyToMany
+	@JoinTable(name="favorite_recipe",
+	joinColumns=@JoinColumn(name="user_id"),
+	inverseJoinColumns=@JoinColumn(name="recipe_id"))
+	private List<Recipe> favoriteRecipes;
+	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupOwner")
 	private List<Meetup> meetupsOwned;
 	
@@ -71,15 +77,8 @@ public class User {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeOwner")
 	private List<Recipe> recipesPosted;
 	
-	@ManyToMany
-	@JoinTable(name="favorite_recipe",
-	joinColumns=@JoinColumn(name="user_id"),
-	inverseJoinColumns=@JoinColumn(name="recipe_id"))
-	private List<Recipe> favoriteRecipes;
-	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentOwner")
 	private List<RecipeComment> recipeComments;
-	
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userRecipeCommentLikes")
 	private List<RecipeComment> likedRecipeComments;
@@ -100,7 +99,6 @@ public class User {
         meetup.setMeetupOwner(this);
     }
     
-	//add attendees to meetup owned by user
     public void removeMeetupOwned(Meetup meetup) {
         meetup.setMeetupOwner(null);
         if(meetupsOwned!=null) {
@@ -108,6 +106,7 @@ public class User {
         }
     }
     
+    //add attendees to meetup owned by user
     public void addMeetupAttended(Meetup meetup) {
         if(meetupsAttended== null) {
         	meetupsAttended = new ArrayList<>();
@@ -127,6 +126,48 @@ public class User {
         }
     }
     
+    //add comment to meetup owner of meetup post
+    public void addMeetupCommentPosted(MeetupComment meetupComment) {
+        if(meetupCommentsPosted==null) {
+        	meetupCommentsPosted = new ArrayList<>();
+        }
+        
+        if(!meetupCommentsPosted.contains(meetupComment)) {
+        	meetupCommentsPosted.add(meetupComment);
+            if(meetupComment.getMeetupCommentOwner() != null) {
+                meetupComment.getMeetupCommentOwner().getMeetupCommentsPosted().remove(meetupComment);
+            }
+        }
+        
+        meetupComment.setMeetupCommentOwner(this);
+    }
+    
+    public void removeMeetupCommentPosted(MeetupComment meetupComment) {
+        meetupComment.setMeetupCommentOwner(null);
+        if(meetupCommentsPosted!=null) {
+        	meetupCommentsPosted.remove(meetupComment);
+        }
+    }
+    
+    //adds a user to the list of users who have liked a comment to a meetup
+    public void addMeetupCommentLike(MeetupComment meetupComment) {
+        if(likedMeetupComments== null) {
+        	likedMeetupComments = new ArrayList<>();
+        }
+        
+        if(!likedMeetupComments.contains(meetupComment)) {
+        	likedMeetupComments.add(meetupComment);
+            meetupComment.addUserMeetupCommentLiker(this);
+        }
+        
+    }
+    
+    public void removeMeetupCommentLike(MeetupComment meetupComment) {
+        if(likedMeetupComments != null && likedMeetupComments.contains(meetupComment)) {
+        	likedMeetupComments.remove(meetupComment);
+        meetupComment.removeUserMeetCommentLiker(this);
+        }
+    }
     
     
 	
