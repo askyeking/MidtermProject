@@ -27,27 +27,27 @@
 			<p>${meetup.title }</p>
 			<p>user ID: ${loggedInUser.firstName }</p>
 
-				<c:choose>
+			<c:choose>
 
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments }" var="comment">
 						<hr>
-						<p>${comment.meetupCommentOwner.firstName }  ${comment.meetupCommentOwner.lastName }</p>
+						<p>${comment.meetupCommentOwner.firstName }
+							${comment.meetupCommentOwner.lastName }</p>
 						<p>${comment.textContent}</p>
 					</c:forEach>
-					
+
 
 				</c:when>
 
 			</c:choose>
+			<form path="submitMeetupComment.do" method="post" >
+				<textarea  rows="5" cols="50" >
+				</textarea>
+				<br>
+				<input type="submit" value="Submit Comment" />
 
-					<textarea name="comment" rows="5" cols="50">
-					Enter a comment here
-					</textarea>
-
-
-
-
+			</form>
 
 
 
