@@ -36,7 +36,6 @@ public class PostController {
 	
 	
 	
-	
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
