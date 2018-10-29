@@ -37,11 +37,9 @@ public class HomeController {
 	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
 		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView();
-		System.out.println(ldt);
 		String startTime = ldt.substring(0, 10) + " " + ldt.substring(11);
 		
 		User author = (User) session.getAttribute("loggedInUser");
-		System.out.println(author.getId());
 		
 		java.util.Date dt = new java.util.Date();
 		
@@ -57,16 +55,15 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		
-		System.out.println(meetup);
 		
 		if (meetup != null) {
 			meetup.setStartTime(dt);
 			meetup = meetupDAO.createMeetup(meetup, author, address);
 			mv.addObject("meetupCreated", meetup);
-			mv.setViewName("WEB-INF/views/profilePage.jsp");
+			mv.setViewName("redirect:showMeetupDetails.do?id="+meetup.getId());
 		}
 		else {
-			mv.setViewName("WEB-INF/views/createRecipe.jsp");
+			mv.setViewName("redirect:createMeetup.do");
 		}
 		
 		return mv;
