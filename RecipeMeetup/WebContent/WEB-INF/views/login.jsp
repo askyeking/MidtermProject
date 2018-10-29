@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-div.indent1 { text-indent: 3em; }
 </head>
 <body>
 
@@ -73,11 +72,11 @@ div.indent1 { text-indent: 3em; }
 
 			</c:forEach>
 			
-			<h4>Sign-in to See More!</h4>
+			<h5>Sign-in to See More!</h5>
 			<br><br>
 
 
-		<h3>Recent Meetups</h3> <hr>
+		<h3>Recent Recipes</h3> <hr>
 			<c:forEach items="${recentRecipes}" var="recipe">
 			
 				<p><li>Recipe: ${recipe.title }</li></p>
