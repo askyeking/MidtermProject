@@ -44,7 +44,6 @@
 				<input type="datetime" name="endTime"/><br>
 				<h3>Set a Meetup Picture</h3>
 				URL: <input type="url" name="imageURL" maxlength="45"><br> <br>
-				<input type="submit" value="Submit" />
 				
 				
 				<h3>Address</h3>
@@ -52,6 +51,8 @@
 				City: <input type="text" name="city" value="City" maxlength="100" required /><br> <input
 					type="text" name="state" value="State" maxlength="2" required /><br>
 				Postal code: <input type="number" name="postalCode" value="PostalCode" min="00000" max="99999" required /><br>
+				
+				<input type="submit" value="Submit" />
 			</form>
 		
 

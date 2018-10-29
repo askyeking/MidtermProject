@@ -98,17 +98,14 @@ public class UserController {
 //		mv.addObject(activeUser);
 		mv.setViewName("WEB-INF/views/profilePage.jsp");
 		
-		
-		
 		return mv;
 	}
 	
 	@RequestMapping(path="addedRecipe.do", method=RequestMethod.POST)
-	public ModelAndView addedRecipe(Recipe recipe, HttpSession session) {
+	public ModelAndView addedRecipe(Recipe recipe, User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Recipe newRecipe = null;
-		User user = (User) session.getAttribute("loggedInUser");
-		user = userDAO.isLegitimateUsername(user);
+		user = (User) session.getAttribute("loggedInUser");
 		System.out.println(user.getId());
 		if (recipe != null) {
 			newRecipe = recipeDAO.createRecipe(recipe, user);

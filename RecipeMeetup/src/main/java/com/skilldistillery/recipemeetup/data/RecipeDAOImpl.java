@@ -21,13 +21,15 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe createRecipe(Recipe recipe, User user) {
+		user.addRecipeOwnedByUser(recipe);
 		recipe.setRecipeOwner(user);
-		em.persist(recipe);
+		System.out.println(recipe);
+		em.persist(user);
 		em.flush();
 		
 		return recipe;
 	}
-	
+
 	@Override
 	public Recipe showRecipe(Recipe recipe) {
 		Recipe singleRecipe = em.find(Recipe.class, recipe);
