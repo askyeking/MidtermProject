@@ -36,7 +36,6 @@ public class PostController {
 	
 	
 	
-	
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -63,7 +62,6 @@ public class PostController {
 		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(comment, author);
 //		mv.addObject("recipeComment", recipeComment);
 //		mv.setViewName("/WEB-INF/views/recipe.jsp");
-		
 		return showRecipe(comment.getRecipeCommentedOn(), session);		
 	}
 	

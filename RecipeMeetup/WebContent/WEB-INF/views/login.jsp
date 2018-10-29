@@ -71,8 +71,8 @@
 				<div class="indent1">Description: ${meetup.description}</div>
 
 			</c:forEach>
-			
-			<h5>Sign-in to See More!</h5>
+			<br>
+			<h5>Sign-in to See More!</h5> <hr>
 			<br><br>
 
 
@@ -84,7 +84,7 @@
 				
 			</c:forEach>
 			
-			<h5>Sign-in to See More!</h5>
+			<h5>Sign-in to See More!</h5> <hr>
 			<br><br>
 
 	</form>
