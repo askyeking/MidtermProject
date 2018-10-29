@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.recipemeetup.data.RecipeDAO;
 import com.skilldistillery.recipemeetup.data.UserDAO;
 import com.skilldistillery.recipemeetup.entities.Address;
+import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
 
 @Controller
@@ -20,6 +22,7 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDAO;
+	private RecipeDAO recipeDAO;
 
 	@RequestMapping(path = "index.do")
 	public String index() {
@@ -98,5 +101,19 @@ public class UserController {
 		
 		
 		return mv;
+	}
+	
+	@RequestMapping(path="addedRecipe.do", method=RequestMethod.POST)
+	public ModelAndView addedRecipe(Recipe recipe, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User user = (User) session.getAttribute("loggedInUser");
+		System.out.println(user.getId());
+		if (recipe != null) {
+			recipeDAO.createRecipe(recipe);
+		}
+		
+		
+		return mv;
+		
 	}
 }

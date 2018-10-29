@@ -24,13 +24,21 @@ public class RecipeDAOImpl implements RecipeDAO {
 		recipe.setRecipeOwner(user);
 		em.persist(recipe);
 		em.flush();
+		
 		return recipe;
 	}
-
+	
 	@Override
 	public Recipe showRecipe(Recipe recipe) {
 		Recipe singleRecipe = em.find(Recipe.class, recipe);
 		return singleRecipe;
+	}
+	
+	@Override
+	public Recipe showRecipeById(int Id) {
+		String jpql = "SELECT recipe from Recipe recipe where id = :id";
+		Recipe recipeById = em.createQuery(jpql, Recipe.class).setParameter("id", Id).getSingleResult();
+		return recipeById;
 	}
 	
 	@Override

@@ -23,5 +23,7 @@ public interface MeetupDAO {
 
 	List<Meetup> findRecentMeetups();
 
+	Meetup showMeetup(Meetup meetup);
+
 	
 }

@@ -19,23 +19,21 @@
 	<h3>Post a New Recipe</h3>
 
 	<form action="addedRecipe.do" method="POST">
+	 <input type="hidden" name="postingUser" value="${loggedInUser }">
+	
 		<br>
 		<h3>Recipe Name</h3>
 		<input type="text" name="title" value="" maxlength="45" required /><br>
 		<h3>Description</h3>
-		<input type="text" name="description" maxlength="250"
-			style="height: 100px" /> <br>
+		<input type="text" name="description" style="height: 100px" maxlength=300 /> <br>
 		<h3>Ingredients</h3>
-		<input type="text" name="ingredients" maxlength="250"
-			style="height: 100px" required /> <br>
-		<h3>Serves:</h3>
-		<input type="datetime" name="endTime" value="" required /><br>
+		<input type="text" name="ingredients" maxlength="250" style="height: 100px" required /> <br>
 		<h3>Maximum Attendance</h3>
 		<input type="number" name="maxAttendance" value="" maxlength="100" required /><br>
 		<h3>Serving Size</h3>
 		<input type="number" name="servingSize" value="" maxlength="50" /><br>
 		<h3>Cook Time</h3>
-		<input type="time" name="cookTime" value="" /><br>
+		<input type="number" name="cookTime" value="" /> minutes<br>
 		<h3>Category</h3>
 		<input type="text" name="category" value="" required /><br>
 		<h3>Origin</h3>
@@ -294,8 +292,7 @@
 		
 
 		<h3>Instructions</h3>
-		<input type="text" name="instructions" maxlength="250"
-			style="height: 100px" required/> <br>
+		<input type="text" name="instructions" style="height: 100px" required/> <br>
 		<h3>Set a Recipe Picture</h3>	
 		<input type="url" name="imageURL" maxlength="100"><br><br>
 		
