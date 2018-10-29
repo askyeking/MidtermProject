@@ -8,7 +8,7 @@ import com.skilldistillery.recipemeetup.entities.User;
 public interface MeetupCommentDAO {
 	
 	MeetupComment postMeetupComment(MeetupComment comment, User author);
-	List<MeetupComment> showAllMeetupComments();
+	List<MeetupComment> showAllMeetupComments(int id);
 	MeetupComment editMeetupComment(MeetupComment updateComment, User author);
 	boolean deleteMeetupComment(MeetupComment comment, User author);
 	boolean deleteMeetupCommentById(int id);
