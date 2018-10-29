@@ -108,7 +108,7 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(path="createMeetup.do", method=RequestMethod.POST)
+	@RequestMapping(path="createMeetup.do", method=RequestMethod.GET)
 	public ModelAndView createMeetup() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/WEB-INF/views/createMeetup.jsp");
@@ -117,7 +117,7 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(path="createRecipe.do", method=RequestMethod.POST)
+	@RequestMapping(path="createRecipe.do", method=RequestMethod.GET)
 	public ModelAndView createRecipe() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/WEB-INF/views/createRecipe.jsp");
