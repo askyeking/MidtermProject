@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.Meetup;
+import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
 
 @Transactional
@@ -27,6 +28,11 @@ public class MeetupDAOImpl implements MeetupDAO {
 		return meetup;
 	}
 	
+	@Override
+	public Meetup showMeetup(Meetup meetup) {
+		Meetup singleMeetup = em.find(Meetup.class, meetup);
+		return singleMeetup;
+	}
 	
 	@Override
 	public List<Meetup> findAllMeetups() {

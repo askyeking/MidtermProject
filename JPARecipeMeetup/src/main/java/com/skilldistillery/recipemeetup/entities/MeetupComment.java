@@ -141,12 +141,12 @@ public class MeetupComment {
 				+ textContent + ", postDate=" + postDate + ", active=" + active + "]";
 	}
 
-	public List<User> getUserMeetupCommentLikes() {
+	public List<User> getUserMeetupCommentLikers() {
 		return userMeetupCommentLikers;
 	}
 
-	public void setUserMeetupCommentLikes(List<User> userMeetupCommentLikes) {
-		this.userMeetupCommentLikers = userMeetupCommentLikes;
+	public void setUserMeetupCommentLikers(List<User> userMeetupCommentLikers) {
+		this.userMeetupCommentLikers = userMeetupCommentLikers;
 	}
 
 	public User getMeetupCommentOwner() {
