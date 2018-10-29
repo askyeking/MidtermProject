@@ -269,7 +269,7 @@ public class Recipe {
 		return "recipe [id=" + id + ", title=" + title + ", country=" + country + ", description=" + description
 				+ ", ingredients=" + ingredients + ", servingSize=" + servingSize + ", cookTime=" + cookTime
 				+ ", instructions=" + instructions + ", category=" + category + ", createDate=" + createDate + ", imgURL="
-				+ imgURL + ", authorId=" + ", active=" + active + "]";
+				+ imgURL + ", active=" + active + "]";
 	}
 	
 	public Recipe() {
