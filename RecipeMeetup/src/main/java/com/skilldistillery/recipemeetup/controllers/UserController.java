@@ -111,7 +111,7 @@ public class UserController {
 		user = userDAO.isLegitimateUsername(user);
 		System.out.println(user.getId());
 		if (recipe != null) {
-			newRecipe = recipeDAO.createRecipe(recipe);
+			newRecipe = recipeDAO.createRecipe(recipe, user);
 			mv.addObject("recipe", newRecipe);
 			mv.setViewName("WEB-INF/views/profilePage.jsp");
 		}
