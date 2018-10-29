@@ -263,7 +263,6 @@ public class User {
         	favoriteRecipes.add(recipe);
             recipe.addUserWhoFavorited(this);
         }
-        
     }
     
     public void removeFavoriteRecipe(Recipe recipe) {
