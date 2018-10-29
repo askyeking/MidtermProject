@@ -29,7 +29,8 @@
 	<br>
 
 	<p>${meetup.title }</p>
-
+<p> 			 user ID: ${loggedInUser.firstName }	
+</p>
 
 	Meetup stuff Goes In here.
 
