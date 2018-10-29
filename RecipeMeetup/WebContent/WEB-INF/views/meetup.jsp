@@ -41,14 +41,20 @@
 				</c:when>
 
 			</c:choose>
-			<form path="submitMeetupComment.do" method="POST" >
-				<textarea  name="text" rows="5" cols="50" >
+			<%-- <form path="submitMeetupComment.do" method="POST" > --%>
+<%-- 				<textarea  name="text" rows="5" cols="50" >
 				</textarea>
 				<br>
 				${meetup.id }asdf
 				<input type="hidden" name ="id" value="${meetup.id }"/>
-				<input type="submit" value="Submit Comment" />
-			</form>
+				<input type="submit" value="Submit Comment" /> --%>
+				<form:form  action="submitMeetupComment.do" method="POST">
+				Comment
+				<input type="text" name = "textContent" rows ="5" cols="50"/>
+				<input type="hidden" name ="id" value="${meetup.id }"/>
+				<input type="submit" value="Submit Comment" /> --%>
+				</form:form>
+			<%-- </form> --%>
 
 
 
