@@ -46,12 +46,12 @@
 			<c:forEach items="${meetups}" var="meetup">
 
 				<p>
-					Meetup: ${meetup.title}<br> ${meetup.description}<br>
+					Meetup: ${meetup.title}<br> ${meetup.title}<br>
 				</p>
 
 
-				<form action="meetupDetails.do" method="GET">
-					<input type="hidden" name="id" value="${meetup.title}" /> <input
+				<form action="showMeetupDetails.do" method="GET">
+					<input type="hidden" name="id" value="${meetup.id}" /> <input
 						type="submit" value="Details" />
 				</form>
 
@@ -64,7 +64,7 @@
 	</c:choose>
 
 	<c:choose>
-		<c:when test="${not empty recipes}">
+		<c:when test="${recipes}">
 		<h3>Recipes</h3>
 		<hr>
 			<c:forEach items="${recipes}" var="recipe">
@@ -73,8 +73,8 @@
 					Recipe: ${recipe.title }<br> 
 					Ingredients: ${recipe.ingredients }<br>
 				</p>
-				<form action="recipeDetails.do" method="GET">
-					<input type="hidden" name="id" value="${recipe.title}" /> <input
+				<form action="showRecipeDetails.do" method="GET">
+					<input type="hidden" name="id" value="${recipe.id}" /> <input
 						type="submit" value="Details" />
 				</form>
 			</c:forEach>

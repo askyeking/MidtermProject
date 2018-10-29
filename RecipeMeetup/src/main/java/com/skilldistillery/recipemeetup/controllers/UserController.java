@@ -1,5 +1,7 @@
 package com.skilldistillery.recipemeetup.controllers;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
 
@@ -26,8 +28,13 @@ public class UserController {
 	private RecipeDAO recipeDAO;
 
 	@RequestMapping(path = "index.do")
-	public String index() {
-		return "WEB-INF/views/login.jsp";
+	public ModelAndView index() {
+		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("recentRecipes", recentRecipes);
+		mv.setViewName("WEB-INF/views/login.jsp");
+		
+		return mv;
 
 	}
 

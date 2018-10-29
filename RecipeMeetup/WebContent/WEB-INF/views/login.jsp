@@ -62,35 +62,23 @@
 
 	<form>
 
-		<h3>Recent Posts</h3>
+		<h3>Recent Meetups</h3>
 			
-		<c:choose>
-		<c:when test="${not empty recentMeetups}">
 			<c:forEach items="${recentMeetups}" var="meetup">
 
-				<p>Meetup: ${meetup.title}</p>
-
-				<form action="meetupDetails.do" method="GET">
-					<input type="hidden" name="id" value="${meetup.title}" /> <input
-						type="submit" value="Details" />
-				</form>
+				<p><li>Meetup: ${meetup.title}</li></p>
+				<p>Description: ${meetup.description}</p>
 
 			</c:forEach>
-		</c:when>
-	</c:choose>
 
-	<c:choose>
-		<c:when test="${not empty recentRecipes}">
+
+		<h3>Recent Meetups</h3>
 			<c:forEach items="${recentRecipes}" var="recipe">
 			
-				<p>Recipe: ${recipe.title }</p>
-				<form action="recipeDetails.do" method="GET">
-					<input type="hidden" name="id" value="${recipe.title}" /> <input
-						type="submit" value="Details" />
-				</form>
+				<p><li>Recipe: ${recipe.title }</li></p>
+				<p>Description: ${recipe.description}</p>
+				
 			</c:forEach>
-		</c:when>
-	</c:choose>
 
 		<br>
 
