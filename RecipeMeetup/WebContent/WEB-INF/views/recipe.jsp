@@ -25,7 +25,8 @@
  			<br>
  			<br>
  			<br>
- 			<p> title: ${recipe.title }</p>		
+ 			<p> title: ${recipe.title }</p>	
+ 			<p> user ID: ${loggedInUser.firstName }	
  			
 
 
