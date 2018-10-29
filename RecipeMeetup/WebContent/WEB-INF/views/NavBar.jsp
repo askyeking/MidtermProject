@@ -34,8 +34,8 @@
 					<input type="submit" value="Search" />
 				</select>  --> 
 				
-				<form action="searchByKeyword.do" method="GET">
-					<input type="text" name="keyword" value="Search..."/>
+				<form action="searchByRecipe.do" method="GET">
+					<input type="text" name="recipe" value="Search..."/>
 					<input type="submit" value="Submit"/>
 				
 				</form>

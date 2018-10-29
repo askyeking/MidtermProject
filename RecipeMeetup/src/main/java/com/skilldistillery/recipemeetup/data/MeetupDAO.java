@@ -25,5 +25,7 @@ public interface MeetupDAO {
 
 	Meetup showMeetup(Meetup meetup);
 
+	List<Meetup> findMeetup(String meetup);
+
 	
 }

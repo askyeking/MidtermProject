@@ -126,17 +126,16 @@ public class HomeController {
 		
 	}
 		
-	@RequestMapping(path="searchByKeyword.do", method=RequestMethod.GET)
-	public ModelAndView findPostByRecipe(@RequestParam("keyword") String keyword, HttpSession session) {
+	@RequestMapping(path="searchByRecipe.do", method=RequestMethod.GET)
+	public ModelAndView findPostByRecipe(@RequestParam("recipe") String recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(keyword);
-		List<Recipe> recipes = recipeDAO.findRecipe(keyword);
+		System.out.println(recipe);
+		List<Recipe> recipes = recipeDAO.findRecipe(recipe);
 		mv.addObject("recipes", recipes);
-		mv.setViewName("/WEB-INF/views/recipe.jsp");
+		mv.setViewName("/WEB-INF/views/showAll.jsp");
 		
 		return mv;
 	}
-	
 	
 //	@RequestMapping(path="addedMeetup.do", method=RequestMethod.POST)
 //	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user, Address address) {
