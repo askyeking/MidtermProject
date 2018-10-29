@@ -13,17 +13,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-		
+	<br>
+	<br>
+	<br>
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 			<br>
-			<br>
-			<br>
-			${loggedInUser.id}
-			${recipe.recipeOwner.id}
+			
 			<p>
-			<h3>title: ${recipe.title}</h3>
+			<h3>title: ${recipe.title}</h3> <c:if test="${testBoolean }">delete     edit</c:if>
 			</p>
 			<hr>	
  			Description: ${recipe.description } <br>
@@ -34,7 +32,8 @@
  			Serving Size: ${recipe.servingSize}<br>
  			Cook Time: ${recipe.cookTime} minutes<br>
  			user ID: ${loggedInUser.firstName }	<br>
-
+			<c:if test="${testBoolean }">At least this worked</c:if>
+	
 			<c:choose>
 
 				<c:when test="${not empty listOfComments }">
