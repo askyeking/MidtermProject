@@ -33,11 +33,15 @@
  			Cook Time: ${recipe.cookTime} minutes<br>
  			user ID: ${loggedInUser.firstName }	<br>
  			
+			<c:when test="${not empty listOfComments }">
+			<c:forEach items="${listOfComments}" var="comment">
+				<p>${comment.description}</p> </c:forEach>
+ 			
  		<!-- 	List of comments here -->
  			
- 			
-
-		</c:when>
+ 		</c:when>
+ 		</c:when>
+ 		
 		<c:otherwise>
 		<br><br><br><br><br><br>
 			<h3>Only a logged in user can view this page.</h3>
