@@ -41,6 +41,9 @@
 
 				</c:when>
 			</c:choose>
+					<textarea name="comment" rows="5" cols="50">
+					Enter a comment here
+					</textarea>
 		</c:when>
 
 		<c:otherwise>

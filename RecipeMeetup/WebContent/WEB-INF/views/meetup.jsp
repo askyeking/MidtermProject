@@ -27,7 +27,6 @@
 			<p>${meetup.title }</p>
 			<p>user ID: ${loggedInUser.firstName }</p>
 
-	Meetup stuff Goes In here.
 				<c:choose>
 
 				<c:when test="${not empty listOfComments }">
@@ -36,11 +35,15 @@
 						<p>${comment.meetupCommentOwner.firstName }  ${comment.meetupCommentOwner.lastName }</p>
 						<p>${comment.textContent}</p>
 					</c:forEach>
+					
 
 				</c:when>
 
 			</c:choose>
 
+					<textarea name="comment" rows="5" cols="50">
+					Enter a comment here
+					</textarea>
 
 
 
