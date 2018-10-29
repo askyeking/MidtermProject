@@ -17,6 +17,7 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 
 	@Override
 	public RecipeComment postRecipeComment(RecipeComment comment, User author) {
+		author.addRecipeComment(comment);
 		comment.setRecipeCommentOwner(author);
 		em.persist(comment);
 		em.flush();
@@ -43,6 +44,7 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 	public boolean deleteRecipeComment(RecipeComment comment, User author) {
 		int id = comment.getId();
 		comment.setRecipeCommentOwner(author);
+		author.removeRecipeComment(comment);
 		boolean isCommentDeleted = false;
 		if(comment != null) {
 			em.remove(comment);

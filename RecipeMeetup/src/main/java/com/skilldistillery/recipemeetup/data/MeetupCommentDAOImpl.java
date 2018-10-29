@@ -17,6 +17,7 @@ public class MeetupCommentDAOImpl implements MeetupCommentDAO {
 
 	@Override
 	public MeetupComment postMeetupComment(MeetupComment comment, User author) {
+		author.addMeetupCommentPosted(comment);
 		comment.setMeetupCommentOwner(author);
 		em.persist(comment);
 		em.flush();
@@ -44,6 +45,7 @@ public class MeetupCommentDAOImpl implements MeetupCommentDAO {
 	public boolean deleteMeetupComment(MeetupComment comment, User author) {
 		int id = comment.getId();
 		comment.setMeetupCommentOwner(author);
+		author.removeMeetupCommentPosted(comment);
 		boolean isCommentDeleted = false;
 		if(comment != null) {
 			em.remove(comment);
