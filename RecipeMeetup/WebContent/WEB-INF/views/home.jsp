@@ -64,7 +64,7 @@
 				
 
 				<form action="showMeetupDetails.do" method="GET">
-					<input type="hidden" name="id" value="${meetup.title}" /> <input
+					<input type="hidden" name="id" value="${meetup.id}" /> <input
 						type="submit" value="Details" />
 				</form> 
 
@@ -86,7 +86,7 @@
 					${recipe.ingredients }<br>
 				</p>
 				<form action="showRecipeDetails.do" method="GET">
-					<input type="hidden" name="id" value="${recipe.title}" /> <input
+					<input type="hidden" name="id" value="${recipe.id}" /> <input
 						type="submit" value="Details" />
 				</form>
 			</c:forEach>
