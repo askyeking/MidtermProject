@@ -32,6 +32,13 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 	
 	@Override
+	public Recipe showRecipeById(int Id) {
+		String jpql = "SELECT recipe from Recipe recipe where id = :id";
+		Recipe recipeById = em.createQuery(jpql, Recipe.class).setParameter("id", Id).getSingleResult();
+		return recipeById;
+	}
+	
+	@Override
 	public List<Recipe> showMoreRecipes() {
 		String query = "SELECT recipes FROM Recipe recipes";
 		List<Recipe> moreRecipes = em.createQuery(query, Recipe.class)
