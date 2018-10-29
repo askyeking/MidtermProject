@@ -63,7 +63,7 @@
 				</p>
 				
 
-				<form action="meetupDetails.do" method="GET">
+				<form action="showMeetupDetails.do" method="GET">
 					<input type="hidden" name="id" value="${meetup.title}" /> <input
 						type="submit" value="Details" />
 				</form> 
@@ -85,7 +85,7 @@
 				<p>Recipe: ${recipe.title }<br>
 					${recipe.ingredients }<br>
 				</p>
-				<form action="recipeDetails.do" method="GET">
+				<form action="showRecipeDetails.do" method="GET">
 					<input type="hidden" name="id" value="${recipe.title}" /> <input
 						type="submit" value="Details" />
 				</form>
