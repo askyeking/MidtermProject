@@ -22,9 +22,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 	public Recipe createRecipe(Recipe recipe) {
 		em.persist(recipe);
 		em.flush();
+		
 		return recipe;
 	}
-
+	
 	@Override
 	public Recipe showRecipe(Recipe recipe) {
 		Recipe singleRecipe = em.find(Recipe.class, recipe);
