@@ -42,6 +42,7 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 	@Override
 	public boolean deleteRecipeComment(RecipeComment comment, User author) {
 		int id = comment.getId();
+		comment.setRecipeCommentOwner(author);
 		boolean isCommentDeleted = false;
 		if(comment != null) {
 			em.remove(comment);
