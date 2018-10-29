@@ -64,7 +64,7 @@
 	</c:choose>
 
 	<c:choose>
-		<c:when test="${recipes}">
+		<c:when test="${not empty recipes}">
 		<h3>Recipes</h3>
 		<hr>
 			<c:forEach items="${recipes}" var="recipe">
