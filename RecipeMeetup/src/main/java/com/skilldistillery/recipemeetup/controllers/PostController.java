@@ -40,7 +40,15 @@ public class PostController {
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("testBoolean" , new Boolean(true));
+		Boolean canEdit = new Boolean(false);
+		
+		recipe = recipeDAO.showRecipeById(recipe.getId());
+		User currentUser = (User) session.getAttribute("loggedInUser");
+		
+		if ((recipe.getRecipeOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
+			canEdit = true;
+		}
+		mv.addObject("canEditPost" , canEdit);
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
 		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments(recipe.getId()));
 		mv.setViewName("/WEB-INF/views/recipe.jsp");
