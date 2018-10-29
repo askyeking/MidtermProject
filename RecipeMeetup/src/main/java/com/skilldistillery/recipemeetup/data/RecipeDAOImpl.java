@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.recipemeetup.entities.Recipe;
+import com.skilldistillery.recipemeetup.entities.User;
 
 
 @Transactional
@@ -19,7 +20,8 @@ public class RecipeDAOImpl implements RecipeDAO {
 	private EntityManager em;
 
 	@Override
-	public Recipe createRecipe(Recipe recipe) {
+	public Recipe createRecipe(Recipe recipe, User user) {
+		recipe.setRecipeOwner(user);
 		em.persist(recipe);
 		em.flush();
 		return recipe;
