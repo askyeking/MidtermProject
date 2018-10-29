@@ -1,5 +1,11 @@
 package com.skilldistillery.recipemeetup.controllers;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -28,18 +34,36 @@ public class HomeController {
 	
 	
 	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
-	public ModelAndView addedMeetup(Meetup meetup, Address address, HttpSession session) {
+	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
+		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView();
+		String startTime = ldt.substring(0, 10) + " " + ldt.substring(11);
+		
 		User author = (User) session.getAttribute("loggedInUser");
-		System.out.println(author.getId());
+		
+		java.util.Date dt = new java.util.Date();
+		
+		java.text.SimpleDateFormat sdf = 
+		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+		
+		try {
+//			System.out.println(startDate); System.out.println(startTime);
+			dt = sdf.parse(startTime);
+			meetup.setStartTime(dt);
+		} catch (ParseException e) {
+			System.out.println("excepton on date parsing");
+			e.printStackTrace();
+		}
+		
 		
 		if (meetup != null) {
+			meetup.setStartTime(dt);
 			meetup = meetupDAO.createMeetup(meetup, author, address);
 			mv.addObject("meetupCreated", meetup);
-			mv.setViewName("WEB-INF/views/profilePage.jsp");
+			mv.setViewName("redirect:showMeetupDetails.do");
 		}
 		else {
-			mv.setViewName("WEB-INF/views/createRecipe.jsp");
+			mv.setViewName("redirect:createMeetup.do");
 		}
 		
 		return mv;
@@ -81,7 +105,7 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(path="createMeetup.do", method=RequestMethod.POST)
+	@RequestMapping(path="createMeetup.do", method=RequestMethod.GET)
 	public ModelAndView createMeetup() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/WEB-INF/views/createMeetup.jsp");
@@ -90,7 +114,7 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(path="createRecipe.do", method=RequestMethod.POST)
+	@RequestMapping(path="createRecipe.do", method=RequestMethod.GET)
 	public ModelAndView createRecipe() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/WEB-INF/views/createRecipe.jsp");

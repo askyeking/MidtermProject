@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,7 @@ import com.skilldistillery.recipemeetup.data.RecipeCommentDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
+import com.skilldistillery.recipemeetup.entities.RecipeComment;
 import com.skilldistillery.recipemeetup.entities.User;
 
 
@@ -34,9 +36,8 @@ public class PostController {
 	
 	
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
-	public ModelAndView showRecipe(Recipe recipe, HttpSession session, User user ) {
+	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("loggedInUser" , session.getAttribute("loggedInUser"));
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
 		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments(recipe.getId()));
 		mv.setViewName("/WEB-INF/views/recipe.jsp");
@@ -44,9 +45,8 @@ public class PostController {
 	}
 	
 	@RequestMapping(path="showMeetupDetails.do", method=RequestMethod.GET)
-	public ModelAndView showMeetup(Meetup meetup, HttpSession session, User user) {
+	public ModelAndView showMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("loggedInUser", session.getAttribute("loggedInUser"));
 		mv.addObject("meetup",meetupDAO.findSingleMeetup(meetup.getId()));
 		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(meetup.getId()));
 
@@ -54,8 +54,15 @@ public class PostController {
 		return mv;
 	}
 	
-	
-	
+	@RequestMapping(path="postRecipeComment.do", method=RequestMethod.GET)
+	public ModelAndView postRecipeComment(Model model, RecipeComment comment, User author, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(comment, author);
+		mv.addObject("recipeComment", recipeComment);
+		
+		return null;
+		
+	}
 	
 	
 }
