@@ -113,7 +113,7 @@ public class UserController {
 			System.out.println(recipeDAO);
 			newRecipe = recipeDAO.createRecipe(recipe, user);
 			mv.addObject("recipe", newRecipe);
-			mv.setViewName("WEB-INF/views/profilePage.jsp");
+			mv.setViewName("WEB-INF/views/recipe.jsp");
 		}
 		else {
 			mv.setViewName("WEB-INF/views/createRecipe.jsp");
