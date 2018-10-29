@@ -1,7 +1,9 @@
 package com.skilldistillery.recipemeetup.controllers;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
 import java.util.List;
@@ -32,9 +34,11 @@ public class HomeController {
 	
 	
 	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
-	public ModelAndView addedMeetup(Meetup meetup, Address address, HttpSession session) {
+	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
 		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView();
+		System.out.println(ldt);
+		String startTime = ldt.substring(0, 10) + " " + ldt.substring(11);
 		
 		User author = (User) session.getAttribute("loggedInUser");
 		System.out.println(author.getId());
@@ -42,10 +46,12 @@ public class HomeController {
 		java.util.Date dt = new java.util.Date();
 		
 		java.text.SimpleDateFormat sdf = 
-		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
+		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+		
 		try {
-			dt = sdf.parse("2018-11-01 02:02:02");
+//			System.out.println(startDate); System.out.println(startTime);
+			dt = sdf.parse(startTime);
+			meetup.setStartTime(dt);
 		} catch (ParseException e) {
 			System.out.println("excepton on date parsing");
 			e.printStackTrace();
