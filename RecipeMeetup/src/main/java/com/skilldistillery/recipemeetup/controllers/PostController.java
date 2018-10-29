@@ -72,7 +72,7 @@ public class PostController {
 //		System.out.println("******** MY ID IS: " + id + "****************");
 		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(comment, author);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("meetup", meetupDAO.findSingleMeetup(id));
+		mv.addObject("meetup", meetupDAO.findSingleMeetup(meetupComment.getMeetupCommentedOn().getId()));
 		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(id));
 		mv.setViewName("/WEB-INF/views/meetup.jsp");
 		return mv;
