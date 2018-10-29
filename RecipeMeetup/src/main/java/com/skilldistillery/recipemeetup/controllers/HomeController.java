@@ -27,6 +27,8 @@ public class HomeController {
 	private RecipeDAO recipeDAO;
 	
 	
+//	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
+	
 	@RequestMapping(path= "home.do", method = RequestMethod.GET)
 	public ModelAndView showMore(Model model, HttpSession session, User user) {
 		ModelAndView mv = new ModelAndView();

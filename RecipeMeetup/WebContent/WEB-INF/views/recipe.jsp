@@ -17,6 +17,16 @@
 
 
 		Put content in here
+<%-- 		<c:out value="${'${recipe.title' } "/>
+
+ --%>
+ 			<br>
+ 			<br>
+ 			<br>
+ 			<br>
+ 			<br>
+ 			<p> title: ${recipe.title }</p>		
+ 			
 
 
 
