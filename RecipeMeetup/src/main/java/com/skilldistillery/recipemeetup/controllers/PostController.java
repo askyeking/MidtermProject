@@ -55,7 +55,7 @@ public class PostController {
 		return mv;
 	}
 	
-	@RequestMapping(path="postRecipeComment.do", method=RequestMethod.POST)
+	@RequestMapping(path="submitRecipeComment.do", method=RequestMethod.POST)
 	public ModelAndView postRecipeComment(Model model, RecipeComment comment, User author, HttpSession session) {
 //		ModelAndView mv = new ModelAndView();
 		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(comment, author);
@@ -65,7 +65,7 @@ public class PostController {
 		return showRecipe(comment.getRecipeCommentedOn(), session);		
 	}
 	
-	@RequestMapping(path="postMeetupComment.do", method=RequestMethod.POST)
+	@RequestMapping(path="submitMeetupComment.do", method=RequestMethod.POST)
 	public ModelAndView postMeetupComment(Model model, MeetupComment comment, User author, HttpSession session) {
 		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(comment, author);
 				
