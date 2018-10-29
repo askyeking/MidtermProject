@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -120,7 +121,16 @@ public class RecipeDAOImpl implements RecipeDAO {
 		}		
 		return isRecipeActive;
 	}
-
-
+	
+	@Override
+	public List<Recipe> findRecipe(String recipe) {
+		List<Recipe> recipes = new ArrayList<>();
+		String query = "SELECT r FROM Recipe r WHERE r.title LIKE :title";
+		recipes = em.createQuery(query, Recipe.class)
+				.setParameter(1, "%" + recipe + "%")
+				.getResultList();
+		
+		return recipes;
+	}
 
 }
