@@ -21,7 +21,8 @@
 			<br>
 			
 			<p>
-			<h3>title: ${recipe.title}</h3> <c:if test="${canEditPost}">delete     edit</c:if>
+			<h3>title: ${recipe.title}</h3> 
+			<c:if test="${canEditPost}">delete     edit</c:if>
 			
 			</p>
 			<hr>	
