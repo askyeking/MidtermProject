@@ -27,7 +27,23 @@ public class HomeController {
 	private RecipeDAO recipeDAO;
 	
 	
-//	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
+	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
+	public ModelAndView addedMeetup(Meetup meetup, Address address, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User author = (User) session.getAttribute("loggedInUser");
+		System.out.println(author.getId());
+		
+		if (meetup != null) {
+			meetup = meetupDAO.createMeetup(meetup, author, address);
+			mv.addObject("meetupCreated", meetup);
+			mv.setViewName("WEB-INF/views/profilePage.jsp");
+		}
+		else {
+			mv.setViewName("WEB-INF/views/createRecipe.jsp");
+		}
+		
+		return mv;
+	}
 	
 	@RequestMapping(path= "home.do", method = RequestMethod.GET)
 	public ModelAndView showMore(Model model, HttpSession session, User user) {
