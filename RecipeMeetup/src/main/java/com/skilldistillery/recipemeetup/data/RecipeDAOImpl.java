@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
 
@@ -136,5 +137,5 @@ public class RecipeDAOImpl implements RecipeDAO {
 		
 		return recipes;
 	}
-
+	
 }

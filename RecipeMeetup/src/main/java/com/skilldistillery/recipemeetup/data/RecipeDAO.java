@@ -2,6 +2,7 @@ package com.skilldistillery.recipemeetup.data;
 
 import java.util.List;
 
+import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
 

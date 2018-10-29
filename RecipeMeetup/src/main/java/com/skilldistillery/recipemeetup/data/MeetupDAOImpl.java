@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -124,12 +125,18 @@ public class MeetupDAOImpl implements MeetupDAO {
 		//select * from meetup order by date_created asc limit 5;
 		List<Meetup> recentMeetups = em.createQuery(jpql, Meetup.class).setMaxResults(5).getResultList();
 		return recentMeetups;
-		
 	}
 	
+	@Override
+	public List<Meetup> findMeetup(String meetup) {
+	List<Meetup> meetups = new ArrayList<>();
+	String query = "SELECT m FROM Meetup m WHERE m.title LIKE ?1 OR m.description ?2";
+	meetups = em.createQuery(query, Meetup.class)
+			.setParameter(1, "%" + meetup + "%")
+			.setParameter(2, "%" + meetup + "%")
+			.getResultList();
 	
-	
-	
-	
-
+	return meetups;
+			
+	}
 }
