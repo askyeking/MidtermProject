@@ -60,7 +60,7 @@ public class HomeController {
 			meetup.setStartTime(dt);
 			meetup = meetupDAO.createMeetup(meetup, author, address);
 			mv.addObject("meetupCreated", meetup);
-			mv.setViewName("redirect:showMeetupDetails.do");
+			mv.setViewName("redirect:showMeetupDetails.do?id="+meetup.getId());
 		}
 		else {
 			mv.setViewName("redirect:createMeetup.do");
