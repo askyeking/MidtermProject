@@ -46,7 +46,6 @@
 				</textarea>
 				<br>
 				<input type="submit" value="Submit Comment" />
-
 			</form>
 
 

@@ -34,16 +34,20 @@
 
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments}" var="comment">
-						<p>${comment.recipeCommentOwner.firstName }  ${comment.recipeCommentOwner.lastName }</p>
+						<p>${comment.recipeCommentOwner.firstName }
+							${comment.recipeCommentOwner.lastName }</p>
 						<p>${comment.comment}</p>
 						<hr>
 					</c:forEach>
 
 				</c:when>
 			</c:choose>
-					<textarea name="comment" rows="5" cols="50">
-					Enter a comment here
-					</textarea>
+			<form path="submitMeetupComment.do" method="post">
+				<textarea rows="5" cols="50">
+				</textarea>
+				<br> <input type="submit" value="Submit Comment" />
+			</form>
+
 		</c:when>
 
 		<c:otherwise>
