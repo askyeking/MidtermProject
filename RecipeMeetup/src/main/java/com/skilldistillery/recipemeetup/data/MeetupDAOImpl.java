@@ -93,7 +93,6 @@ public class MeetupDAOImpl implements MeetupDAO {
 //		meetup.setMeetupAddress(address);
 //		meetup.setMeetupOwner(user);
 //		em.persist(meetup);
-		System.out.println("In create meetup");
 		user.addMeetupOwned(meetup);
 		meetup.setMeetupOwner(user);
 		

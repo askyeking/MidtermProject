@@ -50,9 +50,9 @@
 				<input type="submit" value="Submit Comment" /> --%>
 				<form:form  action="submitMeetupComment.do" method="POST">
 				Comment
-				<input type="text" name = "textContent" rows ="5" cols="50"/>
 				<input type="hidden" name ="id" value="${meetup.id }"/>
-				<input type="submit" value="Submit Comment" /> --%>
+				<input type="text" name = "textContent" rows ="5" cols="50"/>
+				<input type="submit" value="Submit Comment" />
 				</form:form>
 			<%-- </form> --%>
 

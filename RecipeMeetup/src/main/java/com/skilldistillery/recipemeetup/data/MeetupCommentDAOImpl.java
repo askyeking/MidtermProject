@@ -1,10 +1,14 @@
 package com.skilldistillery.recipemeetup.data;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
+
+import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.MeetupComment;
 import com.skilldistillery.recipemeetup.entities.User;
 
@@ -16,9 +20,16 @@ public class MeetupCommentDAOImpl implements MeetupCommentDAO {
 	private EntityManager em;
 
 	@Override
-	public MeetupComment postMeetupComment(MeetupComment comment, User author) {
+	public MeetupComment postMeetupComment(Meetup meetup, MeetupComment comment, User author) {
 		author.addMeetupCommentPosted(comment);
 		comment.setMeetupCommentOwner(author);
+		
+		meetup.addMeetupComment(comment);
+		comment.setMeetupCommentedOn(meetup);
+		
+		System.out.println(comment);
+		System.out.println(meetup);
+		System.out.println(author);
 		em.persist(comment);
 		em.flush();
 		
