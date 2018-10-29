@@ -89,10 +89,12 @@ public class MeetupDAOImpl implements MeetupDAO {
 	@Override
 	public Meetup createMeetup(Meetup meetup, User user, Address address) {
 		// Inside controller set authorId to User ID
-		em.persist(address);
+//		em.persist(address);
+//		meetup.setMeetupAddress(address);
+//		meetup.setMeetupOwner(user);
+//		em.persist(meetup);
 		meetup.setMeetupAddress(address);
-		meetup.setMeetupOwner(user);
-		em.persist(meetup);
+		
 		em.flush();
 		return meetup;
 	}

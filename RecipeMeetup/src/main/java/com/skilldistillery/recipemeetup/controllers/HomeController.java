@@ -81,27 +81,27 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(path="addedMeetup.do", method=RequestMethod.POST)
-	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user, Address address) {
-		ModelAndView mv = new ModelAndView();
-		Meetup newMeetup = meetupDAO.createMeetup(meetup, user, address);
-		mv.addObject("meetup", newMeetup);
-		mv.setViewName("/WEB-INF/views/home.jsp");
-		
-		return mv;
-		
-	}
-	
-	@RequestMapping(path="addedRecipe.do", method=RequestMethod.POST)
-	public ModelAndView postRecipe(Recipe recipe, Model model, HttpSession session, User user) {
-		ModelAndView mv = new ModelAndView();
-		Recipe newRecipe = recipeDAO.createRecipe(recipe);
-		mv.addObject("recipe", newRecipe);
-		mv.setViewName("/WEB-INF/views/home.jsp");
-		
-		return mv;
-		
-	}
+//	@RequestMapping(path="addedMeetup.do", method=RequestMethod.POST)
+//	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user, Address address) {
+//		ModelAndView mv = new ModelAndView();
+//		Meetup newMeetup = meetupDAO.createMeetup(meetup, user, address);
+//		mv.addObject("meetup", newMeetup);
+//		mv.setViewName("/WEB-INF/views/home.jsp");
+//		
+//		return mv;
+//		
+//	}
+//	
+//	@RequestMapping(path="addedRecipe.do", method=RequestMethod.POST)
+//	public ModelAndView postRecipe(Recipe recipe, Model model, HttpSession session, User user) {
+//		ModelAndView mv = new ModelAndView();
+//		Recipe newRecipe = recipeDAO.createRecipe(recipe);
+//		mv.addObject("recipe", newRecipe);
+//		mv.setViewName("/WEB-INF/views/home.jsp");
+//		
+//		return mv;
+//		
+//	}
 
 	
 }

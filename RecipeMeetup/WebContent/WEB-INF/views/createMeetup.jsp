@@ -38,17 +38,24 @@
 				<h3>Maximum Attendance</h3>
 				<input type="number" name="maxAttendance" value="" maxlength="45"
 					required /><br>
-				<h3>Address</h3>
-				<input type="text" name="address.street" value="Street"
-					maxlength="190" required /><br> <input type="text"
-					name="address.city" value="City" maxlength="100" required /><br>
-				<input type="text" name="address.state" value="State" maxlength="2"
-					required /><br> <input type="number" name="postalCode"
-					value="PostalCode" min="00000" max="99999" required /><br>
+				<h3>Start time</h3>
+				<input type="datetime" name="startTime" required /><br>
+				<h3>End time</h3>
+				<input type="datetime" name="endTime"/><br>
 				<h3>Set a Meetup Picture</h3>
-				<input type="url" name="imageURL" maxlength="45"><br> <br>
+				URL: <input type="url" name="imageURL" maxlength="45"><br> <br>
 				<input type="submit" value="Submit" />
+				
+				
+				<h3>Address</h3>
+				Street: <input type="text" name="street" value="Street" maxlength="190" required /><br>
+				City: <input type="text" name="city" value="City" maxlength="100" required /><br> <input
+					type="text" name="state" value="State" maxlength="2" required /><br>
+				Postal code: <input type="number" name="postalCode" value="PostalCode" min="00000" max="99999" required /><br>
 			</form>
+		
+
+				
 
 
 
