@@ -38,7 +38,7 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("loggedInUser" , session.getAttribute("loggedInUser"));
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
-		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments());
+		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments(recipe.getId()));
 		mv.setViewName("/WEB-INF/views/recipe.jsp");
 		return mv;
 	}
@@ -48,7 +48,7 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("loggedInUser", session.getAttribute("loggedInUser"));
 		mv.addObject("meetup",meetupDAO.findSingleMeetup(meetup.getId()));
-		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments());
+		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(meetup.getId()));
 
 		mv.setViewName("/WEB-INF/views/meetup.jsp");
 		return mv;
