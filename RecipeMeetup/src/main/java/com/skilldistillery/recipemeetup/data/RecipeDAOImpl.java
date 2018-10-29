@@ -125,10 +125,14 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public List<Recipe> findRecipe(String recipe) {
 		List<Recipe> recipes = new ArrayList<>();
-		String query = "SELECT r FROM Recipe r WHERE r.title LIKE :title";
+		String query = "SELECT r FROM Recipe r WHERE r.title LIKE ?1 OR r.description LIKE ?2 OR r.ingredients LIKE ?3";
+		System.out.println(recipe);
 		recipes = em.createQuery(query, Recipe.class)
 				.setParameter(1, "%" + recipe + "%")
+				.setParameter(2, "%" + recipe + "%")
+				.setParameter(3, "%" + recipe + "%")
 				.getResultList();
+		System.out.println(recipes);
 		
 		return recipes;
 	}

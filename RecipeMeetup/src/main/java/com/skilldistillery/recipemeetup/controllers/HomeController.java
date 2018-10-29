@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.recipemeetup.data.MeetupDAO;
@@ -105,6 +106,7 @@ public class HomeController {
 		
 	}
 	
+	//add session in method????
 	@RequestMapping(path="createMeetup.do", method=RequestMethod.GET)
 	public ModelAndView createMeetup() {
 		ModelAndView mv = new ModelAndView();
@@ -114,6 +116,7 @@ public class HomeController {
 		
 	}
 	
+	//add session in method????
 	@RequestMapping(path="createRecipe.do", method=RequestMethod.GET)
 	public ModelAndView createRecipe() {
 		ModelAndView mv = new ModelAndView();
@@ -123,12 +126,14 @@ public class HomeController {
 		
 	}
 		
-	@RequestMapping(path="searchByRecipe.do", params="recipe", method=RequestMethod.GET)
-	public ModelAndView findPostByRecipe(String recipe) {
+	@RequestMapping(path="searchByKeyword.do", method=RequestMethod.GET)
+	public ModelAndView findPostByRecipe(@RequestParam("keyword") String keyword, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		List<Recipe> recipes = recipeDAO.findRecipe(recipe);
+		System.out.println(keyword);
+		List<Recipe> recipes = recipeDAO.findRecipe(keyword);
 		mv.addObject("recipes", recipes);
 		mv.setViewName("/WEB-INF/views/recipe.jsp");
+		
 		return mv;
 	}
 	

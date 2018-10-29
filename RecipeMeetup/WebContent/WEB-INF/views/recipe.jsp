@@ -13,7 +13,7 @@
 <body>
 
 	<c:choose>
-		<c:when test="${not empty loggedInUser }">
+		<c:when test="${not empty loggedInUser && empty recipes}">
 			<br>
 			<br>
 			<br>
@@ -71,8 +71,48 @@
 
 		</c:otherwise>
 	</c:choose>
+	
+	
+	<c:choose>
+		<c:when test="${not empty recipes }">
+			<c:forEach items="${recipes}" var="recipes">
+			<br>
+			<br>
+			<br>
+			<p>
+			<h3>title: ${recipes.title}</h3>
+			</p>
+			<hr>	
+ 			Description: ${recipes.description } <br>
+ 			Ingredients: ${recipes.ingredients} <br>
+ 			Instructions: ${recipes.instructions}<br>
+ 			Category: ${recipes.category}<br>
+ 			Origin: ${recipes.country}<br>
+ 			Serving Size: ${recipes.servingSize}<br>
+ 			Cook Time: ${recipes.cookTime} minutes<br>
+ 			user ID: ${loggedInUser.firstName }	<br> 
 
+			<c:choose>
 
+				<c:when test="${not empty listOfComments }">
+					<c:forEach items="${listOfComments}" var="comment">
+						<p>${comment.recipeCommentOwner.firstName }
+							${comment.recipeCommentOwner.lastName }</p>
+						<p>${comment.comment}</p>
+						<hr>
+					</c:forEach>
 
+				</c:when>
+			</c:choose>
+			<form path="submitRecipeComment.do" method="post">
+				<textarea rows="5" cols="50">
+				</textarea>
+				<br> <input type="submit" value="Submit Comment" />
+			</form>
+		</c:forEach>
+		</c:when>
+	</c:choose>
+	
+	
 </body>
 </html>
