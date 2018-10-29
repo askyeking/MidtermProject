@@ -28,17 +28,18 @@
 			<p>user ID: ${loggedInUser.firstName }</p>
 
 	Meetup stuff Goes In here.
-	
-			
-				<c:when test="${not empty listOfComments }">
-				<c:forEach items="${listOfComments }" var="comment" >
-				<hr>
-					<p>comment.description</p>
-				</c:forEach>
-					
-				</c:when>
-		
+				<c:choose>
 
+				<c:when test="${not empty listOfComments }">
+					<c:forEach items="${listOfComments }" var="comment">
+						<hr>
+						<p>${comment.meetupCommentOwner.firstName }  ${comment.meetupCommentOwner.lastName }</p>
+						<p>${comment.textContent}</p>
+					</c:forEach>
+
+				</c:when>
+
+			</c:choose>
 
 
 
