@@ -1,5 +1,9 @@
 package com.skilldistillery.recipemeetup.controllers;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,11 +33,28 @@ public class HomeController {
 	
 	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
 	public ModelAndView addedMeetup(Meetup meetup, Address address, HttpSession session) {
+		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView();
+		
 		User author = (User) session.getAttribute("loggedInUser");
 		System.out.println(author.getId());
 		
+		java.util.Date dt = new java.util.Date();
+		
+		java.text.SimpleDateFormat sdf = 
+		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		try {
+			dt = sdf.parse("2018-11-01 02:02:02");
+		} catch (ParseException e) {
+			System.out.println("excepton on date parsing");
+			e.printStackTrace();
+		}
+		
+		System.out.println(meetup);
+		
 		if (meetup != null) {
+			meetup.setStartTime(dt);
 			meetup = meetupDAO.createMeetup(meetup, author, address);
 			mv.addObject("meetupCreated", meetup);
 			mv.setViewName("WEB-INF/views/profilePage.jsp");
