@@ -26,7 +26,7 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 
 	@Override
 	public List<RecipeComment> showAllRecipeComments(int id) {
-		String query = "SELECT comments FROM RecipeComment comments WHERE comments.recipe_id = :id";
+		String query = "SELECT comments FROM RecipeComment comments WHERE comments.recipeCommentedOn.id = :id";
 		List<RecipeComment> allComments = em.createQuery(query, RecipeComment.class)
 				.setParameter("id", id)
 				.getResultList();

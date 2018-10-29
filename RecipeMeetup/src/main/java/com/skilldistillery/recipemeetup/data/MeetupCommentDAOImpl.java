@@ -27,7 +27,7 @@ public class MeetupCommentDAOImpl implements MeetupCommentDAO {
 
 	@Override
 	public List<MeetupComment> showAllMeetupComments(int id) {
-		String query = "SELECT comments FROM MeetupComment comments WHERE comments.meetup_id = :id";
+		String query = "SELECT comments FROM MeetupComment comments WHERE comments.meetupCommentedOn.id = :id";
 		List<MeetupComment> allComments = em.createQuery(query, MeetupComment.class)
 				.setParameter("id", id)
 				.getResultList();
