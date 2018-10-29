@@ -22,6 +22,7 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired
 	private RecipeDAO recipeDAO;
 
 	@RequestMapping(path = "index.do")
@@ -108,6 +109,8 @@ public class UserController {
 		user = (User) session.getAttribute("loggedInUser");
 		System.out.println(user.getId());
 		if (recipe != null) {
+			System.out.println(recipe);
+			System.out.println(recipeDAO);
 			newRecipe = recipeDAO.createRecipe(recipe, user);
 			mv.addObject("recipe", newRecipe);
 			mv.setViewName("WEB-INF/views/profilePage.jsp");
