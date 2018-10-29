@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <c:if test="${not empty loggedInUser }"><%@include
 		file="NavBar.jsp"%></c:if>
 <!DOCTYPE html>
@@ -11,14 +13,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<br>
+	<br>
+	<br>
 	<c:choose>
 		<c:when test="${not empty loggedInUser && empty recipes}">
 			<br>
-			<br>
-			<br>
+			
 			<p>
-			<h3>title: ${recipe.title}</h3>
+			<h3>title: ${recipe.title}</h3> 
+			<c:if test="${canEditPost}">delete     edit</c:if>
+			
 			</p>
 			<hr>	
  			Description: ${recipe.description } <br>
@@ -28,8 +33,9 @@
  			Origin: ${recipe.country}<br>
  			Serving Size: ${recipe.servingSize}<br>
  			Cook Time: ${recipe.cookTime} minutes<br>
- 			user ID: ${loggedInUser.firstName }	<br>
-
+ 			user: ${loggedInUser.firstName }	<br>
+			<c:if test="${testBoolean }">At least this worked</c:if>
+	
 			<c:choose>
 
 				<c:when test="${not empty listOfComments }">

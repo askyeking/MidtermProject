@@ -36,11 +36,18 @@ public class PostController {
 	
 	
 	
-	
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("testBoolean" , new Boolean(true));
+		Boolean canEdit = new Boolean(false);
+		
+		recipe = recipeDAO.showRecipeById(recipe.getId());
+		User currentUser = (User) session.getAttribute("loggedInUser");
+		
+		if ((recipe.getRecipeOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
+			canEdit = true;
+		}
+		mv.addObject("canEditPost" , canEdit);
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
 		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments(recipe.getId()));
 		mv.setViewName("/WEB-INF/views/recipe.jsp");
@@ -63,18 +70,17 @@ public class PostController {
 		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(comment, author);
 //		mv.addObject("recipeComment", recipeComment);
 //		mv.setViewName("/WEB-INF/views/recipe.jsp");
-		
 		return showRecipe(comment.getRecipeCommentedOn(), session);		
 	}
 	
 	@RequestMapping(path="submitMeetupComment.do", method=RequestMethod.POST)
-	public ModelAndView postMeetupComment(@RequestParam("id") int id, Model model, MeetupComment comment, User author, HttpSession session) {
-//		System.out.println("******** MY ID IS: " + id + "****************");
+	public ModelAndView postMeetupComment(Meetup meetup, MeetupComment comment, User author, HttpSession session) {
+		System.out.println("******** MY ID IS: " + meetup.getId() + "****************");
 		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(comment, author);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("meetup", meetupDAO.findSingleMeetup(id));
-		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(id));
-		mv.setViewName("/WEB-INF/views/meetup.jsp");
+//		mv.addObject("meetup", meetupDAO.findSingleMeetup(meetupComment.getMeetupCommentedOn().getId()));
+//		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(id));
+		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetupComment.getMeetupCommentedOn().getId());
 		return mv;
 //		return showMeetup(comment.getMeetupCommentedOn(), session);
 		
