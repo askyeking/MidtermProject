@@ -36,7 +36,6 @@ public class PostController {
 	
 	
 	
-	
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -71,7 +70,6 @@ public class PostController {
 		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(comment, author);
 //		mv.addObject("recipeComment", recipeComment);
 //		mv.setViewName("/WEB-INF/views/recipe.jsp");
-		
 		return showRecipe(comment.getRecipeCommentedOn(), session);		
 	}
 	
@@ -80,7 +78,7 @@ public class PostController {
 //		System.out.println("******** MY ID IS: " + id + "****************");
 		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(comment, author);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("meetup", meetupDAO.findSingleMeetup(id));
+		mv.addObject("meetup", meetupDAO.findSingleMeetup(meetupComment.getMeetupCommentedOn().getId()));
 		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(id));
 		mv.setViewName("/WEB-INF/views/meetup.jsp");
 		return mv;
