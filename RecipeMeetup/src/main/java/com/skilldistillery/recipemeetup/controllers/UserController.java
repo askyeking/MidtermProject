@@ -98,7 +98,6 @@ public class UserController {
 //		User activeUser = (User) session.getAttribute("loggedInUser");
 //		mv.addObject(activeUser);
 		mv.setViewName("WEB-INF/views/profilePage.jsp");
-		
 		return mv;
 	}
 	
@@ -107,13 +106,12 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		Recipe newRecipe = null;
 		user = (User) session.getAttribute("loggedInUser");
-		System.out.println(user.getId());
 		if (recipe != null) {
 			System.out.println(recipe);
 			System.out.println(recipeDAO);
 			newRecipe = recipeDAO.createRecipe(recipe, user);
 			mv.addObject("recipe", newRecipe);
-			mv.setViewName("WEB-INF/views/profilePage.jsp");
+			mv.setViewName("WEB-INF/views/recipe.jsp");
 		}
 		else {
 			mv.setViewName("WEB-INF/views/createRecipe.jsp");
