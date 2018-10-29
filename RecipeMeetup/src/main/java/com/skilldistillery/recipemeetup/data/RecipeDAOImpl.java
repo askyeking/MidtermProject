@@ -21,10 +21,17 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe createRecipe(Recipe recipe, User user) {
-		user.addRecipeOwnedByUser(recipe);
-		recipe.setRecipeOwner(user);
+		System.out.println(user);
 		System.out.println(recipe);
-		em.persist(user);
+		
+		System.out.println("which one is it? 1 or");
+		user.addRecipeOwnedByUser(recipe);
+		System.out.println(2);
+		recipe.setRecipeOwner(user);
+		
+		
+		System.out.println(recipe);
+		em.persist(recipe);
 		em.flush();
 		
 		return recipe;
