@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.recipemeetup.data.MeetupCommentDAO;
 import com.skilldistillery.recipemeetup.data.MeetupDAO;
+import com.skilldistillery.recipemeetup.data.RecipeCommentDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
@@ -23,6 +25,10 @@ public class PostController {
 	private MeetupDAO meetupDAO;
 	@Autowired
 	private RecipeDAO recipeDAO;
+	@Autowired
+	private RecipeCommentDAO recipeCommentDAO;
+	@Autowired
+	private MeetupCommentDAO meetupCommentDAO;
 	
 	
 	
@@ -32,6 +38,7 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("loggedInUser" , session.getAttribute("loggedInUser"));
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
+		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments());
 		mv.setViewName("/WEB-INF/views/recipe.jsp");
 		return mv;
 	}
@@ -41,6 +48,8 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("loggedInUser", session.getAttribute("loggedInUser"));
 		mv.addObject("meetup",meetupDAO.findSingleMeetup(meetup.getId()));
+		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments());
+
 		mv.setViewName("/WEB-INF/views/meetup.jsp");
 		return mv;
 	}
