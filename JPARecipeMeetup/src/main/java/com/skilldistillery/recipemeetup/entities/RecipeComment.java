@@ -41,7 +41,9 @@ public class RecipeComment {
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> recipeCommentLikers;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	
+	//(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User recipeCommentOwner;
 	
