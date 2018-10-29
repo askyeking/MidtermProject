@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Recipe Details</title>
 </head>
 <body>
 	<br>
@@ -21,9 +21,15 @@
 			<br>
 			
 			<p>
-			<h3>title: ${recipe.title}</h3> 
-			<c:if test="${canEditPost}">delete     edit</c:if>
-			
+			<h3>${recipe.title}</h3> 
+			<form action="editRecipe.do" method="post">
+				<input type="submit" value="Edit" />
+			</form>
+			<form action="DeleteRecipe.do" method="post">
+				<input type="submit" value="Delete" />
+			</form>
+			<c:if test="${canEditPost}"></c:if>
+		
 			</p>
 			<hr>	
  			Description: ${recipe.description } <br>
@@ -53,6 +59,7 @@
 				</textarea>
 				<br> <input type="submit" value="Submit Comment" />
 			</form>
+			
 
 		</c:when>
 

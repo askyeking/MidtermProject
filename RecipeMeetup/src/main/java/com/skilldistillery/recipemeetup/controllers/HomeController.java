@@ -137,6 +137,15 @@ public class HomeController {
 		return mv;
 	}
 	
+//	@RequestMapping(path="deleteRecipe.do", method=RequestMethod.GET)
+//	public ModelAndView deleteRecipe(Recipe recipe, HttpSession session) {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		
+//		return null;
+//		
+//	}
+	
 //	@RequestMapping(path="addedMeetup.do", method=RequestMethod.POST)
 //	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user, Address address) {
 //		ModelAndView mv = new ModelAndView();
