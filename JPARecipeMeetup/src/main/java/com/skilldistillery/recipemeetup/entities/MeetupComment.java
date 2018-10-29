@@ -34,17 +34,19 @@ public class MeetupComment {
 	
 	private boolean active;
 
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToMany
 	@JoinTable(name="meetup_comment_like",
 	joinColumns=@JoinColumn(name="meetup_comment_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> userMeetupCommentLikers;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	//(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User meetupCommentOwner;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	//(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne
 	@JoinColumn(name="meetup_id")
 	private Meetup meetupCommentedOn;
 	
@@ -82,10 +84,6 @@ public class MeetupComment {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 

@@ -74,9 +74,16 @@ public class PostController {
 	}
 	
 	@RequestMapping(path="submitMeetupComment.do", method=RequestMethod.POST)
-	public ModelAndView postMeetupComment(Meetup meetup, MeetupComment comment, User author, HttpSession session) {
+	public ModelAndView postMeetupComment(Meetup meetup, MeetupComment comment, HttpSession session) {
 		System.out.println("******** MY ID IS: " + meetup.getId() + "****************");
-		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(comment, author);
+		System.out.println(comment);
+		System.out.println(meetup);
+		
+		
+		meetup = meetupDAO.findSingleMeetup(meetup.getId());
+		User author = (User) session.getAttribute("loggedInUser");
+		
+		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(meetup, comment, author);
 		ModelAndView mv = new ModelAndView();
 //		mv.addObject("meetup", meetupDAO.findSingleMeetup(meetupComment.getMeetupCommentedOn().getId()));
 //		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(id));
