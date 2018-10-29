@@ -14,6 +14,7 @@ import com.skilldistillery.recipemeetup.data.MeetupDAO;
 import com.skilldistillery.recipemeetup.data.RecipeCommentDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
 import com.skilldistillery.recipemeetup.entities.Meetup;
+import com.skilldistillery.recipemeetup.entities.MeetupComment;
 import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.RecipeComment;
 import com.skilldistillery.recipemeetup.entities.User;
@@ -49,18 +50,26 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("meetup",meetupDAO.findSingleMeetup(meetup.getId()));
 		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(meetup.getId()));
-
 		mv.setViewName("/WEB-INF/views/meetup.jsp");
+		
 		return mv;
 	}
 	
-	@RequestMapping(path="postRecipeComment.do", method=RequestMethod.GET)
+	@RequestMapping(path="postRecipeComment.do", method=RequestMethod.POST)
 	public ModelAndView postRecipeComment(Model model, RecipeComment comment, User author, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+//		ModelAndView mv = new ModelAndView();
 		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(comment, author);
-		mv.addObject("recipeComment", recipeComment);
+//		mv.addObject("recipeComment", recipeComment);
+//		mv.setViewName("/WEB-INF/views/recipe.jsp");
 		
-		return null;
+		return showRecipe(comment.getRecipeCommentedOn(), session);		
+	}
+	
+	@RequestMapping(path="postMeetupComment.do", method=RequestMethod.POST)
+	public ModelAndView postMeetupComment(Model model, MeetupComment comment, User author, HttpSession session) {
+		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(comment, author);
+				
+		return showMeetup(comment.getMeetupCommentedOn(), session);
 		
 	}
 	
