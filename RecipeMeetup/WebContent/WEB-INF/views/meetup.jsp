@@ -17,6 +17,18 @@
 		<c:when test="${not empty loggedInUser }">
 
 
+	
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<p>${meetup.title }</p>
 
 
 	Meetup stuff Goes In here.
