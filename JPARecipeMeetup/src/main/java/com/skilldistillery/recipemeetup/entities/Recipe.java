@@ -48,8 +48,6 @@ public class Recipe {
 	@Column(name="img_url")
 	private String imgURL;
 	
-	
-	
 	@Column(name="post_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
