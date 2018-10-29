@@ -16,5 +16,6 @@ public interface RecipeDAO {
 	boolean deleteRecipeById(int id);
 	boolean isRecipeActive(Recipe recipe);
 	Recipe showRecipeById(int Id);
+	List<Recipe> findRecipe(String recipe);
 
 }

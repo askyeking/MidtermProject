@@ -27,7 +27,7 @@
 			<form class="form-inline" action="/action_page.php">
 				<input class="form-control" type="text" placeholder="Search by...">
 				<select name="category">
-					<option value="category_id">Recipe</option>
+					<option value="category_id"><a href="searchByRecipe.do"></a>Recipe</option>
 					<option value="category_id">Keyword</option>
 					<option value="category_id">Ingredient</option>
 					<input type="submit" value="Search" />

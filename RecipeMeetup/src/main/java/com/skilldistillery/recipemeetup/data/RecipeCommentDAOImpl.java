@@ -1,10 +1,15 @@
 package com.skilldistillery.recipemeetup.data;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
+
+import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.RecipeComment;
 import com.skilldistillery.recipemeetup.entities.User;
 
@@ -69,7 +74,5 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 		
 		return isCommentDeleted;
 	}
-
-
 
 }
