@@ -122,6 +122,16 @@ public class HomeController {
 		return mv;
 		
 	}
+		
+	@RequestMapping(path="searchByRecipe.do", params="recipe", method=RequestMethod.GET)
+	public ModelAndView findPostByRecipe(String recipe) {
+		ModelAndView mv = new ModelAndView();
+		List<Recipe> recipes = recipeDAO.findRecipe(recipe);
+		mv.addObject("recipes", recipes);
+		mv.setViewName("/WEB-INF/views/recipe.jsp");
+		return mv;
+	}
+	
 	
 //	@RequestMapping(path="addedMeetup.do", method=RequestMethod.POST)
 //	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user, Address address) {

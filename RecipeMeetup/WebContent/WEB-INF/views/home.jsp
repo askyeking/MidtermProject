@@ -37,7 +37,7 @@
 			</form>
 <form action = "createMeetup.do" method="GET">
 			<input type = "submit" value = "Create A New Meetup">
-			</form>
+			</form> <br> <br> 
 			
 <%-- 	<c:choose>
 		<c:when test="${not empty user and user.active}">
@@ -54,6 +54,7 @@
 
 	<c:choose>
 		<c:when test="${not empty recentMeetup}">
+		<h4>Recent Meetups</h4>
 		<hr>
 		
 			<c:forEach items="${recentMeetup}" var="meetup">
@@ -69,17 +70,18 @@
 				</form> 
 
 			</c:forEach>
-			<br>
-			<form action = "showAllMeetups.do" method="GET">
+			<form action = "showAllMeetups.do" method="GET"><hr>
 			<input type = "submit" value = "Show More">
 			</form>
-			<hr>
+			<br><br>
 			
 		</c:when>
 	</c:choose>
 
 	<c:choose>
 		<c:when test="${not empty recentRecipe}">
+				<h4>Recent Recipes</h4> <hr>
+		
 			<c:forEach items="${recentRecipe}" var="recipe">
 			
 				<p>Recipe: ${recipe.title }<br>
@@ -90,11 +92,9 @@
 						type="submit" value="Details" />
 				</form>
 			</c:forEach>
-			<br>
-			<form action = "showAllRecipes.do" method="GET">
+			<form action = "showAllRecipes.do" method="GET"><hr>
 			<input type = "submit" value = "Show More">
 			</form>
-			<hr>
 		</c:when>
 	</c:choose>
 	

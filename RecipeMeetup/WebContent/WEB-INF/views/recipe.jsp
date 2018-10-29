@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <c:if test="${not empty loggedInUser }"><%@include
 		file="NavBar.jsp"%></c:if>
 <!DOCTYPE html>
@@ -12,11 +14,14 @@
 </head>
 <body>
 
+		
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 			<br>
 			<br>
 			<br>
+			${loggedInUser.id}
+			${recipe.recipeOwner.id}
 			<p>
 			<h3>title: ${recipe.title}</h3>
 			</p>
@@ -42,7 +47,7 @@
 
 				</c:when>
 			</c:choose>
-			<form path="submitMeetupComment.do" method="post">
+			<form path="submitRecipeComment.do" method="post">
 				<textarea rows="5" cols="50">
 				</textarea>
 				<br> <input type="submit" value="Submit Comment" />

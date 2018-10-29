@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-div.indent1 { text-indent: 3em; }
 </head>
 <body>
 
@@ -72,12 +71,12 @@ div.indent1 { text-indent: 3em; }
 				<div class="indent1">Description: ${meetup.description}</div>
 
 			</c:forEach>
-			
-			<h4>Sign-in to See More!</h4>
+			<br>
+			<h5>Sign-in to See More!</h5> <hr>
 			<br><br>
 
 
-		<h3>Recent Meetups</h3> <hr>
+		<h3>Recent Recipes</h3> <hr>
 			<c:forEach items="${recentRecipes}" var="recipe">
 			
 				<p><li>Recipe: ${recipe.title }</li></p>
@@ -85,7 +84,7 @@ div.indent1 { text-indent: 3em; }
 				
 			</c:forEach>
 			
-			<h5>Sign-in to See More!</h5>
+			<h5>Sign-in to See More!</h5> <hr>
 			<br><br>
 
 	</form>

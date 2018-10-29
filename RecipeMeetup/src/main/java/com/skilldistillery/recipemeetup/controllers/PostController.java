@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.recipemeetup.data.MeetupCommentDAO;
@@ -39,6 +40,7 @@ public class PostController {
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("testBoolean" , new Boolean(true));
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
 		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments(recipe.getId()));
 		mv.setViewName("/WEB-INF/views/recipe.jsp");
@@ -65,10 +67,15 @@ public class PostController {
 	}
 	
 	@RequestMapping(path="submitMeetupComment.do", method=RequestMethod.POST)
-	public ModelAndView postMeetupComment(Model model, MeetupComment comment, User author, HttpSession session) {
+	public ModelAndView postMeetupComment(@RequestParam("id") int id, Model model, MeetupComment comment, User author, HttpSession session) {
+//		System.out.println("******** MY ID IS: " + id + "****************");
 		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(comment, author);
-				
-		return showMeetup(comment.getMeetupCommentedOn(), session);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("meetup", meetupDAO.findSingleMeetup(id));
+		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(id));
+		mv.setViewName("/WEB-INF/views/meetup.jsp");
+		return mv;
+//		return showMeetup(comment.getMeetupCommentedOn(), session);
 		
 	}
 	
