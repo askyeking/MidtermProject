@@ -31,20 +31,21 @@
 				<h3>Description</h3>
 				<input type="text" name="description" maxlength="250"
 					style="height: 100px" /> <br>
-				<h3>Start Time</h3>
+<!-- 				<h3>Start Time</h3>
 				<input type="datetime" name="startTime" value="" required /><br>
 				<h3>End Time</h3>
-				<input type="datetime" name="endTime" value="" required /><br>
+				<input type="datetime" name="endTime" value="" required /><br> -->
 				<h3>Maximum Attendance</h3>
 				<input type="number" name="maxAttendance" value="" maxlength="45"
 					required /><br>
-				<h3>Start time</h3>
-				<input type="datetime" name="startTime" required /><br>
+<!-- 				<h3>Start time</h3>
+				<input type="datetime-local" name="startTime" required /><br>
 				<h3>End time</h3>
-				<input type="datetime" name="endTime"/><br>
+				<input type="datetime-local" name="endTime"/><br> -->
 				<h3>Set a Meetup Picture</h3>
 				URL: <input type="url" name="imageURL" maxlength="45"><br> <br>
-				
+				<h3>Start Date<h3></h3>
+				<input type="datetime-local" name="ldt" required /><br>
 				
 				<h3>Address</h3>
 				Street: <input type="text" name="street" value="Street" maxlength="190" required /><br>

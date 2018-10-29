@@ -32,10 +32,10 @@
 <br>
 <br>
 
-<form action = "createRecipe.do" method="POST">
+<form action = "createRecipe.do" method="GET">
 			<input type = "submit" value = "Create A New Recipe">
 			</form>
-<form action = "createMeetup.do" method="POST">
+<form action = "createMeetup.do" method="GET">
 			<input type = "submit" value = "Create A New Meetup">
 			</form>
 			
