@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.recipemeetup.data.MeetupDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
 import com.skilldistillery.recipemeetup.data.UserDAO;
 import com.skilldistillery.recipemeetup.entities.Address;
+import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
 
@@ -26,12 +28,16 @@ public class UserController {
 	private UserDAO userDAO;
 	@Autowired
 	private RecipeDAO recipeDAO;
+	@Autowired
+	private MeetupDAO meetupDAO;
 
 	@RequestMapping(path = "index.do")
 	public ModelAndView index() {
 		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
+		List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("recentRecipes", recentRecipes);
+		mv.addObject("recentMeetups", recentMeetups);
 		mv.setViewName("WEB-INF/views/login.jsp");
 		
 		return mv;
