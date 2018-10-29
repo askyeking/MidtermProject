@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+div.indent1 { text-indent: 3em; }
 </head>
 <body>
 
@@ -62,25 +63,30 @@
 
 	<form>
 
-		<h3>Recent Meetups</h3>
+		<h3>Recent Meetups</h3> <hr>
 			
 			<c:forEach items="${recentMeetups}" var="meetup">
 
 				<p><li>Meetup: ${meetup.title}</li></p>
-				<p>Description: ${meetup.description}</p>
+				
+				<div class="indent1">Description: ${meetup.description}</div>
 
 			</c:forEach>
+			
+			<h4>Sign-in to See More!</h4>
+			<br><br>
 
 
-		<h3>Recent Meetups</h3>
+		<h3>Recent Meetups</h3> <hr>
 			<c:forEach items="${recentRecipes}" var="recipe">
 			
 				<p><li>Recipe: ${recipe.title }</li></p>
 				<p>Description: ${recipe.description}</p>
 				
 			</c:forEach>
-
-		<br>
+			
+			<h5>Sign-in to See More!</h5>
+			<br><br>
 
 	</form>
 
