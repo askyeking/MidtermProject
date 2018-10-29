@@ -23,18 +23,19 @@
  			<br>
  			<br>
  			<br>
- 			<br>
- 			<br>
- 			<p> title: ${recipe.title }</p>	
- 			<p> user ID: ${loggedInUser.firstName }	
+ 			<p><h3> title: ${recipe.title} </h3></p> <hr>	
+ 			Description: ${recipe.description } <br>
+ 			Ingredients: ${recipe.ingredients} <br>
+ 			Instructions: ${recipe.instructions}<br>
+ 			Category: ${recipe.category}<br>
+ 			Origin: ${recipe.country}<br>
+ 			Serving Size: ${recipe.servingSize}<br>
+ 			Cook Time: ${recipe.cookTime} minutes<br>
+ 			user ID: ${loggedInUser.firstName }	<br>
+ 			
+ 		<!-- 	List of comments here -->
  			
  			
- 			
- 			
-
-
-
-
 
 		</c:when>
 		<c:otherwise>
