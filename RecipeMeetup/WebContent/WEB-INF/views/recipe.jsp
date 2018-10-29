@@ -42,7 +42,7 @@
 
 				</c:when>
 			</c:choose>
-			<form path="submitMeetupComment.do" method="post">
+			<form path="submitRecipeComment.do" method="post">
 				<textarea rows="5" cols="50">
 				</textarea>
 				<br> <input type="submit" value="Submit Comment" />
