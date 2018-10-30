@@ -54,11 +54,12 @@
 
 				</c:when>
 			</c:choose>
-			<form path="submitRecipeComment.do" method="post">
-				<textarea rows="5" cols="50">
-				</textarea>
-				<br> <input type="submit" value="Submit Comment" />
-			</form>
+			<form:form action="submitRecipeComment.do" method="POST">
+				Comment
+				<input type="hidden" name="id" value="${recipe.id }" />
+				<input type="text" name="comment" rows="5" cols="50" />
+				<input type="submit" value="Submit Comment" />
+			</form:form>
 			
 
 		</c:when>

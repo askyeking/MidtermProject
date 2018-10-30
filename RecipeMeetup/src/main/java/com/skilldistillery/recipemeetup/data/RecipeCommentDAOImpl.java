@@ -22,8 +22,13 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 
 	@Override
 	public RecipeComment postRecipeComment(Recipe recipe, RecipeComment comment, User author) {
+		System.out.println(comment);
+		System.out.println(author);
+		System.out.println(recipe);
 		author.addRecipeComment(comment);
 		comment.setRecipeCommentOwner(author);
+		recipe.addRecipeComment(comment);
+		comment.setRecipeCommentedOn(recipe);
 		em.persist(comment);
 		em.flush();
 		return comment;
