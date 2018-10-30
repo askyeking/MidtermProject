@@ -26,7 +26,7 @@
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="home.do">Home</a></li>
 			<form class="form-inline" action="/action_page.php"></form>
 		</ul>
 	</nav>
