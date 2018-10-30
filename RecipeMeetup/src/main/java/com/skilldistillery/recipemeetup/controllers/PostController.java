@@ -112,7 +112,7 @@ public class PostController {
 		return mv;
 	}
 	
-	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
+	@RequestMapping(path= "editedMeetup.do", method = RequestMethod.POST)
 	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
 //		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView();
