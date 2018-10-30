@@ -26,12 +26,14 @@
 			<h3>${meetup.title }</h3> By: <a href="viewOtherProfile.do?id=${meetupOwner.id }" >  ${meetupOwner.username }</a> 
 			<c:if test="${canEditPost}">
 			${meetup.id}
+			${meetup.active }
+			
 			<form action="editMeetup.do" method="GET">
 					<input type="hidden" name="id" value="${meetup.id}" /> <input
 						type="submit" value="Edit" />
 				</form>
 				<form action="deleteMeetup.do" method="post">
-					<input type="hidden" value="${meetup.id }" /> <input type="submit"
+					<input type="hidden" name="id" value="${meetup.id }" /> <input type="submit"
 						value="Delete" />
 				</form>
 

@@ -19,5 +19,6 @@ public interface RecipeDAO {
 	Recipe showRecipeById(int Id);
 	List<Recipe> findRecipe(String recipe);
 	Recipe addRecipeToFavorites(Recipe recipe, User user);
+	Recipe addRecipeToLikes(Recipe recipe, User user);
 
 }

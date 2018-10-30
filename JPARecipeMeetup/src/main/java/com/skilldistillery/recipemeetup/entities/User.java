@@ -143,6 +143,26 @@ public class User {
     	}
     }
     
+    //adds a user to a list of users who have liked that recipe
+    public void addLikedRecipe(Recipe recipe) {
+        if(likedRecipes== null) {
+        	likedRecipes = new ArrayList<>();
+        }
+        
+        if(!likedRecipes.contains(recipe)) {
+        	likedRecipes.add(recipe);
+            recipe.addRecipeLikers(this);
+        }
+        
+    }
+    
+    public void removeLikedRecipe(Recipe recipe) {
+        if(likedRecipes != null && likedRecipes.contains(recipe)) {
+        	likedRecipes.remove(recipe);
+        recipe.removeRecipeLikers(this);
+        }
+    }
+    
     //add comment to meetup owner of meetup post
     public void addMeetupCommentPosted(MeetupComment meetupComment) {
         if(meetupCommentsPosted==null) {
@@ -184,25 +204,7 @@ public class User {
         meetupComment.removeUserMeetupCommentLiker(this);
         }
     }
-    //adds a user to a list of users who have liked that recipe
-    public void addLikedRecipe(Recipe recipe) {
-        if(likedRecipes== null) {
-        	likedRecipes = new ArrayList<>();
-        }
-        
-        if(!likedRecipes.contains(recipe)) {
-        	likedRecipes.add(recipe);
-            recipe.addRecipeLikers(this);
-        }
-        
-    }
-    
-    public void removeLikedRecipe(Recipe recipe) {
-        if(likedRecipes != null && likedRecipes.contains(recipe)) {
-        	likedRecipes.remove(recipe);
-        recipe.removeRecipeLikers(this);
-        }
-    }
+
     
     //add recipe to recipes owned by user
     public void addRecipeOwnedByUser(Recipe recipe) {
@@ -269,60 +271,6 @@ public class User {
         recipeComment.removeRecipeCommentLiker(this);
         }
     }
-    
-//    public void addRecipeComment(RecipeComment recipeComment) {
-//        if(recipeComments==null) {
-//        	recipeComments = new ArrayList<>();
-//        }
-//        
-//        if(!recipeComments.contains(recipeComment)) {
-//        	recipeComments.add(recipeComment);
-//            if(recipeComment.getRecipeCommentedOn() != null) {
-//                recipeComment.getRecipeCommentedOn().getRecipeComments().remove(recipeComment);
-//            }
-//        }
-//        
-//        recipeComment.setRecipeCommentOwner(this);
-//    }
-//    
-//    public void removeRecipeComment(RecipeComment recipeComment) {
-//        recipeComment.setRecipeCommentOwner(null);
-//        if(recipeComments!=null) {
-//        	recipeComments.remove(recipeComment);
-//        }
-//    }
-    
-    
-    //add recipe to favorite list
-//    public void addFavoriteRecipe(RecipeFavorite recipeFavorite) {
-//        if(recipeFavorites== null) {
-//        	recipeFavorites = new ArrayList<>();
-//        }
-//        
-//        if(!recipeFavorites.contains(recipeFavorite)) {
-//        	recipeFavorites.add(recipeFavorite);
-//            if(recipeFavorite.getRecipeFavorited() != null) {
-//            	recipeFavorite.getRecipeFavorited().getRecipeFavorites().remove(recipeFavorite);
-//            }
-//        }
-//        recipeFavorite.setUserWhoFavorited(this);
-//    }
-//    
-//    public List<RecipeFavorite> getRecipeFavorites() {
-//		return recipeFavorites;
-//	}
-//
-//	public void setRecipeFavorites(List<RecipeFavorite> recipeFavorites) {
-//		this.recipeFavorites = recipeFavorites;
-//	}
-//
-//	public void removeFavoriteRecipe(RecipeFavorite recipeFavorite) {
-//    	recipeFavorite.setUserWhoFavorited(null);
-//      if(recipeFavorites!=null) {
-//      	recipeFavorites.remove(recipeFavorite);
-//      }
-//    }
-//    
 	
     
 	public List<Recipe> getRecipesFavorited() {
@@ -342,13 +290,6 @@ public class User {
 		this.recipeComments = recipeComments;
 	}
 
-//	public List<Recipe> getFavoriteRecipes() {
-//		return favoriteRecipes;
-//	}
-//
-//	public void favoriteRecipes(List<Recipe> favoriteRecipes) {
-//		this.favoriteRecipes = favoriteRecipes;
-//	}
 
 	public List<Recipe> getRecipesPosted() {
 		return recipesPosted;

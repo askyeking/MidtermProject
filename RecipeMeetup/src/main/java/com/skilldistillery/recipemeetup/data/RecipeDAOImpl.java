@@ -129,58 +129,12 @@ public class RecipeDAOImpl implements RecipeDAO {
 		
 		return recipes;
 	}
-//
-//	@Override
-//	public Recipe addRecipeToFavorites(Recipe recipe, User user) {
-//		Recipe favoriteRecipe = em.find(Recipe.class, recipe.getId());
-//		System.out.println("recipe id: " + recipe.getId());
-//		System.out.println(favoriteRecipe);
-//		List<User> userFaved = favoriteRecipe.getUsersWhoFavorited();
-//		if(!userFaved.contains(user)) {
-//			System.out.println("inside contains");
-//			favoriteRecipe.addUserWhoFavorited(user);
-//			user.addFavoriteRecipe(favoriteRecipe);
-//			List<Recipe> favoriteRecipes = user.getFavoriteRecipes();
-//			for (Recipe recipe2 : favoriteRecipes) {
-//				System.out.println("/nfavoriteRecipe: " + recipe2.getId());
-//				
-//			}
-//			System.out.println(favoriteRecipes);
-//			user.setFavoriteRecipes(favoriteRecipes);
-//			
-//			em.persist(favoriteRecipe);
-//			em.flush();
-//		}
-//		return favoriteRecipe;
-//	}
-//	
 
-//	@Override
-//	public Meetup addRSVPForMeetup(Meetup meetup, User user){
-//
-//		Meetup reservedMeetup = em.find( Meetup.class ,meetup.getId());
-//		List<User> meetupAttendees = reservedMeetup.getAttendees();
-//		if(!meetupAttendees.contains(user)) {
-//			reservedMeetup.addAttendee(user);
-//			user.addMeetupAttended(reservedMeetup);
-//			em.persist(reservedMeetup);
-//			em.flush();
-//
-//		}
-//		return reservedMeetup;
-//	}
-	
-	
 	
 	@Override
 	public Recipe addRecipeToFavorites(Recipe recipe, User user) {
 		Recipe favoritedRecipe = em.find(Recipe.class, recipe.getId());
-		System.out.println("favRecipe: " + favoritedRecipe);
 		List<User> recipesFavorited = favoritedRecipe.getUsersWhoFavorited();
-		
-		for (User user2 : recipesFavorited) {
-			System.out.println(user2.getId());
-		}
 		
 		if(!recipesFavorited.contains(user)) {
 			favoritedRecipe.addUserWhoFavorited(user);
@@ -188,9 +142,27 @@ public class RecipeDAOImpl implements RecipeDAO {
 			em.persist(favoritedRecipe);
 			em.flush();
 		}
-		System.out.println("WWOOOOOOOOOOOOOOOOOOOORK!");
 		return favoritedRecipe;
 	}
 	
+	@Override
+	public Recipe addRecipeToLikes(Recipe recipe, User user) { 
+		Recipe likedRecipe = em.find(Recipe.class, recipe.getId());
+		System.out.println("recipe: " + likedRecipe);
+		
+		List<User> recipesLiked = likedRecipe.getRecipeLikers();
+		System.out.println("size: " + recipesLiked.size());
+		
+		if(!recipesLiked.contains(user)) {
+			likedRecipe.addRecipeLikers(user);
+			user.addLikedRecipe(likedRecipe);
+			System.out.println("breaks here: ");
+			em.persist(likedRecipe);
+			System.out.println("broken here");
+			em.flush();
+		}
+		System.out.println("WWOOOOOOOOOOOOOOOOOOOORK!");
+		return likedRecipe;
+	}
 	
 }
