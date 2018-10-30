@@ -160,4 +160,21 @@ public class MeetupDAOImpl implements MeetupDAO {
 	return meetups;
 			
 	}
+	
+	@Override
+	public Meetup addRSVPForMeetup(Meetup meetup, User user){
+		System.out.println("~~~~~~~~~~~~~~~~~");
+
+		Meetup reservedMeetup = em.find( Meetup.class ,meetup.getId());
+		List<User> meetupAttendees = reservedMeetup.getAttendees();
+		if(!meetupAttendees.contains(user)) {
+			reservedMeetup.addAttendee(user);
+			user.addMeetupAttended(reservedMeetup);
+			em.persist(reservedMeetup);
+			em.flush();
+			System.out.println("~~~~~~~~~~~~~~~~~");
+
+		}
+		return reservedMeetup;
+	}
 }
