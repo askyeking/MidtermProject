@@ -1,6 +1,7 @@
 package com.skilldistillery.recipemeetup.controllers;
 
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -150,5 +151,16 @@ public class PostController {
 		return mv;
 	}
 	
+	@RequestMapping(path="favoriteRecipe.do", method=RequestMethod.POST)
+	public ModelAndView favoriteRecipe(Recipe favoriteRecipe, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		favoriteRecipe = recipeDAO.addRecipeToFavorites(favoriteRecipe);
+		//User author = (User) session.getAttribute("loggedInUser");
+		mv.addObject("recipes", favoriteRecipe);
+		mv.setViewName("/WEB-INF/views/recipe.jsp");
+		
+		return mv;
+		
+	}
 	
 }

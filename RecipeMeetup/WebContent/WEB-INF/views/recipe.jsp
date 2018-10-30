@@ -34,6 +34,7 @@
 		
 			</p>
 			<form action="favoriteRecipe.do" method="post">
+				<input type="hidden" name="id" value="${recipe.id }" />
 				<input type="submit" value="Add to Favorites" />
 			</form>
 			
