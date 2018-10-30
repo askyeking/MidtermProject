@@ -136,6 +136,7 @@ public class UserController {
 
 	}
 
+	
 	@RequestMapping(path = "viewOtherProfile.do", method = RequestMethod.GET)
 	public ModelAndView viewOtherProfile(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
