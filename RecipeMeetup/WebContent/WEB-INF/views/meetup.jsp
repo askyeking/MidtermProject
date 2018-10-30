@@ -22,7 +22,8 @@
 			<br>
 
 
-			<h3>${meetup.title }</h3>
+
+			<h3>${meetup.title }</h3> By: <a href="viewOtherProfile.do?id=${meetupOwner.id }" >  ${meetupOwner.username }</a> 
 			<c:if test="${canEditPost}">
 			${meetup.id}
 			<form action="editMeetup.do" method="GET">
@@ -35,7 +36,6 @@
 				</form>
 
 			</c:if>
-<%-- 			${loggedInUser.id }--%>
  			<form action="RSVPMeetup.do" method="post">
 				<input type="hidden" name="id" value="${meetup.id }" /> <input
 					type="submit" value="RSVP" />
@@ -47,14 +47,6 @@
 
 			</c:if>
 
-			<p>
-			<a href="viewOtherProfile.do?id=${meetupOwner.id }" > Meetup Owner: ${meetupOwner.firstName }</a> 
-			<form action="viewOtherProfile.do" method="GET" >
-			<input type="hidden" name="id" value="${meetupOwner.id }"/>
-			<input type="submit" value="View Profile" /> 
-			<input type="button" value="View Profile Button" />
-			</form> 
-			</p>
 			<c:choose>
 
 				<c:when test="${not empty listOfComments }">
