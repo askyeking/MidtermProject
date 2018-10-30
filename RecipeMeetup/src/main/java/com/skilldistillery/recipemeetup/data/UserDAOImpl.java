@@ -127,5 +127,11 @@ public class UserDAOImpl implements UserDAO {
 		List<User> usersFoundByName = em.createQuery(query, User.class).setParameter("name", "%" +inputName + "%").getResultList();
 		return usersFoundByName;
 	}
+	
+	@Override
+	public User getUserById(int id) {
+		User user = em.find(User.class, id);
+		return user;
+	}
 
 }
