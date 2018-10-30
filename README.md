@@ -4,7 +4,7 @@
 * Blake Longfield
 * Novak Dobrosavljevic
 * Anthony King
-* Newel Ray
+* Newel Miole
 
 
 ###
