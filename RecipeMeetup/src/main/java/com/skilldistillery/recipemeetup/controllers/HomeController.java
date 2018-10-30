@@ -182,6 +182,15 @@ public class HomeController {
 		return mv;
 	}
 	
+	
+	@RequestMapping(path="deleteMeetup.do", method = RequestMethod.POST)
+	public ModelAndView deleteMeetup(int id, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Meetup meetup = meetupDAO.findSingleMeetup(id);
+		meetupDAO.setActiveToFalse(meetup);
+		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetup.getId());
+		return mv;
+	}
 //	@RequestMapping(path="deleteRecipe.do", method=RequestMethod.GET)
 //	public ModelAndView deleteRecipe(Recipe recipe, HttpSession session) {
 //		ModelAndView mv = new ModelAndView();
