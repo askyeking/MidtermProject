@@ -33,7 +33,7 @@ public class RecipeComment {
 	@CreationTimestamp
 	private Date timeStamp;
 	
-	private Boolean active;
+	private boolean active;
 	
 	@ManyToMany
 	@JoinTable(name="recipe_comment_like",
@@ -77,9 +77,9 @@ public class RecipeComment {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 
 	public String getComment() {
 		return comment;

@@ -35,9 +35,12 @@
 				</select>  --> 
 				
 				<form action="searchByRecipe.do" method="GET">
-					<input type="text" name="recipe" value="Search..."/>
+					<input type="text" name="input" value="Search..."/>
+					<select name="category">
+   						 <option value="recipe">Recipe</option>
+   						 <option value="meetup">Meetup</option>
+					</select>
 					<input type="submit" value="Submit"/>
-				
 				</form>
 				
 				<li class="nav-item"><a class="nav-link" href="userProfile.do">Profile</a></li>

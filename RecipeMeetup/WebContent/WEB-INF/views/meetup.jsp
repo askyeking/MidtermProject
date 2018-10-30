@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Meetup Details</title>
 </head>
 <body>
 
@@ -21,19 +21,23 @@
 			<br>
 			<br>
 			<br>
-			<br>
-			<br>
 
-			<p>${meetup.title }</p>
-			<p>user ID: ${loggedInUser.firstName }</p>
 
-			<c:choose>
+			<h3>${meetup.title }</h3>
+			<form action="editMeetup.do" method="post">
+				<input type="submit" value="Edit" />
+			</form>
+			<form action="deleteMeetup.do" method="post">
+				<input type="submit" value="Delete" />
+			</form>
+			<p> <a href="userProfile.do">user ID: ${loggedInUser.firstName }</a></p>
+				<c:choose>
 
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments }" var="comment">
 						<hr>
-						<p>${comment.meetupCommentOwner.firstName }
-							${comment.meetupCommentOwner.lastName }</p>
+						<p><a href="userProfile.do">${comment.meetupCommentOwner.firstName }
+							${comment.meetupCommentOwner.lastName }</a></p>
 						<p>${comment.textContent}</p>
 					</c:forEach>
 
@@ -41,24 +45,12 @@
 				</c:when>
 
 			</c:choose>
-			<%-- <form path="submitMeetupComment.do" method="POST" > --%>
-<%-- 				<textarea  name="text" rows="5" cols="50" >
-				</textarea>
-				<br>
-				${meetup.id }asdf
-				<input type="hidden" name ="id" value="${meetup.id }"/>
-				<input type="submit" value="Submit Comment" /> --%>
-				<form:form  action="submitMeetupComment.do" method="POST">
+				<form:form action="submitMeetupComment.do" method="POST">
 				Comment
-				<input type="hidden" name ="id" value="${meetup.id }"/>
-				<input type="text" name = "textContent" rows ="5" cols="50"/>
+				<input type="hidden" name="id" value="${meetup.id }" />
+				<input type="text" name="textContent" rows="5" cols="50" />
 				<input type="submit" value="Submit Comment" />
-				</form:form>
-			<%-- </form> --%>
-
-
-
-
+			</form:form>
 		</c:when>
 		<c:otherwise>
 			<br>

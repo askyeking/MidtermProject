@@ -21,9 +21,14 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 	private EntityManager em;
 
 	@Override
-	public RecipeComment postRecipeComment(RecipeComment comment, User author) {
+	public RecipeComment postRecipeComment(Recipe recipe, RecipeComment comment, User author) {
+		System.out.println(comment);
+		System.out.println(author);
+		System.out.println(recipe);
 		author.addRecipeComment(comment);
 		comment.setRecipeCommentOwner(author);
+		recipe.addRecipeComment(comment);
+		comment.setRecipeCommentedOn(recipe);
 		em.persist(comment);
 		em.flush();
 		return comment;

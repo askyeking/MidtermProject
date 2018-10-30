@@ -27,9 +27,6 @@ public class MeetupCommentDAOImpl implements MeetupCommentDAO {
 		meetup.addMeetupComment(comment);
 		comment.setMeetupCommentedOn(meetup);
 		
-		System.out.println(comment);
-		System.out.println(meetup);
-		System.out.println(author);
 		em.persist(comment);
 		em.flush();
 		

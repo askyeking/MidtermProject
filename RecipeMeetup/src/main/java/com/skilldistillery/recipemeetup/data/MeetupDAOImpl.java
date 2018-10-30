@@ -129,10 +129,10 @@ public class MeetupDAOImpl implements MeetupDAO {
 	@Override
 	public List<Meetup> findMeetup(String meetup) {
 	List<Meetup> meetups = new ArrayList<>();
-	String query = "SELECT m FROM Meetup m WHERE m.title LIKE ?1 OR m.description ?2";
+	String query = "SELECT m FROM Meetup m WHERE m.title LIKE :title OR m.description LIKE :desc";
 	meetups = em.createQuery(query, Meetup.class)
-			.setParameter(1, "%" + meetup + "%")
-			.setParameter(2, "%" + meetup + "%")
+			.setParameter("title", "%" + meetup + "%")
+			.setParameter("desc", "%" + meetup + "%")
 			.getResultList();
 	
 	return meetups;

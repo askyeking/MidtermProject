@@ -76,31 +76,24 @@ public class PostController {
 	}
 	
 	@RequestMapping(path="submitRecipeComment.do", method=RequestMethod.POST)
-	public ModelAndView postRecipeComment(Model model, RecipeComment comment, User author, HttpSession session) {
-//		ModelAndView mv = new ModelAndView();
-		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(comment, author);
-//		mv.addObject("recipeComment", recipeComment);
-//		mv.setViewName("/WEB-INF/views/recipe.jsp");
-		return showRecipe(comment.getRecipeCommentedOn(), session);		
+	public ModelAndView postRecipeComment(Recipe recipe, RecipeComment comment, HttpSession session) {
+		recipe = recipeDAO.showRecipeById(recipe.getId());
+		User author = (User) session.getAttribute("loggedInUser");
+		RecipeComment recipeComment = recipeCommentDAO.postRecipeComment(recipe, comment, author );
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:showRecipeDetails.do?id=" + recipeComment.getRecipeCommentedOn().getId() );
+		return mv;
+
 	}
 	
 	@RequestMapping(path="submitMeetupComment.do", method=RequestMethod.POST)
 	public ModelAndView postMeetupComment(Meetup meetup, MeetupComment comment, HttpSession session) {
-		System.out.println("******** MY ID IS: " + meetup.getId() + "****************");
-		System.out.println(comment);
-		System.out.println(meetup);
-		
-		
 		meetup = meetupDAO.findSingleMeetup(meetup.getId());
 		User author = (User) session.getAttribute("loggedInUser");
-		
 		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(meetup, comment, author);
 		ModelAndView mv = new ModelAndView();
-//		mv.addObject("meetup", meetupDAO.findSingleMeetup(meetupComment.getMeetupCommentedOn().getId()));
-//		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(id));
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetupComment.getMeetupCommentedOn().getId());
 		return mv;
-//		return showMeetup(comment.getMeetupCommentedOn(), session);
 		
 	}
 	
