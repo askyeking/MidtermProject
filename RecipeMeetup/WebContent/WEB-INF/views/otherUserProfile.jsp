@@ -7,29 +7,62 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Profile</title>
+<title>Other User Profile</title>
 </head>
 <body>
 
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
-
-
-
 <br>
 <br>
 <br>
-<br>
-
-<h3>Profile Page</h3>
-	
-	
+<br>	 	
+	 	<%-- <p>User: ${user.firstName} ${user.lastName}</p>
 	 	
-	 	<p>User: ${user.firstName} ${user.lastName}</p>
+	 	<p>About you: ${user.description}</p> --%>
 	 	
-	 	<p>About you: ${user.description}</p>
+	 <%-- 	<form action="viewOtherProfile.do" method="GET">
+			<input type="hidden" name="id" value="${comment.meetupCommentOwner.id }" /> 
+			<input type="submit" value="view profile" /> --%>
 	 	
+	 	<h4>${user.firstName} ${user.lastName}</h4>
+	 	<p>${user.description}</p><hr>
 	 	
+	 	<c:choose>
+		<c:when test="${not empty loggedInUser}">
+		<h4>Recently Posted Recipes</h4>
+		<hr>
+		
+			<c:forEach items="${user.recipesPosted}" var="recipesPosted">
+	 			<p><strong>${recipesPosted.title}/></strong></p> 
+	 			<p>${recipesPosted.description}</p><br>
+	 			<p>Country of Origin: ${recipesPosted.country}</p> 
+	 			<p>Cook Time: ${recipesPosted.cookTime}</p> 
+	 			<p>Serving Size: ${recipesPosted.servingSize}</p> 
+	 			<p>Category: ${recipesPosted.category}</p> 
+	 			<p>${recipesPosted.ingredients}</p> 
+	 			<hr>
+	 
+	 	</c:forEach>
+	 	</c:when>
+	 	</c:choose>
+	 	
+	 	<c:choose>
+		<c:when test="${not empty loggedInUser}">
+		<h4>Recently Posted Meetups</h4>
+		<hr>
+		
+			<c:forEach items="${user.meetupsOwned}" var="meetupsOwned">
+	 			<p><strong>${meetupsOwned.title}</strong></p> 
+	 			<p>${meetupsOwned.description}</p><br>
+	 			<p>${meetupsOwned.startTime}</p> 
+	 			<p>${meetupsOwned.endTime}</p> 
+	 			<p>${meetupsOwned.maxAttendance}</p>
+	 			<hr>
+	 
+	 	</c:forEach>
+	 	</c:when>
+	 	</c:choose>
 
 
 		</c:when>

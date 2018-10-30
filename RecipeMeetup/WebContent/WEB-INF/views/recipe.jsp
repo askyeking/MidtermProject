@@ -40,40 +40,41 @@
 			</form:form>
 			
 			<hr>	
- 			Description: ${recipe.description } <br>
+ 			Description: ${recipe.description} <br>
  			Ingredients: ${recipe.ingredients} <br>
  			Instructions: ${recipe.instructions}<br>
  			Category: ${recipe.category}<br>
  			Origin: ${recipe.country}<br>
  			Serving Size: ${recipe.servingSize}<br>
  			Cook Time: ${recipe.cookTime} minutes<br>
- 			user: ${loggedInUser.firstName }	<br>
-			<c:if test="${testBoolean }">At least this worked</c:if>
+ 			
+ 			<form action="showRecipeDetails.do" method="GET">
+			<input type="hidden" name="id" value="${recipe.id}" /> 
+			<input type="submit" value="Details" /> <hr>
 	
 			<c:choose>
 
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments}" var="comment">
 					
-					<form action="viewOtherProfile.do" method="GET">
-						<input type="hidden" name="id" value="${comment.recipeCommentOwner.id }"/>
-						<input type="submit" value="view profile"/>
-						</form>	
 						<p>${comment.recipeCommentOwner.firstName }
 							${comment.recipeCommentOwner.lastName }</p>
 						<p>${comment.comment}</p>
+					<form action="viewOtherProfile.do" method="GET">
+						<input type="hidden" name="id" value="${comment.recipeCommentOwner.id }"/>
+						<input type="submit" value="View User Profile"/>
+						</form>	
 						<hr>
 					</c:forEach>
 
 				</c:when>
 			</c:choose>
+			
 			<form:form action="submitRecipeComment.do" method="POST">
-				Comment
 				<input type="hidden" name="id" value="${recipe.id }" />
-				<input type="text" name="comment" rows="5" cols="50" />
+				<input type="text" name="comment" value = "Post a Comment" rows="5" cols="50" />
 				<input type="submit" value="Submit Comment" />
 			</form:form>
-			
 
 		</c:when>
 

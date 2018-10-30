@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Profile</title>
+<title>User Profile</title>
 </head>
 <body>
 
@@ -21,7 +21,6 @@
 <br>
 <br>
 
-	 	<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
 	
 	 	<form action = "createRecipe.do" method="POST">
 			<input type = "submit" value = "Create A New Recipe">
@@ -30,25 +29,22 @@
 			<input type = "submit" value = "Create A New Meetup">
 			</form> <hr>
 	 	
-	 	
+	 	<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
 	 	<p>${loggedInUser.description}</p><hr>
 	 	
 	 	<c:choose>
 		<c:when test="${not empty loggedInUser}">
-		<h4>Recent Posted Recipes</h4>
+		<h4>Recently Posted Recipes</h4>
 		<hr>
 		
 			<c:forEach items="${loggedInUser.recipesPosted}" var="recipesPosted">
-	 			<p><strong><a href="showRecipeDetails.do" ${recipesPosted.title}/></strong></p> 
-	 			<p>${recipesPosted.description}</p> 
-	 			<p>${recipesPosted.description}</p> 
-	 			<p>${recipesPosted.description}</p> 
-	 			<p>${recipesPosted.description}</p> 
-	 			<p>${recipesPosted.description}</p> 
-	 			<p>${recipesPosted.description}</p> 
-	 			<p>${recipesPosted.description}</p> 
-	 			
-	 			
+	 			<p><strong>${recipesPosted.title}/></strong></p> 
+	 			<p>${recipesPosted.description}</p><br> 
+	 			<p>Country of Origin: ${recipesPosted.country}</p> 
+	 			<p>Cook Time: ${recipesPosted.cookTime}</p> 
+	 			<p>Serving Size: ${recipesPosted.servingSize}</p> 
+	 			<p>Category: ${recipesPosted.category}</p> 
+	 			<p>${recipesPosted.ingredients}</p> 
 	 			<hr>
 	 
 	 	</c:forEach>
@@ -57,17 +53,21 @@
 	 	
 	 	<c:choose>
 		<c:when test="${not empty loggedInUser}">
-		<h4>Recent Posted Meetups</h4>
+		<h4>Recently Posted Meetups</h4>
 		<hr>
 		
 			<c:forEach items="${loggedInUser.meetupsOwned}" var="meetupsOwned">
-	 			<p>${loggedInUser.meetupsOwned}</p> 
+	 			<p><strong>${meetupsOwned.title}</strong></p> 
+	 			<p>${meetupsOwned.description}</p> <br>
+	 			<p>${meetupsOwned.startTime}</p> 
+	 			<p>${meetupsOwned.endTime}</p> 
+	 			<p>${meetupsOwned.maxAttendance}</p>
+	 			<hr>
 	 
 	 	</c:forEach>
 	 	</c:when>
 	 	</c:choose>
 	 	
-
 		</c:when>
 		<c:otherwise>
 		<br><br><br><br><br><br>

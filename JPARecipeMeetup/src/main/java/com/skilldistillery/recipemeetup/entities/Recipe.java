@@ -66,12 +66,18 @@ public class Recipe {
 //	@ManyToMany(mappedBy="favoriteRecipes")
 //	private List<User> usersWhoFavorited;
 	
+	@ManyToMany
+	@JoinTable(name="favorite_recipe",
+	joinColumns=@JoinColumn(name="recipe_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> usersWhoFavorited;
+	
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentedOn")
 	private List<RecipeComment> recipeComments;
 	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeFavorited")
-	private List<RecipeFavorite> recipeFavorites;
+//	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeFavorited")
+//	private List<RecipeFavorite> recipeFavorites;
 	
 	
 	public void addRecipeLikers(User recipeLiker) {
@@ -94,36 +100,28 @@ public class Recipe {
     }
     
     
-//    public void addUserWhoFavorited(User userWhoFavorited) {
-//        if(usersWhoFavorited== null) {
-//            usersWhoFavorited = new ArrayList<>();
-//        }
-//        
-//        if(!usersWhoFavorited.contains(userWhoFavorited)) {
-//            usersWhoFavorited.add(userWhoFavorited);
-//            userWhoFavorited.addFavoriteRecipe(this);
-//        }
-//        
-//    }
-//    
-//    public void removeUserWhoFavorited(User userWhoFavorited) {
-//        if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
-//        usersWhoFavorited.remove(userWhoFavorited);
-//        userWhoFavorited.removeFavoriteRecipe(this);
-//        }
-//    }
     
     
+    public void addUserWhoFavorited(User userWhoFavorited) {
+        if(usersWhoFavorited== null) {
+            usersWhoFavorited = new ArrayList<>();
+        }
+        
+        if(!usersWhoFavorited.contains(userWhoFavorited)) {
+            usersWhoFavorited.add(userWhoFavorited);
+            userWhoFavorited.addRecipeFavorited(this);
+        }
+        
+    }
     
+    public void removeUserWhoFavorited(User userWhoFavorited) {
+        if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
+        usersWhoFavorited.remove(userWhoFavorited);
+        userWhoFavorited.removeRecipeFavorited(this);
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-	
+  
 	
     public void addRecipeComment(RecipeComment recipeComment) {
     	if(recipeComments==null) {
@@ -148,27 +146,27 @@ public class Recipe {
     }
     
     
-    public void addRecipeFavorite(RecipeFavorite recipeFavorite) {
-    	if(recipeFavorites==null) {
-    		recipeFavorites = new ArrayList<>();
-    	}
-    	
-    	if(!recipeFavorites.contains(recipeFavorite)) {
-    		recipeFavorites.add(recipeFavorite);
-    		if(recipeFavorite.getRecipeFavorited() != null) {
-    			recipeFavorite.getRecipeFavorited().getRecipeFavorites().remove(recipeFavorite);
-    		}
-    	}
-    	
-    	recipeFavorite.setRecipeFavorited(this);
-    }
-    
-    public void removeRecipeFavorite(RecipeFavorite recipeFavorite) {
-    	recipeFavorite.setRecipeFavorited(null);
-    	if(recipeFavorites!=null) {
-    		recipeFavorites.remove(recipeFavorite);
-    	}
-    }
+//    public void addRecipeFavorite(RecipeFavorite recipeFavorite) {
+//    	if(recipeFavorites==null) {
+//    		recipeFavorites = new ArrayList<>();
+//    	}
+//    	
+//    	if(!recipeFavorites.contains(recipeFavorite)) {
+//    		recipeFavorites.add(recipeFavorite);
+//    		if(recipeFavorite.getRecipeFavorited() != null) {
+//    			recipeFavorite.getRecipeFavorited().getRecipeFavorites().remove(recipeFavorite);
+//    		}
+//    	}
+//    	
+//    	recipeFavorite.setRecipeFavorited(this);
+//    }
+//    
+//    public void removeRecipeFavorite(RecipeFavorite recipeFavorite) {
+//    	recipeFavorite.setRecipeFavorited(null);
+//    	if(recipeFavorites!=null) {
+//    		recipeFavorites.remove(recipeFavorite);
+//    	}
+//    }
     
     
     
@@ -176,19 +174,18 @@ public class Recipe {
 		return recipeLikers;
 	}
 
+	public List<User> getUsersWhoFavorited() {
+		return usersWhoFavorited;
+	}
+
+	public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
+		this.usersWhoFavorited = usersWhoFavorited;
+	}
+
 	public void setRecipeLikers(List<User> recipeLikers) {
 		this.recipeLikers = recipeLikers;
 	}
-
-	public List<RecipeFavorite> getRecipeFavorites() {
-		return recipeFavorites;
-	}
-
-	public void setRecipeFavorites(List<RecipeFavorite> recipeFavorites) {
-		this.recipeFavorites = recipeFavorites;
-	}
-
-    
+ 
     
 	public String getTitle() {
 		return title;
