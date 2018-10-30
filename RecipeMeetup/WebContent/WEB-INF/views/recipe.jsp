@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:if test="${not empty loggedInUser }"><%@include
-		file="NavBar.jsp"%></c:if>
+        file="NavBar.jsp"%></c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,99 +13,93 @@
 <title>Recipe Details</title>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<c:choose>
-		<c:when test="${not empty loggedInUser}">
-			<br>
+    <br>
+    <br>
+    <br>
+    <c:choose>
+        <c:when test="${not empty loggedInUser}">
+            <br>
 
-			<p>
-			<h3>${recipe.title}</h3>
-			<c:if test="${canEditPost}">
-				<form action="editRecipe.do" method="GET">
-					<input type="hidden" name="id" value="${recipe.id}" /> <input
-						type="submit" value="Edit" />
-				</form>
-				<form action="deleteRecipe.do" method="post">
-					<input type="hidden" name="id" value="${recipe.id}" /> <input
-						type="submit" value="Delete" />
-				</form>
-			</c:if>
+            <p>
+            <h3>${recipe.title}</h3>
+            <c:if test="${canEditPost}">
+                <form action="editRecipe.do" method="GET">
+                    <input type="hidden" name="id" value="${recipe.id}" /> <input
+                        type="submit" value="Edit" />
+                </form>
+                <form action="deleteRecipe.do" method="post">
+                    <input type="hidden" name="id" value="${recipe.id}" /> <input
+                        type="submit" value="Delete" />
+                </form>
+            </c:if>
 
-			</p>
-			<form:form action="favoriteRecipe.do" method="post">
-				<input type="hidden" name="id" value="${recipe.id }" />
-				<input type="submit" value="Add to Favorites" />
-			</form:form>
-			<br>
-			<form:form action="likeRecipe.do" method="post">
-				<input type="hidden" name="id" value="${recipe.id }" />
-				<input type="submit" value="LIKE" />
-			</form:form>
-			<h1>${recipe.active }</h1>
-			<hr>	
- 			Description: ${recipe.description} <br>
- 			Ingredients: ${recipe.ingredients} <br>
- 			Instructions: ${recipe.instructions}<br>
- 			Category: ${recipe.category}<br>
- 			Origin: ${recipe.country}<br>
- 			Serving Size: ${recipe.servingSize}<br>
- 			Cook Time: ${recipe.cookTime} minutes<br>
+            </p>
+            <form:form action="favoriteRecipe.do" method="post">
+                <input type="hidden" name="id" value="${recipe.id }" />
+                <input type="submit" value="Add to Favorites" />
+            </form:form>
+            <br>
+            <form:form action="likeRecipe.do" method="post">
+                <input type="hidden" name="id" value="${recipe.id }" />
+                <input type="submit" value="LIKE" />
+            </form:form>
+            <h1>${recipe.active }</h1>
+            <hr>    
+             Description: ${recipe.description} <br> <br>
+             Ingredients: ${recipe.ingredients} <br>
+             Instructions: ${recipe.instructions}<br>
+             Category: ${recipe.category}<br>
+             Origin: ${recipe.country}<br>
+             Serving Size: ${recipe.servingSize}<br>
+             Cook Time: ${recipe.cookTime} minutes<br>
 
-			<form action="showRecipeDetails.do" method="GET">
-				<input type="hidden" name="id" value="${recipe.id}" /> <input
-					type="submit" value="Details" />
-				<hr>
+            <form action="showRecipeDetails.do" method="GET">
+                <input type="hidden" name="id" value="${recipe.id}" /> <input
+                    type="submit" value="Details" />
+                <hr>
 
-				<c:choose>
+                <c:choose>
 
-					<c:when test="${not empty listOfComments }">
-						<c:forEach items="${listOfComments}" var="comment">
+                    <c:when test="${not empty listOfComments }">
+                        <c:forEach items="${listOfComments}" var="comment">
 
-							<p>${comment.recipeCommentOwner.firstName }
-								${comment.recipeCommentOwner.lastName }</p>
-							<p>${comment.comment}</p>
-							<form action="viewOtherProfile.do" method="GET">
-								<input type="hidden" name="id"
-									value="${comment.recipeCommentOwner.id }" /> <input
-									type="submit" value="View User Profile" />
-							</form>
+                            <a href="viewOtherProfile.do?id=${comment.recipeCommentOwner.id}"> ${comment.recipeCommentOwner.firstName} ${comment.recipeCommentOwner.lastName}</a>
+							<br><p>${comment.comment}</p>
 							<hr>
-						</c:forEach>
+                        </c:forEach>
 
-					</c:when>
-				</c:choose>
+                    </c:when>
+                </c:choose>
 
-				<form:form action="submitRecipeComment.do" method="POST">
-					<input type="hidden" name="id" value="${recipe.id }" />
-					<input type="text" name="comment" value="Post a Comment" rows="5"
-						cols="50" />
-					<input type="submit" value="Submit Comment" />
-				</form:form>
-		</c:when>
+                <form:form action="submitRecipeComment.do" method="POST">
+                    <input type="hidden" name="id" value="${recipe.id }" />
+                    <input type="text" name="comment" value="Post a Comment" rows="5"
+                        cols="50" />
+                    <input type="submit" value="Submit Comment" />
+                </form:form>
+        </c:when>
 
-		<c:otherwise>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<h3>Only a logged in user can view this page.</h3>
+        <c:otherwise>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3>Only a logged in user can view this page.</h3>
 
-			<form:form action="index.do" modelAttribute="user" method="GET">
-				<input type="submit" value="Login" />
-			</form:form>
+            <form:form action="index.do" modelAttribute="user" method="GET">
+                <input type="submit" value="Login" />
+            </form:form>
 
 
-			<form:form action="registrationLink.do" modelAttribute="user"
-				method="GET">
-				<input type="submit" value="Register" />
-			</form:form>
+            <form:form action="registrationLink.do" modelAttribute="user"
+                method="GET">
+                <input type="submit" value="Register" />
+            </form:form>
 
-		</c:otherwise>
-	</c:choose>
+        </c:otherwise>
+    </c:choose>
 
 
 </body>
