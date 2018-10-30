@@ -53,11 +53,11 @@ public class User {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
-	@ManyToMany
-	@JoinTable(name="favorite_recipe",
-	joinColumns=@JoinColumn(name="user_id"),
-	inverseJoinColumns=@JoinColumn(name="recipe_id"))
-	private List<Recipe> favoriteRecipes;
+//	@ManyToMany
+//	@JoinTable(name="favorite_recipe",
+//	joinColumns=@JoinColumn(name="user_id"),
+//	inverseJoinColumns=@JoinColumn(name="recipe_id"))
+//	private List<Recipe> favoriteRecipes;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupOwner")
 	private List<Meetup> meetupsOwned;
@@ -67,6 +67,9 @@ public class User {
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupCommentOwner")
 	private List<MeetupComment> meetupCommentsPosted;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userWhoFavorited")
+	private List<RecipeFavorite> recipeFavorites;
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userMeetupCommentLikers")
 	private List<MeetupComment> likedMeetupComments;
@@ -253,23 +256,48 @@ public class User {
         }
     }
     
+//    public void addRecipeComment(RecipeComment recipeComment) {
+//        if(recipeComments==null) {
+//        	recipeComments = new ArrayList<>();
+//        }
+//        
+//        if(!recipeComments.contains(recipeComment)) {
+//        	recipeComments.add(recipeComment);
+//            if(recipeComment.getRecipeCommentedOn() != null) {
+//                recipeComment.getRecipeCommentedOn().getRecipeComments().remove(recipeComment);
+//            }
+//        }
+//        
+//        recipeComment.setRecipeCommentOwner(this);
+//    }
+//    
+//    public void removeRecipeComment(RecipeComment recipeComment) {
+//        recipeComment.setRecipeCommentOwner(null);
+//        if(recipeComments!=null) {
+//        	recipeComments.remove(recipeComment);
+//        }
+//    }
+    
     //add recipe to favorite list
-    public void addFavoriteRecipe(Recipe recipe) {
-        if(favoriteRecipes== null) {
-        	favoriteRecipes = new ArrayList<>();
+    public void addFavoriteRecipe(RecipeFavorite recipeFavorite) {
+        if(recipeFavorites== null) {
+        	recipeFavorites = new ArrayList<>();
         }
         
-        if(!favoriteRecipes.contains(recipe)) {
-        	favoriteRecipes.add(recipe);
-            recipe.addUserWhoFavorited(this);
+        if(!recipeFavorites.contains(recipeFavorite)) {
+        	recipeFavorites.add(recipeFavorite);
+            if(recipeFavorite.getRecipeFavorited() != null) {
+            	recipeFavorite.getRecipeFavorited().getRecipeFavorites().remove(recipeFavorite);
+            }
         }
+        recipeFavorite.setUserWhoFavorited(this);
     }
     
-    public void removeFavoriteRecipe(Recipe recipe) {
-        if(favoriteRecipes != null && favoriteRecipes.contains(recipe)) {
-        	favoriteRecipes.remove(recipe);
-        	recipe.removeUserWhoFavorited(this);
-        }
+    public void removeFavoriteRecipe(RecipeFavorite recipeFavorite) {
+    	recipeFavorite.setUserWhoFavorited(null);
+      if(recipeFavorites!=null) {
+      	recipeFavorites.remove(recipeFavorite);
+      }
     }
     
 	
@@ -281,13 +309,13 @@ public class User {
 		this.recipeComments = recipeComments;
 	}
 
-	public List<Recipe> getFavoriteRecipes() {
-		return favoriteRecipes;
-	}
-
-	public void setFavoriteRecipes(List<Recipe> favoriteRecipes) {
-		this.favoriteRecipes = favoriteRecipes;
-	}
+//	public List<Recipe> getFavoriteRecipes() {
+//		return favoriteRecipes;
+//	}
+//
+//	public void setFavoriteRecipes(List<Recipe> favoriteRecipes) {
+//		this.favoriteRecipes = favoriteRecipes;
+//	}
 
 	public List<Recipe> getRecipesPosted() {
 		return recipesPosted;

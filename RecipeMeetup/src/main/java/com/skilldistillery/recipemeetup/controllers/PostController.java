@@ -101,12 +101,14 @@ public class PostController {
 	
 	@RequestMapping(path="favoriteRecipe.do", method=RequestMethod.POST)
 	public ModelAndView favoriteRecipe(Recipe favoriteRecipe, HttpSession session) {
+		System.out.println(favoriteRecipe);
 		ModelAndView mv = new ModelAndView();
 		User userFaved = (User) session.getAttribute("loggedInUser");
 		Recipe favedRecipe = recipeDAO.addRecipeToFavorites(favoriteRecipe, userFaved);
 //		mv.addObject("recipes", favedRecipe);
-		mv.setViewName("redirect:showRecipeDetails.do?id=" + favedRecipe.getId());
-		
+//		mv.setViewName("redirect:showRecipeDetails.do?id=" + favedRecipe.getId());
+		mv.setViewName("redirect:userProfile.do");
+		System.out.println("end of favoriteRecipe");
 		return mv;
 		
 	}
