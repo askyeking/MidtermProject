@@ -53,11 +53,6 @@ public class Recipe {
 	@CreationTimestamp
 	private Date createDate;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	@JoinTable(name="recipe_like",
-	joinColumns=@JoinColumn(name="recipe_id"),
-	inverseJoinColumns=@JoinColumn(name="user_id"))
-	private List<User> recipeLikers;
 	
 	@ManyToOne
 	@JoinColumn(name="author_id")
@@ -72,36 +67,18 @@ public class Recipe {
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> usersWhoFavorited;
 	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinTable(name="recipe_like",
+	joinColumns=@JoinColumn(name="recipe_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> recipeLikers;
+	
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentedOn")
 	private List<RecipeComment> recipeComments;
-	
-//	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeFavorited")
-//	private List<RecipeFavorite> recipeFavorites;
+
 	
 	
-	public void addRecipeLikers(User recipeLiker) {
-        if(recipeLikers== null) {
-            recipeLikers = new ArrayList<>();
-        }
-        
-        if(!recipeLikers.contains(recipeLiker)) {
-            recipeLikers.add(recipeLiker);
-            recipeLiker.addLikedRecipe(this);
-        }
-        
-    }
-    
-    public void removeRecipeLikers(User recipeLiker) {
-        if(recipeLikers != null && recipeLikers.contains(recipeLiker)) {
-        recipeLikers.remove(recipeLiker);
-        recipeLiker.removeLikedRecipe(this);
-        }
-    }
-    
-    
-    
-    
     public void addUserWhoFavorited(User userWhoFavorited) {
         if(usersWhoFavorited== null) {
             usersWhoFavorited = new ArrayList<>();
@@ -118,6 +95,26 @@ public class Recipe {
         if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
         usersWhoFavorited.remove(userWhoFavorited);
         userWhoFavorited.removeRecipeFavorited(this);
+        }
+    }
+    
+    
+    public void addRecipeLikers(User recipeLiker) {
+        if(recipeLikers== null) {
+            recipeLikers = new ArrayList<>();
+        }
+        
+        if(!recipeLikers.contains(recipeLiker)) {
+            recipeLikers.add(recipeLiker);
+            recipeLiker.addLikedRecipe(this);
+        }
+        
+    }
+    
+    public void removeRecipeLikers(User recipeLiker) {
+        if(recipeLikers != null && recipeLikers.contains(recipeLiker)) {
+        recipeLikers.remove(recipeLiker);
+        recipeLiker.removeLikedRecipe(this);
         }
     }
     
@@ -144,30 +141,6 @@ public class Recipe {
     		recipeComments.remove(recipeComment);
     	}
     }
-    
-    
-//    public void addRecipeFavorite(RecipeFavorite recipeFavorite) {
-//    	if(recipeFavorites==null) {
-//    		recipeFavorites = new ArrayList<>();
-//    	}
-//    	
-//    	if(!recipeFavorites.contains(recipeFavorite)) {
-//    		recipeFavorites.add(recipeFavorite);
-//    		if(recipeFavorite.getRecipeFavorited() != null) {
-//    			recipeFavorite.getRecipeFavorited().getRecipeFavorites().remove(recipeFavorite);
-//    		}
-//    	}
-//    	
-//    	recipeFavorite.setRecipeFavorited(this);
-//    }
-//    
-//    public void removeRecipeFavorite(RecipeFavorite recipeFavorite) {
-//    	recipeFavorite.setRecipeFavorited(null);
-//    	if(recipeFavorites!=null) {
-//    		recipeFavorites.remove(recipeFavorite);
-//    	}
-//    }
-    
     
     
     public List<User> getRecipeLikers() {
@@ -345,14 +318,6 @@ public class Recipe {
 		this.active = active;
 	}
 
-	public List<User> getRecipeLikes() {
-		return recipeLikers;
-	}
-
-	public void setRecipeLikes(List<User> recipeLikes) {
-		this.recipeLikers = recipeLikes;
-	}
-
 	public User getRecipeOwner() {
 		return recipeOwner;
 	}
@@ -361,16 +326,4 @@ public class Recipe {
 		this.recipeOwner = recipeOwner;
 	}
 
-//	public List<User> getUsersWhoFavorited() {
-//		return usersWhoFavorited;
-//	}
-//
-//	public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
-//		this.usersWhoFavorited = usersWhoFavorited;
-//	}
-	
-	
-	
-	
-	
 }
