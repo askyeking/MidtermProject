@@ -17,7 +17,7 @@ public interface MeetupDAO {
 
 	Meetup createMeetup(Meetup meetup, User user, Address address);
 
-	Meetup updateMeetup(Meetup meetup);
+	Meetup updateMeetup(Meetup meetup, Address address);
 
 	Meetup setActiveToFalse(Meetup meetup);
 

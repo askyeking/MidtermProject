@@ -18,13 +18,18 @@
 <body style="height: 1500px">
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
-
+		<br>
+		<br>
+		<br>
+		<br>
+		Inside of Edit Meetup
 		<c:if test="${not empty meetup }">
 
 			
 			<h3>Edit Meetup</h3>
 
 			<form action="editedMeetup.do" method="POST">
+			<input type="hidden" name="id" value="${meetup.id}" /> 
 				<br>
 				<h3>Meetup Name</h3>
 				<input type="text" name="title" value="${meetup.title }" maxlength="45" required /><br>
@@ -43,9 +48,9 @@
 				<h3>End time</h3>
 				<input type="datetime-local" name="endTime"/><br> -->
 				<h3>Set a Meetup Picture</h3>
-				URL: <input type="url" name="imageURL" value="${meetup.igmURL }"maxlength="45"><br> <br>
+				URL: <input type="url" name="imageURL" value="" maxlength="45"><br> <br> 
 				<h3>Start Date<h3></h3>
-				<input type="datetime-local" name="ldt" required /><br>
+				<input type="datetime-local" name="ldt" value="" required /><br>
 				
 				<h3>Address</h3>
 				Street: <input type="text" name="street" value="${meetup.meetupAddress.street}" maxlength="190" required /><br>

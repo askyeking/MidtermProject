@@ -1,5 +1,7 @@
 package com.skilldistillery.recipemeetup.controllers;
 
+import java.text.ParseException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.skilldistillery.recipemeetup.data.MeetupCommentDAO;
 import com.skilldistillery.recipemeetup.data.MeetupDAO;
 import com.skilldistillery.recipemeetup.data.RecipeCommentDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
+import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.MeetupComment;
 import com.skilldistillery.recipemeetup.entities.Recipe;
@@ -62,8 +65,9 @@ public class PostController {
 		
 		meetup = meetupDAO.showMeetup(meetup);
 		User currentUser = (User) session.getAttribute("loggedInUser");
-		
-		if((meetup.getMeetupOwner().getId() == currentUser.getId()) || (currentUser.getAdmin())) {
+		System.out.println(meetup.getMeetupOwner().getId());
+		System.out.println(currentUser.getId());
+		if((meetup.getMeetupOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
 			canEdit = true;
 		}
 		
@@ -92,6 +96,56 @@ public class PostController {
 		MeetupComment meetupComment = meetupCommentDAO.postMeetupComment(meetup, comment, author);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetupComment.getMeetupCommentedOn().getId());
+		return mv;
+	}
+	
+	@RequestMapping(path="editMeetup.do", method=RequestMethod.GET)
+	public ModelAndView editMeetup(Meetup meetup, HttpSession session ) {
+		System.out.println(meetup);
+		
+		
+		ModelAndView mv = new ModelAndView();
+		meetup = meetupDAO.findSingleMeetup(meetup.getId());
+		System.out.println(meetup);
+		mv.addObject("meetup", meetup);
+		mv.setViewName("/WEB-INF/views/editMeetup.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
+	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
+//		System.out.println("In Controller");
+		ModelAndView mv = new ModelAndView();
+		String startTime = ldt.substring(0, 10) + " " + ldt.substring(11);
+		
+		User author = (User) session.getAttribute("loggedInUser");
+		
+		java.util.Date dt = new java.util.Date();
+		
+		java.text.SimpleDateFormat sdf = 
+		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+		
+		try {
+//			System.out.println(startDate); System.out.println(startTime);
+			dt = sdf.parse(startTime);
+			meetup.setStartTime(dt);
+		} catch (ParseException e) {
+			System.out.println("excepton on date parsing");
+			e.printStackTrace();
+		}
+		
+		
+		if (meetup != null) {
+			meetup.setStartTime(dt);
+//			meetup = meetupDAO.createMeetup(meetup, author, address);
+			meetup = meetupDAO.updateMeetup(meetup, address);
+			mv.addObject("meetupCreated", meetup);
+			mv.setViewName("redirect:showMeetupDetails.do?id="+meetup.getId());
+		}
+		else {
+			editMeetup(meetup, session);
+		}
+		
 		return mv;
 	}
 	

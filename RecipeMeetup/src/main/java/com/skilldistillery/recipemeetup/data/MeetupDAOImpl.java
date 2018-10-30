@@ -24,7 +24,6 @@ public class MeetupDAOImpl implements MeetupDAO {
 	
 	@Override
 	public Meetup findSingleMeetup(int meetupId) {
-		String jpql = "SELECT meetup FROM Meetup meetup";
 		Meetup meetup = em.find(Meetup.class, meetupId);
 		return meetup;
 	}
@@ -74,7 +73,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 	}
 	
 	@Override
-	public Meetup updateMeetup(Meetup meetup) {
+	public Meetup updateMeetup(Meetup meetup, Address address) {
 		Meetup updatedMeetup = em.find(Meetup.class, meetup.getId());
 		updatedMeetup.setTitle(meetup.getTitle());
 		updatedMeetup.setDescription(meetup.getDescription());
@@ -83,6 +82,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 		updatedMeetup.setStartTime(meetup.getStartTime());
 		updatedMeetup.setEndTime(meetup.getEndTime());
 		updatedMeetup.setMaxAttendance(meetup.getMaxAttendance());
+		updatedMeetup.setMeetupAddress(address);
 		
 		return updatedMeetup;
 	}
