@@ -48,12 +48,12 @@
 			</c:if>
 
 			<p>
+			<a href="viewOtherProfile.do?id=${meetupOwner.id }" > Meetup Owner: ${meetupOwner.firstName }</a> 
 			<form action="viewOtherProfile.do" method="GET" >
-<%-- 				<a href="viewOtherProfile.do" onclick="form.submit();" > Meetup Owner: ${meetupOwner.firstName }</a> --%>
 			<input type="hidden" name="id" value="${meetupOwner.id }"/>
-			<input
-					type="submit" value="View Profile" /> 
-			</form>
+			<input type="submit" value="View Profile" /> 
+			<input type="button" value="View Profile Button" />
+			</form> 
 			</p>
 			<c:choose>
 
