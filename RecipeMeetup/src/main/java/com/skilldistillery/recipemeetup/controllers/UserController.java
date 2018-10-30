@@ -145,25 +145,6 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.POST)
-	public ModelAndView RSVPMeetup(Meetup meetup, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		System.out.println("***************");
-//		Meetup reservedMeetup = meetupDAO.findSingleMeetup(meetup.getId());
-//		List<User> attendees = reservedMeetup.getAttendees();
-		User user = (User) session.getAttribute("loggedInUser");
-		Meetup reservedMeetup = meetupDAO.addRSVPForMeetup(meetup, user);
-		System.out.println("***************");
 
-//		List<MeetupComment> listOfComments = meetupCommentDAO.showAllMeetupComments(reservedMeetup.getId());
-//		mv.addObject("listOfAttendees", attendees);
-//		mv.addObject("meetup", reservedMeetup);
-//		mv.addObject("listOfComments", listOfComments);
-//		mv.addObject("user", user);
-		mv.setViewName("redirect:showMeetupDetails.do?id=" + reservedMeetup.getId());
-		System.out.println("***************");
-
-		return mv;
-	}
 
 }

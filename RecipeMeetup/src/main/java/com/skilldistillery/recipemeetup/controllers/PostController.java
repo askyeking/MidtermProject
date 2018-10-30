@@ -71,12 +71,34 @@ public class PostController {
 		if((meetup.getMeetupOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
 			canEdit = true;
 		}
+		List<User> meetupAttendees = meetup.getAttendees();
 		
+		mv.addObject("listOfAttendees", meetupAttendees);
 		mv.addObject("canEditPost" , canEdit);
 		mv.addObject("meetup",meetupDAO.findSingleMeetup(meetup.getId()));
 		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(meetup.getId()));
 		mv.setViewName("/WEB-INF/views/meetup.jsp");
 		
+		return mv;
+	}
+	
+	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.POST)
+	public ModelAndView RSVPMeetup(Meetup meetup, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("***************");
+//		Meetup reservedMeetup = meetupDAO.findSingleMeetup(meetup.getId());
+		User user = (User) session.getAttribute("loggedInUser");
+		Meetup reservedMeetup = meetupDAO.addRSVPForMeetup(meetup, user);
+		System.out.println("***************");
+
+//		List<MeetupComment> listOfComments = meetupCommentDAO.showAllMeetupComments(reservedMeetup.getId());
+//		List<User> attendees = reservedMeetendees);
+//		mv.addObject("meetup", reservedMeetup);
+//		mv.addObject("listOfComments", listOfComments);
+//		mv.addObject("user", user);
+		mv.setViewName("redirect:showMeetupDetails.do?id=" + reservedMeetup.getId());
+		System.out.println("***************");
+
 		return mv;
 	}
 	
