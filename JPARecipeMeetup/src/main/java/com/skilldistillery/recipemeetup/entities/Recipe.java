@@ -318,7 +318,7 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "\nPosted: " + createDate + "\nTitle: " + title + "\nOrigin: " + country + "\nDescription: " + description
+		return "Recipe id" +id + "\nPosted: " + createDate + "\nTitle: " + title + "\nOrigin: " + country + "\nDescription: " + description
 				+ "\nIngredients: " + ingredients + "\nServing Size: " + servingSize + "\nCook Time: " + cookTime + " minutes"
 				+ "\nInstructions: " + instructions + "\nCategory: " + category;
 	}
