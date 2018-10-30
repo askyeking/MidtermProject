@@ -42,6 +42,9 @@
 	<c:choose>
 		<c:when test="${not empty meetups}">
 		<h3>Meetups</h3>
+		<form action = "createMeetup.do" method="GET">
+			<input type = "submit" value = "Create A New Meetup">
+			</form>
 			<hr>
 			<c:forEach items="${meetups}" var="meetup">
 
@@ -66,6 +69,9 @@
 	<c:choose>
 		<c:when test="${not empty recipes}">
 		<h3>Recipes</h3>
+		<form action = "createRecipe.do" method="GET">
+			<input type = "submit" value = "Create A New Recipe">
+			</form>
 		<hr>
 			<c:forEach items="${recipes}" var="recipe">
 
