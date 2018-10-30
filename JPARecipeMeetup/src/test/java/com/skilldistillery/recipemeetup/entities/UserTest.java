@@ -82,11 +82,11 @@ class UserTest {
 		assertEquals(1, user.getRecipesPosted().get(0).getId());
 	}
 	
-	@Test
-	void test_user_has_favorite_recipes() {
-		assertEquals("Chicken quesadilla", user.getFavoriteRecipes().get(0).getTitle());
-		assertEquals(1, user.getFavoriteRecipes().get(0).getId());
-	}
+//	@Test
+//	void test_user_has_favorite_recipes() {
+//		assertEquals("Chicken quesadilla", user.getFavoriteRecipes().get(0).getTitle());
+//		assertEquals(1, user.getFavoriteRecipes().get(0).getId());
+//	}
 	
 	@Test
 	void test_user_has_recipe_comments() {
