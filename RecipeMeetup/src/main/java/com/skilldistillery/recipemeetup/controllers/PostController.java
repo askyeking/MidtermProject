@@ -41,7 +41,7 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		Boolean canEdit = new Boolean(false);
 		
-		recipe = recipeDAO.showRecipeById(recipe.getId());
+		recipe = recipeDAO.showRecipe(recipe);
 		User currentUser = (User) session.getAttribute("loggedInUser");
 		
 		if ((recipe.getRecipeOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
@@ -54,9 +54,20 @@ public class PostController {
 		return mv;
 	}
 	
+	
 	@RequestMapping(path="showMeetupDetails.do", method=RequestMethod.GET)
 	public ModelAndView showMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		Boolean canEdit = new Boolean(false);
+		
+		meetup = meetupDAO.showMeetup(meetup);
+		User currentUser = (User) session.getAttribute("loggedInUser");
+		
+		if((meetup.getMeetupOwner().getId() == currentUser.getId()) || (currentUser.getAdmin())) {
+			canEdit = true;
+		}
+		
+		mv.addObject("canEditPost" , canEdit);
 		mv.addObject("meetup",meetupDAO.findSingleMeetup(meetup.getId()));
 		mv.addObject("listOfComments", meetupCommentDAO.showAllMeetupComments(meetup.getId()));
 		mv.setViewName("/WEB-INF/views/meetup.jsp");
