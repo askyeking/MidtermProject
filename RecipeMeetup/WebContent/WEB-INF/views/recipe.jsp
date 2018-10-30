@@ -27,12 +27,16 @@
 			<form action="editRecipe.do" method="GET">
 				<input type="submit" value="Edit" />
 			</form>
-			<form action="DeleteRecipe.do" method="post">
+			<form action="deleteRecipe.do" method="post">
 				<input type="submit" value="Delete" />
 			</form>
 			</c:if>
 		
 			</p>
+			<form action="favoriteRecipe.do" method="post">
+				<input type="hidden" name="id" value="${recipe.id }" />
+				<input type="submit" value="Add to Favorites" />
+			</form>
 			
 			<hr>	
  			Description: ${recipe.description } <br>

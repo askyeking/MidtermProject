@@ -18,5 +18,6 @@ public interface RecipeDAO {
 	boolean isRecipeActive(Recipe recipe);
 	Recipe showRecipeById(int Id);
 	List<Recipe> findRecipe(String recipe);
+	Recipe addRecipeToFavorites(Recipe recipe);
 
 }
