@@ -49,6 +49,11 @@
 
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments}" var="comment">
+					
+					<form action="viewOtherProfile.do" method="GET">
+						<input type="hidden" name="id" value="${comment.recipeCommentOwner.id }"/>
+						<input type="submit" value="view profile"/>
+						</form>	
 						<p>${comment.recipeCommentOwner.firstName }
 							${comment.recipeCommentOwner.lastName }</p>
 						<p>${comment.comment}</p>

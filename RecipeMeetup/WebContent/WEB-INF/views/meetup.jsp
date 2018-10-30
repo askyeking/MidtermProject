@@ -39,8 +39,12 @@
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments }" var="comment">
 						<hr>
-						<p><a href="otherUserProfile.do">${comment.meetupCommentOwner.firstName }
-							${comment.meetupCommentOwner.lastName }</a></p>
+						<form action="viewOtherProfile.do" method="GET">
+						<input type="hidden" name="id" value="${comment.meetupCommentOwner.id }"/>
+						<input type="submit" value="view profile"/>
+						</form>
+						<p>${comment.meetupCommentOwner.firstName }
+							${comment.meetupCommentOwner.lastName }</p>
 						<p>${comment.textContent}</p>
 					</c:forEach>
 
