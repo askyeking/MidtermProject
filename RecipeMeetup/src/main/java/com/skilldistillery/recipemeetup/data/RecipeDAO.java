@@ -20,5 +20,6 @@ public interface RecipeDAO {
 	List<Recipe> findRecipe(String recipe);
 	Recipe addRecipeToFavorites(Recipe recipe, User user);
 	Recipe addRecipeToLikes(Recipe recipe, User user);
+	Recipe setActiveToFalse(Recipe recipe);
 
 }
