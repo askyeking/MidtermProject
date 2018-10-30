@@ -53,9 +53,6 @@
  			Serving Size: ${recipe.servingSize}<br>
  			Cook Time: ${recipe.cookTime} minutes<br>
 
-			<form action="showRecipeDetails.do" method="GET">
-				<input type="hidden" name="id" value="${recipe.id}" /> <input
-					type="submit" value="Details" />
 				<hr>
 
 				<c:choose>
