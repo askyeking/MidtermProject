@@ -72,7 +72,9 @@ public class PostController {
 			canEdit = true;
 		}
 		List<User> meetupAttendees = meetup.getAttendees();
+		User meetupOwner = meetup.getMeetupOwner();
 		
+		mv.addObject("meetupOwner", meetupOwner);
 		mv.addObject("listOfAttendees", meetupAttendees);
 		mv.addObject("canEditPost" , canEdit);
 		mv.addObject("meetup",meetupDAO.findSingleMeetup(meetup.getId()));

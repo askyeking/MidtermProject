@@ -54,7 +54,6 @@
 
 	<c:choose>
 		<c:when test="${not empty recentMeetup}">
-		<h4>Recent Meetups</h4>
 		<hr>
 		
 			<c:forEach items="${recentMeetup}" var="meetup">
