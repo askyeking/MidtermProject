@@ -136,7 +136,6 @@ public class UserController {
 
 	}
 
-	
 	@RequestMapping(path = "viewOtherProfile.do", method = RequestMethod.GET)
 	public ModelAndView viewOtherProfile(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -144,6 +143,16 @@ public class UserController {
 		mv.addObject("user", newUser);
 		mv.setViewName("/WEB-INF/views/otherUserProfile.jsp");
 		return mv;
+	}
+	
+	@RequestMapping(path="logout.do", method=RequestMethod.GET)
+	public ModelAndView logout(User user, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		user = (User) session.getAttribute("loggedInUser");
+		session.removeAttribute("loggedInUser");
+		session.invalidate();
+		mv.setViewName("WEB-INF/views/login.jsp");
+		return mv;	
 	}
 
 

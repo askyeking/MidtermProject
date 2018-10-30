@@ -38,6 +38,11 @@
 				<input type="hidden" name="id" value="${recipe.id }" />
 				<input type="submit" value="Add to Favorites" />
 			</form:form>
+			<br>
+			<form:form action="likeRecipe.do" method="post">
+				<input type="hidden" name="id" value="${recipe.id }" />
+				<input type="submit" value="LIKE" />
+			</form:form>
 			
 			<hr>	
  			Description: ${recipe.description} <br>
