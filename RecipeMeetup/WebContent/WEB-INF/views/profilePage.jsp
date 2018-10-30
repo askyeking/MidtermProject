@@ -21,18 +21,41 @@
 <br>
 <br>
 
-<h3>Profile Page</h3>
+	 	<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
 	
 	 	<form action = "createRecipe.do" method="POST">
 			<input type = "submit" value = "Create A New Recipe">
 			</form>
 			<form action = "createMeetup.do" method="POST">
 			<input type = "submit" value = "Create A New Meetup">
-			</form>
+			</form> <hr>
 	 	
-	 	<p>User: ${loggedInUser.firstName} ${loggedInUser.lastName}</p>
 	 	
-	 	<p>About you: ${loggedInUser.description}</p>
+	 	<p>${loggedInUser.description}</p><hr>
+	 	
+	 	<c:choose>
+		<c:when test="${not empty loggedInUser}">
+		<h4>Recent Posted Recipes</h4>
+		<hr>
+		
+			<c:forEach items="${loggedInUser.recipesPosted}" var="recipesPosted">
+	 			<p>${loggedInUser.recipesPosted}</p> 
+	 
+	 	</c:forEach>
+	 	</c:when>
+	 	</c:choose>
+	 	
+	 	<c:choose>
+		<c:when test="${not empty loggedInUser}">
+		<h4>Recent Posted Meetups</h4>
+		<hr>
+		
+			<c:forEach items="${loggedInUser.meetupsOwned}" var="meetupsOwned">
+	 			<p>${loggedInUser.meetupsOwned}</p> 
+	 
+	 	</c:forEach>
+	 	</c:when>
+	 	</c:choose>
 	 	
 	 	
 
