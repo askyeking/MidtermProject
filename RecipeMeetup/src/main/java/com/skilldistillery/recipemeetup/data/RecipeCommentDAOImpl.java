@@ -21,7 +21,7 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 	private EntityManager em;
 
 	@Override
-	public RecipeComment postRecipeComment(RecipeComment comment, User author) {
+	public RecipeComment postRecipeComment(Recipe recipe, RecipeComment comment, User author) {
 		author.addRecipeComment(comment);
 		comment.setRecipeCommentOwner(author);
 		em.persist(comment);
