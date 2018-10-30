@@ -24,6 +24,7 @@
 
 			<h3>Create a New Meetup</h3>
 			<form action="addedMeetup.do" method="POST">
+				<input type="hidden" name="active" value="1" /> 
 				<br>
 				<h3>Meetup Name</h3>
 				<input type="text" name="title" value="" maxlength="45" required /><br>

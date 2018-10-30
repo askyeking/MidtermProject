@@ -25,6 +25,7 @@
 			<h3>${recipe.title}</h3> 
 			<c:if test="${canEditPost}">
 			<form action="editRecipe.do" method="GET">
+				<input type="hidden" name="id" value="${recipe.id}" />
 				<input type="submit" value="Edit" />
 			</form>
 			<form action="DeleteRecipe.do" method="post">

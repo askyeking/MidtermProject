@@ -148,6 +148,40 @@ public class HomeController {
 		return mv;
 	}
 	
+	@RequestMapping(path="editRecipe.do", method=RequestMethod.GET)
+	public ModelAndView editRecipe(Recipe recipe, HttpSession session ) {
+		System.out.println(recipe);
+		
+		
+		ModelAndView mv = new ModelAndView();
+		recipe = recipeDAO.showRecipe(recipe);
+		System.out.println(recipe);
+		mv.addObject("recipe", recipe);
+		mv.setViewName("/WEB-INF/views/editMeetup.jsp");
+		return mv;
+	}
+	
+	
+	@RequestMapping(path= "editedRecipe.do", method = RequestMethod.POST)
+	public ModelAndView editedRecipe(Recipe recipe, HttpSession session) {
+		System.out.println("start of editRecipe" + recipe);
+		ModelAndView mv = new ModelAndView();
+		
+		User author = (User) session.getAttribute("loggedInUser");
+		
+		
+		if (recipe != null) {
+			recipe = recipeDAO.updateRecipe(recipe);
+			mv.addObject("recipeCreated", recipe);
+			mv.setViewName("redirect:showRecipeDetails.do?id="+recipe.getId());
+		}
+		else {
+			editRecipe(recipe, session);
+		}
+		
+		return mv;
+	}
+	
 //	@RequestMapping(path="deleteRecipe.do", method=RequestMethod.GET)
 //	public ModelAndView deleteRecipe(Recipe recipe, HttpSession session) {
 //		ModelAndView mv = new ModelAndView();
