@@ -31,6 +31,7 @@
 			<c:if test="${canEditPost}"></c:if>
 		
 			</p>
+			
 			<hr>	
  			Description: ${recipe.description } <br>
  			Ingredients: ${recipe.ingredients} <br>
