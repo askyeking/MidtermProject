@@ -25,9 +25,11 @@
 			<h3>${meetup.title }</h3>
 			<c:if test="${canEditPost}">
 			<form action="editMeetup.do" method="post">
+				<input type="hidden" value="${meetup.id }"/>
 				<input type="submit" value="Edit" />
 			</form>
 			<form action="deleteMeetup.do" method="post">
+				<input type="hidden" value="${meetup.id }"/>
 				<input type="submit" value="Delete" />
 			</form>
 			</c:if>
