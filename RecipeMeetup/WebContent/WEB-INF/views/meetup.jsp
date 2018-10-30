@@ -35,20 +35,25 @@
 				</form>
 
 			</c:if>
-			${loggedInUser.id }
-			<form action="RSVPMeetup.do" method="post">
-				<input type="hidden" name="id" value="${meetup.id }" />
-				 <input type="submit" value="RSVP" />
+<%-- 			${loggedInUser.id }--%>
+ 			<form action="RSVPMeetup.do" method="post">
+				<input type="hidden" name="id" value="${meetup.id }" /> <input
+					type="submit" value="RSVP" />
 			</form>
 			<c:if test="${not empty listOfAttendees }">
 				<c:forEach items="${listOfAttendees }" var="attendee">
 					${attendee.firstName }<br>
 				</c:forEach>
-			
+
 			</c:if>
 
 			<p>
-				<a href="userProfile.do">user ID: ${loggedInUser.firstName }</a>
+			<form action="viewOtherProfile.do" method="GET" >
+<%-- 				<a href="viewOtherProfile.do" onclick="form.submit();" > Meetup Owner: ${meetupOwner.firstName }</a> --%>
+			<input type="hidden" name="id" value="${meetupOwner.id }"/>
+			<input
+					type="submit" value="View Profile" /> 
+			</form>
 			</p>
 			<c:choose>
 

@@ -252,9 +252,8 @@ public class Meetup {
 
 	@Override
 	public String toString() {
-		return "Meetup [id=" + id + ", title=" + title + ", createDate=" + createDate
-				+ ", imgURL=" + imgURL + ", description=" + description + ", authorID=" + ", maxAttendance=" + maxAttendance + ", active="
-				+ active + ", startTime=" + startTime + ", endTime=" + endTime + "]";
+		return "Meetup Title: " + title + "\nPosted: " + createDate
+				+ "\nDescription: " + description + "\nMaxAttendance: " + maxAttendance + "\nStartTime: " + startTime + "\nEndTime: " + endTime;
 	}
 
 	public User getMeetupOwner() {

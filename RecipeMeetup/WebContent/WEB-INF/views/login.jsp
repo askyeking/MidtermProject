@@ -66,32 +66,33 @@
 			
 			<c:forEach items="${recentMeetups}" var="meetup">
 
-				<p><li>Meetup: ${meetup.title}</li></p>
-				
-				<div class="indent1">Description: ${meetup.description}</div>
+				<p><strong>${meetup.title}</strong><br>
+					${meetup.description}<br> <hr>
+				</p>
 
 			</c:forEach>
 			<br>
-			<h5>Sign-in to See More!</h5> <hr>
+			<h5>Sign-in to See More!</h5>
 			<br><br>
 
 
 		<h3>Recent Recipes</h3> <hr>
 			<c:forEach items="${recentRecipes}" var="recipe">
 			
-				<p><li>Recipe: ${recipe.title }</li></p>
-				<p>Description: ${recipe.description}</p>
+				<p><strong>${recipe.title }</strong><br>
+					${recipe.description}<br> <hr>
+				</p>
 				
 			</c:forEach>
-			
-			<h5>Sign-in to See More!</h5> <hr>
+			<br>
+			<h5>Sign-in to See More!</h5>
 			<br><br>
 
 	</form>
 
 	<form>
 
-		<h3>About Us</h3>
+		<h3>About The Website Creators</h3>
 		<p>
 			<strong>Blake Longfield, Anthony King, Newel, Novak Dobrosavljevic</strong>
 		</p>
