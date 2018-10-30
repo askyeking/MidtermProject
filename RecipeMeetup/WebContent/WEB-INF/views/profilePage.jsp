@@ -77,8 +77,8 @@
 		
 			<c:forEach items="${loggedInUser.recipesFavorited}" var="favRecipe">
 	 			<p>
-	 				<a href="showRecipeDetails.do?id=${favRecipe.id }"><strong>${favRecipe.title}</strong></a>
-	 			</p> 
+							<a href="showRecipeDetails.do?id=${favRecipe.id }"><strong>${favRecipe.title}</strong></a>
+						</p> 
 	 			<p>${favRecipe.description}</p> 
 	 			<hr>
 	 			
