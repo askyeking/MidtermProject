@@ -39,7 +39,7 @@
 		
 			<c:forEach items="${loggedInUser.recipesPosted}" var="recipesPosted">
 	 			<p><strong>${recipesPosted.title}/></strong></p> 
-	 			<p>${recipesPosted.description}</p> 
+	 			<p>${recipesPosted.description}</p><br> 
 	 			<p>Country of Origin: ${recipesPosted.country}</p> 
 	 			<p>Cook Time: ${recipesPosted.cookTime}</p> 
 	 			<p>Serving Size: ${recipesPosted.servingSize}</p> 
@@ -58,7 +58,7 @@
 		
 			<c:forEach items="${loggedInUser.meetupsOwned}" var="meetupsOwned">
 	 			<p><strong>${meetupsOwned.title}</strong></p> 
-	 			<p>${meetupsOwned.description}</p> 
+	 			<p>${meetupsOwned.description}</p> <br>
 	 			<p>${meetupsOwned.startTime}</p> 
 	 			<p>${meetupsOwned.endTime}</p> 
 	 			<p>${meetupsOwned.maxAttendance}</p>
