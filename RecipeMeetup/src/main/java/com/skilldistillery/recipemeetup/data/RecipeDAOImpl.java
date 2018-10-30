@@ -66,7 +66,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 	
 	@Override
 	public Recipe updateRecipe(Recipe updatedRecipe) {
-		Recipe editRecipe = em.find(Recipe.class, updatedRecipe);
+		Recipe editRecipe = em.find(Recipe.class, updatedRecipe.getId());
 		editRecipe.setTitle(updatedRecipe.getTitle());
 		editRecipe.setCountry(updatedRecipe.getCountry());
 		editRecipe.setDescription(updatedRecipe.getDescription());
@@ -76,7 +76,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		editRecipe.setInstructions(updatedRecipe.getInstructions());
 		editRecipe.setCategory(updatedRecipe.getCategory());
 		editRecipe.setImgURL(updatedRecipe.getImgURL());
-		editRecipe.setActive(updatedRecipe.getActive());
+//		editRecipe.setActive(updatedRecipe.getActive());
 		
 		return editRecipe;
 	}
