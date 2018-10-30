@@ -55,9 +55,9 @@
 			<c:forEach items="${user.meetupsOwned}" var="meetupsOwned">
 	 			<p><strong>${meetupsOwned.title}</strong></p> 
 	 			<p>${meetupsOwned.description}</p><br>
-	 			<p>${meetupsOwned.startTime}</p> 
-	 			<p>${meetupsOwned.endTime}</p> 
-	 			<p>${meetupsOwned.maxAttendance}</p>
+	 			<p>Start Time: ${meetupsOwned.startTime}</p> 
+	 			<p>End Time: ${meetupsOwned.endTime}</p> 
+	 			<p>Max Attendance: ${meetupsOwned.maxAttendance}</p>
 	 			<hr>
 	 
 	 	</c:forEach>
