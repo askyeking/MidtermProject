@@ -23,7 +23,6 @@
 
 
 			<h3>Create a New Meetup</h3>
-
 			<form action="addedMeetup.do" method="POST">
 				<br>
 				<h3>Meetup Name</h3>
