@@ -133,4 +133,15 @@ public class UserController {
 		return mv;
 		
 	}
+	
+	
+	@RequestMapping(path="viewOtherProfile.do", method=RequestMethod.GET)
+	public ModelAndView viewOtherProfile(int id, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User newUser = userDAO.getUserById(id);
+		mv.addObject("user" , newUser);
+		System.out.println(newUser);
+		mv.setViewName("/WEB-INF/views/otherUserProfile.jsp");
+		return mv;
+	}
 }
