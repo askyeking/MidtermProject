@@ -131,12 +131,16 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
-	public Recipe addRecipeToFavorites(Recipe recipe) {
+	public Recipe addRecipeToFavorites(Recipe recipe, User user) {
 		Recipe favoriteRecipe = em.find(Recipe.class, recipe.getId());
-		
-		em.persist(recipe);
-		em.flush();
-		return recipe;
+		List<User> userFaved = favoriteRecipe.getUsersWhoFavorited();
+		if(!userFaved.contains(user)) {
+			favoriteRecipe.addUserWhoFavorited(user);
+			user.addFavoriteRecipe(favoriteRecipe);
+			em.persist(favoriteRecipe);
+			em.flush();
+		}
+		return favoriteRecipe;
 	}
 	
 	

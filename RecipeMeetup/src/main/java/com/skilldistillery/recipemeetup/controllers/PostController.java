@@ -85,11 +85,9 @@ public class PostController {
 	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.POST)
 	public ModelAndView RSVPMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("***************");
 //		Meetup reservedMeetup = meetupDAO.findSingleMeetup(meetup.getId());
 		User user = (User) session.getAttribute("loggedInUser");
 		Meetup reservedMeetup = meetupDAO.addRSVPForMeetup(meetup, user);
-		System.out.println("***************");
 
 //		List<MeetupComment> listOfComments = meetupCommentDAO.showAllMeetupComments(reservedMeetup.getId());
 //		List<User> attendees = reservedMeetendees);
@@ -97,9 +95,20 @@ public class PostController {
 //		mv.addObject("listOfComments", listOfComments);
 //		mv.addObject("user", user);
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + reservedMeetup.getId());
-		System.out.println("***************");
 
 		return mv;
+	}
+	
+	@RequestMapping(path="favoriteRecipe.do", method=RequestMethod.POST)
+	public ModelAndView favoriteRecipe(Recipe favoriteRecipe, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User userFaved = (User) session.getAttribute("loggedInUser");
+		Recipe favedRecipe = recipeDAO.addRecipeToFavorites(favoriteRecipe, userFaved);
+//		mv.addObject("recipes", favedRecipe);
+		mv.setViewName("redirect:showRecipeDetails.do?id=" + favedRecipe.getId());
+		
+		return mv;
+		
 	}
 	
 	@RequestMapping(path="submitRecipeComment.do", method=RequestMethod.POST)
@@ -173,16 +182,5 @@ public class PostController {
 		return mv;
 	}
 	
-	@RequestMapping(path="favoriteRecipe.do", method=RequestMethod.POST)
-	public ModelAndView favoriteRecipe(Recipe favoriteRecipe, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		favoriteRecipe = recipeDAO.addRecipeToFavorites(favoriteRecipe);
-		//User author = (User) session.getAttribute("loggedInUser");
-		mv.addObject("recipes", favoriteRecipe);
-		mv.setViewName("/WEB-INF/views/recipe.jsp");
-		
-		return mv;
-		
-	}
 	
 }
