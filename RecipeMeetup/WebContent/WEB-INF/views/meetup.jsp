@@ -12,7 +12,6 @@
 <title>Meetup Details</title>
 </head>
 <body>
-
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 			<br>
@@ -24,19 +23,21 @@
 
 
 			<h3>${meetup.title }</h3>
+			<c:if test="${canEditPost}">
 			<form action="editMeetup.do" method="post">
 				<input type="submit" value="Edit" />
 			</form>
 			<form action="deleteMeetup.do" method="post">
 				<input type="submit" value="Delete" />
 			</form>
+			</c:if>
 			<p> <a href="userProfile.do">user ID: ${loggedInUser.firstName }</a></p>
 				<c:choose>
 
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments }" var="comment">
 						<hr>
-						<p><a href="userProfile.do">${comment.meetupCommentOwner.firstName }
+						<p><a href="otherUserProfile.do">${comment.meetupCommentOwner.firstName }
 							${comment.meetupCommentOwner.lastName }</a></p>
 						<p>${comment.textContent}</p>
 					</c:forEach>

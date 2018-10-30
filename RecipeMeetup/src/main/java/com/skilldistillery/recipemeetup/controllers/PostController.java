@@ -83,7 +83,6 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:showRecipeDetails.do?id=" + recipeComment.getRecipeCommentedOn().getId() );
 		return mv;
-
 	}
 	
 	@RequestMapping(path="submitMeetupComment.do", method=RequestMethod.POST)
@@ -94,7 +93,6 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetupComment.getMeetupCommentedOn().getId());
 		return mv;
-		
 	}
 	
 	

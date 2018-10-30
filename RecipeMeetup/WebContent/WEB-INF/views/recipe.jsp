@@ -21,14 +21,16 @@
 			<br>
 			
 			<p>
+			
 			<h3>${recipe.title}</h3> 
+			<c:if test="${canEditPost}">
 			<form action="editRecipe.do" method="post">
 				<input type="submit" value="Edit" />
 			</form>
 			<form action="DeleteRecipe.do" method="post">
 				<input type="submit" value="Delete" />
 			</form>
-			<c:if test="${canEditPost}"></c:if>
+			</c:if>
 		
 			</p>
 			
