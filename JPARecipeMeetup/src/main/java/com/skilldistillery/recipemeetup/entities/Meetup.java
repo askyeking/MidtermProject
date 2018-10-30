@@ -38,8 +38,6 @@ public class Meetup {
 	
 	private String description;
 	
-	
-	
 	@Column(name="maximum_attendance")
 	private int maxAttendance;
 	
