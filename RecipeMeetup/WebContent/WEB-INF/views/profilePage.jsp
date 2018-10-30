@@ -69,6 +69,21 @@
 	 	</c:when>
 	 	</c:choose>
 	 	
+	 	<c:choose>
+		<c:when test="${not empty loggedInUser}">
+		<h4>Favorite Recipes</h4>
+		<hr>
+		
+			<c:forEach items="${loggedInUser.recipesFavorited}" var="favRecipe">
+	 			<p><strong>${favRecipe.title}</strong></p> 
+	 			<p><strong>${favRecipe.country}</strong></p> 
+	 			<p><strong>${favRecipe.description}</strong></p> 
+	 			<hr>
+	 
+	 	</c:forEach>
+	 	</c:when>
+	 	</c:choose>
+	 	
 		</c:when>
 		<c:otherwise>
 		<br><br><br><br><br><br>
