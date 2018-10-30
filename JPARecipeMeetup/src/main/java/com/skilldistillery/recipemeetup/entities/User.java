@@ -66,9 +66,6 @@ public class User {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="meetupCommentOwner")
 	private List<MeetupComment> meetupCommentsPosted;
 	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userWhoFavorited")
-	private List<RecipeFavorite> recipeFavorites;
-	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="userMeetupCommentLikers")
 	private List<MeetupComment> likedMeetupComments;
 	
@@ -332,13 +329,6 @@ public class User {
 		return recipesFavorited;
 	}
 
-	public List<RecipeFavorite> getRecipeFavorites() {
-		return recipeFavorites;
-	}
-
-	public void setRecipeFavorites(List<RecipeFavorite> recipeFavorites) {
-		this.recipeFavorites = recipeFavorites;
-	}
 
 	public void setRecipesFavorited(List<Recipe> recipesFavorited) {
 		this.recipesFavorited = recipesFavorited;

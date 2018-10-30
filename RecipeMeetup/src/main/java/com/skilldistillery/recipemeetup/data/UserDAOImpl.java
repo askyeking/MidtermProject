@@ -73,7 +73,8 @@ public class UserDAOImpl implements UserDAO {
 		editedUser.setDateOfBirth(updatedUser.getDateOfBirth());
 		editedUser.setDescription(updatedUser.getDescription());
 		editedUser.setEmail(updatedUser.getEmail());
-		editedUser.setRecipeFavorites(updatedUser.getRecipeFavorites());
+//		editedUser.setRecipeFavorites(updatedUser.getRecipeFavorites());
+		editedUser.setRecipesFavorited(updatedUser.getRecipesFavorited());
 		editedUser.setFirstName(updatedUser.getFirstName());
 		editedUser.setId(updatedUser.getId());
 		editedUser.setImgURL(updatedUser.getImgURL());
