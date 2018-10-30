@@ -34,10 +34,10 @@
 			</c:if>
 		
 			</p>
-			<form action="favoriteRecipe.do" method="post">
+			<form:form action="favoriteRecipe.do" method="post">
 				<input type="hidden" name="id" value="${recipe.id }" />
 				<input type="submit" value="Add to Favorites" />
-			</form>
+			</form:form>
 			
 			<hr>	
  			Description: ${recipe.description } <br>

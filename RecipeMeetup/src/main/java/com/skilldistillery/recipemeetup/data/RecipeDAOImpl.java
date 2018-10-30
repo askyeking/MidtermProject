@@ -129,20 +129,37 @@ public class RecipeDAOImpl implements RecipeDAO {
 		
 		return recipes;
 	}
+//
+//	@Override
+//	public Recipe addRecipeToFavorites(Recipe recipe, User user) {
+//		Recipe favoriteRecipe = em.find(Recipe.class, recipe.getId());
+//		System.out.println("recipe id: " + recipe.getId());
+//		System.out.println(favoriteRecipe);
+//		List<User> userFaved = favoriteRecipe.getUsersWhoFavorited();
+//		if(!userFaved.contains(user)) {
+//			System.out.println("inside contains");
+//			favoriteRecipe.addUserWhoFavorited(user);
+//			user.addFavoriteRecipe(favoriteRecipe);
+//			List<Recipe> favoriteRecipes = user.getFavoriteRecipes();
+//			for (Recipe recipe2 : favoriteRecipes) {
+//				System.out.println("/nfavoriteRecipe: " + recipe2.getId());
+//				
+//			}
+//			System.out.println(favoriteRecipes);
+//			user.setFavoriteRecipes(favoriteRecipes);
+//			
+//			em.persist(favoriteRecipe);
+//			em.flush();
+//		}
+//		return favoriteRecipe;
+//	}
+//	
 
 	@Override
 	public Recipe addRecipeToFavorites(Recipe recipe, User user) {
-		Recipe favoriteRecipe = em.find(Recipe.class, recipe.getId());
-		List<User> userFaved = favoriteRecipe.getUsersWhoFavorited();
-		if(!userFaved.contains(user)) {
-			favoriteRecipe.addUserWhoFavorited(user);
-			user.addFavoriteRecipe(favoriteRecipe);
-			em.persist(favoriteRecipe);
-			em.flush();
-		}
-		return favoriteRecipe;
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
 	
 	
 }

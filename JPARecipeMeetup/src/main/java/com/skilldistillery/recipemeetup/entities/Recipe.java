@@ -63,11 +63,15 @@ public class Recipe {
 	@JoinColumn(name="author_id")
 	private User recipeOwner;
 	
-	@ManyToMany(mappedBy="favoriteRecipes")
-	private List<User> usersWhoFavorited;
+//	@ManyToMany(mappedBy="favoriteRecipes")
+//	private List<User> usersWhoFavorited;
+	
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentedOn")
 	private List<RecipeComment> recipeComments;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeFavorited")
+	private List<RecipeFavorite> recipeFavorites;
 	
 	
 	public void addRecipeLikers(User recipeLiker) {
@@ -90,24 +94,35 @@ public class Recipe {
     }
     
     
-    public void addUserWhoFavorited(User userWhoFavorited) {
-        if(usersWhoFavorited== null) {
-            usersWhoFavorited = new ArrayList<>();
-        }
-        
-        if(!usersWhoFavorited.contains(userWhoFavorited)) {
-            usersWhoFavorited.add(userWhoFavorited);
-            userWhoFavorited.addFavoriteRecipe(this);
-        }
-        
-    }
+//    public void addUserWhoFavorited(User userWhoFavorited) {
+//        if(usersWhoFavorited== null) {
+//            usersWhoFavorited = new ArrayList<>();
+//        }
+//        
+//        if(!usersWhoFavorited.contains(userWhoFavorited)) {
+//            usersWhoFavorited.add(userWhoFavorited);
+//            userWhoFavorited.addFavoriteRecipe(this);
+//        }
+//        
+//    }
+//    
+//    public void removeUserWhoFavorited(User userWhoFavorited) {
+//        if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
+//        usersWhoFavorited.remove(userWhoFavorited);
+//        userWhoFavorited.removeFavoriteRecipe(this);
+//        }
+//    }
     
-    public void removeUserWhoFavorited(User userWhoFavorited) {
-        if(usersWhoFavorited != null && usersWhoFavorited.contains(userWhoFavorited)) {
-        usersWhoFavorited.remove(userWhoFavorited);
-        userWhoFavorited.removeFavoriteRecipe(this);
-        }
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	
 	
     public void addRecipeComment(RecipeComment recipeComment) {
@@ -131,6 +146,48 @@ public class Recipe {
     		recipeComments.remove(recipeComment);
     	}
     }
+    
+    
+    public void addRecipeFavorite(RecipeFavorite recipeFavorite) {
+    	if(recipeFavorites==null) {
+    		recipeFavorites = new ArrayList<>();
+    	}
+    	
+    	if(!recipeFavorites.contains(recipeFavorite)) {
+    		recipeFavorites.add(recipeFavorite);
+    		if(recipeFavorite.getRecipeFavorited() != null) {
+    			recipeFavorite.getRecipeFavorited().getRecipeFavorites().remove(recipeFavorite);
+    		}
+    	}
+    	
+    	recipeFavorite.setRecipeFavorited(this);
+    }
+    
+    public void removeRecipeFavorite(RecipeFavorite recipeFavorite) {
+    	recipeFavorite.setRecipeFavorited(null);
+    	if(recipeFavorites!=null) {
+    		recipeFavorites.remove(recipeFavorite);
+    	}
+    }
+    
+    
+    
+    public List<User> getRecipeLikers() {
+		return recipeLikers;
+	}
+
+	public void setRecipeLikers(List<User> recipeLikers) {
+		this.recipeLikers = recipeLikers;
+	}
+
+	public List<RecipeFavorite> getRecipeFavorites() {
+		return recipeFavorites;
+	}
+
+	public void setRecipeFavorites(List<RecipeFavorite> recipeFavorites) {
+		this.recipeFavorites = recipeFavorites;
+	}
+
     
     
 	public String getTitle() {
@@ -264,10 +321,9 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "recipe [id=" + id + ", title=" + title + ", country=" + country + ", description=" + description
-				+ ", ingredients=" + ingredients + ", servingSize=" + servingSize + ", cookTime=" + cookTime
-				+ ", instructions=" + instructions + ", category=" + category + ", createDate=" + createDate + ", imgURL="
-				+ imgURL + ", active=" + active + "]";
+		return "\nPosted: " + createDate + "\nTitle: " + title + "\nOrigin: " + country + "\nDescription: " + description
+				+ "\nIngredients: " + ingredients + "\nServing Size: " + servingSize + "\nCook Time: " + cookTime + " minutes"
+				+ "\nInstructions: " + instructions + "\nCategory: " + category;
 	}
 	
 	public Recipe() {
@@ -308,13 +364,15 @@ public class Recipe {
 		this.recipeOwner = recipeOwner;
 	}
 
-	public List<User> getUsersWhoFavorited() {
-		return usersWhoFavorited;
-	}
-
-	public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
-		this.usersWhoFavorited = usersWhoFavorited;
-	}
+//	public List<User> getUsersWhoFavorited() {
+//		return usersWhoFavorited;
+//	}
+//
+//	public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
+//		this.usersWhoFavorited = usersWhoFavorited;
+//	}
+	
+	
 	
 	
 	
