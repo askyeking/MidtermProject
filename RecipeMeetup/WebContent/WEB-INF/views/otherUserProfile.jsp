@@ -71,7 +71,23 @@
 		
 			<c:forEach items="${user.recipesFavorited}" var="favRecipe">
 	 			<p><strong>${favRecipe.title}</strong></p> 
+	 			<p>${favRecipe.country}</p><br>
 	 			<p>${favRecipe.description}</p><br>
+	 			<hr>
+	 
+	 	</c:forEach>
+	 	</c:when>
+	 	</c:choose>
+	 	
+	 	
+	 	<c:choose>
+		<c:when test="${not empty loggedInUser}">
+		<h4>Meetups Attended</h4>
+		<hr>
+		
+			<c:forEach items="${user.meetupsAttended}" var="attended">
+	 			<p><strong>${attended.title}</strong></p> 
+	 			<p>${attended.description}</p>
 	 			<hr>
 	 
 	 	</c:forEach>
