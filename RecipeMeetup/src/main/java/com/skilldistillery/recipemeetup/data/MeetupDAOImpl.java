@@ -31,7 +31,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 	
 	@Override
 	public Meetup showMeetup(Meetup meetup) {
-		Meetup singleMeetup = em.find(Meetup.class, meetup);
+		Meetup singleMeetup = em.find(Meetup.class, meetup.getId());
 		return singleMeetup;
 	}
 	
