@@ -31,8 +31,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		em.flush();
 		
 		return recipe;
-	}
-
+	}	
 	@Override
 	public Recipe showRecipe(Recipe recipe) {
 		Recipe singleRecipe = em.find(Recipe.class, recipe.getId());
@@ -165,4 +164,12 @@ public class RecipeDAOImpl implements RecipeDAO {
 		return likedRecipe;
 	}
 	
+	@Override
+	public Recipe setActiveToFalse(Recipe recipe) {
+		recipe = em.find(Recipe.class, recipe.getId());
+		recipe.setActive(false);
+		
+		return recipe;
+		
+	}
 }

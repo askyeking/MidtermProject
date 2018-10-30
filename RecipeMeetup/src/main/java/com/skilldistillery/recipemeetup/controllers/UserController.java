@@ -151,6 +151,10 @@ public class UserController {
 		user = (User) session.getAttribute("loggedInUser");
 		session.removeAttribute("loggedInUser");
 		session.invalidate();
+		List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
+		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
+		mv.addObject("recentMeetups", recentMeetups);
+		mv.addObject("recentRecipes", recentRecipes);
 		mv.setViewName("WEB-INF/views/login.jsp");
 		return mv;	
 	}
