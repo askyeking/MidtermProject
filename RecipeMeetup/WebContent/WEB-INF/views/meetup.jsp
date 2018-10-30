@@ -26,23 +26,39 @@
 			<c:if test="${canEditPost}">
 			${meetup.id}
 			<form action="editMeetup.do" method="GET">
-				<input type="hidden" name="id" value="${meetup.id}" /> 
-				<input type="submit" value="Edit" />
-			</form>
-			<form action="deleteMeetup.do" method="post">
-				<input type="hidden" value="${meetup.id }"/>
-				<input type="submit" value="Delete" />
-			</form>
+					<input type="hidden" name="id" value="${meetup.id}" /> <input
+						type="submit" value="Edit" />
+				</form>
+				<form action="deleteMeetup.do" method="post">
+					<input type="hidden" value="${meetup.id }" /> <input type="submit"
+						value="Delete" />
+				</form>
+
 			</c:if>
-			<p> <a href="userProfile.do">user ID: ${loggedInUser.firstName }</a></p>
-				<c:choose>
+			${loggedInUser.id }
+			<form action="RSVPMeetup.do" method="post">
+				<input type="hidden" name="id" value="${meetup.id }" />
+				 <input type="submit" value="RSVP" />
+			</form>
+			<c:if test="${not empty listOfAttendees }">
+				<c:forEach items="${listOfAttendees }" var="attendee">
+					${attendee.firstName }<br>
+				</c:forEach>
+			
+			</c:if>
+
+			<p>
+				<a href="userProfile.do">user ID: ${loggedInUser.firstName }</a>
+			</p>
+			<c:choose>
 
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments }" var="comment">
 						<hr>
 						<form action="viewOtherProfile.do" method="GET">
-						<input type="hidden" name="id" value="${comment.meetupCommentOwner.id }"/>
-						<input type="submit" value="view profile"/>
+							<input type="hidden" name="id"
+								value="${comment.meetupCommentOwner.id }" /> <input
+								type="submit" value="view profile" />
 						</form>
 						<p>${comment.meetupCommentOwner.firstName }
 							${comment.meetupCommentOwner.lastName }</p>
@@ -53,7 +69,7 @@
 				</c:when>
 
 			</c:choose>
-				<form:form action="submitMeetupComment.do" method="POST">
+			<form:form action="submitMeetupComment.do" method="POST">
 				Comment
 				<input type="hidden" name="id" value="${meetup.id }" />
 				<input type="text" name="textContent" rows="5" cols="50" />
