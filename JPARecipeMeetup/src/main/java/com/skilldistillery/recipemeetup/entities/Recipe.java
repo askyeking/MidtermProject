@@ -58,16 +58,13 @@ public class Recipe {
 	@JoinColumn(name="author_id")
 	private User recipeOwner;
 	
-//	@ManyToMany(mappedBy="favoriteRecipes")
-//	private List<User> usersWhoFavorited;
-	
 	@ManyToMany
 	@JoinTable(name="favorite_recipe",
 	joinColumns=@JoinColumn(name="recipe_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> usersWhoFavorited;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToMany
 	@JoinTable(name="recipe_like",
 	joinColumns=@JoinColumn(name="recipe_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))

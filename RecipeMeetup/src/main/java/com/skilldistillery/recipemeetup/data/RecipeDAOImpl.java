@@ -148,12 +148,17 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public Recipe addRecipeToLikes(Recipe recipe, User user) { 
 		Recipe likedRecipe = em.find(Recipe.class, recipe.getId());
+		System.out.println("recipe: " + likedRecipe);
+		
 		List<User> recipesLiked = likedRecipe.getRecipeLikers();
+		System.out.println("size: " + recipesLiked.size());
 		
 		if(!recipesLiked.contains(user)) {
 			likedRecipe.addRecipeLikers(user);
 			user.addLikedRecipe(likedRecipe);
+			System.out.println("breaks here: ");
 			em.persist(likedRecipe);
+			System.out.println("broken here");
 			em.flush();
 		}
 		System.out.println("WWOOOOOOOOOOOOOOOOOOOORK!");
