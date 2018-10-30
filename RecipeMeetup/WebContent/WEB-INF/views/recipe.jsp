@@ -45,7 +45,7 @@
             </form:form>
             <h1>${recipe.active }</h1>
             <hr>    
-             Description: ${recipe.description} <br> <br>
+             Description: ${recipe.description} <br>
              Ingredients: ${recipe.ingredients} <br>
              Instructions: ${recipe.instructions}<br>
              Category: ${recipe.category}<br>
@@ -53,9 +53,6 @@
              Serving Size: ${recipe.servingSize}<br>
              Cook Time: ${recipe.cookTime} minutes<br>
 
-            <form action="showRecipeDetails.do" method="GET">
-                <input type="hidden" name="id" value="${recipe.id}" /> <input
-                    type="submit" value="Details" />
                 <hr>
 
                 <c:choose>
@@ -63,9 +60,15 @@
                     <c:when test="${not empty listOfComments }">
                         <c:forEach items="${listOfComments}" var="comment">
 
-                            <a href="viewOtherProfile.do?id=${comment.recipeCommentOwner.id}"> ${comment.recipeCommentOwner.firstName} ${comment.recipeCommentOwner.lastName}</a>
-							<br><p>${comment.comment}</p>
-							<hr>
+                            <p>${comment.recipeCommentOwner.firstName }
+                                ${comment.recipeCommentOwner.lastName }</p>
+                            <p>${comment.comment}</p>
+                            <form action="viewOtherProfile.do" method="GET">
+                                <input type="hidden" name="id"
+                                    value="${comment.recipeCommentOwner.id }" /> <input
+                                    type="submit" value="View User Profile" />
+                            </form>
+                            <hr>
                         </c:forEach>
 
                     </c:when>
