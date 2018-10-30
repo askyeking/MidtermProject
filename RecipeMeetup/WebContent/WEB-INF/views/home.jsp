@@ -37,7 +37,7 @@
 			</form>
 <form action = "createMeetup.do" method="GET">
 			<input type = "submit" value = "Create A New Meetup">
-			</form> <br> <br> 
+			</form> <br> 
 			
 <%-- 	<c:choose>
 		<c:when test="${not empty user and user.active}">
@@ -54,7 +54,8 @@
 
 	<c:choose>
 		<c:when test="${not empty recentMeetup}">
-		<hr>
+		
+			<h4>Recent Recipes</h4> <hr>
 		
 			<c:forEach items="${recentMeetup}" var="meetup">
 

@@ -94,7 +94,7 @@
 
 		<h3>About The Website Creators</h3>
 		<p>
-			<strong>Blake Longfield, Anthony King, Newel, Novak Dobrosavljevic</strong>
+			<strong>Blake Longfield, Anthony King, Newel Miole, Novak Dobrosavljevic</strong>
 		</p>
 		<p>We are awesome and plan on making $1 bil a piece</p>
 	</form>
