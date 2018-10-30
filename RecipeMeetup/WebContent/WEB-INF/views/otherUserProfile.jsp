@@ -34,13 +34,13 @@
 		<hr>
 		
 			<c:forEach items="${user.recipesPosted}" var="recipesPosted">
-	 			<p><strong>${recipesPosted.title}/></strong></p> 
-	 			<p>${recipesPosted.description}</p><br>
+	 			<p><h5>${recipesPosted.title}</h5></p> 
+	 			<p><strong>${recipesPosted.description}</strong></p>
 	 			<p>Country of Origin: ${recipesPosted.country}</p> 
 	 			<p>Cook Time: ${recipesPosted.cookTime}</p> 
-	 			<p>Serving Size: ${recipesPosted.servingSize}</p> 
+	 			<p>Serves: ${recipesPosted.servingSize}</p> 
 	 			<p>Category: ${recipesPosted.category}</p> 
-	 			<p>${recipesPosted.ingredients}</p> 
+	 			<p>Ingredients: ${recipesPosted.ingredients}</p> 
 	 			<hr>
 	 
 	 	</c:forEach>
@@ -55,9 +55,9 @@
 			<c:forEach items="${user.meetupsOwned}" var="meetupsOwned">
 	 			<p><strong>${meetupsOwned.title}</strong></p> 
 	 			<p>${meetupsOwned.description}</p><br>
-	 			<p>${meetupsOwned.startTime}</p> 
-	 			<p>${meetupsOwned.endTime}</p> 
-	 			<p>${meetupsOwned.maxAttendance}</p>
+	 			<p>Start Time: ${meetupsOwned.startTime}</p> 
+	 			<p>End Time: ${meetupsOwned.endTime}</p> 
+	 			<p>Max Attendance: ${meetupsOwned.maxAttendance}</p>
 	 			<hr>
 	 
 	 	</c:forEach>

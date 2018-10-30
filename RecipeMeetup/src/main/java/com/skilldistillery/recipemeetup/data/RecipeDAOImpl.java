@@ -155,10 +155,41 @@ public class RecipeDAOImpl implements RecipeDAO {
 //	}
 //	
 
+//	@Override
+//	public Meetup addRSVPForMeetup(Meetup meetup, User user){
+//
+//		Meetup reservedMeetup = em.find( Meetup.class ,meetup.getId());
+//		List<User> meetupAttendees = reservedMeetup.getAttendees();
+//		if(!meetupAttendees.contains(user)) {
+//			reservedMeetup.addAttendee(user);
+//			user.addMeetupAttended(reservedMeetup);
+//			em.persist(reservedMeetup);
+//			em.flush();
+//
+//		}
+//		return reservedMeetup;
+//	}
+	
+	
+	
 	@Override
 	public Recipe addRecipeToFavorites(Recipe recipe, User user) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe favoritedRecipe = em.find(Recipe.class, recipe.getId());
+		System.out.println("favRecipe: " + favoritedRecipe);
+		List<User> recipesFavorited = favoritedRecipe.getUsersWhoFavorited();
+		
+		for (User user2 : recipesFavorited) {
+			System.out.println(user2.getId());
+		}
+		
+		if(!recipesFavorited.contains(user)) {
+			favoritedRecipe.addUserWhoFavorited(user);
+			user.addRecipeFavorited(favoritedRecipe);
+			em.persist(favoritedRecipe);
+			em.flush();
+		}
+		System.out.println("WWOOOOOOOOOOOOOOOOOOOORK!");
+		return favoritedRecipe;
 	}
 	
 	
