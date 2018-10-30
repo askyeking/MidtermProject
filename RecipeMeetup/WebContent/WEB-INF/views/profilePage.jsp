@@ -39,7 +39,17 @@
 		<hr>
 		
 			<c:forEach items="${loggedInUser.recipesPosted}" var="recipesPosted">
-	 			<p>${loggedInUser.recipesPosted}</p> 
+	 			<p><strong><a href="showRecipeDetails.do" ${recipesPosted.title}/></strong></p> 
+	 			<p>${recipesPosted.description}</p> 
+	 			<p>${recipesPosted.description}</p> 
+	 			<p>${recipesPosted.description}</p> 
+	 			<p>${recipesPosted.description}</p> 
+	 			<p>${recipesPosted.description}</p> 
+	 			<p>${recipesPosted.description}</p> 
+	 			<p>${recipesPosted.description}</p> 
+	 			
+	 			
+	 			<hr>
 	 
 	 	</c:forEach>
 	 	</c:when>
@@ -57,8 +67,6 @@
 	 	</c:when>
 	 	</c:choose>
 	 	
-	 	
-
 
 		</c:when>
 		<c:otherwise>
