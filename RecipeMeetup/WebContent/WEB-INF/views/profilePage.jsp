@@ -76,11 +76,13 @@
 		<hr>
 		
 			<c:forEach items="${loggedInUser.recipesFavorited}" var="favRecipe">
-	 			<p><strong>${favRecipe.title}</strong></p> 
-	 			<p>${favRecipe.country}</p> 
+	 			<p>
+	 				<a href="showRecipeDetails.do?id=${favRecipe.id }"><strong>${favRecipe.title}</strong></a>
+	 			</p> 
 	 			<p>${favRecipe.description}</p> 
 	 			<hr>
-	 
+	 			
+	 	
 	 	</c:forEach>
 	 	</c:when>
 	 	</c:choose>
@@ -92,7 +94,9 @@
 		<hr>
 		
 			<c:forEach items="${loggedInUser.meetupsAttended}" var="attended">
-	 			<p><strong>${attended.title}</strong></p> 
+	 			<p>
+	 				<a href="showMeetupDetails.do?id=${attended.id }"><strong>${attended.title}</strong></a>
+	 			</p> 
 	 			<p>${attended.description}</p> 
 	 			<hr>
 	 
