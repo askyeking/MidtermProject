@@ -26,21 +26,21 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img class="d-block w-100" src="media/cuttingboard.jpg"
-					alt="First slide">
+					alt="First slide" height="800" width="auto">
 				<div class="text-block">
 					<h1>Recipe Meetup</h1>
 					<h3>Let's meetup and cook together</h3>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/family.jpg" alt="Second slide">
+				<img class="d-block w-100" src="media/family.jpg" alt="Second slide" height="800" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/food1.jpg" alt="Third slide">
+				<img class="d-block w-100" src="media/food1.jpg" alt="Third slide" height="800" width="auto">
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100" src="media/dessert.jpg"
-					alt="Fourth slide">
+					alt="Fourth slide" height="800" width="auto">
 			</div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators"
@@ -66,19 +66,27 @@
 					<h3>Let's meetup and cook together</h3>
 				</div>
 			</div> -->
- 		<div class="container">
-  		<div class="row">
-		<div class="col-sm">
-			 <form action="createRecipe.do" method="GET"> 
+			<br>
+			<br>
+			<br>
+			<br>
+
+			<div class="buttons">
+				<a href="createRecipe.do" class="btn btn-primary btn-lg">Create
+					A New Recipe</a> <a href="createMeetup.do"
+					class="btn btn-primary btn-lg">Create A New Meetup</a>
+			</div>
+			<%-- <form action="createRecipe.do" method="GET"> 
 				<button type="button" class="btn btn-primary btn-lg">Create A New Recipe</button>
-			 </form> 
-			<form action="createMeetup.do" method="GET">
+			</form>  
+			<form action="createMeetup.do" method="GET"> 
 				<button type="button" class="btn btn-primary btn-lg">Create A New Meetup</button>
-			</form>
-		</div>
-		</div>
-		</div>
-		
+			 </form>  --%>
+
+
+			<br>
+			<br>
+			<br>
 			<br>
 
 			<%-- 	<c:choose>
@@ -100,39 +108,44 @@
 					<h4 align="center">Recent Meetups</h4>
 
 					<hr>
-					<div class="card-deck">
-						<c:forEach items="${recentMeetup}" var="meetup">
 
-							<c:if test="${meetup.active }">
+					<div class="center">
+						<div class="card-deck">
+							<c:forEach items="${recentMeetup}" var="meetup">
 
-								<div class="meetup-card" style="width: 18rem;">
-									<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup">
-									<div class="card-body">
-										<h5 class="card-title">
-											<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a>
-										</h5>
-										<p class="card-text">${meetup.description}</p>
+								<c:if test="${meetup.active }">
+
+									<div class="meetup-card" style="width: 18rem;">
+										<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup" height="200" width="auto" >
+										<div class="card-body">
+											<h5 class="card-title">
+												<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a>
+											</h5>
+											<p class="card-text">${meetup.description}</p>
+										</div>
 									</div>
-								</div>
-								<%-- 							<p>
-								<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a><br>
-								${meetup.description}<br>
-							</p>
- --%>
-							</c:if>
+								</c:if>
 
-						</c:forEach>
-					</div>
-					<%-- <form action="showAllMeetups.do" method="GET">
-						<input type="submit" value="Show More">
-					</form> --%>
-					<div class="buttons">
-						<a href="showAllMeetups.do" class="btn btn-primary">Show More</a>
+							</c:forEach>
+						</div>
 					</div>
 					<br>
 					<br>
+					<br>
+						<div class="buttons">
+							<a href="showAllMeetups.do" class="btn btn-primary">Show More</a>
+						</div>
 				</c:when>
 			</c:choose>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 
 			<c:choose>
 
@@ -142,33 +155,38 @@
 
 					<hr>
 
-					<div class="card-deck">
-						<c:forEach items="${recentRecipe}" var="recipe">
-							<c:if test="${recipe.active }">
+					<div class="center">
+						<div class="card-deck">
+							<c:forEach items="${recentRecipe}" var="recipe">
+								<c:if test="${recipe.active }">
 
-								<div class="recipe-card" style="width: 18rem;">
-									<img class="card-img-top" src="${recipe.imgURL }" alt="Recipe">
-									<div class="card-body">
-										<h5 class="card-title">
-											<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a>
-										</h5>
-										<p class="card-text">${recipe.description}</p>
+									<div class="recipe-card" style="width: 18rem;">
+										<img class="card-img-top" src="${recipe.imgURL }" alt="Recipe" height="200" width="auto">
+										<div class="card-body">
+											<h5 class="card-title">
+												<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a>
+											</h5>
+											<p class="card-text">${recipe.description}</p>
+										</div>
 									</div>
-								</div>
-								<%-- <p>
+									<%-- <p>
 								<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a><br>
 								${recipe.description}<br>
 							</p> --%>
-							</c:if>
+								</c:if>
 
-						</c:forEach>
-					</div>
-					<%-- <form action="showAllRecipes.do" method="GET">
+							</c:forEach>
+						</div>
+						<%-- <form action="showAllRecipes.do" method="GET">
 						<input type="submit" value="Show More">
 					</form>  --%>
-					<div class="buttons">
-						<a href="showAllRecipes.do" class="btn btn-primary">Show More</a>
 					</div>
+					<br>
+					<br>
+					<br>
+						<div class="buttons">
+							<a href="showAllRecipes.do" class="btn btn-primary">Show More</a>
+						</div>
 				</c:when>
 			</c:choose>
 
