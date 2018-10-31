@@ -2,11 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <c:if test="${not empty loggedInUser }"><%@include
 		file="NavBar.jsp"%></c:if>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="resources/card.css">
 <meta charset="UTF-8">
 <title>User Profile</title>
 </head>
@@ -57,10 +59,11 @@
 					<h4>Recently Posted Recipes</h4>
 					<hr>
 
+					<div class="container-fluid">
 					<div class="row">
-							<div class="card-deck">
-
-								<c:forEach items="${loggedInUser.recipesPosted}" var="recipe">
+						<div class="card-deck">
+							<c:forEach items="${loggedInUser.recipesPosted}" var="recipe">
+								<div class="col-sm-4">
 									<div class="card" style="width: 18rem;">
 										<c:if test="${not empty recipe.imgURL }">
 											<img class="card-img-top" src="${recipe.imgURL  }"
@@ -73,10 +76,14 @@
 												somewhere</a>
 										</div>
 									</div>
-								</c:forEach>
-							</div>
+								</div>
+							</c:forEach>
+						</div>
 					</div>
-
+					</div>
+					
+					
+					
 				</c:when>
 			</c:choose>
 
