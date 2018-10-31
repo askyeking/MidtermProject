@@ -109,6 +109,16 @@
      		 <option value="meetup">Meetup</option>
   		  </select>
           
+          
+          
+          
+          
+          <!-- <select name="category">
+          <option value="recipe">Recipe</option>
+          <option value="meetup">Meetup</option>
+          </select> -->
+  </div>
+
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">Search</button>
           <ul class="navbar-nav mr-auto">
 		  </ul>
