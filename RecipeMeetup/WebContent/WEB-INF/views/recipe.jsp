@@ -9,20 +9,83 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="resources/recipe.css" />
 <meta charset="UTF-8">
 <title>Recipe Details</title>
 </head>
 <body>
+
+		<%-- <div class="backgroundImg" style="background-image: url('${recipe.imgURL}')"> --%>
     <br>
     <br>
     <br>
+    
+
     <c:choose>
         <c:when test="${not empty loggedInUser}">
             <br>
+			    <div class="container" >
+				  <div class="row">
+				    <!-- <div class="col-sm">
+				    </div> -->
+				    <div class="col-sm" id="title"">
+				      ${recipe.title}
+				    </div>
+				   <!--  <div class="col-sm">
+				    </div> -->
+				  </div>
+            
+                
+          
+            <br>
+           
+				  
+				   <div class="row">
+				   <!-- <div class="col-sm-3">
+			    </div> -->
+				    <div class="col-sm button">
+				    <form:form action="favoriteRecipe.do" method="post">
+				      <input type="hidden" name="id" value="${recipe.id }" />
+               		 <input type="submit" value="Add to Favorites" />
+               		   </form:form>
+				    </div>
+				    <div class="col-sm button">
+				       <form:form action="likeRecipe.do" method="post">
+               			 <input type="hidden" name="id" value="${recipe.id }" />
+             			   <input type="submit" value="LIKE" />
+          			  </form:form>
+				    </div>
+				    
+				    
+				    <c:if test="${canEditPost}">
+				     <div class="col-sm button">
+							<form action="editRecipe.do" method="GET">
+                    			<input type="hidden" name="id" value="${recipe.id}" /> <input
+                       		 	type="submit" value="Edit" />
+                			</form>				    
+                	</div>
+                	
+                	 <div class="col-sm button">
+				      <form action="deleteRecipe.do" method="post">
+                   			 <input type="hidden" name="id" value="${recipe.id}" /> <input
+                        	type="submit" value="Delete" />
+             		</form>
+				    </div>
+				    
+				   <!--  <div class="col-sm-3">
+				    </div> -->
+				    
+				    
+            		</c:if>
+				  </div>
+				  
+				  
+				</div>
 
-            <p>
-            <h3>${recipe.title}</h3>
-            <c:if test="${canEditPost}">
+            
+            </div>
+            <%-- <h3>${recipe.title}</h3> --%>
+            <%-- <c:if test="${canEditPost}">
                 <form action="editRecipe.do" method="GET">
                     <input type="hidden" name="id" value="${recipe.id}" /> <input
                         type="submit" value="Edit" />
@@ -42,8 +105,8 @@
             <form:form action="likeRecipe.do" method="post">
                 <input type="hidden" name="id" value="${recipe.id }" />
                 <input type="submit" value="LIKE" />
-            </form:form>
-            <h1>${recipe.active }</h1>
+            </form:form> --%>
+            
             <hr>    
              <strong>${recipe.description}</strong> <br>
              Category: ${recipe.category}<br>
@@ -102,6 +165,5 @@
 
         </c:otherwise>
     </c:choose>
-
 </body>
 </html>
