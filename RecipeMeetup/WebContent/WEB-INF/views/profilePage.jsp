@@ -21,13 +21,18 @@
 <br>
 <br>
 
-	
-	 	<form action = "createRecipe.do" method="POST">
+	<form action="edituser.do" method = "GET">
+			<input type = "submit" value = "Edit Profile">
+			</form>
+			
+	 	<form action = "createRecipe.do" method="GET">
 			<input type = "submit" value = "Create A New Recipe">
 			</form>
-			<form action = "createMeetup.do" method="POST">
+			<form action = "createMeetup.do" method="GET">
 			<input type = "submit" value = "Create A New Meetup">
 			</form> <hr>
+			
+			
 	 	
 	 	<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
 	 	<p>${loggedInUser.description}</p><hr>

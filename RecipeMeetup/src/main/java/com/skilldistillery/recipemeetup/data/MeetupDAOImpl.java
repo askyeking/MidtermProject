@@ -74,11 +74,9 @@ public class MeetupDAOImpl implements MeetupDAO {
 	
 	@Override
 	public Meetup updateMeetup(Meetup meetup, Address address) {
-		System.out.println("update meetup" + meetup + "\n" + address);
 		Meetup updatedMeetup = em.find(Meetup.class, meetup.getId());
 		Address updatedAddress = updatedMeetup.getMeetupAddress();
 		
-		System.out.println("updated meetup" + updatedMeetup);
 		updatedMeetup.setTitle(meetup.getTitle());
 		updatedMeetup.setDescription(meetup.getDescription());
 		updatedMeetup.setImgURL(meetup.getImgURL());
@@ -86,49 +84,25 @@ public class MeetupDAOImpl implements MeetupDAO {
 		updatedMeetup.setStartTime(meetup.getStartTime());
 		updatedMeetup.setEndTime(meetup.getEndTime());
 		updatedMeetup.setMaxAttendance(meetup.getMaxAttendance());
-		
-		
-//		List<Meetup> addressMeetups = address.getMeetups();
-//		System.out.println("before for loop");
-//		for (Meetup meetup2 : addressMeetups) {
-//			System.out.println("in for loop" );
-//			if(meetup2.getId() == meetup.getId()) {
-//				meetup2.setMeetupAddress(address);
-//				System.out.println("in foreach loop" + meetup2.getMeetupAddress());
-//			}
-//		}
-		System.out.println("before null");
-		System.out.println("updated address" + updatedAddress);
+
 		updatedAddress.setStreet(address.getStreet());
 		updatedAddress.setCity(address.getCity());
 		updatedAddress.setState(address.getState());
 		updatedAddress.setPostalCode(address.getPostalCode());
 		updatedMeetup.setMeetupAddress(updatedAddress);
-		System.out.println("end of updateMeetup" + meetup.getMeetupAddress());
 		
 		return updatedMeetup;
 	}
 	
 	@Override
 	public Meetup createMeetup(Meetup meetup, User user, Address address) {
-		// Inside controller set authorId to User ID
-//		em.persist(address);
-//		meetup.setMeetupAddress(address);
-//		meetup.setMeetupOwner(user);
-//		em.persist(meetup);
 		user.addMeetupOwned(meetup);
 		meetup.setMeetupOwner(user);
 		
 		address.addMeetups(meetup);
 		meetup.setMeetupAddress(address);
-		//Who should I persist?
-		
-//		em.persist(add);
 		
 		em.persist(address);
-		
-		
-		
 		em.flush();
 		return meetup;
 	}

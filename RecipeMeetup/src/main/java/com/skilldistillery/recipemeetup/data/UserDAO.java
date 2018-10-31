@@ -13,7 +13,7 @@ public interface UserDAO {
 
 	User createUser(User user, Address address);
 
-	User updateUser(User updatedUser);
+	User updateUser(User user, Address address);
 
 	boolean deleteUser(User user);
 

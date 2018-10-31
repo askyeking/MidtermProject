@@ -63,34 +63,42 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User updateUser(User updatedUser) {
-		User editedUser = em.find(User.class, updatedUser.getId());
+	public User updateUser(User user, Address address) {
+		
+		User updatedUser = em.find(User.class, user.getId());
+		System.out.println(updatedUser);
+		Address updatedAddress = updatedUser.getAddress();
+		System.out.println(updatedAddress);
+		
+//		updatedUser.setActive(user.getActive());
+		updatedUser.setAdmin(user.getAdmin());
+//		updatedUser.setCreateDate(user.getCreateDate());
+		updatedUser.setDateOfBirth(user.getDateOfBirth());
+		updatedUser.setDescription(user.getDescription());
+		updatedUser.setEmail(user.getEmail());
+//		updatedUser.setRecipesFavorited(user.getRecipesFavorited());
+		updatedUser.setFirstName(user.getFirstName());
+//		updatedUser.setId(user.getId());
+		updatedUser.setImgURL(user.getImgURL());
+		updatedUser.setLastName(user.getLastName());
+//		updatedUser.setLikedMeetupComments(user.getLikedMeetupComments());
+//		updatedUser.setLikedRecipeComments(user.getLikedRecipeComments());
+//		updatedUser.setLikedRecipes(user.getLikedRecipes());
+//		updatedUser.setMeetupCommentsPosted(user.getMeetupCommentsPosted());
+//		updatedUser.setMeetupsAttended(user.getMeetupsAttended());
+//		updatedUser.setMeetupsOwned(user.getMeetupsOwned());
+		updatedUser.setPassword(user.getPassword());
+//		updatedUser.setRecipeComments(user.getRecipeComments());
+//		updatedUser.setRecipesPosted(user.getRecipesPosted());
+		updatedUser.setUsername(user.getUsername());
+		
+		updatedAddress.setStreet(address.getStreet());
+		updatedAddress.setCity(address.getCity());
+		updatedAddress.setState(address.getState());
+		updatedAddress.setPostalCode(address.getPostalCode());
+		updatedUser.setAddress(updatedAddress);
 
-		editedUser.setActive(updatedUser.getActive());
-		editedUser.setAdmin(updatedUser.getAdmin());
-		editedUser.setAddress(updatedUser.getAddress());
-		editedUser.setCreateDate(updatedUser.getCreateDate());
-		editedUser.setDateOfBirth(updatedUser.getDateOfBirth());
-		editedUser.setDescription(updatedUser.getDescription());
-		editedUser.setEmail(updatedUser.getEmail());
-//		editedUser.setRecipeFavorites(updatedUser.getRecipeFavorites());
-		editedUser.setRecipesFavorited(updatedUser.getRecipesFavorited());
-		editedUser.setFirstName(updatedUser.getFirstName());
-		editedUser.setId(updatedUser.getId());
-		editedUser.setImgURL(updatedUser.getImgURL());
-		editedUser.setLastName(updatedUser.getLastName());
-		editedUser.setLikedMeetupComments(updatedUser.getLikedMeetupComments());
-		editedUser.setLikedRecipeComments(updatedUser.getLikedRecipeComments());
-		editedUser.setLikedRecipes(updatedUser.getLikedRecipes());
-		editedUser.setMeetupCommentsPosted(updatedUser.getMeetupCommentsPosted());
-		editedUser.setMeetupsAttended(updatedUser.getMeetupsAttended());
-		editedUser.setMeetupsOwned(updatedUser.getMeetupsOwned());
-		editedUser.setPassword(updatedUser.getPassword());
-		editedUser.setRecipeComments(updatedUser.getRecipeComments());
-		editedUser.setRecipesPosted(updatedUser.getRecipesPosted());
-		editedUser.setUsername(updatedUser.getUsername());
-
-		return editedUser;
+		return updatedUser;
 	}
 
 	@Override

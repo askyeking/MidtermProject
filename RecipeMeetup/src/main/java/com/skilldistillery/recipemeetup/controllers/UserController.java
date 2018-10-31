@@ -1,5 +1,6 @@
 package com.skilldistillery.recipemeetup.controllers;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -111,8 +112,6 @@ public class UserController {
 	@RequestMapping(path = "userProfile.do", method = RequestMethod.GET)
 	public ModelAndView showProfile(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-//		User activeUser = (User) session.getAttribute("loggedInUser");
-//		mv.addObject(activeUser);
 		mv.setViewName("WEB-INF/views/profilePage.jsp");
 		return mv;
 	}
@@ -154,7 +153,40 @@ public class UserController {
 		mv.setViewName("WEB-INF/views/login.jsp");
 		return mv;	
 	}
+	
+	@RequestMapping(path="edituser.do", method=RequestMethod.GET)
+	public ModelAndView editUser(HttpSession session ) {
+		ModelAndView mv = new ModelAndView();
+		User user = (User) session.getAttribute("loggedInUser");
+		
+		mv.addObject("user", user);
+		mv.setViewName("/WEB-INF/views/editUser.jsp");
+		return mv;
+	}
 
-
+	
+	
+	
+	
+	@RequestMapping(path= "editedUser.do", method = RequestMethod.POST)
+	public ModelAndView editedUser(User user, Address address, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		if (user != null) {
+			user = userDAO.updateUser(user, address);
+			System.out.println(user.equals(session.getAttribute("loggedInUser")));
+			if(user.equals(session.getAttribute("loggedInUser"))) {
+			session.setAttribute("loggedInUser", user);
+			}
+			mv.setViewName("redirect:userProfile.do?id="+user.getId());
+		}
+		else {
+			editUser(session);
+		}
+		
+		return mv;
+	}
+	
 
 }

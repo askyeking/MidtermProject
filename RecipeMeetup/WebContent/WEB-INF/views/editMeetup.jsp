@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 
 
-<title>Create Meetup</title>
+<title>Edit Meetup</title>
 </head>
 <body>
 <body style="height: 1500px">
@@ -22,7 +22,6 @@
 		<br>
 		<br>
 		<br>
-		Inside of Edit Meetup
 		
 		<c:choose>
 		<c:when test="${not empty meetup }">
@@ -67,20 +66,9 @@
 		</c:when>
 		
 		
+		
+		
 		<c:when test="${not empty recipe }">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		<h3>Edit Recipe</h3>
 		<!--id, title, country, description, ingredients, servingSize, cookTime, instructions, category  -->
 	<form action="editedRecipe.do" method="POST">
