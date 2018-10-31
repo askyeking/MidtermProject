@@ -41,6 +41,9 @@ public class UserDAOImpl implements UserDAO {
 		
 		try {
 		retrievedUser = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
+		if(retrievedUser.getActive() == false) {
+			retrievedUser = null;
+		}
 		}
 		catch(NoResultException e) {
 			retrievedUser = null;

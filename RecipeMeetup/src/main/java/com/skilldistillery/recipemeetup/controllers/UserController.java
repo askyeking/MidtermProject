@@ -227,7 +227,7 @@ public class UserController {
 		userDAO.setActiveToFalse(user);
 		
 		session.setAttribute("loggedInUser", user);
-		mv.setViewName("redirect:userProfile.do?id=" + user.getId());
+		mv.setViewName("redirect:index.do");
 		
 		return mv;
 	}
