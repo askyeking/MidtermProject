@@ -13,9 +13,20 @@ body {
 	color: black;
 }
 
+#signIn {
+	color: 
+}
+
+.recentContainer {
+  margin: 20px;
+  background-color: #ffffff;
+  opacity: 0.85;
+}
+
 
 h3 {
 	text-align: center;
+	
 }
 
 #login {

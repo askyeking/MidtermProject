@@ -55,7 +55,7 @@
 		<div class="row">
 			<div class="col-sm"></div>
 			<div class="col-sm">
-				<h3>Sign In!</h3>
+				<h3 id="signIn">Sign In!</h3>
 				<form:form action="login.do" modelAttribute="user" method="POST"
 					id="login">
 					<input type="text" path="username" name="username" value="username" />
@@ -76,7 +76,7 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="recentContainer">
 		<div class="row">
 			<div class="col">
 				<form>
