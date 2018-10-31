@@ -94,7 +94,6 @@ public class UserController {
 	@RequestMapping(path = "register.do", method = RequestMethod.POST)
 	public ModelAndView Register(User user, Address address, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
 		User isUserValid = userDAO.isLegitimateUsername(user);
 
 		if (isUserValid != null) {
