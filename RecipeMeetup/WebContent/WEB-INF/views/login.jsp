@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Login</title>
+ <link rel="stylesheet" href="resources/loginPage.css"> 
 <meta charset="UTF-8">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,10 +19,8 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
-	<link rel="stylesheet" href="resources/login.css" />
 	
 	
-<title>Login</title>
 </head>
 <body>
 
