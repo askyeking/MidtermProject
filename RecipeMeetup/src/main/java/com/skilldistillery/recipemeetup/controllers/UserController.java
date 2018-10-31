@@ -15,12 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.recipemeetup.data.MeetupCommentDAO;
 import com.skilldistillery.recipemeetup.data.MeetupDAO;
+import com.skilldistillery.recipemeetup.data.RecipeCommentDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
 import com.skilldistillery.recipemeetup.data.UserDAO;
 import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.MeetupComment;
 import com.skilldistillery.recipemeetup.entities.Recipe;
+import com.skilldistillery.recipemeetup.entities.RecipeComment;
 import com.skilldistillery.recipemeetup.entities.User;
 
 @Controller
@@ -30,12 +32,14 @@ public class UserController {
 	@Autowired
 	private UserDAO userDAO;
 	@Autowired
-	private RecipeDAO recipeDAO;
-	@Autowired
 	private MeetupDAO meetupDAO;
 	@Autowired
+	private RecipeDAO recipeDAO;
+	@Autowired
+	private RecipeCommentDAO recipeCommentDAO;
+	@Autowired
 	private MeetupCommentDAO meetupCommentDAO;
-
+	
 	@RequestMapping(path = "index.do")
 	public ModelAndView index() {
 		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
@@ -191,6 +195,44 @@ public class UserController {
 		
 		return mv;
 	}
+	
+	//Add SetActiveToFalse for comments
+	@RequestMapping(path="deleteUser.do", method = RequestMethod.POST)
+	public ModelAndView deleteUser(int id, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		User user = userDAO.getUserById(id);
+		List<Recipe> recipesPosted = user.getRecipesPosted();
+		List<Meetup> meetupsPosted = user.getMeetupsOwned();
+		
+		List<RecipeComment> recipeCommentsPosted = user.getRecipeComments();
+		List<MeetupComment> meetupCommentsPosted = user.getMeetupCommentsPosted();
+		
+		for (Meetup meetup : meetupsPosted) {
+			meetupDAO.setActiveToFalse(meetup);
+		}
+		
+		for (Recipe recipe2 : recipesPosted) {
+			recipeDAO.setActiveToFalse(recipe2);
+		}
+		
+		for (MeetupComment meetupComment : meetupCommentsPosted) {
+			meetupCommentDAO.setActiveToFalse(meetupComment);
+		}
+		
+		for (RecipeComment recipeComment : recipeCommentsPosted) {
+			recipeCommentDAO.setActiveToFalse(recipeComment);
+		}
+		
+		
+		userDAO.setActiveToFalse(user);
+		
+		session.setAttribute("loggedInUser", user);
+		mv.setViewName("redirect:userProfile.do?id=" + user.getId());
+		
+		return mv;
+	}
+	
+
 	
 
 }

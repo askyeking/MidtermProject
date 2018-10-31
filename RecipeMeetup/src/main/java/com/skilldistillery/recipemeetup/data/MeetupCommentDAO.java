@@ -14,5 +14,6 @@ public interface MeetupCommentDAO {
 	MeetupComment editMeetupComment(MeetupComment updateComment, User author);
 	boolean deleteMeetupComment(MeetupComment comment, User author);
 	boolean deleteMeetupCommentById(int id);
+	MeetupComment setActiveToFalse(MeetupComment meetupComment);
 
 }

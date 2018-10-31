@@ -3,6 +3,7 @@ package com.skilldistillery.recipemeetup.data;
 import java.util.List;
 
 import com.skilldistillery.recipemeetup.entities.Address;
+import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
 
 public interface UserDAO {
@@ -22,5 +23,6 @@ public interface UserDAO {
 	public List<User> getUserByName(String inputName);
 
 	User getUserById(int id);
+	public User setActiveToFalse(User user);
 
 }

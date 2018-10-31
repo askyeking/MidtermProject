@@ -76,5 +76,12 @@ public class RecipeCommentDAOImpl implements RecipeCommentDAO {
 		
 		return isCommentDeleted;
 	}
+	
+	@Override
+	public RecipeComment setActiveToFalse(RecipeComment recipeComment) {
+		recipeComment = em.find(RecipeComment.class, recipeComment.getId());
+		recipeComment.setActive(false);
+		return recipeComment;
+	}
 
 }

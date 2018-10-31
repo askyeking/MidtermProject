@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.MeetupComment;
+import com.skilldistillery.recipemeetup.entities.MeetupComment;
 import com.skilldistillery.recipemeetup.entities.User;
 
 @Transactional
@@ -76,6 +77,13 @@ public class MeetupCommentDAOImpl implements MeetupCommentDAO {
 			}
 		}
 		return isCommentDeleted;
+	}
+	
+	@Override
+	public MeetupComment setActiveToFalse(MeetupComment meetupComment) {
+		meetupComment = em.find(MeetupComment.class, meetupComment.getId());
+		meetupComment.setActive(false);
+		return meetupComment;
 	}
 
 }

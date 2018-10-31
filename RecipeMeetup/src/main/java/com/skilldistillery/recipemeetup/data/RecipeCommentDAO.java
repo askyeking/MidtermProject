@@ -13,6 +13,7 @@ public interface RecipeCommentDAO {
 	RecipeComment editRecipeComment(RecipeComment updateComment, User author);
 	boolean deleteRecipeComment(RecipeComment comment, User author);
 	boolean deleteRecipeCommentById(int id);
+	RecipeComment setActiveToFalse(RecipeComment recipeComment);
 	
 
 }
