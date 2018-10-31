@@ -109,7 +109,7 @@
      		 <option value="meetup">Meetup</option>
   		  </select>
           
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">Search</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit"  >Search</button>
           
           
           
