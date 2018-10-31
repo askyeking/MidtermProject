@@ -17,7 +17,13 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="resources/login.css" />
+=======
+	<link rel="stylesheet" href="resources/login.css" />
+	
+	
+>>>>>>> d5677ac651182467cdc4fe9209478f0b6624455f
 <title>Login</title>
 </head>
 <body>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Navigation Bar</title>
+<!-- <title>Navigation Bar</title> -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -109,6 +109,16 @@
      		 <option value="meetup">Meetup</option>
   		  </select>
           
+          
+          
+          
+          
+          <!-- <select name="category">
+          <option value="recipe">Recipe</option>
+          <option value="meetup">Meetup</option>
+          </select> -->
+  </div>
+
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">Search</button>
           <ul class="navbar-nav mr-auto">
 		  </ul>
