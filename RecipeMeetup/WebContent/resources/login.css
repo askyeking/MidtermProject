@@ -17,12 +17,19 @@ body {
 	color: 
 }
 
+.aboutUsContainer {
+	text-align: center;
+	color: black;
+	marin: 20px;
+	background-color: #ffffff;
+	opacity: 0.85;
+}
+
 .recentContainer {
   margin: 20px;
   background-color: #ffffff;
   opacity: 0.85;
 }
-
 
 h3 {
 	text-align: center;
@@ -30,23 +37,18 @@ h3 {
 
 #password {
 	float: right;
-	border-radius: 4px;
+	margin-right: 5px;
 }
 
 #username {
 	float: right;
-	border-radius: 4px;
+	margin-right: 5px;
 }
 
 #login {
 	float: right;
-	border-radius: 4px;
 }
 
-#aboutUs {
-	text-align: center;
-	color: white;
-}
 
 #errorUsername {
 	color: red;
