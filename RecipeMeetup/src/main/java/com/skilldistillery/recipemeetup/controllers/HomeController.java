@@ -30,12 +30,13 @@ import com.skilldistillery.recipemeetup.entities.User;
 @Controller
 public class HomeController {
 	
+	// @Autowired autowires repository that implements  the  interface and creates an instance.
 	@Autowired
 	private MeetupDAO meetupDAO;
 	@Autowired
 	private RecipeDAO recipeDAO;
 	
-	
+	//addedMeetup
 	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
 	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
 		System.out.println("In Controller");
@@ -50,7 +51,6 @@ public class HomeController {
 		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		try {
-//			System.out.println(startDate); System.out.println(startTime);
 			dt = sdf.parse(startTime);
 			meetup.setStartTime(dt);
 		} catch (ParseException e) {
@@ -108,7 +108,6 @@ public class HomeController {
 		
 	}
 	
-	//add session in method????
 	@RequestMapping(path="createMeetup.do", method=RequestMethod.GET)
 	public ModelAndView createMeetup() {
 		ModelAndView mv = new ModelAndView();
@@ -118,7 +117,6 @@ public class HomeController {
 		
 	}
 	
-	//add session in method????
 	@RequestMapping(path="createRecipe.do", method=RequestMethod.GET)
 	public ModelAndView createRecipe() {
 		ModelAndView mv = new ModelAndView();
@@ -180,39 +178,5 @@ public class HomeController {
 		
 		return mv;
 	}
-	
-	
-
-//	@RequestMapping(path="deleteRecipe.do", method=RequestMethod.GET)
-//	public ModelAndView deleteRecipe(Recipe recipe, HttpSession session) {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		
-//		return null;
-//		
-//	}
-	
-//	@RequestMapping(path="addedMeetup.do", method=RequestMethod.POST)
-//	public ModelAndView postMeetup(Meetup meetup, Model model, HttpSession session, User user, Address address) {
-//		ModelAndView mv = new ModelAndView();
-//		Meetup newMeetup = meetupDAO.createMeetup(meetup, user, address);
-//		mv.addObject("meetup", newMeetup);
-//		mv.setViewName("/WEB-INF/views/home.jsp");
-//		
-//		return mv;
-//		
-//	}
-//	
-//	@RequestMapping(path="addedRecipe.do", method=RequestMethod.POST)
-//	public ModelAndView postRecipe(Recipe recipe, Model model, HttpSession session, User user) {
-//		ModelAndView mv = new ModelAndView();
-//		Recipe newRecipe = recipeDAO.createRecipe(recipe);
-//		mv.addObject("recipe", newRecipe);
-//		mv.setViewName("/WEB-INF/views/home.jsp");
-//		
-//		return mv;
-//		
-//	}
-
 	
 }
