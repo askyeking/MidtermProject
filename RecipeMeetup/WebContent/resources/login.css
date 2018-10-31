@@ -13,16 +13,41 @@ body {
 	color: black;
 }
 
+#signIn {
+	color: 
+}
+
+.recentContainer {
+  margin: 20px;
+  background-color: #ffffff;
+  opacity: 0.85;
+}
+
 
 h3 {
 	text-align: center;
 }
 
+#password {
+	float: right;
+	border-radius: 4px;
+}
+
+#username {
+	float: right;
+	border-radius: 4px;
+}
+
 #login {
-	text-align: center;
+	float: right;
+	border-radius: 4px;
 }
 
 #aboutUs {
 	text-align: center;
 	color: white;
+}
+
+#errorUsername {
+	color: red;
 }
