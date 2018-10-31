@@ -40,11 +40,27 @@
 </head>
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-		<a class="navbar-brand" href="#">Name of Website</a> <a
-			class="nav-link" href="registrationLink.do">Register</a>
+	
+	 <ul class="navbar-nav mr-auto">
+		<!-- <a class="navbar-brand" href="#"></a>  -->
+		<!-- <a class="nav-link" href="registrationLink.do">Register</a> -->
+		<li class="nav-item"><a class="nav-link" href="#">Name of Website</a></li>
+		<li class="nav-item"><a class="nav-link" href="registrationLink.do">Register</a></li>
+	</ul>
+				
+				<form:form id="login" action="login.do" modelAttribute="user" method="POST">
+					<input type="submit" id="login" class="btn btn-primary btn-sm" value="Login"/>
+					<input type="password" id="password" path="password" name="password"
+						placeholder="Password" aria-label="Password" />   
+					<input type="text" id="username" path="username" name="username" placeholder="Username" aria-label="Usernam"/>
+					
+					<br>
+					<br>
+					<form:errors path="username">Invalid Username</form:errors>
+					<form:errors path="password">Invalid password</form:errors>
+				</form:form>
 
 		</form>
-		</ul>
 	</nav>
 	<br>
 	<br>
@@ -55,22 +71,6 @@
 		<div class="row">
 			<div class="col-sm"></div>
 			<div class="col-sm">
-				<h3 id="signIn">Sign In!</h3>
-				<form:form action="login.do" modelAttribute="user" method="POST"
-					id="login">
-					<input type="text" path="username" name="username" value="username" />
-					<br>
-					<input type="password" path="password" name="password"
-						value="password" />
-					<br>
-					<input type="submit" value="Login" />
-					<br>
-					<br>
-					<%-- 		<form:errors path="username" />
-		<form:errors path="password" /> --%>
-					<form:errors path="username">Invalid Username</form:errors>
-					<form:errors path="password">Invalid password</form:errors>
-				</form:form>
 			</div>
 			<div class="col-sm"></div>
 		</div>
@@ -87,7 +87,8 @@
 					<c:forEach items="${recentMeetups}" var="meetup">
 
 						<p class="recentMeetups">
-							<strong>${meetup.title}</strong><br> ${meetup.description}<br>
+							<strong>${meetup.title}</strong><br> 
+							${meetup.description}<br>
 						<hr>
 						</p>
 
