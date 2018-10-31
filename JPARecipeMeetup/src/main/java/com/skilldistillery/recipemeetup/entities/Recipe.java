@@ -54,22 +54,36 @@ public class Recipe {
 	@Column(name="img_url")
 	private String imgURL;
 	
+	// Column annotation informs JPA which column the field is mapped to (has to have the same name as in the DB).
+	// The field is a timestamp which will have the value of the timestamp at the time of creation. 
+	// Hence Temporal and CreationTimestamp annotations are used.
 	@Column(name="post_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date createDate;
 	
-	
+
+	//The JoinColumn tells JPA which column from the DB is the foreign key that will match this class to the other class (In this cas Meetup to User).
 	@ManyToOne
 	@JoinColumn(name="author_id")
 	private User recipeOwner;
 	
+	/* A join table annotation is used for  mapping  many-to-many association. 
+	 * The join table is a simple merge table that has a ManyToOne connection to both tables, allowing for a ManyToMany relationship to be mapped through this table.
+	 * joinColumn corresponds to the foreign key column in the DB to this class (user_meetup to Meetup)
+	 * inverseJoinColumns corresponds to the  foreign key column in the DB to the other class (user_meetup to User)
+	 */
 	@ManyToMany
 	@JoinTable(name="favorite_recipe",
 	joinColumns=@JoinColumn(name="recipe_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> usersWhoFavorited;
 	
+	/* A join table annotation is used for  mapping  many-to-many association. 
+	 * The join table is a simple merge table that has a ManyToOne connection to both tables, allowing for a ManyToMany relationship to be mapped through this table.
+	 * joinColumn corresponds to the foreign key column in the DB to this class (user_meetup to Meetup)
+	 * inverseJoinColumns corresponds to the  foreign key column in the DB to the other class (user_meetup to User)
+	 */
 	@ManyToMany
 	@JoinTable(name="recipe_like",
 	joinColumns=@JoinColumn(name="recipe_id"),
@@ -80,6 +94,9 @@ public class Recipe {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="recipeCommentedOn")
 	private List<RecipeComment> recipeComments;
 
+	
+	//Below this point you will find simple add and remove methods for other fields; getters and setters; and toString;
+	// More info about these methods inside Address Entity around line 44.
 	
 	
     public void addUserWhoFavorited(User userWhoFavorited) {

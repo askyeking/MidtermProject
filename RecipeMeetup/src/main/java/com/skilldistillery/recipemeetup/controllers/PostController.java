@@ -17,6 +17,7 @@ import com.skilldistillery.recipemeetup.data.MeetupCommentDAO;
 import com.skilldistillery.recipemeetup.data.MeetupDAO;
 import com.skilldistillery.recipemeetup.data.RecipeCommentDAO;
 import com.skilldistillery.recipemeetup.data.RecipeDAO;
+import com.skilldistillery.recipemeetup.data.UserDAO;
 import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.MeetupComment;
@@ -37,6 +38,8 @@ public class PostController {
 	private RecipeCommentDAO recipeCommentDAO;
 	@Autowired
 	private MeetupCommentDAO meetupCommentDAO;
+	@Autowired
+	private UserDAO userDAO;
 	
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
@@ -198,6 +201,11 @@ public class PostController {
 		Meetup meetup = meetupDAO.findSingleMeetup(id);
 		meetupDAO.setActiveToFalse(meetup);
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetup.getId());
+		
+		User user = (User) session.getAttribute("loggedInUser");
+		user= userDAO.getUserById(user.getId());
+		session.setAttribute("loggedInUser", user);
+		
 		return mv;
 	}
 	@RequestMapping(path="deleteRecipe.do", method = RequestMethod.POST)

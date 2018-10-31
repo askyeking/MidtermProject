@@ -49,9 +49,9 @@
 	</ul>
 				
 				<form:form id="login" action="login.do" modelAttribute="user" method="POST">
-					<input type="submit" id="login" class="btn btn-primary btn-sm" value="Login"/>
+				<input type="submit" id="login" class="btn btn-outline-success my-2 my-sm-0" value="Login"/>
 					<input type="password" id="password" path="password" name="password"
-						placeholder="Password" aria-label="Password" />   
+						placeholder="Password" aria-label="Password" />
 					<input type="text" id="username" path="username" name="username" placeholder="Username" aria-label="Usernam"/>
 					
 					<br>
@@ -123,37 +123,7 @@
 		</div>
 	</div>
 
-	<%-- <form>
-
-		<h3>Recent Meetups</h3> <hr>
-			
-			<c:forEach items="${recentMeetups}" var="meetup">
-			
-				<p class="recentMeetups"><strong>${meetup.title}</strong><br>
-					${meetup.description}<br> <hr>
-				</p>
-
-			</c:forEach>
-			<br>
-			<h5>Sign-in to See More!</h5>
-			<br><br>
-		</form> --%>
-
-	<%-- <form>
-		<h3>Recent Recipes</h3> <hr>
-			<c:forEach items="${recentRecipes}" var="recipe">
-			
-				<p class="recentRecipes"><strong>${recipe.title }</strong><br>
-					${recipe.description}<br> <hr>
-				</p>
-				
-			</c:forEach>
-			<br>
-			<h5>Sign-in to See More!</h5>
-			<br><br>
-
-	</form> --%>
-
+<div class="aboutUsContainer">
 	<form>
 
 		<h3>About The Website Creators</h3>
@@ -163,5 +133,6 @@
 		</p>
 		<p id="aboutUs">We are awesome and plan on making $1 bil a piece</p>
 	</form>
+	</div>
 </body>
 </html>
