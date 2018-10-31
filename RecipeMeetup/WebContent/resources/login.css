@@ -5,7 +5,7 @@ body {
 	}
 	
 font {
-	color: light-blue;
+	color: light-red;
 }
 
 h1,
@@ -16,6 +16,23 @@ h5,
 h6 {
   font-weight: 700;
   font-family: 'Montserrat';
-  color: #62a7f5;
-  
-} 
+  color: light-red;
+}
+
+.recentMeetups {
+	font-weight: 400;
+	font-family: sans-serif;
+	color: light-black;
+}
+
+.recentRecipes{
+	font-weight: 400;
+	font-family: sans-serif;
+	color: light-black;
+}
+
+.aboutUs {
+	font-weight: 700;
+  	font-family: 'Montserrat';
+  	color: light-red;
+}

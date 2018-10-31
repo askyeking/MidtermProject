@@ -55,7 +55,7 @@
 			
 			<c:forEach items="${recentMeetups}" var="meetup">
 			
-				<p><strong>${meetup.title}</strong><br>
+				<p class="recentMeetups"><strong>${meetup.title}</strong><br>
 					${meetup.description}<br> <hr>
 				</p>
 
@@ -68,7 +68,7 @@
 		<h3>Recent Recipes</h3> <hr>
 			<c:forEach items="${recentRecipes}" var="recipe">
 			
-				<p><strong>${recipe.title }</strong><br>
+				<p class="recentRecipes"><strong>${recipe.title }</strong><br>
 					${recipe.description}<br> <hr>
 				</p>
 				
@@ -82,7 +82,7 @@
 	<form>
 
 		<h3>About The Website Creators</h3>
-		<p>
+		<p class="aboutUs">
 			<strong>Blake Longfield, Anthony King, Newel Miole, Novak Dobrosavljevic</strong>
 		</p>
 		<p>We are awesome and plan on making $1 bil a piece</p>
