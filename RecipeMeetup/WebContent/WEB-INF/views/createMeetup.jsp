@@ -10,18 +10,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-
+<link rel="stylesheet" href="resources/createMeetup.css" />
 <title>Create Meetup</title>
 </head>
 <body>
+<img class="center-fit" src="media/tomato.jpg" alt="homescreen" />
+
 <body style="height: 1500px">
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 
 
 
-
+<div class="newMeetup">
 			<h3>Create a New Meetup</h3>
 			<form action="addedMeetup.do" method="POST">
 				<input type="hidden" name="active" value="1" /> 
@@ -54,7 +55,7 @@
 				<input type="submit" value="Submit" />
 			</form>
 		
-
+</div>
 				
 
 
