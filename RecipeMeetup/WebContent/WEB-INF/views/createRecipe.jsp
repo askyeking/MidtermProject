@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-	<c:if test="${not empty loggedInUser }">
-	<%@include file="NavBar.jsp" %>
-	</c:if>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +12,9 @@
 </head>
 <body>
 <img class="center-fit" src="media/SqueezingJuice.jpg" alt="homescreen" />
-
+<c:if test="${not empty loggedInUser }">
+	<%@include file="NavBar.jsp" %>
+	</c:if>
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 
@@ -37,7 +37,7 @@
 		<h3>Serving Size</h3>
 		<input type="number" name="servingSize" value="" maxlength="50" /><br>
 		<h3>Cook Time</h3>
-		<input type="number" name="cookTime" value="" /> minutes<br>
+		<input type="number" name="cookTime" placeholder="minutes" aria-label="minutes" /><br>
 		<h3>Category</h3>
 		<input type="text" name="category" value="" required /><br>
 		
