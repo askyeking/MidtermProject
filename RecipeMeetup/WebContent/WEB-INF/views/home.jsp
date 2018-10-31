@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:if test="${not empty loggedInUser }">
-<%@include file="NavBar.jsp" %>
+	<%@include file="NavBar.jsp"%>
 </c:if>
 <!DOCTYPE html>
 <html>
@@ -27,19 +27,20 @@
 
 
 
-<br>
-<br>
-<br>
-<br>
+			<br>
+			<br>
+			<br>
+			<br>
 
-<form action = "createRecipe.do" method="GET">
-			<input type = "submit" value = "Create A New Recipe">
+			<form action="createRecipe.do" method="GET">
+				<input type="submit" value="Create A New Recipe">
 			</form>
-<form action = "createMeetup.do" method="GET">
-			<input type = "submit" value = "Create A New Meetup">
-			</form> <br> 
-			
-<%-- 	<c:choose>
+			<form action="createMeetup.do" method="GET">
+				<input type="submit" value="Create A New Meetup">
+			</form>
+			<br>
+
+			<%-- 	<c:choose>
 		<c:when test="${not empty user and user.active}">
 			
 			Login Successful!
@@ -49,74 +50,84 @@
 
 		</c:otherwise>
 	</c:choose> --%>
-<%-- 	<form:errors path="username">Invalid Username</form:errors>
+			<%-- 	<form:errors path="username">Invalid Username</form:errors>
 	<form:errors path="password">Bad password</form:errors> --%>
 
-	<c:choose>
-		<c:when test="${not empty recentMeetup}">
-		
-			<h4>Recent Meetups</h4> <hr>
-		
-			<c:forEach items="${recentMeetup}" var="meetup">
+			<c:choose>
+				<c:when test="${not empty recentMeetup}">
 
-				<p><strong>${meetup.title}</strong><br>
-					${meetup.description}<br>
-				</p>
-				
+					<h4>Recent Meetups</h4>
+					<hr>
 
-				<form action="showMeetupDetails.do" method="GET">
+					<c:forEach items="${recentMeetup}" var="meetup">
+
+						<p>
+							<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a><br>
+							${meetup.description}<br>
+						</p>
+
+
+						<%-- <form action="showMeetupDetails.do" method="GET">
 					<input type="hidden" name="id" value="${meetup.id}" /> <input
 						type="submit" value="Details" /> <hr>
-				</form> 
+				</form>  --%>
 
-			</c:forEach>
-			<form action = "showAllMeetups.do" method="GET">
-			<input type = "submit" value = "Show More">
-			</form>
-			<br><br>
-			
-		</c:when>
-	</c:choose>
+					</c:forEach>
+					<form action="showAllMeetups.do" method="GET">
+						<input type="submit" value="Show More">
+					</form>
+					<br>
+					<br>
 
-	<c:choose>
-		<c:when test="${not empty recentRecipe}">
-				<h4>Recent Recipes</h4> <hr>
-		
-			<c:forEach items="${recentRecipe}" var="recipe">
-			
-				<p><strong>${recipe.title }</strong><br>
-					${recipe.description}<br>
-				</p>
-				<form action="showRecipeDetails.do" method="GET">
+				</c:when>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${not empty recentRecipe}">
+					<h4>Recent Recipes</h4>
+					<hr>
+
+					<c:forEach items="${recentRecipe}" var="recipe">
+
+						<p>
+							<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a><br>
+							${recipe.description}<br>
+						</p>
+						<%-- <form action="showRecipeDetails.do" method="GET">
 					<input type="hidden" name="id" value="${recipe.id}" /> <input
 						type="submit" value="Details" /> <hr>
-				</form>
-			</c:forEach>
-			<form action = "showAllRecipes.do" method="GET">
-			<input type = "submit" value = "Show More">
-			</form>
-		</c:when>
-	</c:choose>
-	
-		
-		
+				</form> --%>
+					</c:forEach>
+					<form action="showAllRecipes.do" method="GET">
+						<input type="submit" value="Show More">
+					</form>
+				</c:when>
+			</c:choose>
+
+
+
 		</c:when>
 		<c:otherwise>
-		<br><br><br><br><br><br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<h3>Only a logged in user can view this page.</h3>
-				
-				<form:form action="index.do" modelAttribute="user" method="GET">
-					<input type="submit" value="Login" />
-				</form:form>
 
-				
-				<form:form action="registrationLink.do" modelAttribute="user"
-					method="GET">
-					<input type="submit" value="Register" />
-				</form:form>
-			
+			<form:form action="index.do" modelAttribute="user" method="GET">
+				<input type="submit" value="Login" />
+			</form:form>
+
+
+			<form:form action="registrationLink.do" modelAttribute="user"
+				method="GET">
+				<input type="submit" value="Register" />
+			</form:form>
+
 		</c:otherwise>
-		</c:choose>
+	</c:choose>
 
 </body>
 </html>

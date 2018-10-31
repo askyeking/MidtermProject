@@ -70,10 +70,14 @@
 		<hr>
 		
 			<c:forEach items="${user.recipesFavorited}" var="favRecipe">
-	 			<p><strong>${favRecipe.title}</strong></p> 
-	 			<p>${favRecipe.country}</p><br>
+	 			<p>
+	 				<a href="showRecipeDetails.do?id=${favRecipe.id }"><strong>${favRecipe.title}</strong></a>
+	 			</p> 
 	 			<p>${favRecipe.description}</p><br>
 	 			<hr>
+	 			
+	 			<%-- <a href="viewOtherProfile.do?id=${meetupOwner.id }" > Meetup Owner: ${meetupOwner.firstName }</a>
+	  --%>
 	 
 	 	</c:forEach>
 	 	</c:when>
@@ -86,7 +90,9 @@
 		<hr>
 		
 			<c:forEach items="${user.meetupsAttended}" var="attended">
-	 			<p><strong>${attended.title}</strong></p> 
+	 			<p>
+	 				<a href="showMeetupDetails.do?id=${attended.id }"><strong>${attended.title}</strong></a>
+	 			</p> 
 	 			<p>${attended.description}</p>
 	 			<hr>
 	 

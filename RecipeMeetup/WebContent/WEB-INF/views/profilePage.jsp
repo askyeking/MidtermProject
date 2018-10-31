@@ -21,6 +21,7 @@
 <br>
 <br>
 
+<<<<<<< HEAD
 	<form action="edituser.do" method = "GET">
 			<input type = "submit" value = "Edit Profile">
 			</form>
@@ -33,6 +34,15 @@
 			</form> <hr>
 			
 			
+=======
+	
+	 	<form action = "createRecipe.do" method="GET">
+			<input type = "submit" value = "Create A New Recipe">
+			</form>
+<form action = "createMeetup.do" method="GET">
+			<input type = "submit" value = "Create A New Meetup">
+			</form> <br>
+>>>>>>> 38469adee73fe7a27057dbb87206d9b5118dc409
 	 	
 	 	<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
 	 	<p>${loggedInUser.description}</p><hr>
@@ -81,11 +91,13 @@
 		<hr>
 		
 			<c:forEach items="${loggedInUser.recipesFavorited}" var="favRecipe">
-	 			<p><strong>${favRecipe.title}</strong></p> 
-	 			<p>${favRecipe.country}</p> 
+	 			<p>
+							<a href="showRecipeDetails.do?id=${favRecipe.id }"><strong>${favRecipe.title}</strong></a>
+						</p> 
 	 			<p>${favRecipe.description}</p> 
 	 			<hr>
-	 
+	 			
+	 	
 	 	</c:forEach>
 	 	</c:when>
 	 	</c:choose>
@@ -97,7 +109,9 @@
 		<hr>
 		
 			<c:forEach items="${loggedInUser.meetupsAttended}" var="attended">
-	 			<p><strong>${attended.title}</strong></p> 
+	 			<p>
+	 				<a href="showMeetupDetails.do?id=${attended.id }"><strong>${attended.title}</strong></a>
+	 			</p> 
 	 			<p>${attended.description}</p> 
 	 			<hr>
 	 

@@ -109,7 +109,9 @@ public class MeetupDAOImpl implements MeetupDAO {
 	
 	@Override
 	public Meetup setActiveToFalse(Meetup meetup) {
+		meetup = em.find(Meetup.class, meetup.getId());
 		meetup.setActive(false);
+		
 		return meetup;
 		
 	}

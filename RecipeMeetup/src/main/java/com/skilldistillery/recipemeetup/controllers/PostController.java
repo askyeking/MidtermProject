@@ -192,5 +192,22 @@ public class PostController {
 		return mv;
 	}
 	
+	@RequestMapping(path="deleteMeetup.do", method = RequestMethod.POST)
+	public ModelAndView deleteMeetup(int id, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Meetup meetup = meetupDAO.findSingleMeetup(id);
+		meetupDAO.setActiveToFalse(meetup);
+		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetup.getId());
+		return mv;
+	}
+	@RequestMapping(path="deleteRecipe.do", method = RequestMethod.POST)
+	public ModelAndView deleteRecipe(int id, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Recipe recipe = recipeDAO.showRecipeById(id);
+		recipeDAO.setActiveToFalse(recipe);
+		mv.setViewName("redirect:showRecipeDetails.do?id=" + recipe.getId());
+		return mv;
+	}
+	
 	
 }
