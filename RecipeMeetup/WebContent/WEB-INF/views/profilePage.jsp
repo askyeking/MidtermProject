@@ -38,6 +38,9 @@
 			</form> <hr>
 			
 			
+			
+		<img src="${loggedInUser.imgURL }" alt="User Profile Picture" style="width:170px;height:170px;">
+			
 	 	<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
 	 	<p>${loggedInUser.description}</p><hr>
 	 	

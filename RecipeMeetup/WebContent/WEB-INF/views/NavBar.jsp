@@ -34,7 +34,7 @@
 					<input type="submit" value="Submit"/>
 				</form>
 				
-				<li class="nav-item"><a class="nav-link" href="userProfile.do">Profile</a></li>
+				<li class="nav-item"><a class="nav-link" href="userProfile.do">${loggedInUser.username }</a></li>
 				<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 
 			</form>
