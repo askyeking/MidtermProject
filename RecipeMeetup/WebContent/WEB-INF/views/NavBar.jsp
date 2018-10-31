@@ -76,9 +76,10 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->
        <a class="nav-link" href="home.do">Home<span class="sr-only">(current)</span></a>
-       		<li class="nav-item"><a class="nav-link" href="userProfile.do">${loggedInUser.username }</a></li>
             <li class="nav-item"><a class="nav-link" href="showAllRecipes.do">Recipes</a></li>
             <li class="nav-item"><a class="nav-link" href="showAllMeetups.do">Meetups</a></li>
+       		<li class="nav-item"><a class="nav-link" href="userProfile.do">${loggedInUser.username }</a></li>
+            <li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
     </ul>
     
     
@@ -88,7 +89,6 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form> -->
     <form action="searchByRecipe.do" method="GET">
-    <div>
           <input type="text" name="input" placeholder="Search" aria-label="Search">
           <select class="btn btn-mini" name="category">
      		 <option value="recipe">Recipe</option>
@@ -96,16 +96,10 @@
   		  </select>
           
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">Search</button>
-          
-          
-          
-          
-          <!-- <select name="category">
-          <option value="recipe">Recipe</option>
-          <option value="meetup">Meetup</option>
-          </select> -->
-  </div>
+          <ul class="navbar-nav mr-auto">
+		  </ul>
   	</form>
+          
     </div>
     
     
