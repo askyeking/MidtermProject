@@ -6,12 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
-</head>
-<body>
-
-
-	<title>Navigation Bar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"
@@ -22,22 +16,18 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="resources/login.css" />
+<title>Login</title>
+</head>
+<body>
+
+	<title>Navigation Bar</title>
 </head>
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
-<%-- 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Recipes</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Meetups</a></li>
-			<form class="form-inline" action="/action_page.php">
-				<input class="form-control" type="text" placeholder="Search by...">
-				<select name="category">
-					<option value="category_id">Recipe</option>
-					<option value="category_id">Keyword</option>
-					<option value="category_id">Ingredient</option>
-					<input type="submit" value="Search" />
-				</select> --%>
+
 				<a class="nav-link" href="registrationLink.do">Register</a>
 
 			</form>
