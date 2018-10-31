@@ -30,12 +30,13 @@ import com.skilldistillery.recipemeetup.entities.User;
 @Controller
 public class HomeController {
 	
+	// @Autowired autowires repository that implements  the  interface and creates an instance.
 	@Autowired
 	private MeetupDAO meetupDAO;
 	@Autowired
 	private RecipeDAO recipeDAO;
 	
-	
+	//addedMeetup
 	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
 	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
 		System.out.println("In Controller");
@@ -50,7 +51,6 @@ public class HomeController {
 		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		try {
-//			System.out.println(startDate); System.out.println(startTime);
 			dt = sdf.parse(startTime);
 			meetup.setStartTime(dt);
 		} catch (ParseException e) {
@@ -108,7 +108,6 @@ public class HomeController {
 		
 	}
 	
-	//add session in method????
 	@RequestMapping(path="createMeetup.do", method=RequestMethod.GET)
 	public ModelAndView createMeetup() {
 		ModelAndView mv = new ModelAndView();
@@ -118,7 +117,6 @@ public class HomeController {
 		
 	}
 	
-	//add session in method????
 	@RequestMapping(path="createRecipe.do", method=RequestMethod.GET)
 	public ModelAndView createRecipe() {
 		ModelAndView mv = new ModelAndView();
