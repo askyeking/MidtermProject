@@ -27,10 +27,6 @@
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
-<<<<<<< HEAD
-
-=======
->>>>>>> a4dd5b403cb2337fbb9cf727ccda198ed390098e
 				<a class="nav-link" href="registrationLink.do">Register</a>
 
 			</form>
