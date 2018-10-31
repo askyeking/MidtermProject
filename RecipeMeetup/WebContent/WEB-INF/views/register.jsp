@@ -54,7 +54,7 @@
 		<input type="text" name="street" maxlength="190" placeholder="Street" aria-label="Street" required /><br>
 		<input type="text" name="city" maxlength="100" placeholder="City" aria-label="City" required /><br> 
 		<input type="text" name="state" maxlength="2" placeholder="State" aria-label="State" required /><br>
-		<input type="number" name="postalCode" min="00000" max="99999" placeholder="ZIP" aria-label="ZIP"required /><br>
+		<input type="number" name="postalCode" min="00000" max="99999" placeholder="ZIP" aria-label="ZIP" required /><br>
 		
 		<h3>Tell us a little about yourself</h3>
 		<input type="text" name="description" maxlength="250"

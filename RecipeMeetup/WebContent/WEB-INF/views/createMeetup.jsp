@@ -3,9 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<c:if test="${not empty loggedInUser }">
-<%@include file="NavBar.jsp" %>
-</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +12,14 @@
 </head>
 <body>
 <img class="center-fit" src="media/tomato.jpg" alt="homescreen" />
-
-<body style="height: 1500px">
+<c:if test="${not empty loggedInUser }">
+<%@include file="NavBar.jsp" %>
+</c:if>
+<body >
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 
-
-
-<div class="newMeetup">
+		<div class="newMeetup">
 			<h3>Create a New Meetup</h3>
 			<form action="addedMeetup.do" method="POST">
 				<input type="hidden" name="active" value="1" /> 
@@ -47,10 +44,10 @@
 				URL: <input type="url" name="imageURL" maxlength="45"><br> <br>
 				
 				<h3>Address</h3>
-				Street: <input type="text" name="street" value="Street" maxlength="190" required /><br>
-				City: <input type="text" name="city" value="City" maxlength="100" required /><br> <input
+				Street: <input type="text" name="street" maxlength="190" placeholder="Street" aria-label="Street" required /><br>
+				City: <input type="text" name="city" maxlength="100" placeholder="City" aria-label="City" required /><br> <input
 					type="text" name="state" value="State" maxlength="2" required /><br>
-				Postal code: <input type="number" name="postalCode" value="PostalCode" min="00000" max="99999" required /><br>
+				Postal code: <input type="number" name="postalCode" min="00000" max="99999" placeholder="ZIP" aria-label="ZIP" required /><br>
 				
 				<input type="submit" value="Submit" />
 			</form>
