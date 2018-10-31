@@ -350,3 +350,13 @@ template {
 [hidden] {
   display: none;
 }
+
+
+
+.center{
+	margin: auto;
+	width: 93%;
+	padding: 5px;
+}
+
+

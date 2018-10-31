@@ -59,28 +59,30 @@
 					<h4>Recently Posted Recipes</h4>
 					<hr>
 
+
+					<div class="center">
 						<div class="row">
 							<div class="card-deck">
-								
-										<c:forEach items="${loggedInUser.recipesPosted}" var="recipe">
-											<div class="col-sm-4">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty recipe.imgURL }">
-														<img class="card-img-top" src="${recipe.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${recipe.title }</h5>
-														<p class="card-text">${recipe.description }.</p>
-														<a href="showRecipeDetails.do" class="btn btn-primary">Go
-															somewhere</a>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-									</div>
-								</div>
 
+								<c:forEach items="${loggedInUser.recipesPosted}" var="recipe">
+									<div class="col-sm-4">
+										<div class="card" style="width: 18rem;">
+											<c:if test="${not empty recipe.imgURL }">
+												<img class="card-img-top" src="${recipe.imgURL  }"
+													alt="Card image cap">
+											</c:if>
+											<div class="card-body">
+												<h5 class="card-title">${recipe.title }</h5>
+												<p class="card-text">${recipe.description }.</p>
+												<a href="showRecipeDetails.do?id=${recipe.id }" class="btn btn-primary">View
+													Details</a>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
 
 
 				</c:when>
