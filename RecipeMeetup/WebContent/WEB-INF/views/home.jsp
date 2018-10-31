@@ -60,19 +60,16 @@
 					<hr>
 
 					<c:forEach items="${recentMeetup}" var="meetup">
-
+						
+						<c:if test="${meetup.active }">
 						<p>
 							<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a><br>
 							${meetup.description}<br>
 						</p>
-
-
-						<%-- <form action="showMeetupDetails.do" method="GET">
-					<input type="hidden" name="id" value="${meetup.id}" /> <input
-						type="submit" value="Details" /> <hr>
-				</form>  --%>
-
-					</c:forEach>
+						</c:if>
+						
+						</c:forEach>
+					
 					<form action="showAllMeetups.do" method="GET">
 						<input type="submit" value="Show More">
 					</form>
@@ -83,20 +80,20 @@
 			</c:choose>
 
 			<c:choose>
+			
 				<c:when test="${not empty recentRecipe}">
 					<h4>Recent Recipes</h4>
 					<hr>
 
 					<c:forEach items="${recentRecipe}" var="recipe">
-
+						<c:if test="${recentRecipe.active }">
+						
 						<p>
 							<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a><br>
 							${recipe.description}<br>
 						</p>
-						<%-- <form action="showRecipeDetails.do" method="GET">
-					<input type="hidden" name="id" value="${recipe.id}" /> <input
-						type="submit" value="Details" /> <hr>
-				</form> --%>
+						</c:if>
+						
 					</c:forEach>
 					<form action="showAllRecipes.do" method="GET">
 						<input type="submit" value="Show More">
