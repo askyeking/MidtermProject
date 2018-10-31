@@ -25,22 +25,22 @@
 		data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img class="d-block w-100" src="media/cuttingboard.jpg"
-					alt="First slide" height="800" width="auto">
-				<div class="text-block">
-					<h1>Recipe Meetup</h1>
-					<h3>Let's meetup and cook together</h3>
-				</div>
+				<img class="d-block w-100" src="media/People Eating Together/adult-casual-chef-1418355.jpg" alt="1" height="1000" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/family.jpg" alt="Second slide" height="800" width="auto">
+				<img class="d-block w-100" src="media/family.jpg" alt="2" height="1000" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/food1.jpg" alt="Third slide" height="800" width="auto">
+				<img class="d-block w-100" src="media/People Eating Together/adults-aerial-barbecue-1260310.jpg" alt="3" height="1000" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/dessert.jpg"
-					alt="Fourth slide" height="800" width="auto">
+				<img class="d-block w-100" src="media/People Eating Together/appetite-asian-food-bowls-1321731.jpg" alt="4" height="1000" width="auto">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100" src="media/People Eating Together/rawpixel-754045-unsplash.jpg" alt="5" height="1000" width="auto">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100" src="media/People Eating Together/beer-beverage-delicious-1246957.jpg" alt="6" height="1000" width="auto">
 			</div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators"
@@ -116,7 +116,7 @@
 								<c:if test="${meetup.active }">
 
 									<div class="meetup-card" style="width: 18rem;">
-										<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup" height="200" width="auto" >
+										<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup" height="300" width="auto" >
 										<div class="card-body">
 											<h5 class="card-title">
 												<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a>
@@ -161,7 +161,7 @@
 								<c:if test="${recipe.active }">
 
 									<div class="recipe-card" style="width: 18rem;">
-										<img class="card-img-top" src="${recipe.imgURL }" alt="Recipe" height="200" width="auto">
+										<img class="card-img-top" src="${recipe.imgURL }" alt="Recipe" height="300" width="auto">
 										<div class="card-body">
 											<h5 class="card-title">
 												<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a>
@@ -189,6 +189,12 @@
 						</div>
 				</c:when>
 			</c:choose>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 
 
 
