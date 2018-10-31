@@ -52,6 +52,8 @@ public class UserController {
 		return mv;
 
 	}
+	
+	
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView loginPage(User user, Errors error, HttpSession session) {
