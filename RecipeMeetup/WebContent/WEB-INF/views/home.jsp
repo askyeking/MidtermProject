@@ -86,7 +86,7 @@
 					<hr>
 
 					<c:forEach items="${recentRecipe}" var="recipe">
-						<c:if test="${recentRecipe.active }">
+						<c:if test="${recipe.active }">
 						
 						<p>
 							<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a><br>

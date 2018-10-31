@@ -28,16 +28,6 @@
 	<br>
 	<br>
 	<br>
-<%-- 	<c:choose>
-		<c:when test="${not empty user and user.active}">
-			
-			
-			<c:if test="${loggedInUser.admin }">Admin login</c:if>
-		</c:when>
-		<c:otherwise>
-
-		</c:otherwise>
-	</c:choose> --%>
 
 	<c:choose>
 		<c:when test="${not empty meetups}">
@@ -47,18 +37,13 @@
 			</form>
 			<hr>
 			<c:forEach items="${meetups}" var="meetup">
-
+				<c:if test="${meetup.active}">
 				<p>
 					<h5><a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a></h5> 
 					${meetup.description}<br>
 				</p>
 
-
-				<%-- <form action="showMeetupDetails.do" method="GET">
-					<input type="hidden" name="id" value="${meetup.id}" /> <input
-						type="submit" value="Details" /> <hr>
-				</form> --%>
-
+				</c:if>
 			</c:forEach>
 			<br>
 			
@@ -74,15 +59,12 @@
 			</form>
 		<hr>
 			<c:forEach items="${recipes}" var="recipe">
-
+				<c:if test="${recipe.active}">
 				<p>
 					<h5><a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a></h5>
 					${recipe.description}<br>
 				</p>
-				<%-- <form action="showRecipeDetails.do" method="GET">
-					<input type="hidden" name="id" value="${recipe.id}" /> <input
-						type="submit" value="Details" /> <hr>
-				</form> --%>
+				</c:if>
 			</c:forEach>
 			<br>
 		
