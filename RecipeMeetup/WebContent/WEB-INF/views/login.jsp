@@ -50,7 +50,7 @@
 	<form:form action="login.do" modelAttribute="user" method="POST">
 		<input type="text" path="username" name="username" value="username" />
 		<br>
-		<input type="text" path="password" name="password" value="password" />
+		<input type="password" path="password" name="password" value="password" />
 		<br>
 		<input type="submit" value="Login" />
 		<br><br>
