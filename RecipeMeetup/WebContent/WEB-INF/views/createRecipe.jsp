@@ -9,13 +9,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="resources/createRecipe.css" />
 <title>Create Recipe</title>
 </head>
 <body>
+<img class="center-fit" src="media/SqueezingJuice.jpg" alt="homescreen" />
 
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 
+<div class="newRecipe">
 	<h3>Post a New Recipe</h3>
 
 	<form action="addedRecipe.do" method="POST">
@@ -182,7 +185,7 @@
 		
 		<input type="submit" value="Submit" /> 
 	</form>
-
+</div>
 		</c:when>
 		
 		<c:otherwise>
