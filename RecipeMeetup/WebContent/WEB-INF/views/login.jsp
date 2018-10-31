@@ -27,7 +27,10 @@
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a4dd5b403cb2337fbb9cf727ccda198ed390098e
 				<a class="nav-link" href="registrationLink.do">Register</a>
 
 			</form>
@@ -40,7 +43,7 @@
 	<form:form action="login.do" modelAttribute="user" method="POST">
 		<input type="text" path="username" name="username" value="username" />
 		<br>
-		<input type="text" path="password" name="password" value="password" />
+		<input type="password" path="password" name="password" value="password" />
 		<br>
 		<input type="submit" value="Login" />
 		<br><br>
@@ -55,7 +58,7 @@
 		<h3>Recent Meetups</h3> <hr>
 			
 			<c:forEach items="${recentMeetups}" var="meetup">
-
+			
 				<p><strong>${meetup.title}</strong><br>
 					${meetup.description}<br> <hr>
 				</p>
