@@ -74,8 +74,8 @@
 											<div class="card-body">
 												<h5 class="card-title">${recipe.title }</h5>
 												<p class="card-text">${recipe.description }.</p>
-												<a href="showRecipeDetails.do" class="btn btn-primary">Go
-													somewhere</a>
+												<a href="showRecipeDetails.do?id=${recipe.id }" class="btn btn-primary">View
+													Details</a>
 											</div>
 										</div>
 									</div>
