@@ -6,9 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="resources/register.css" />
 <title>Register</title>
 </head>
 <body>
+<img class="center-fit" src="media/salmon.jpg" alt="homescreen" />
 
 	<title>Navigation Bar</title>
 	<meta charset="utf-8">
@@ -33,6 +35,7 @@
 
 	<h3>REGISTER HOMEPAGE</h3>
 
+<div class="register">
 	<form action="register.do" method="POST">
 		<br>
 		<h3>User name</h3>
@@ -61,6 +64,7 @@
 		
 		<input type="submit" value="Submit" size="big" /> 
 	</form>
+	</div>
 
 </body>
 </html>
