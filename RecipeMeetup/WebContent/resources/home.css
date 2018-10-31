@@ -22,14 +22,17 @@
 	padding-right: 20px;
 }
 
-.meetups {
+.card-deck {
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 }
 
-.recipes {
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+.buttons {
+	text-align: center;
 }
+
+.post {
+	text-align: centered;
+}
+
