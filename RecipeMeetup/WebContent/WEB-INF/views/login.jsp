@@ -6,12 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
-</head>
-<body>
-
-
-	<title>Navigation Bar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"
@@ -22,6 +16,15 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="resources/login.css" />
+	
+	
+<title>Login</title>
+</head>
+<body>
+
+	<title>Navigation Bar</title>
 </head>
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
@@ -54,7 +57,7 @@
 			
 			<c:forEach items="${recentMeetups}" var="meetup">
 			
-				<p><strong>${meetup.title}</strong><br>
+				<p class="recentMeetups"><strong>${meetup.title}</strong><br>
 					${meetup.description}<br> <hr>
 				</p>
 
@@ -67,7 +70,7 @@
 		<h3>Recent Recipes</h3> <hr>
 			<c:forEach items="${recentRecipes}" var="recipe">
 			
-				<p><strong>${recipe.title }</strong><br>
+				<p class="recentRecipes"><strong>${recipe.title }</strong><br>
 					${recipe.description}<br> <hr>
 				</p>
 				
@@ -81,7 +84,7 @@
 	<form>
 
 		<h3>About The Website Creators</h3>
-		<p>
+		<p class="aboutUs">
 			<strong>Blake Longfield, Anthony King, Newel Miole, Novak Dobrosavljevic</strong>
 		</p>
 		<p>We are awesome and plan on making $1 bil a piece</p>

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+body {
+	background-color: white;
+	}
+	
+font {
+	color: light-red;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-family: 'Montserrat';
+  color: light-red;
+}
+
+.recentMeetups {
+	font-weight: 400;
+	font-family: sans-serif;
+	color: light-black;
+}
+
+.recentRecipes{
+	font-weight: 400;
+	font-family: sans-serif;
+	color: light-black;
+}
+
+.aboutUs {
+	font-weight: 700;
+  	font-family: 'Montserrat';
+  	color: light-red;
+}

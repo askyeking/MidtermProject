@@ -5,6 +5,8 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatterBuilder;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -143,7 +145,6 @@ public class HomeController {
 			System.out.println("MEETUP LIST SIZE" + meetups.size());
 		}
 		
-		
 		mv.setViewName("/WEB-INF/views/showAll.jsp");
 		return mv;
 	}
@@ -152,7 +153,6 @@ public class HomeController {
 	public ModelAndView editRecipe(Recipe recipe, HttpSession session ) {
 		System.out.println(recipe);
 		
-		
 		ModelAndView mv = new ModelAndView();
 		recipe = recipeDAO.showRecipe(recipe);
 		System.out.println(recipe);
@@ -160,7 +160,6 @@ public class HomeController {
 		mv.setViewName("/WEB-INF/views/editMeetup.jsp");
 		return mv;
 	}
-	
 	
 	@RequestMapping(path= "editedRecipe.do", method = RequestMethod.POST)
 	public ModelAndView editedRecipe(Recipe recipe, HttpSession session) {

@@ -1,16 +1,16 @@
 package com.skilldistillery.recipemeetup.controllers;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.recipemeetup.data.MeetupCommentDAO;
@@ -38,19 +38,18 @@ public class PostController {
 	@Autowired
 	private MeetupCommentDAO meetupCommentDAO;
 	
-	
-	
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Boolean canEdit = new Boolean(false);
-		
+		Boolean canEdit = new Boolean(false);		
 		recipe = recipeDAO.showRecipe(recipe);
+		String unparsedIngredients = recipe.getIngredients();
+		List<String> parsedIngredients = new ArrayList<>(Arrays.asList(unparsedIngredients.split(",")));
 		User currentUser = (User) session.getAttribute("loggedInUser");
-		
 		if ((recipe.getRecipeOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
 			canEdit = true;
 		}
+		mv.addObject("ingredients", parsedIngredients);
 		mv.addObject("canEditPost" , canEdit);
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
 		mv.addObject("listOfComments", recipeCommentDAO.showAllRecipeComments(recipe.getId()));
