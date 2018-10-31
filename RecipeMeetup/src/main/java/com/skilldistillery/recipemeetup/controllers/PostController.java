@@ -192,6 +192,10 @@ public class PostController {
 			editMeetup(meetup, session);
 		}
 		
+		User user = (User) session.getAttribute("loggedInUser");
+		user= userDAO.getUserById(user.getId());
+		session.setAttribute("loggedInUser", user);
+		
 		return mv;
 	}
 	
@@ -214,6 +218,10 @@ public class PostController {
 		Recipe recipe = recipeDAO.showRecipeById(id);
 		recipeDAO.setActiveToFalse(recipe);
 		mv.setViewName("redirect:showRecipeDetails.do?id=" + recipe.getId());
+		
+		User user = (User) session.getAttribute("loggedInUser");
+		user= userDAO.getUserById(user.getId());
+		session.setAttribute("loggedInUser", user);
 		return mv;
 	}
 	
