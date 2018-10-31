@@ -59,16 +59,8 @@
 
                     <c:when test="${not empty listOfComments }">
                         <c:forEach items="${listOfComments}" var="comment">
-
-                            <p>${comment.recipeCommentOwner.firstName }
-                                ${comment.recipeCommentOwner.lastName }</p>
-                            <p>${comment.comment}</p>
-                            <form action="viewOtherProfile.do" method="GET">
-                                <input type="hidden" name="id"
-                                    value="${comment.recipeCommentOwner.id }" /> <input
-                                    type="submit" value="View User Profile" />
-                            </form>
-                            <hr>
+						<a href="viewOtherProfile.do?id=${comment.recipeCommentOwner.id}"> ${comment.recipeCommentOwner.firstName} ${comment.recipeCommentOwner.lastName}</a>
+						<br>${comment.comment}<hr>
                         </c:forEach>
 
                     </c:when>
@@ -76,8 +68,8 @@
 
                 <form:form action="submitRecipeComment.do" method="POST">
                     <input type="hidden" name="id" value="${recipe.id }" />
-                    <input type="text" name="comment" value="Post a Comment" rows="5"
-                        cols="50" />
+                    <input type="text" name="comment" value="Post a comment..." rows="5"
+                        cols="50" /><br>
                     <input type="submit" value="Submit Comment" />
                 </form:form>
         </c:when>
@@ -103,7 +95,6 @@
 
         </c:otherwise>
     </c:choose>
-
 
 </body>
 </html>
