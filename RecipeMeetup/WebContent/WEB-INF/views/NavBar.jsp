@@ -25,6 +25,19 @@
             <li class="nav-item"><a class="nav-link" href="showAllRecipes.do">Recipes</a></li>
             <li class="nav-item"><a class="nav-link" href="showAllMeetups.do">Meetups</a></li>
 
+<<<<<<< HEAD
+				<form action="searchByRecipe.do" method="GET">
+					<input type="text" name="input" value="Search..."/>
+					<select name="category">
+   						 <option value="recipe">Recipe</option>
+   						 <option value="meetup">Meetup</option>
+					</select>
+					<input type="submit" value="Submit"/>
+				</form>
+				
+				<li class="nav-item"><a class="nav-link" href="userProfile.do">${loggedInUser.username }</a></li>
+				<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+=======
                 <form action="searchByRecipe.do" method="GET">
                     <input type="text" name="input" value="Search..."/>
                     <select name="category">
@@ -36,6 +49,7 @@
                 
                 <li class="nav-item"><a class="nav-link" href="userProfile.do">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+>>>>>>> f11499c940dca9d1ee994d63a709a5f938e8920c
 
             </form>
         </ul>

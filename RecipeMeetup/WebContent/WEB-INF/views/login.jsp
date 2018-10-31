@@ -6,12 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
-</head>
-<body>
-
-
-	<title>Navigation Bar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"
@@ -22,10 +16,21 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="resources/login.css" />
+<title>Login</title>
+</head>
+<body>
+
+	<title>Navigation Bar</title>
 </head>
 <body style="height: 1500px">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="#">Name of Website</a>
+<<<<<<< HEAD
+
+=======
+>>>>>>> a4dd5b403cb2337fbb9cf727ccda198ed390098e
 				<a class="nav-link" href="registrationLink.do">Register</a>
 
 			</form>

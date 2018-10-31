@@ -9,14 +9,20 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-<context:component-scan base-package="com.skilldistillery.recipemeetup.controllers, com.skilldistillery.recipemeetup.data" />
-<mvc:annotation-driven />
-<tx:annotation-driven transaction-manager="myTransactionManager" />
-<bean id="myEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-  <property name="persistenceUnitName" value="recipemeetup" />
-</bean>
-<bean id="myTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-   <property name="entityManagerFactory" ref="myEntityManagerFactory" />
-</bean>
+	<context:component-scan
+		base-package="com.skilldistillery.recipemeetup.controllers, com.skilldistillery.recipemeetup.data" />
+	<mvc:annotation-driven />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<tx:annotation-driven
+		transaction-manager="myTransactionManager" />
+	<bean id="myEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="recipemeetup" />
+	</bean>
+	<bean id="myTransactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="myEntityManagerFactory" />
+	</bean>
 
 </beans>

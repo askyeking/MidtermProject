@@ -45,13 +45,21 @@
             </form:form>
             <h1>${recipe.active }</h1>
             <hr>    
-             Description: ${recipe.description} <br>
-             Ingredients: ${recipe.ingredients} <br>
-             Instructions: ${recipe.instructions}<br>
+             <strong>${recipe.description}</strong> <br>
              Category: ${recipe.category}<br>
              Origin: ${recipe.country}<br>
              Serving Size: ${recipe.servingSize}<br>
              Cook Time: ${recipe.cookTime} minutes<br>
+              <c:choose>
+
+                    <c:when test="${not empty ingredients }">
+                        <c:forEach items="${ingredients}" var="ingredient">
+                        <p>${ingredient}</p>
+                        </c:forEach>
+
+                    </c:when>
+                </c:choose>
+                ${recipe.instructions}
 
                 <hr>
 
@@ -86,7 +94,6 @@
             <form:form action="index.do" modelAttribute="user" method="GET">
                 <input type="submit" value="Login" />
             </form:form>
-
 
             <form:form action="registrationLink.do" modelAttribute="user"
                 method="GET">
