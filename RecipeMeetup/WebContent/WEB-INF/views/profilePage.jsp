@@ -16,18 +16,10 @@
 
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
-
-
-
 			<br>
 			<br>
 			<br>
 			<br>
-
-
-
-
-
 			<form action="edituser.do" method="GET">
 				<input type="submit" value="Edit Profile">
 			</form>
@@ -74,8 +66,8 @@
 											<div class="card-body">
 												<h5 class="card-title">${recipe.title }</h5>
 												<p class="card-text">${recipe.description }.</p>
-												<a href="showRecipeDetails.do?id=${recipe.id }" class="btn btn-primary">View
-													Details</a>
+												<a href="showRecipeDetails.do?id=${recipe.id }"
+													class="btn btn-primary">View Details</a>
 											</div>
 										</div>
 									</div>
@@ -93,18 +85,29 @@
 					<h4>Recently Posted Meetups</h4>
 					<hr>
 
-					<c:forEach items="${loggedInUser.meetupsOwned}" var="meetupsOwned">
-						<p>
-							<strong>${meetupsOwned.title}</strong>
-						</p>
-						<p>${meetupsOwned.description}</p>
-						<br>
-						<p>Start Time: ${meetupsOwned.startTime}</p>
-						<p>End Time: ${meetupsOwned.endTime}</p>
-						<p>Max Attendance: ${meetupsOwned.maxAttendance}</p>
-						<hr>
+					<div class="center">
+						<div class="row">
+							<div class="card-deck">
 
-					</c:forEach>
+								<c:forEach items="${loggedInUser.meetupsOwned}" var="meetup">
+									<div class="col-sm-4">
+										<div class="card" style="width: 18rem;">
+											<c:if test="${not empty meetup.imgURL }">
+												<img class="card-img-top" src="${meetup.imgURL  }"
+													alt="Card image cap">
+											</c:if>
+											<div class="card-body">
+												<h5 class="card-title">${meetup.title }</h5>
+												<p class="card-text">${meetup.description }.</p>
+												<a href="showMeetupDetails.do?id=${meetup.id }"
+													class="btn btn-primary">View Details</a>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
 				</c:when>
 			</c:choose>
 
@@ -114,7 +117,7 @@
 					<h4>Favorite Recipes</h4>
 					<hr>
 
-					<c:forEach items="${loggedInUser.recipesFavorited}" var="favRecipe">
+					<%-- 	<c:forEach items="${loggedInUser.recipesFavorited}" var="favRecipe">
 						<p>
 							<a href="showRecipeDetails.do?id=${favRecipe.id }"><strong>${favRecipe.title}</strong></a>
 						</p>
@@ -122,7 +125,31 @@
 						<hr>
 
 
-					</c:forEach>
+					</c:forEach> --%>
+					<div class="center">
+						<div class="row">
+							<div class="card-deck">
+
+								<c:forEach items="${loggedInUser.recipesFavorited}"
+									var="favRecipe">
+									<div class="col-sm-4">
+										<div class="card" style="width: 18rem;">
+											<c:if test="${not empty favRecipe.imgURL }">
+												<img class="card-img-top" src="${favRecipe.imgURL  }"
+													alt="Card image cap">
+											</c:if>
+											<div class="card-body">
+												<h5 class="card-title">${favRecipe.title }</h5>
+												<p class="card-text">${favRecipe.description }.</p>
+												<a href="showRecipeDetails.do?id=${favRecipe.id }"
+													class="btn btn-primary">View Details</a>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
 				</c:when>
 			</c:choose>
 
@@ -130,16 +157,32 @@
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">
 					<h4>Meetups Attended</h4>
-					<hr>
 
-					<c:forEach items="${loggedInUser.meetupsAttended}" var="attended">
-						<p>
-							<a href="showMeetupDetails.do?id=${attended.id }"><strong>${attended.title}</strong></a>
-						</p>
-						<p>${attended.description}</p>
-						<hr>
+					<div class="center">
+						<div class="row">
+							<div class="card-deck">
 
-					</c:forEach>
+								<c:forEach items="${loggedInUser.meetupsAttended}"
+									var="attended">
+									<div class="col-sm-4">
+										<div class="card" style="width: 18rem;">
+											<c:if test="${not empty attended.imgURL }">
+												<img class="card-img-top" src="${attended.imgURL  }"
+													alt="Card image cap">
+											</c:if>
+											<div class="card-body">
+												<h5 class="card-title">${attended.title }</h5>
+												<p class="card-text">${attended.description }.</p>
+												<a href="showMeetupDetails.do?id=${attended.id }"
+													class="btn btn-primary">View Details</a>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+
 				</c:when>
 			</c:choose>
 
