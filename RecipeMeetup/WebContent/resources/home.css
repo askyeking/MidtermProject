@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.home-pic {
+	display: block;
+	height: 100%;
+}
+
+.center-fit {
+	max-width: 100%;
+	max-height: 100%;
+	margin: auto;
+}
+
+.text-block {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	background-color: black;
+	opacity: 0.5;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.meetups {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.recipes {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
