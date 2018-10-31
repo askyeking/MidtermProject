@@ -46,6 +46,7 @@ public class PostController {
 		String unparsedIngredients = recipe.getIngredients();
 		List<String> parsedIngredients = new ArrayList<>(Arrays.asList(unparsedIngredients.split(",")));
 		User currentUser = (User) session.getAttribute("loggedInUser");
+		System.out.println(recipe);
 		if ((recipe.getRecipeOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
 			canEdit = true;
 		}
