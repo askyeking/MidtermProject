@@ -83,6 +83,28 @@
 				</c:when>
 			</c:choose>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">
 					<h4>Recently Posted Meetups</h4>
@@ -92,14 +114,13 @@
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">
-								
+
 
 									<c:forEach items="${loggedInUser.meetupsOwned}" var="meetup">
-												${meetup.active}
-									
-									<c:if test="${meetup.active}">
-									
-										<c:if test="${fn:length(loggedInUser.meetupsOwned) == 3}">
+										<%-- 									<c:if test="${meetup.active}">
+ --%>
+										
+										<c:if test="${fn:length(loggedInUser.meetupsOwned) >= 3}">
 											<div class="col-sm-4">
 												<div class="card" style="width: 18rem;">
 													<c:if test="${not empty meetup.imgURL }">
@@ -147,7 +168,8 @@
 												</div>
 											</div>
 										</c:if>
-										</c:if>
+										<%--  										</c:if>
+ --%>
 									</c:forEach>
 								</div>
 							</div>
@@ -155,6 +177,32 @@
 					</div>
 				</c:when>
 			</c:choose>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			<c:choose>
@@ -191,6 +239,34 @@
 
 				</c:when>
 			</c:choose>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			<c:choose>
