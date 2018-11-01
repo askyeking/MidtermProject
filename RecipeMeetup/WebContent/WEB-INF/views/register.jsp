@@ -61,7 +61,7 @@
 				placeholder="ZIP" aria-label="ZIP" required /><br>
 
 			<h3>Tell us a little about yourself</h3>
-			<input type="text" name="description" maxlength="250"
+			<input type="text" name="description" maxlength="500"
 				style="height: 200px" /> <br>
 			<h3>Set your profile picture</h3>
 			<input type="url" name="imgURL"><br>
