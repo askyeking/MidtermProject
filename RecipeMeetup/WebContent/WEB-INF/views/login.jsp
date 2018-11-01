@@ -44,7 +44,7 @@
 	 <ul class="navbar-nav mr-auto">
 		<!-- <a class="navbar-brand" href="#"></a>  -->
 		<!-- <a class="nav-link" href="registrationLink.do">Register</a> -->
-		<li class="nav-item"><a class="nav-link" href="#">Name of Website</a></li>
+		<li class="nav-item"><a class="nav-link" href="#">&#78&#210&#109&#8901&#951&#211&#109</a></li>
 		<li class="nav-item"><a class="nav-link" href="registrationLink.do">Register</a></li>
 	</ul>
 				
