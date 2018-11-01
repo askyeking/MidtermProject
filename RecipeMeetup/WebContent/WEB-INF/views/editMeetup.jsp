@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 
-
+<link rel="stylesheet" href="resources/createRecipe.css" />
 <title>Edit Meetup</title>
 </head>
 <body>
