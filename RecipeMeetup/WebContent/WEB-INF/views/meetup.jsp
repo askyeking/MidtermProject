@@ -42,14 +42,14 @@
 				</form> --%>
 						<a class="btn btn-primary" href="editMeetup.do?id=${meetup.id }"
 							role="button">Edit</a>
-						<a class="btn btn-primary" href="deleteMeetup.do?id=${meetup.id }"
-							role="button">Delete</a>
-						<hr>
-
-						<%-- <form action="deleteMeetup.do" method="post">
+						<%-- <a class="btn btn-primary" href="deleteMeetup.do?id=${meetup.id }"
+							role="button">Delete</a> --%>
+							<br>
+						 <form:form action="deleteMeetup.do" method="post">
 					<input type="hidden" name="id" value="${meetup.id }" /> <input type="submit"
-						value="Delete" />
-				</form> --%>
+						value="Delete" class="btn btn-primary"/>
+				</form:form>
+						<hr>
 
 					</c:if>
 					<c:if test="${not empty listOfAttendees }">
