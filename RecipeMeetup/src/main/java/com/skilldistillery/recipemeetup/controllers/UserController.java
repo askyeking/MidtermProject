@@ -72,6 +72,10 @@ public class UserController {
 				mv.setViewName("redirect:home.do");
 			} else {
 				error.rejectValue("password", "error.password", "error message");
+				List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
+				List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
+				mv.addObject("recentRecipes", recentRecipes);
+				mv.addObject("recentMeetups", recentMeetups);
 				mv.setViewName("WEB-INF/views/login.jsp");
 			}
 
@@ -79,6 +83,10 @@ public class UserController {
 
 		else {
 			error.rejectValue("username", "error.username", "error message");
+			List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
+			List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
+			mv.addObject("recentRecipes", recentRecipes);
+			mv.addObject("recentMeetups", recentMeetups);
 			mv.setViewName("WEB-INF/views/login.jsp");
 		}
 
