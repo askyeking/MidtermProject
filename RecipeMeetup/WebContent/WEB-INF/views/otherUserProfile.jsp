@@ -10,7 +10,6 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="resources/card.css">
-
 <meta charset="UTF-8">
 <title>Other User Profile</title>
 </head>
@@ -19,23 +18,18 @@
 		<c:when test="${not empty loggedInUser }">
 			<br>
 			<br>
-			<br>
-			<br>
 
 			<div class="row">
-				<div class="col-sm-3">
+			
+				<div class="col-lg-3">
 					<img src="${user.imgURL }" alt="User Profile Picture"
 						style="width: 170px; height: 170px;">
 				</div>
 
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-lg-9" >
 						<h4>${user.firstName}&nbsp&nbsp${user.lastName}</h4>
-
 						<p>${user.description}</p>
-
-
-
 						<c:if test="${canEditProfile}">
 
 							<div class="col-sm button">
@@ -44,23 +38,23 @@
 										type="submit" value="Delete" />
 								</form>
 							</div>
-
-
 						</c:if>
-
-
-
-
 					</div>
 					<hr>
 				</div>
+				<hr>
 				<c:choose>
+
+
+
 					<c:when test="${not empty loggedInUser}">
-						<h4>Recently Posted Recipes</h4>
 						<hr>
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">
+									<c:if test="${fn:length(user.recipesPosted) > 0}">
+										<h4>Recently Posted Recipes</h4>
+									</c:if>
 									<c:forEach items="${user.recipesPosted}" var="recipe">
 										<c:if test="${fn:length(user.recipesPosted) >= 3}">
 											<div class="col-sm-4">
@@ -118,11 +112,13 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${not empty loggedInUser}">
-						<h4>Recently Posted Meetups</h4>
 						<hr>
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">
+									<c:if test="${fn:length(user.meetupsOwned) > 0}">
+										<h4>Recently Posted Meetups</h4>
+									</c:if>
 									<c:forEach items="${user.meetupsOwned}" var="meetup">
 										<c:if test="${fn:length(user.meetupsOwned) >= 3}">
 											<div class="col-sm-4">
@@ -180,11 +176,13 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${not empty loggedInUser}">
-						<h4>Favorite Recipes</h4>
 						<hr>
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">
+									<c:if test="${fn:length(user.recipesFavorited) > 0}">
+										<h4>Favorite Recipes</h4>
+									</c:if>
 									<c:forEach items="${user.recipesFavorited}" var="favRecipe">
 										<c:if test="${fn:length(user.recipesFavorited) >= 3}">
 											<div class="col-sm-4">
@@ -242,8 +240,10 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${not empty loggedInUser}">
-						<h4>Meetups Attended</h4>
 						<hr>
+									<c:if test="${fn:length(user.recipesFavorited) > 0}">
+										<h4>Meetups Attended</h4>
+									</c:if>
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">

@@ -30,7 +30,7 @@
 				    <!-- <div class="col-sm">
 				    </div> -->
 				    <div class="col-sm" id="title"">
-				      ${recipe.title}
+				     
 				    </div>
 				   <!--  <div class="col-sm">
 				    </div> -->
@@ -45,32 +45,37 @@
 				   <!-- <div class="col-sm-3">
 			    </div> -->
 				    <div class="col-sm button">
-				    <form:form action="favoriteRecipe.do" method="post">
+				    <form action="favoriteRecipe.do" method="post">
 				      <input type="hidden" name="id" value="${recipe.id }" />
-               		 <input type="submit" value="Add to Favorites" />
-               		   </form:form>
+               		 <input type="submit" value="Add to Favorites" class="btn btn-primary" />
+               		   </form>
 				    </div>
 				    <div class="col-sm button">
-				       <form:form action="likeRecipe.do" method="post">
+				       <form action="likeRecipe.do" method="post">
                			 <input type="hidden" name="id" value="${recipe.id }" />
-             			   <input type="submit" value="LIKE" />
+             			   <input type="submit" value="LIKE" class="btn btn-primary" />
              			  ${fn:length(recipe.recipeLikers)} 
-          			  </form:form>
+          			  </form>
 				    </div>
 				    
+				    	<%-- <div class="buttons">
+							<a href="favoriteRecipe.do" class="btn btn-primary btn-lg">Add to Favorites</a> 
+							<a href="likeRecipe.do" class="btn btn-primary btn-lg">Like</a> ${fn:length(recipe.recipeLikers)} 
+						</div> --%>
 				    
+						
 				    <c:if test="${canEditPost}">
 				     <div class="col-sm button">
 							<form action="editRecipe.do" method="GET">
-                    			<input type="hidden" name="id" value="${recipe.id}" /> <input
-                       		 	type="submit" value="Edit" />
+                    			<input type="hidden" name="id" value="${recipe.id}" /> 
+                    			<input type="submit" value="Edit" class="btn btn-primary"/>
                 			</form>				    
                 	</div>
                 	
                 	 <div class="col-sm button">
 				      <form action="deleteRecipe.do" method="post">
-                   			 <input type="hidden" name="id" value="${recipe.id}" /> <input
-                        	type="submit" value="Delete" />
+                   			 <input type="hidden" name="id" value="${recipe.id}" /> 
+                   			 <input type="submit" value="Delete" class="btn btn-primary" />
              		</form>
 				    </div>
 				    
@@ -109,7 +114,57 @@
                 <input type="submit" value="LIKE" />
             </form:form> --%>
             
-            <hr>    
+         					
+							<div class="card" style="width: 50rem;">
+									<img class="card-img-top" src="${recipe.imgURL }" alt="recipes">
+									<div class="card-body">
+										<h3 class="card-title">
+											 <strong>${recipe.title}</strong>
+										</h3>
+										<p class="card-text">${recipe.description}</p><br>
+										<p class="card-text"><strong>Category: </strong>${recipe.category}</p>
+										<p class="card-text"><strong>Country of Origin: </strong>${recipe.country}</p>
+										<p class="card-text"><strong>Serving Size: </strong>${recipe.servingSize}</p>
+										<p class="card-text"><strong>Cooking Time: </strong>${recipe.cookTime} minutes</p>
+							            <strong>Ingredients: </strong>
+							            <br>
+							            <br>						            
+							              <c:choose>
+							
+							                    <c:when test="${not empty ingredients }">
+							                        <c:forEach items="${ingredients}" var="ingredient">
+							                        <p>${ingredient}</p>
+							                        </c:forEach>
+							
+							                    </c:when>
+							                </c:choose>
+										<p class="card-text"><strong>Instructions: </strong><br><br>
+										${recipe.instructions}</p>
+										<br>
+										
+										<hr>
+										
+                <c:choose>
+
+                    <c:when test="${not empty listOfComments }">
+                        <c:forEach items="${listOfComments}" var="comment">
+						<a href="viewOtherProfile.do?id=${comment.recipeCommentOwner.id}"> ${comment.recipeCommentOwner.firstName} ${comment.recipeCommentOwner.lastName}</a>
+						<br>${comment.comment}<hr>
+                        </c:forEach>
+
+                    </c:when>
+                </c:choose>
+                <form:form action="submitRecipeComment.do" method="POST">
+                    <input type="hidden" name="id" value="${recipe.id }" />
+                    <input type="text" name="comment" value="Post a comment..." rows="5"
+                        cols="50" /><br>
+                    <input type="submit" value="Submit Comment" />
+                </form:form>
+										
+									</div>
+								</div>
+							
+          <%--   <hr>    
              <strong>${recipe.description}</strong> <br>
              Category: ${recipe.category}<br>
              Origin: ${recipe.country}<br>
@@ -126,25 +181,9 @@
                 </c:choose>
                 ${recipe.instructions}
 
-                <hr>
+                <hr> --%>
 
-                <c:choose>
 
-                    <c:when test="${not empty listOfComments }">
-                        <c:forEach items="${listOfComments}" var="comment">
-						<a href="viewOtherProfile.do?id=${comment.recipeCommentOwner.id}"> ${comment.recipeCommentOwner.firstName} ${comment.recipeCommentOwner.lastName}</a>
-						<br>${comment.comment}<hr>
-                        </c:forEach>
-
-                    </c:when>
-                </c:choose>
-
-                <form:form action="submitRecipeComment.do" method="POST">
-                    <input type="hidden" name="id" value="${recipe.id }" />
-                    <input type="text" name="comment" value="Post a comment..." rows="5"
-                        cols="50" /><br>
-                    <input type="submit" value="Submit Comment" />
-                </form:form>
         </c:when>
 
         <c:otherwise>

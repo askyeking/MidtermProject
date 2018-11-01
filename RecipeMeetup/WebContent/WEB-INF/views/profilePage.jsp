@@ -16,28 +16,33 @@
 </head>
 <body>
 
+
+
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 			<br>
 
-			<a class="btn btn-primary" href="edituser.do" role="button">Edit
-				Profile</a>
-			<a class="btn btn-primary" href="deleteUser.do" role="button">Delete
-				Profile</a>
-			<a class="btn btn-primary" href="createRecipe.do" role="button">Post
-				New Recipe</a>
-			<a class="btn btn-primary" href="createMeetup.do" role="button">Post
-				New Meetup</a>
+			<div class="row">
+				
+				<div class="col-sm-1"></div>
+				<a class="btn btn-primary" href="edituser.do" role="button">Edit
+					Profile</a> &nbsp<a class="btn btn-primary" href="deleteUser.do"
+					role="button">Delete Profile</a>&nbsp <a class="btn btn-primary"
+					href="createRecipe.do" role="button">Post New Recipe</a>&nbsp <a
+					class="btn btn-primary" href="createMeetup.do" role="button">Post
+					New Meetup</a>
+			</div>
 			<hr>
 
 
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-2">
 					<img src="${loggedInUser.imgURL }" alt="User Profile Picture"
-						 style="width: 170px; height: 170px;">
+						style="width: 170px; height: 170px;">
 				</div>
 				<div class="col-sm-9">
-					<h4>${loggedInUser.firstName}${loggedInUser.lastName}</h4>
+					<h4>${loggedInUser.firstName}&nbsp${loggedInUser.lastName}</h4>
 					<p>${loggedInUser.description}</p>
 				</div>
 			</div>
