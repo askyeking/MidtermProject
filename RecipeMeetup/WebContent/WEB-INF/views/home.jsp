@@ -25,22 +25,22 @@
 		data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img class="d-block w-100" src="media/People Eating Together/adult-casual-chef-1418355.jpg" alt="1" height="1000" width="auto">
+				<img class="d-block w-100" src="media/People Eating Together/adult-casual-chef-1418355.jpg" alt="1" height="700" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/family.jpg" alt="2" height="1000" width="auto">
+				<img class="d-block w-100" src="media/family.jpg" alt="2" height="700" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/People Eating Together/adults-aerial-barbecue-1260310.jpg" alt="3" height="1000" width="auto">
+				<img class="d-block w-100" src="media/People Eating Together/adults-aerial-barbecue-1260310.jpg" alt="3" height="700" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/People Eating Together/appetite-asian-food-bowls-1321731.jpg" alt="4" height="1000" width="auto">
+				<img class="d-block w-100" src="media/People Eating Together/appetite-asian-food-bowls-1321731.jpg" alt="4" height="700" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/People Eating Together/rawpixel-754045-unsplash.jpg" alt="5" height="1000" width="auto">
+				<img class="d-block w-100" src="media/People Eating Together/rawpixel-754045-unsplash.jpg" alt="5" height="700" width="auto">
 			</div>
 			<div class="carousel-item">
-				<img class="d-block w-100" src="media/People Eating Together/beer-beverage-delicious-1246957.jpg" alt="6" height="1000" width="auto">
+				<img class="d-block w-100" src="media/People Eating Together/beer-beverage-delicious-1246957.jpg" alt="6" height="700" width="auto">
 			</div>
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators"
