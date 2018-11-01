@@ -1,5 +1,0 @@
-package com.skilldistillery.recipemeetup.data;
-
-public interface AddressDAO {
-
-}

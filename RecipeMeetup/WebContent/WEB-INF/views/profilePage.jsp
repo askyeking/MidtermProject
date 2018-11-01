@@ -24,8 +24,8 @@
 			<div class="row">
 				<div class="col-sm-1"></div>
 				<a class="btn btn-primary" href="edituser.do" role="button">Edit
-					Profile</a> &nbsp<a class="btn btn-primary" href="deleteUser.do"
-					role="button">Delete Profile</a>&nbsp <a class="btn btn-primary"
+					Profile</a> &nbsp<a class="btn btn-primary" href="deleteUser.do?id=${loggedInUser.id }"
+					role="button" >Delete Profile</a>&nbsp <a class="btn btn-primary"
 					href="createRecipe.do" role="button">Post New Recipe</a>&nbsp <a
 					class="btn btn-primary" href="createMeetup.do" role="button">Post
 					New Meetup</a>

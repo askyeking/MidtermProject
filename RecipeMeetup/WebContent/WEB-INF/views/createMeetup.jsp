@@ -32,7 +32,7 @@
 					<input type="number" name="maxAttendance" value="" maxlength="45"
 						required /><br>
 					<h3>Start Date</h3>
-					<input type="datetime-local" name="ldt" required /><br>
+					<input type="datetime-local" name="startDateTime" required /><br>
 					<h3>Set a Meetup Picture</h3>
 					URL: <input type="url" name="imgURL"><br> <br>
 
