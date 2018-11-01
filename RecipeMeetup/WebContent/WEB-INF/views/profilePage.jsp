@@ -21,9 +21,7 @@
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 			<br>
-
 			<div class="row">
-				
 				<div class="col-sm-1"></div>
 				<a class="btn btn-primary" href="edituser.do" role="button">Edit
 					Profile</a> &nbsp<a class="btn btn-primary" href="deleteUser.do?id=${loggedInUser.id }"

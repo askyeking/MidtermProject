@@ -19,290 +19,301 @@
 			<br>
 			<br>
 
-			<div class="row">
-			
+			<%-- 	<div class="row">
 				<div class="col-lg-3">
 					<img src="${user.imgURL }" alt="User Profile Picture"
 						style="width: 170px; height: 170px;">
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-9">
+					<h4>${user.firstName}&nbsp&nbsp${user.lastName}</h4>
+					<p>${user.description}</p> --%>
 
-				<div class="row">
-					<div class="col-lg-9" >
-						<h4>${user.firstName}&nbsp&nbsp${user.lastName}</h4>
-						<p>${user.description}</p>
-						<c:if test="${canEditProfile}">
 
-							<div class="col-sm button">
-								<form action="deleteUser.do" method="post">
-									<input type="hidden" name="id" value="${user.id}" /> <input
-										type="submit" value="Delete" />
-								</form>
-							</div>
-						</c:if>
-					</div>
-					<hr>
+			<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-2">
+					<img src="${user.imgURL }" alt="User Profile Picture"
+						style="width: 170px; height: 170px;">
 				</div>
-				<hr>
-				<c:choose>
+				<div class="col-sm-9">
+					<h4>${user.firstName}&nbsp${user.lastName}</h4>
+					<p>${user.description}</p>
+
+				</div>
+			</div>
+			<hr>
+			<c:if test="${canEditProfile}">
+
+				<div class="col-sm button">
+					<form action="deleteUser.do" method="post">
+						<input type="hidden" name="id" value="${user.id}" /> <input
+							type="submit" value="Delete" />
+					</form>
+				</div>
+			</c:if>
+
+			<c:choose>
 
 
 
-					<c:when test="${not empty loggedInUser}">
-						<hr>
-						<div class="center">
-							<div class="row">
-								<div class="card-deck">
-									<c:if test="${fn:length(user.recipesPosted) > 0}">
-										<h4>Recently Posted Recipes</h4>
+				<c:when test="${not empty loggedInUser}">
+					<div class="center">
+						<div class="row">
+							<div class="card-deck">
+								<c:if test="${fn:length(user.recipesPosted) > 0}">
+									<h4>Recently Posted Recipes</h4>
+								</c:if>
+								<c:forEach items="${user.recipesPosted}" var="recipe">
+									<c:if test="${fn:length(user.recipesPosted) >= 3}">
+										<div class="col-sm-4">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty recipe.imgURL }">
+													<img class="card-img-top" src="${recipe.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${recipe.title }</h5>
+													<p class="card-text">${recipe.description }.</p>
+													<a href="showRecipeDetails.do?id=${recipe.id }"
+														class="btn btn-primary">View Details</a>
+												</div>
+											</div>
+										</div>
 									</c:if>
-									<c:forEach items="${user.recipesPosted}" var="recipe">
-										<c:if test="${fn:length(user.recipesPosted) >= 3}">
-											<div class="col-sm-4">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty recipe.imgURL }">
-														<img class="card-img-top" src="${recipe.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${recipe.title }</h5>
-														<p class="card-text">${recipe.description }.</p>
-														<a href="showRecipeDetails.do?id=${recipe.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
+									<c:if test="${fn:length(user.recipesPosted) == 2}">
+										<div class="col-sm-6">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty recipe.imgURL }">
+													<img class="card-img-top" src="${recipe.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${recipe.title }</h5>
+													<p class="card-text">${recipe.description }.</p>
+													<a href="showRecipeDetails.do?id=${recipe.id }"
+														class="btn btn-primary">View Details</a>
 												</div>
 											</div>
-										</c:if>
-										<c:if test="${fn:length(user.recipesPosted) == 2}">
-											<div class="col-sm-6">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty recipe.imgURL }">
-														<img class="card-img-top" src="${recipe.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${recipe.title }</h5>
-														<p class="card-text">${recipe.description }.</p>
-														<a href="showRecipeDetails.do?id=${recipe.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
+										</div>
+									</c:if>
+									<c:if test="${fn:length(user.recipesPosted) == 1}">
+										<div class="col-sm-12">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty recipe.imgURL }">
+													<img class="card-img-top" src="${recipe.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${recipe.title }</h5>
+													<p class="card-text">${recipe.description }.</p>
+													<a href="showRecipeDetails.do?id=${recipe.id }"
+														class="btn btn-primary">View Details</a>
 												</div>
 											</div>
-										</c:if>
-										<c:if test="${fn:length(user.recipesPosted) == 1}">
-											<div class="col-sm-12">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty recipe.imgURL }">
-														<img class="card-img-top" src="${recipe.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${recipe.title }</h5>
-														<p class="card-text">${recipe.description }.</p>
-														<a href="showRecipeDetails.do?id=${recipe.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
-												</div>
-											</div>
-										</c:if>
-									</c:forEach>
-								</div>
+										</div>
+									</c:if>
+								</c:forEach>
 							</div>
 						</div>
-					</c:when>
-				</c:choose>
-				<c:choose>
-					<c:when test="${not empty loggedInUser}">
-						<hr>
-						<div class="center">
-							<div class="row">
-								<div class="card-deck">
-									<c:if test="${fn:length(user.meetupsOwned) > 0}">
-										<h4>Recently Posted Meetups</h4>
-									</c:if>
-									<c:forEach items="${user.meetupsOwned}" var="meetup">
-										<c:if test="${fn:length(user.meetupsOwned) >= 3}">
-											<div class="col-sm-4">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty meetup.imgURL }">
-														<img class="card-img-top" src="${meetup.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${meetup.title }</h5>
-														<p class="card-text">${meetup.description }.</p>
-														<a href="showMeetupDetails.do?id=${meetup.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
-												</div>
-											</div>
-										</c:if>
-										<c:if test="${fn:length(user.meetupsOwned) == 2}">
-											<div class="col-sm-6">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty meetup.imgURL }">
-														<img class="card-img-top" src="${meetup.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${meetup.title }</h5>
-														<p class="card-text">${meetup.description }.</p>
-														<a href="showMeetupDetails.do?id=${meetup.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
-												</div>
-											</div>
-										</c:if>
-										<c:if test="${fn:length(user.meetupsOwned) == 1}">
-											<div class="col-sm-12">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty meetup.imgURL }">
-														<img class="card-img-top" src="${meetup.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${meetup.title }</h5>
-														<p class="card-text">${meetup.description }.</p>
-														<a href="showMeetupDetails.do?id=${meetup.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
-												</div>
-											</div>
-										</c:if>
-									</c:forEach>
-								</div>
-							</div>
-						</div>
-					</c:when>
-				</c:choose>
-				<c:choose>
-					<c:when test="${not empty loggedInUser}">
-						<hr>
-						<div class="center">
-							<div class="row">
-								<div class="card-deck">
-									<c:if test="${fn:length(user.recipesFavorited) > 0}">
-										<h4>Favorite Recipes</h4>
-									</c:if>
-									<c:forEach items="${user.recipesFavorited}" var="favRecipe">
-										<c:if test="${fn:length(user.recipesFavorited) >= 3}">
-											<div class="col-sm-4">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty favRecipe.imgURL }">
-														<img class="card-img-top" src="${favRecipe.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${favRecipe.title }</h5>
-														<p class="card-text">${favRecipe.description }.</p>
-														<a href="showRecipeDetails.do?id=${favRecipe.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
-												</div>
-											</div>
-										</c:if>
-										<c:if test="${fn:length(user.recipesFavorited) == 2}">
-											<div class="col-sm-6">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty favRecipe.imgURL }">
-														<img class="card-img-top" src="${favRecipe.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${favRecipe.title }</h5>
-														<p class="card-text">${favRecipe.description }.</p>
-														<a href="showRecipeDetails.do?id=${favRecipe.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
-												</div>
-											</div>
-										</c:if>
-										<c:if test="${fn:length(user.recipesFavorited) == 1}">
-											<div class="col-sm-12">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty favRecipe.imgURL }">
-														<img class="card-img-top" src="${favRecipe.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${favRecipe.title }</h5>
-														<p class="card-text">${favRecipe.description }.</p>
-														<a href="showRecipeDetails.do?id=${favRecipe.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
-												</div>
-											</div>
-										</c:if>
-									</c:forEach>
-								</div>
-							</div>
-						</div>
-					</c:when>
-				</c:choose>
-				<c:choose>
-					<c:when test="${not empty loggedInUser}">
-						<hr>
-									<c:if test="${fn:length(user.recipesFavorited) > 0}">
-										<h4>Meetups Attended</h4>
-									</c:if>
-						<div class="center">
-							<div class="row">
-								<div class="card-deck">
-									<c:forEach items="${user.meetupsAttended}" var="attended">
+					</div>
+				</c:when>
+			</c:choose>
+			<c:choose>
+				<c:when test="${not empty loggedInUser}">
+					<div class="center">
+						<div class="row">
+							<div class="card-deck">
+								<c:if test="${fn:length(user.meetupsOwned) > 0}">
+									<h4>Recently Posted Meetups</h4>
+									<hr>
 
-										<c:if test="${fn:length(user.meetupsAttended) >= 3}">
-											<div class="col-sm-4">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty attended.imgURL }">
-														<img class="card-img-top" src="${attended.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${attended.title }</h5>
-														<p class="card-text">${attended.description }.</p>
-														<a href="showMeetupDetails.do?id=${attended.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
+								</c:if>
+								<c:forEach items="${user.meetupsOwned}" var="meetup">
+									<c:if test="${fn:length(user.meetupsOwned) >= 3}">
+										<div class="col-sm-4">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty meetup.imgURL }">
+													<img class="card-img-top" src="${meetup.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${meetup.title }</h5>
+													<p class="card-text">${meetup.description }.</p>
+													<a href="showMeetupDetails.do?id=${meetup.id }"
+														class="btn btn-primary">View Details</a>
 												</div>
 											</div>
-										</c:if>
-										<c:if test="${fn:length(user.meetupsAttended) == 2}">
-											<div class="col-sm-6">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty attended.imgURL }">
-														<img class="card-img-top" src="${attended.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${attended.title }</h5>
-														<p class="card-text">${attended.description }.</p>
-														<a href="showMeetupDetails.do?id=${attended.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
+										</div>
+									</c:if>
+									<c:if test="${fn:length(user.meetupsOwned) == 2}">
+										<div class="col-sm-6">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty meetup.imgURL }">
+													<img class="card-img-top" src="${meetup.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${meetup.title }</h5>
+													<p class="card-text">${meetup.description }.</p>
+													<a href="showMeetupDetails.do?id=${meetup.id }"
+														class="btn btn-primary">View Details</a>
 												</div>
 											</div>
-										</c:if>
-										<c:if test="${fn:length(user.meetupsAttended) == 1}">
-											<div class="col-sm-12">
-												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty attended.imgURL }">
-														<img class="card-img-top" src="${attended.imgURL  }"
-															alt="Card image cap">
-													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${attended.title }</h5>
-														<p class="card-text">${attended.description }.</p>
-														<a href="showMeetupDetails.do?id=${attended.id }"
-															class="btn btn-primary">View Details</a>
-													</div>
+										</div>
+									</c:if>
+									<c:if test="${fn:length(user.meetupsOwned) == 1}">
+										<div class="col-sm-12">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty meetup.imgURL }">
+													<img class="card-img-top" src="${meetup.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${meetup.title }</h5>
+													<p class="card-text">${meetup.description }.</p>
+													<a href="showMeetupDetails.do?id=${meetup.id }"
+														class="btn btn-primary">View Details</a>
 												</div>
 											</div>
-										</c:if>
-									</c:forEach>
-								</div>
+										</div>
+									</c:if>
+								</c:forEach>
 							</div>
 						</div>
-					</c:when>
-				</c:choose>
+					</div>
+				</c:when>
+			</c:choose>
+			<c:choose>
+				<c:when test="${not empty loggedInUser}">
+					<hr>
+					<div class="center">
+						<div class="row">
+							<div class="card-deck">
+								<c:if test="${fn:length(user.recipesFavorited) > 0}">
+									<h4>Favorite Recipes</h4>
+								</c:if>
+								<c:forEach items="${user.recipesFavorited}" var="favRecipe">
+									<c:if test="${fn:length(user.recipesFavorited) >= 3}">
+										<div class="col-sm-4">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty favRecipe.imgURL }">
+													<img class="card-img-top" src="${favRecipe.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${favRecipe.title }</h5>
+													<p class="card-text">${favRecipe.description }.</p>
+													<a href="showRecipeDetails.do?id=${favRecipe.id }"
+														class="btn btn-primary">View Details</a>
+												</div>
+											</div>
+										</div>
+									</c:if>
+									<c:if test="${fn:length(user.recipesFavorited) == 2}">
+										<div class="col-sm-6">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty favRecipe.imgURL }">
+													<img class="card-img-top" src="${favRecipe.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${favRecipe.title }</h5>
+													<p class="card-text">${favRecipe.description }.</p>
+													<a href="showRecipeDetails.do?id=${favRecipe.id }"
+														class="btn btn-primary">View Details</a>
+												</div>
+											</div>
+										</div>
+									</c:if>
+									<c:if test="${fn:length(user.recipesFavorited) == 1}">
+										<div class="col-sm-12">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty favRecipe.imgURL }">
+													<img class="card-img-top" src="${favRecipe.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${favRecipe.title }</h5>
+													<p class="card-text">${favRecipe.description }.</p>
+													<a href="showRecipeDetails.do?id=${favRecipe.id }"
+														class="btn btn-primary">View Details</a>
+												</div>
+											</div>
+										</div>
+									</c:if>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</c:when>
+			</c:choose>
+			<c:choose>
+				<c:when test="${not empty loggedInUser}">
+					<hr>
+					<c:if test="${fn:length(user.recipesFavorited) > 0}">
+						<h4>Meetups Attended</h4>
+					</c:if>
+					<div class="center">
+						<div class="row">
+							<div class="card-deck">
+								<c:forEach items="${user.meetupsAttended}" var="attended">
+
+									<c:if test="${fn:length(user.meetupsAttended) >= 3}">
+										<div class="col-sm-4">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty attended.imgURL }">
+													<img class="card-img-top" src="${attended.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${attended.title }</h5>
+													<p class="card-text">${attended.description }.</p>
+													<a href="showMeetupDetails.do?id=${attended.id }"
+														class="btn btn-primary">View Details</a>
+												</div>
+											</div>
+										</div>
+									</c:if>
+									<c:if test="${fn:length(user.meetupsAttended) == 2}">
+										<div class="col-sm-6">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty attended.imgURL }">
+													<img class="card-img-top" src="${attended.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${attended.title }</h5>
+													<p class="card-text">${attended.description }.</p>
+													<a href="showMeetupDetails.do?id=${attended.id }"
+														class="btn btn-primary">View Details</a>
+												</div>
+											</div>
+										</div>
+									</c:if>
+									<c:if test="${fn:length(user.meetupsAttended) == 1}">
+										<div class="col-sm-12">
+											<div class="card" style="width: 18rem;">
+												<c:if test="${not empty attended.imgURL }">
+													<img class="card-img-top" src="${attended.imgURL  }"
+														alt="Card image cap">
+												</c:if>
+												<div class="card-body">
+													<h5 class="card-title">${attended.title }</h5>
+													<p class="card-text">${attended.description }.</p>
+													<a href="showMeetupDetails.do?id=${attended.id }"
+														class="btn btn-primary">View Details</a>
+												</div>
+											</div>
+										</div>
+									</c:if>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</c:when>
+			</c:choose>
 		</c:when>
 		<c:otherwise>
 			<br>
