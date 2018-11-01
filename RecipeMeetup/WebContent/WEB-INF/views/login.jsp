@@ -52,7 +52,7 @@
 				<input type="submit" id="login" class="btn btn-outline-success my-2 my-sm-0" value="Login"/>
 					<input type="password" id="password" path="password" name="password"
 						placeholder="Password" aria-label="Password" />
-					<input type="text" id="username" path="username" name="username" placeholder="Username" aria-label="Usernam"/>
+					<input type="text" id="username" path="username" name="username" placeholder="Username" aria-label="Username"/>
 					
 					<br>
 					<br>
