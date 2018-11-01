@@ -36,29 +36,39 @@ public class HomeController {
 	@Autowired
 	private RecipeDAO recipeDAO;
 	
-	//addedMeetup
+	//addedMeetup method adds a meetup to the database
 	@RequestMapping(path= "addedMeetup.do", method = RequestMethod.POST)
-	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
-		System.out.println("In Controller");
+	public ModelAndView addedMeetup(Meetup meetup, String startDateTime,  Address address, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		String startTime = ldt.substring(0, 10) + " " + ldt.substring(11);
+		System.out.println(startDateTime);
+		//String startTime  formats start dateTime provided by the user in createMeetup.jsp into a format accepted by the DB (MySQL)
+		String startTime = startDateTime.substring(0, 10) + " " + startDateTime.substring(11);
 		
+		//Gets User currently logged in in Session
 		User author = (User) session.getAttribute("loggedInUser");
 		
 		java.util.Date dt = new java.util.Date();
 		
+		//Defines the format of the DateTime in the DB
 		java.text.SimpleDateFormat sdf = 
 		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		try {
+			// dt parses from string into date
 			dt = sdf.parse(startTime);
-			meetup.setStartTime(dt);
+			
+//			meetup.setStartTime(dt);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
 		
+		/* If meetup taken as a parameter is not null the method below will set startTime to the parsed dateTime.
+		 * It will call a MeetupDAO class method which inserts a Meetup into a DB 
+		 * (the method is implemented in MeetupDAOImpl and autowired to this class)
+		 */
 		if (meetup != null) {
+
 			meetup.setStartTime(dt);
 			meetup = meetupDAO.createMeetup(meetup, author, address);
 			mv.addObject("meetupCreated", meetup);
@@ -71,9 +81,13 @@ public class HomeController {
 		return mv;
 	}
 	
+	//The method below will send a user to the homepage
 	@RequestMapping(path= "home.do", method = RequestMethod.GET)
 	public ModelAndView showMore(Model model, HttpSession session, User user) {
 		ModelAndView mv = new ModelAndView();
+		
+		// The homepage shows two lists (recent Meetups and recent Recipes
+		// Next 4 lines get the lists from the DB and add them as objects to the ModelAndView
 		List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
 		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
 		mv.addObject("recentMeetup", recentMeetups);
@@ -85,10 +99,13 @@ public class HomeController {
 				
 	}
 	
+	// The mothod below sends a user to a page that displays all meetups
 	@RequestMapping(path="showAllMeetups.do", method=RequestMethod.GET)
 	public ModelAndView showAllMeetups(Model model, HttpSession session, User user) {
 		ModelAndView mv = new ModelAndView();
 		List<Meetup> allMeetups = meetupDAO.findAllMeetups();
+		
+		//mv.addObject adds allMeetups list as an object to the model and view with attribute name 'meetups'
 		mv.addObject("meetups", allMeetups);
 		mv.setViewName("/WEB-INF/views/showAll.jsp");
 		
@@ -96,6 +113,7 @@ public class HomeController {
 		
 	}
 	
+	//The method below adds a list of all recipes to the model and view. The list can be obtained in the front end by using ${recipes}
 	@RequestMapping(path="showAllRecipes.do", method=RequestMethod.GET)
 	public ModelAndView showAllRecipes(Model model, HttpSession session, User user) {
 		ModelAndView mv = new ModelAndView();
@@ -107,6 +125,7 @@ public class HomeController {
 		
 	}
 	
+	// The method below sets a view to a page where the user can insert information about a meetup they are trying to create
 	@RequestMapping(path="createMeetup.do", method=RequestMethod.GET)
 	public ModelAndView createMeetup() {
 		ModelAndView mv = new ModelAndView();
@@ -116,6 +135,7 @@ public class HomeController {
 		
 	}
 	
+	// The method below sets a view to a page where the user can insert information about a recipe they are trying to create
 	@RequestMapping(path="createRecipe.do", method=RequestMethod.GET)
 	public ModelAndView createRecipe() {
 		ModelAndView mv = new ModelAndView();
@@ -125,39 +145,37 @@ public class HomeController {
 		
 	}
 		
+	// The method below takes input string from a textbox and category from a dropdown in the Navbar.jsp search form
+	// The method searches for a recipe or meetup (depending on chosen category) and adds a list of that Object to the ModelAndView
 	@RequestMapping(path="searchByRecipe.do", method=RequestMethod.GET)
 	public ModelAndView findPostByRecipe(String input, String category, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("Input " + input);
-		System.out.println("Category " + category);
 		
 		if (category.equals("recipe")) {
 			List<Recipe> recipes = recipeDAO.findRecipe(input);
 			mv.addObject("recipes", recipes);
-			System.out.println(recipes.size());
 		}
 		else if (category.equals("meetup")) {
 			List<Meetup> meetups = meetupDAO.findMeetup(input);
 			mv.addObject("meetups", meetups);
-			System.out.println("MEETUP LIST SIZE" + meetups.size());
 		}
 		
 		mv.setViewName("/WEB-INF/views/showAll.jsp");
 		return mv;
 	}
 	
+	// The method below sets the view to a page where user can edit a Recipe
 	@RequestMapping(path="editRecipe.do", method=RequestMethod.GET)
 	public ModelAndView editRecipe(Recipe recipe, HttpSession session ) {
-		System.out.println(recipe);
 		
 		ModelAndView mv = new ModelAndView();
 		recipe = recipeDAO.showRecipe(recipe);
-		System.out.println(recipe);
 		mv.addObject("recipe", recipe);
 		mv.setViewName("/WEB-INF/views/editMeetup.jsp");
 		return mv;
 	}
 	
+	//The method below takes an edited Recipe object and calls a method inside recipeDAO implementor that persists the changes.
 	@RequestMapping(path= "editedRecipe.do", method = RequestMethod.POST)
 	public ModelAndView editedRecipe(Recipe recipe, HttpSession session) {
 		System.out.println("start of editRecipe" + recipe);

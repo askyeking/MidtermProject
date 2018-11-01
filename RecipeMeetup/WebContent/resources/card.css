@@ -32,7 +32,10 @@ html {
  */
 
 body {
-  margin: 8%;
+  align:center;
+/*   padding-left:20px;
+ *//*   margin: 8%;
+ */  
 }
 
 /**
@@ -40,7 +43,8 @@ body {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
+h1,h2,h3,h4,h5,h6 {
+	padding-left:23px;
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -358,7 +362,8 @@ template {
 	width: 93%;
 	padding: 5px;
 } 
- 
+
+
 
 /* .card-img-top{
 	height: 50px;
