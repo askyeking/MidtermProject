@@ -54,6 +54,10 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User createUser(User user, Address address) {
+		if(user.getImgURL() == "" || user.getImgURL() == null) {
+			user.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
+		}
+		
 		address.addUser(user);
 		user.setActive(true);
 		user.setAddress(address);

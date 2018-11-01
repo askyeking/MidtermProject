@@ -2,20 +2,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<c:if test="${not empty loggedInUser }">
-<%@include file="NavBar.jsp" %>
-</c:if>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-
+<link rel="stylesheet" href="resources/editMeetup.css" />
 <title>Edit Meetup</title>
 </head>
 <body>
-<body style="height: 1500px">
+<img class="center-fit" src="media/table.jpg" alt="homescreen" />
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<c:if test="${not empty loggedInUser }">
+<%@include file="NavBar.jsp" %>
+</c:if>
+
+<body>
+<div class="editMeetup">
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 		<br>
@@ -26,7 +29,6 @@
 		<c:choose>
 		<c:when test="${not empty meetup }">
 
-			
 			<h3>Edit Meetup</h3>
 
 			<form action="editedMeetup.do" method="POST">
@@ -235,6 +237,7 @@
 			</form>
 		</c:when>
 		</c:choose>	
+	</div>
 
 
 

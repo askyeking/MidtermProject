@@ -96,6 +96,11 @@ public class MeetupDAOImpl implements MeetupDAO {
 	
 	@Override
 	public Meetup createMeetup(Meetup meetup, User user, Address address) {
+		if(meetup.getImgURL() == "" || meetup.getImgURL() == null) {
+			meetup.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
+		}
+			
+			
 		user.addMeetupOwned(meetup);
 		meetup.setMeetupOwner(user);
 		

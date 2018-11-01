@@ -60,7 +60,7 @@
 		<input type="text" name="description" maxlength="250"
 			style="height: 200px" /> <br> 
 		<h3>Set your profile picture</h3>	
-		<input type="url" name="imgURL" maxlength="45"><br><br>
+		<input type="url" name="imgURL"><br><br>
 		
 		<input type="submit" value="Submit" size="big" /> 
 	</form>
