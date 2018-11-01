@@ -1,6 +1,5 @@
 package com.skilldistillery.recipemeetup.controllers;
 
-import java.text.ParseException;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -73,6 +72,10 @@ public class UserController {
 				mv.setViewName("redirect:home.do");
 			} else {
 				error.rejectValue("password", "error.password", "error message");
+				List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
+				List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
+				mv.addObject("recentRecipes", recentRecipes);
+				mv.addObject("recentMeetups", recentMeetups);
 				mv.setViewName("WEB-INF/views/login.jsp");
 			}
 
@@ -80,6 +83,10 @@ public class UserController {
 
 		else {
 			error.rejectValue("username", "error.username", "error message");
+			List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
+			List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
+			mv.addObject("recentRecipes", recentRecipes);
+			mv.addObject("recentMeetups", recentMeetups);
 			mv.setViewName("WEB-INF/views/login.jsp");
 		}
 
@@ -143,8 +150,17 @@ public class UserController {
 	@RequestMapping(path = "viewOtherProfile.do", method = RequestMethod.GET)
 	public ModelAndView viewOtherProfile(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		User newUser = userDAO.getUserById(id);
-		mv.addObject("user", newUser);
+		User userViewed = userDAO.getUserById(id);
+		User currentUser = (User) session.getAttribute("loggedInUser");
+		
+		Boolean canEditProfile = new Boolean(false);		
+		
+		if ((userViewed.getId() == currentUser.getId()) || currentUser.getAdmin()) {
+			canEditProfile = true;
+		}
+
+		mv.addObject("user", userViewed);
+		mv.addObject("canEditProfile", canEditProfile);
 		mv.setViewName("/WEB-INF/views/otherUserProfile.jsp");
 		return mv;
 	}
@@ -197,16 +213,22 @@ public class UserController {
 		return mv;
 	}
 	
+	
+	
+	
 	//Add SetActiveToFalse for comments
 	@RequestMapping(path="deleteUser.do", method = RequestMethod.POST)
 	public ModelAndView deleteUser(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = userDAO.getUserById(id);
+		User currentUser = (User) session.getAttribute("loggedInUser");
+		
 		List<Recipe> recipesPosted = user.getRecipesPosted();
 		List<Meetup> meetupsPosted = user.getMeetupsOwned();
 		
 		List<RecipeComment> recipeCommentsPosted = user.getRecipeComments();
 		List<MeetupComment> meetupCommentsPosted = user.getMeetupCommentsPosted();
+		
 		
 		for (Meetup meetup : meetupsPosted) {
 			meetupDAO.setActiveToFalse(meetup);
@@ -228,7 +250,14 @@ public class UserController {
 		userDAO.setActiveToFalse(user);
 		
 		session.setAttribute("loggedInUser", user);
-		mv.setViewName("redirect:index.do");
+		
+		
+		if(currentUser.getActive()) {
+			mv.setViewName("redirect:home.do");
+		}
+		else {
+			mv.setViewName("redirect:index.do");
+		}
 		
 		return mv;
 	}
