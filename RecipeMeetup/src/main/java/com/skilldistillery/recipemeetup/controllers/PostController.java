@@ -29,7 +29,7 @@ import com.skilldistillery.recipemeetup.entities.User;
 @Controller
 public class PostController {
 
-	
+	// Autowires repositories so that making instances of DAO implementing classes is unnecessary.
 	@Autowired
 	private MeetupDAO meetupDAO;
 	@Autowired
@@ -41,18 +41,29 @@ public class PostController {
 	@Autowired
 	private UserDAO userDAO;
 	
+	// The method below shows details of a recipe user wanted a detailed view of
 	@RequestMapping(path="showRecipeDetails.do", method=RequestMethod.GET)
 	public ModelAndView showRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Boolean canEdit = new Boolean(false);		
+		Boolean canEdit = new Boolean(false);	
+		
+		//retrieve all info about the recipe user clicked on from the DB
 		recipe = recipeDAO.showRecipe(recipe);
+		
 		String unparsedIngredients = recipe.getIngredients();
+		
+		//Parses ingredients separated by comma
 		List<String> parsedIngredients = new ArrayList<>(Arrays.asList(unparsedIngredients.split(",")));
+		
+		//retrieves logged in user info from the current session
 		User currentUser = (User) session.getAttribute("loggedInUser");
-		System.out.println(recipe);
+		
+		// If the user in session is the recipe owner, or if the user in session ins an administrator, the user can edit
 		if ((recipe.getRecipeOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
 			canEdit = true;
 		}
+		
+		//add all relevant objects to the front end (Recipe.jsp)
 		mv.addObject("ingredients", parsedIngredients);
 		mv.addObject("canEditPost" , canEdit);
 		mv.addObject("recipe", recipeDAO.showRecipeById(recipe.getId()));
@@ -61,7 +72,7 @@ public class PostController {
 		return mv;
 	}
 	
-	
+	// Similarly to  showRecipe method, show Meetup prints details of a meetup user wanted a detailed view of.
 	@RequestMapping(path="showMeetupDetails.do", method=RequestMethod.GET)
 	public ModelAndView showMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -172,21 +183,16 @@ public class PostController {
 		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		try {
-//			System.out.println(startDate); System.out.println(startTime);
 			dt = sdf.parse(startTime);
 			meetup.setStartTime(dt);
 		} catch (ParseException e) {
-			System.out.println("excepton on date parsing");
 			e.printStackTrace();
 		}
 		
 		
-		System.out.println("***************************************");
-		System.out.println(meetup.getImgURL());
 		
 		if (meetup != null) {
 			meetup.setStartTime(dt);
-//			meetup = meetupDAO.createMeetup(meetup, author, address);
 			meetup = meetupDAO.updateMeetup(meetup, address);
 			mv.addObject("meetupCreated", meetup);
 			mv.setViewName("redirect:showMeetupDetails.do?id="+meetup.getId());
@@ -203,15 +209,15 @@ public class PostController {
 	}
 	
 	@RequestMapping(path="deleteMeetup.do", method = RequestMethod.POST)
-	public ModelAndView deleteMeetup(int id, HttpSession session) {
+	public ModelAndView deleteMeetup(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Meetup meetup = meetupDAO.findSingleMeetup(id);
+		Meetup meetup = meetupDAO.findSingleMeetup(user.getId());
 		meetupDAO.setActiveToFalse(meetup);
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetup.getId());
 		
-		User user = (User) session.getAttribute("loggedInUser");
-		user= userDAO.getUserById(user.getId());
-		session.setAttribute("loggedInUser", user);
+		User currentUser = (User) session.getAttribute("loggedInUser");
+		currentUser= userDAO.getUserById(currentUser.getId());
+		session.setAttribute("loggedInUser", currentUser);
 		
 		return mv;
 	}

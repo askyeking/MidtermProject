@@ -134,8 +134,6 @@ public class UserController {
 		Recipe newRecipe = null;
 		user = (User) session.getAttribute("loggedInUser");
 		if (recipe != null) {
-			System.out.println("***************************************");
-			System.out.println(recipe.getImgURL());
 			newRecipe = recipeDAO.createRecipe(recipe, user);
 			mv.addObject("recipe", newRecipe);
 			mv.setViewName("WEB-INF/views/recipe.jsp");
@@ -217,7 +215,7 @@ public class UserController {
 	
 	
 	//Add SetActiveToFalse for comments
-	@RequestMapping(path="deleteUser.do", method = RequestMethod.POST)
+	@RequestMapping(path="deleteUser.do", method = RequestMethod.GET)
 	public ModelAndView deleteUser(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = userDAO.getUserById(id);
@@ -252,8 +250,8 @@ public class UserController {
 		session.setAttribute("loggedInUser", user);
 		
 		
-		if(currentUser.getActive()) {
-			mv.setViewName("redirect:home.do");
+		if(currentUser.getAdmin()) {
+			mv.setViewName("/WEB-INF/views/home.jsp");
 		}
 		else {
 			mv.setViewName("redirect:index.do");
