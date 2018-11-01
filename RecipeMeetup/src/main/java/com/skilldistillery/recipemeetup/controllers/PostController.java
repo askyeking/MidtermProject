@@ -159,8 +159,6 @@ public class PostController {
 	
 	@RequestMapping(path= "editedMeetup.do", method = RequestMethod.POST)
 	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
-		System.out.println("start of addedMeetup" + address);
-//		System.out.println("In Controller");
 		ModelAndView mv = new ModelAndView();
 		String startTime = ldt.substring(0, 10) + " " + ldt.substring(11);
 		
@@ -180,6 +178,9 @@ public class PostController {
 			e.printStackTrace();
 		}
 		
+		
+		System.out.println("***************************************");
+		System.out.println(meetup.getImgURL());
 		
 		if (meetup != null) {
 			meetup.setStartTime(dt);

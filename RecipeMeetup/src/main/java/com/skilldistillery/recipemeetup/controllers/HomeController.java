@@ -54,7 +54,6 @@ public class HomeController {
 			dt = sdf.parse(startTime);
 			meetup.setStartTime(dt);
 		} catch (ParseException e) {
-			System.out.println("excepton on date parsing");
 			e.printStackTrace();
 		}
 		
