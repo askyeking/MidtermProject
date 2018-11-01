@@ -29,9 +29,11 @@
 		<input type="hidden" name="active" value="1" /> 
 		<input type="text" name="title" value="" maxlength="45" required /><br>
 		<h3>Description</h3>
-		<input type="text" name="description" style="height: 100px" maxlength=300 /> <br>
+		<!-- <input type="text" name="description" style="height: 100px" maxlength=300 /> --> 
+		<textarea name="description"></textarea><br>
 		<h3>Ingredients</h3>
-		<input type="text" name="ingredients" maxlength="250" style="height: 100px" required /> <br>
+		<!-- <input type="text" name="ingredients" maxlength="250" style="height: 100px" required /> --> <br>
+		<textarea name="ingredients" required></textarea>
 	<!-- 	<h3>Maximum Attendance</h3>
 		<input type="number" name="maxAttendance" value="" maxlength="100" required /><br> -->
 		<h3>Serving Size</h3>
@@ -179,7 +181,9 @@
   		</select> 
   		
 		<h3>Instructions</h3>
-		<input type="text" name="instructions" style="height: 100px" required/> <br>
+		<!-- <input type="text" name="instructions" style="height: 100px" required/> --> 
+				<textarea name="instructions" required></textarea>
+		<br>
 		<h3>Set a Recipe Picture</h3>	
 		<input type="url" name="imgURL"><br><br>
 		

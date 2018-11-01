@@ -26,7 +26,7 @@
 				<br>
 
 
-			<c:if test="${not empty user }">
+				<c:if test="${not empty user }">
 
 					<h3>Edit User</h3>
 
@@ -65,7 +65,7 @@
 						<input type="text" name="username" value="${user.username }"
 							maxlength="45" required /><br>
 						<h3>Password</h3>
-						<input type="password" name="password" value="${user.password }"
+						<input type="password" name="password" value=""
 							maxlength="45" required /><br>
 						<h3>Email</h3>
 						<input type="email" name="email" value="${user.email }"
@@ -91,12 +91,14 @@
 							max="99999" required /><br>
 
 						<h3>Tell us a little about yourself</h3>
-						<input type="text" name="description" value="${user.description}"
-							style="height: 200px" /> <br>
+						<%-- <input type="text" name="description" value="${user.description}"
+							style="height: 200px" /> --%>
+						<br>
+						<textarea name="description">${user.description }</textarea>
 
 						<h3>Set your profile picture</h3>
 						<input type="url" name="imgURL"><br> <br> <br>
-						<input type="submit" value="Submit" size="big" />
+						<input type="submit" value="Submit" size="big" class="btn btn-primary" />
 
 					</form>
 

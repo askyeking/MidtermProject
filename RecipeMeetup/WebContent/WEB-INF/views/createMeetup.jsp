@@ -26,8 +26,9 @@
 					<h3>Meetup Name</h3>
 					<input type="text" name="title" value="" maxlength="45" required /><br>
 					<h3>Description</h3>
-					<input type="text" name="description" maxlength="250"
-						style="height: 100px" /> <br>
+					<!-- <input type="text" name="description" maxlength="250"
+						style="height: 100px" /> --> 
+						<textarea name="description"></textarea><br>
 					<h3>Maximum Attendance</h3>
 					<input type="number" name="maxAttendance" value="" maxlength="45"
 						required /><br>
@@ -44,7 +45,7 @@
 						name="state" maxlength="2" placeholder="State" aria-label="State"
 						required /><br> <input type="number" name="postalCode"
 						min="00000" max="99999" placeholder="ZIP" aria-label="ZIP"
-						required /><br> <input type="submit" value="Submit" />
+						required /><br> <input type="submit" value="Submit" class="btn btn-primary"/>
 				</form>
 
 			</div>
