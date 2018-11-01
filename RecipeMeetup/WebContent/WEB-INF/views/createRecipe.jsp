@@ -181,7 +181,7 @@
 		<h3>Instructions</h3>
 		<input type="text" name="instructions" style="height: 100px" required/> <br>
 		<h3>Set a Recipe Picture</h3>	
-		<input type="url" name="imgURL" maxlength="100"><br><br>
+		<input type="url" name="imgURL"><br><br>
 		
 		<input type="submit" value="Submit" /> 
 	</form>
