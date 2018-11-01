@@ -98,7 +98,7 @@ public class PostController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.POST)
+	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.GET)
 	public ModelAndView RSVPMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = (User) session.getAttribute("loggedInUser");
