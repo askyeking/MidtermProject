@@ -11,11 +11,14 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="resources/createRecipe.css" />
+<link rel="stylesheet" href="resources/editMeetup.css" />
 <title>Edit Meetup</title>
 </head>
 <body>
+<img class="center-fit" src="media/table.jpg" alt="homescreen" />
+
 <body style="height: 1500px">
+<div class="editMeetup">
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 		<br>
@@ -26,7 +29,6 @@
 		<c:choose>
 		<c:when test="${not empty meetup }">
 
-			
 			<h3>Edit Meetup</h3>
 
 			<form action="editedMeetup.do" method="POST">
@@ -235,6 +237,7 @@
 			</form>
 		</c:when>
 		</c:choose>	
+	</div>
 
 
 
