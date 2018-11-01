@@ -31,17 +31,15 @@
 			<hr>
 
 
-s
 			<div class="row">
 				<div class="col-sm-3">
 					<img src="${loggedInUser.imgURL }" alt="User Profile Picture"
-						style="width: 170px; height: 170px;">
-
+						 style="width: 170px; height: 170px;">
 				</div>
-					<div class="col-sm-9">
-						<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
-						<p>${loggedInUser.description}</p>
-					</div>
+				<div class="col-sm-9">
+					<h4>${loggedInUser.firstName}${loggedInUser.lastName}</h4>
+					<p>${loggedInUser.description}</p>
+				</div>
 			</div>
 
 
