@@ -213,7 +213,7 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		Meetup meetup = meetupDAO.findSingleMeetup(user.getId());
 		meetupDAO.setActiveToFalse(meetup);
-		mv.setViewName("redirect:showMeetupDetails.do?id=" + meetup.getId());
+		mv.setViewName("redirect:home.do");
 		
 		User currentUser = (User) session.getAttribute("loggedInUser");
 		currentUser= userDAO.getUserById(currentUser.getId());
@@ -226,12 +226,29 @@ public class PostController {
 		ModelAndView mv = new ModelAndView();
 		Recipe recipe = recipeDAO.showRecipeById(id);
 		recipeDAO.setActiveToFalse(recipe);
-		mv.setViewName("redirect:showRecipeDetails.do?id=" + recipe.getId());
+		mv.setViewName("redirect:home.do");
 		
 		User user = (User) session.getAttribute("loggedInUser");
 		user= userDAO.getUserById(user.getId());
 		session.setAttribute("loggedInUser", user);
 		return mv;
+	}
+	
+	@RequestMapping(path = "addedRecipe.do", method = RequestMethod.POST)
+	public ModelAndView addedRecipe(Recipe recipe, User user, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Recipe newRecipe = null;
+		user = (User) session.getAttribute("loggedInUser");
+		if (recipe != null) {
+			newRecipe = recipeDAO.createRecipe(recipe, user);
+			mv.addObject("recipe", newRecipe);
+			mv.setViewName("redirect:showRecipeDetails.do?id=" + newRecipe.getId());
+		} else {
+			mv.setViewName("WEB-INF/views/createRecipe.jsp");
+		}
+
+		return mv;
+
 	}
 	
 	
