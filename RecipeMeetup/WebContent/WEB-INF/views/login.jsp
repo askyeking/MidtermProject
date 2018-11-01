@@ -126,10 +126,12 @@
 <div class="aboutUsContainer">
 	<form>
 
-		<h3>About The Website Creators</h3>
+		<h3>The Website Creators</h3>
 		<p id="aboutUs">
 			<strong>Blake Longfield, Anthony King, Newel Miole, Novak
 				Dobrosavljevic</strong>
+				
+				<!-- <img=""/> -->
 		</p>
 		<p id="aboutUs">We are awesome and plan on making $1 bil a piece</p>
 	</form>
