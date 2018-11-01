@@ -173,14 +173,20 @@
 					</c:choose>
 					<form:form action="submitRecipeComment.do" method="POST">
 						<input type="hidden" name="id" value="${recipe.id }" />
-						<input type="text" name="comment" value="Post a comment..."
-							rows="5" cols="50" />
+						<!-- <input type="text" name="comment" value="Post a comment..."
+							rows="5" cols="50" /> -->
+						<textarea name="comment"></textarea>
+							
 						<br>
-						<input type="submit" value="Submit Comment" />
+						<input type="submit" value="Submit Comment" class="btn btn-primary"/>
 						<br>
 						<br>
 						<br>
 					</form:form>
+					
+					
+					
+					
 
 				</div>
 			</div>
