@@ -98,7 +98,8 @@ public class PostController {
 	
 	// The method below takes a meetup that user liked as a command object, and uses session.getAttribute to get a user in session.
 	// it then calls a method through meetupDAO that adds a RSVP for meetup
-	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.POST)
+
+	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.GET)
 	public ModelAndView RSVPMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = (User) session.getAttribute("loggedInUser");
