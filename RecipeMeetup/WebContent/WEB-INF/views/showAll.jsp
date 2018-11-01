@@ -63,7 +63,7 @@
 					<h3 align="center">Recipes</h3>
 					<div class="buttons">
 						<form action="createRecipe.do" method="GET">
-							<input type="submit" value="Create A New Recipe">
+							<input type="submit" value="Create A New Recipe" class="btn btn-primary">
 						</form>
 					</div>
 					<hr>

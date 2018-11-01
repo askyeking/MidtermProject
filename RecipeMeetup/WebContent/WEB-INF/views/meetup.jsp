@@ -21,7 +21,11 @@
 
 
 <%-- <a href="showMeetupDetails.do?id=${attended.id }"><strong>${attended.title}</strong></a> --%>
-
+		<div class="row">
+		<div class="col-sm-4">
+			<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup" height=350" width="10">
+			</div>
+			</div>
 			<h4>${meetup.title}</h4> 
 			<p>${meetup.description}</p>
 			Host: <a href="viewOtherProfile.do?id=${meetupOwner.id }">  ${meetupOwner.firstName} ${meetupOwner.lastName}</a> <br> <br>
