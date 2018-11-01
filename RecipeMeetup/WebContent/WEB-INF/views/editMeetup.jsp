@@ -80,7 +80,7 @@
 			<input type="hidden" name="active" value="${recipe.active}" /> 
 			
 		<br>
-		<h3>Recipe Name</h3>
+		<h3>Name</h3>
 		<input type="text" name="title" value="${recipe.title }" maxlength="45" required /><br>
 		<h3>Description</h3>
 		<%-- <input type="text" name="description" value="${recipe.description }" style="height: 100px" maxlength=300 /> --%> 

@@ -65,7 +65,7 @@
 						<input type="text" name="username" value="${user.username }"
 							maxlength="45" required /><br>
 						<h3>Password</h3>
-						<input type="password" name="password" value="${user.password }"
+						<input type="password" name="password" value=""
 							maxlength="45" required /><br>
 						<h3>Email</h3>
 						<input type="email" name="email" value="${user.email }"
