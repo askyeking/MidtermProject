@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 .home-pic {
 	display: block;
 	height: 100%;
@@ -43,10 +44,5 @@
 	width: 93%;
 	padding: 25px;
 	margin-left: 9%; 
-}
-
-img{
-object-fit:cover;
-object-position:center;
 }
 
