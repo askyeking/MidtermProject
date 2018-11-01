@@ -217,7 +217,6 @@
 				method="GET">
 				<input type="submit" value="Register" />
 			</form:form>
-
 		</c:otherwise>
 	</c:choose>
 
