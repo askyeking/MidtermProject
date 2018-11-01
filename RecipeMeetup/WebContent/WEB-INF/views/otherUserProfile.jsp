@@ -22,16 +22,16 @@
 			<br>
 			<br>
 			
-			<hr>
-			<div class="col-sm-6">
+			<div class="row">
+			<div class="col-sm-3">
 			<img src="${user.imgURL }" alt="User Profile Picture"
 				style="width: 170px; height: 170px;">
 			</div>
-			<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-9">
 			<h4>${user.firstName}${user.lastName}</h4>
 			<p>${user.description}</p>
 			</div>
+			<hr>
 			</div>
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">

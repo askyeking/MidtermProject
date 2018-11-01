@@ -31,9 +31,9 @@
 			<hr>
 
 
-
+s
 			<div class="row">
-				<div class="col-sm-2">
+				<div class="col-sm-3">
 					<img src="${loggedInUser.imgURL }" alt="User Profile Picture"
 						style="width: 170px; height: 170px;">
 
