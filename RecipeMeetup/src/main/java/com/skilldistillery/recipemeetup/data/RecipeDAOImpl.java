@@ -81,7 +81,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 		editRecipe.setCookTime(updatedRecipe.getCookTime());
 		editRecipe.setInstructions(updatedRecipe.getInstructions());
 		editRecipe.setCategory(updatedRecipe.getCategory());
-		editRecipe.setImgURL(updatedRecipe.getImgURL());
+		
+		if (updatedRecipe.getImgURL() != "" && updatedRecipe.getImgURL() != null) {
+			editRecipe.setImgURL(updatedRecipe.getImgURL());
+		}
 //		editRecipe.setActive(updatedRecipe.getActive());
 		
 		return editRecipe;

@@ -79,8 +79,11 @@ public class MeetupDAOImpl implements MeetupDAO {
 		
 		updatedMeetup.setTitle(meetup.getTitle());
 		updatedMeetup.setDescription(meetup.getDescription());
-		updatedMeetup.setImgURL(meetup.getImgURL());
-		updatedMeetup.setActive(meetup.getActive());
+		
+		if (meetup.getImgURL() != "" && meetup.getImgURL() != null) {
+			updatedMeetup.setImgURL(meetup.getImgURL());
+		}
+//		updatedMeetup.setActive(meetup.getActive());
 		updatedMeetup.setStartTime(meetup.getStartTime());
 		updatedMeetup.setEndTime(meetup.getEndTime());
 		updatedMeetup.setMaxAttendance(meetup.getMaxAttendance());
