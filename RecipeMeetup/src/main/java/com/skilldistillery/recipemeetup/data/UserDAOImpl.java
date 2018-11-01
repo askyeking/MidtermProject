@@ -26,65 +26,56 @@ public class UserDAOImpl implements UserDAO {
 	public User loginUser(User user) {
 		String username = user.getUsername();
 		String password = user.getPassword();
-		
-		
-		
-		
+
 		MessageDigest md = null;
-		
+
 		try {
 			md = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		
+
 		md.update(password.getBytes());
 		byte[] digest = md.digest();
 
 		String hashedPass = DatatypeConverter.printHexBinary(digest).toLowerCase();
-		
-	    user.setPassword(hashedPass);
-		
-	    
-	    
-	    
+
+		user.setPassword(hashedPass);
+
 		user = null;
-		
+
 		String query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
-		user = em.createQuery(query, User.class).setParameter("username", username)
-				.setParameter("password", hashedPass).getSingleResult();
-		
-		
+		user = em.createQuery(query, User.class).setParameter("username", username).setParameter("password", hashedPass)
+				.getSingleResult();
 
 		return user;
 	}
 
 	@Override
 	public User isLegitimateUsername(User user) {
-		
+
 		String username = user.getUsername();
-		User retrievedUser =null;
+		User retrievedUser = null;
 		String query = "SELECT u FROM User u WHERE u.username = :username";
-		
+
 		try {
-		retrievedUser = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
-		if(retrievedUser.getActive() == false) {
+			retrievedUser = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
+			if (retrievedUser.getActive() == false) {
+				retrievedUser = null;
+			}
+		} catch (NoResultException e) {
 			retrievedUser = null;
 		}
-		}
-		catch(NoResultException e) {
-			retrievedUser = null;
-		}
-		
+
 		return retrievedUser;
 	}
 
 	@Override
 	public User createUser(User user, Address address) {
-		if(user.getImgURL() == "" || user.getImgURL() == null) {
+		if (user.getImgURL() == "" || user.getImgURL() == null) {
 			user.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
 		}
-		
+
 		MessageDigest md = null;
 		try {
 			md = MessageDigest.getInstance("MD5");
@@ -92,13 +83,13 @@ public class UserDAOImpl implements UserDAO {
 			e.printStackTrace();
 		}
 		String password = user.getPassword();
-		
+
 		md.update(password.getBytes());
 		byte[] digest = md.digest();
 
 		String hashedPass = DatatypeConverter.printHexBinary(digest).toLowerCase();
-		
-	    user.setPassword(hashedPass);
+
+		user.setPassword(hashedPass);
 		address.addUser(user);
 		user.setActive(true);
 		user.setAddress(address);
@@ -106,31 +97,21 @@ public class UserDAOImpl implements UserDAO {
 //		em.persist(user);
 		em.flush();
 		System.out.println(address);
-		
+
 		return user;
 
 	}
 
 	@Override
 	public User updateUser(User user, Address address) {
-		
-		
-		
-		
+
 		User updatedUser = em.find(User.class, user.getId());
-		
+
 //		if(user.getImgURL() == "" || user.getImgURL() == null) {
-//			if(updatedUser.getImgURL() =="" || updatedUser.getImgURL() == null) {
-//			user.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
-//			}
-//			else {
-//			user.setImgURL(updatedUser.getImgURL() );
-//			}
-//		}
 		System.out.println(updatedUser);
 		Address updatedAddress = updatedUser.getAddress();
 		System.out.println(updatedAddress);
-		
+
 //		updatedUser.setActive(user.getActive());
 		updatedUser.setAdmin(user.getAdmin());
 //		updatedUser.setCreateDate(user.getCreateDate());
@@ -140,11 +121,11 @@ public class UserDAOImpl implements UserDAO {
 //		updatedUser.setRecipesFavorited(user.getRecipesFavorited());
 		updatedUser.setFirstName(user.getFirstName());
 //		updatedUser.setId(user.getId());
-		
-		if(user.getImgURL() != "" && user.getImgURL() != null) {
+
+		if (user.getImgURL() != "" && user.getImgURL() != null) {
 			updatedUser.setImgURL(user.getImgURL());
 		}
-		
+
 		updatedUser.setLastName(user.getLastName());
 //		updatedUser.setLikedMeetupComments(user.getLikedMeetupComments());
 //		updatedUser.setLikedRecipeComments(user.getLikedRecipeComments());
@@ -152,11 +133,28 @@ public class UserDAOImpl implements UserDAO {
 //		updatedUser.setMeetupCommentsPosted(user.getMeetupCommentsPosted());
 //		updatedUser.setMeetupsAttended(user.getMeetupsAttended());
 //		updatedUser.setMeetupsOwned(user.getMeetupsOwned());
-		updatedUser.setPassword(user.getPassword());
+//		updatedUser.setPassword(user.getPassword());
+
+		if (user.getPassword() != "" && user.getPassword() != null) {
+			try {
+				MessageDigest md = MessageDigest.getInstance("MD5");
+				String password = user.getPassword();
+				md.update(password.getBytes());
+
+				byte[] digest = md.digest();
+
+				String hashedPass = DatatypeConverter.printHexBinary(digest).toLowerCase();
+
+				user.setPassword(hashedPass);
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+		}
+
 //		updatedUser.setRecipeComments(user.getRecipeComments());
 //		updatedUser.setRecipesPosted(user.getRecipesPosted());
 		updatedUser.setUsername(user.getUsername());
-		
+
 		updatedAddress.setStreet(address.getStreet());
 		updatedAddress.setCity(address.getCity());
 		updatedAddress.setState(address.getState());
@@ -198,22 +196,22 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> getUserByName(String inputName) {
 		String query = "SELECT u FROM User u  where username like :name or firstName like :name or lastName like :name";
-		List<User> usersFoundByName = em.createQuery(query, User.class).setParameter("name", "%" +inputName + "%").getResultList();
+		List<User> usersFoundByName = em.createQuery(query, User.class).setParameter("name", "%" + inputName + "%")
+				.getResultList();
 		return usersFoundByName;
 	}
-	
+
 	@Override
 	public User getUserById(int id) {
 		User user = em.find(User.class, id);
 		return user;
 	}
-	
+
 	@Override
 	public User setActiveToFalse(User user) {
 		user = em.find(User.class, user.getId());
 		user.setActive(false);
 		return user;
 	}
-	
 
 }
