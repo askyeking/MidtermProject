@@ -1,11 +1,14 @@
 package com.skilldistillery.recipemeetup.data;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.stereotype.Repository;
 
@@ -23,11 +26,35 @@ public class UserDAOImpl implements UserDAO {
 	public User loginUser(User user) {
 		String username = user.getUsername();
 		String password = user.getPassword();
+		
+		
+		
+		
+		MessageDigest md = null;
+		
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+
+		String hashedPass = DatatypeConverter.printHexBinary(digest).toLowerCase();
+		
+	    user.setPassword(hashedPass);
+		
+	    
+	    
+	    
 		user = null;
 		
 		String query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
 		user = em.createQuery(query, User.class).setParameter("username", username)
-				.setParameter("password", password).getSingleResult();
+				.setParameter("password", hashedPass).getSingleResult();
+		
+		
 
 		return user;
 	}
@@ -58,6 +85,20 @@ public class UserDAOImpl implements UserDAO {
 			user.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
 		}
 		
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		String password = user.getPassword();
+		
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+
+		String hashedPass = DatatypeConverter.printHexBinary(digest).toLowerCase();
+		
+	    user.setPassword(hashedPass);
 		address.addUser(user);
 		user.setActive(true);
 		user.setAddress(address);
