@@ -119,7 +119,9 @@ public class PostController {
 		
 		Recipe favoriteRecipe = recipeDAO.addRecipeToLikes(recipe, user);
 		
-		mv.setViewName("redirect:userProfile.do");
+		user = userDAO.getUserById(user.getId());
+		session.setAttribute("loggedInUser", user);
+		mv.setViewName("redirect:showRecipeDetails.do?id=" + favoriteRecipe.getId());
 		
 		return mv;
 	}

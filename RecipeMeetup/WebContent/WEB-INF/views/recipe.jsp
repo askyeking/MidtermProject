@@ -3,6 +3,7 @@
 <%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:if test="${not empty loggedInUser }"><%@include
         file="NavBar.jsp"%></c:if>
@@ -53,6 +54,7 @@
 				       <form:form action="likeRecipe.do" method="post">
                			 <input type="hidden" name="id" value="${recipe.id }" />
              			   <input type="submit" value="LIKE" />
+             			  ${fn:length(recipe.recipeLikers)} 
           			  </form:form>
 				    </div>
 				    
