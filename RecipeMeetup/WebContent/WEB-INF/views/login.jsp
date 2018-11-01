@@ -52,7 +52,7 @@
 				<input type="submit" id="login" class="btn btn-outline-success my-2 my-sm-0" value="Login"/>
 					<input type="password" id="password" path="password" name="password"
 						placeholder="Password" aria-label="Password" />
-					<input type="text" id="username" path="username" name="username" placeholder="Username" aria-label="Usernam"/>
+					<input type="text" id="username" path="username" name="username" placeholder="Username" aria-label="Username"/>
 					
 					<br>
 					<br>
@@ -126,10 +126,12 @@
 <div class="aboutUsContainer">
 	<form>
 
-		<h3>About The Website Creators</h3>
+		<h3>The Website Creators</h3>
 		<p id="aboutUs">
 			<strong>Blake Longfield, Anthony King, Newel Miole, Novak
 				Dobrosavljevic</strong>
+				
+				<!-- <img=""/> -->
 		</p>
 		<p id="aboutUs">We are awesome and plan on making $1 bil a piece</p>
 	</form>

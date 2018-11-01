@@ -96,11 +96,9 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		User isUserValid = userDAO.isLegitimateUsername(user);
 		
-		System.out.println("***************************************");
-		System.out.println(user.getImgURL());
-
 		if (isUserValid != null) {
-			error.rejectValue("username", "error.username", "error message");
+//			error.reject("username");
+//			error.rejectValue("username", "error.username", "error message");					//ask Alex
 			mv.setViewName("WEB-INF/views/register.jsp");
 		} else {
 			
@@ -110,7 +108,6 @@ public class UserController {
 			session.setAttribute("loggedIn", loggedIn);
 			session.setAttribute("loggedInUser", user);
 			
-
 			mv.setViewName("redirect:home.do");
 		}
 

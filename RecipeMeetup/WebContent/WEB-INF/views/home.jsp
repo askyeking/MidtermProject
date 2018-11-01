@@ -12,12 +12,6 @@
 <link rel="stylesheet" href="resources/home.css" />
 <title>Home</title>
 
-
-<!-- div class="row"><
-<div class="col-8">
-<img id="narrows" alt="" src="media/narrows.jpg" >
-</div> -->
-
 </head>
 <body style="height: 1500px">
 
@@ -57,15 +51,6 @@
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 
-
-			<!-- <div class="home-pic">
-				<img class="center-fit" src="media/cuttingboard.jpg"
-					alt="cuttingboard">
-				<div class="text-block">
-					<h1>Recipe Meetup</h1>
-					<h3>Let's meetup and cook together</h3>
-				</div>
-			</div> -->
 			<br>
 			<br>
 			<br>
@@ -76,31 +61,11 @@
 					A New Recipe</a> <a href="createMeetup.do"
 					class="btn btn-primary btn-lg">Create A New Meetup</a>
 			</div>
-			<%-- <form action="createRecipe.do" method="GET"> 
-				<button type="button" class="btn btn-primary btn-lg">Create A New Recipe</button>
-			</form>  
-			<form action="createMeetup.do" method="GET"> 
-				<button type="button" class="btn btn-primary btn-lg">Create A New Meetup</button>
-			 </form>  --%>
-
-
+		
 			<br>
 			<br>
 			<br>
 			<br>
-
-			<%-- 	<c:choose>
-		<c:when test="${not empty user and user.active}">
-			
-			Login Successful!
-			<c:if test="${loggedInUser.admin }">Admin login</c:if>
-		</c:when>
-		<c:otherwise>
-
-		</c:otherwise>
-	</c:choose> --%>
-			<%-- 	<form:errors path="username">Invalid Username</form:errors>
-	<form:errors path="password">Bad password</form:errors> --%>
 
 			<c:choose>
 				<c:when test="${not empty recentMeetup}">
