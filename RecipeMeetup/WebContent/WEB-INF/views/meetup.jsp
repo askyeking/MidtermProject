@@ -3,18 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:if test="${not empty loggedInUser }">
-	<%@include file="NavBar.jsp"%>
-</c:if>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="resources/meetup.css" />
 <title>Meetup Details</title>
 </head>
 <body>
+<img class="center-fit" src="media/cooking.jpg" alt="homescreen"/>
+<c:if test="${not empty loggedInUser }">
+	<%@include file="NavBar.jsp" %>
+	</c:if>
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
+	<div class="meetupDetails">
 			<br>
 			<br>
 			<br>
@@ -23,11 +26,12 @@
 <%-- <a href="showMeetupDetails.do?id=${attended.id }"><strong>${attended.title}</strong></a> --%>
 		<div class="row">
 		<div class="col-sm-4">
-			<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup" height=350" width="10">
+			<img class="card-img-top" src="${meetup.imgURL }" align="middle">
 			</div>
 			</div>
-			<h4>${meetup.title}</h4> 
+			<h1>${meetup.title}</h1> 
 			<p>${meetup.description}</p>
+			<div class="rightAligned">
 			Host: <a href="viewOtherProfile.do?id=${meetupOwner.id }">  ${meetupOwner.firstName} ${meetupOwner.lastName}</a> <br> <br>
 			<p>Start Time: ${meetup.startTime}</p>
 			<p>End Time: ${meetup.endTime}</p>
@@ -58,7 +62,6 @@
 			</form>
 
 			</c:if>
-
 			<c:choose>
 				<c:when test="${not empty listOfComments }">
 					<c:forEach items="${listOfComments }" var="comment">
@@ -74,8 +77,11 @@
 				<input type="text" name="textContent" rows="5" cols="50" value="Write a comment..."/> <br>
 				<input type="submit" value="Submit" />
 			</form:form>
+			</div>
+			</div>
 		</c:when>
 		<c:otherwise>
+		<div class="notLoggedIn">
 			<br>
 			<br>
 			<br>
@@ -92,7 +98,7 @@
 				method="GET">
 				<input type="submit" value="Register" />
 			</form:form>
-
+			</div>
 		</c:otherwise>
 	</c:choose>
 </body>

@@ -1,12 +1,23 @@
 @charset "UTF-8";
 
 img {
-	width: auto;
-    height: auto;
+	text-align: center;
+	width: 20%;
+    height: 90%;
+  
+}
+
+.card-img-top {
+	display: block;
+   	margin-left: auto;
+   	margin-right: auto;
+    width: 50%
+    text-align: center;
 }
 
 .center-fit{
 	position:fixed;
+	
     padding:0;
     margin:0;
     top:0;
@@ -19,7 +30,18 @@ body {
 	color: black;
 }
 
-.newMeetup {
+.comments {
+	text-align: center;
+	color: black;
+	marin: 20px;
+	background-color: #ffffff;
+	opacity: 0.85;
+	margin: 40px;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.meetupDetails {
 	text-align: center;
 	color: black;
 	marin: 20px;
@@ -39,4 +61,10 @@ body {
 	margin: 40px;
 	margin-top: 100px;
 	margin-bottom: 100px;
+}
+
+.rightAligned {
+	margin-bottom: 12px;
+	padding: 45px;
+	text-align:left;
 }
