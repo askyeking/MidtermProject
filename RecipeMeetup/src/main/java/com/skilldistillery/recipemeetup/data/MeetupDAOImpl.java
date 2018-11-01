@@ -19,22 +19,25 @@ import com.skilldistillery.recipemeetup.entities.User;
 @Repository
 public class MeetupDAOImpl implements MeetupDAO {
 	
-	
+	// PersistenceContext - All transactions are automatically started and committed, EntityManagerFactory is not required.
 	@PersistenceContext
 	private EntityManager em;
 	
+	// Returns a single meetup from the DB found by the id which correlates with the primary key
 	@Override
 	public Meetup findSingleMeetup(int meetupId) {
 		Meetup meetup = em.find(Meetup.class, meetupId);
 		return meetup;
 	}
 	
+	// Finds a single meetup in the DB
 	@Override
 	public Meetup showMeetup(Meetup meetup) {
 		Meetup singleMeetup = em.find(Meetup.class, meetup.getId());
 		return singleMeetup;
 	}
 	
+	// Takes all meetups from the database and returns them as a list
 	@Override
 	public List<Meetup> findAllMeetups() {
 		String jpql = "SELECT meetup FROM Meetup meetup";
@@ -43,6 +46,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 	}
 	
 	
+	// removes a meetup from the database. setActiveToFalse is generally used instead, as it keeps data in the DB.
 	@Override
 	public boolean deleteMeetup(Meetup meetup) {
 		int id = meetup.getId();
@@ -58,6 +62,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 		
 	}
 	
+	// removes a meetup from the database. setActiveToFalse is generally used instead, as it keeps data in the DB.
 	public boolean deleteMeetupById(int id) {
 		Meetup meetup = em.find(Meetup.class, id);
 		boolean isMeetupDeleted = false;
@@ -73,7 +78,8 @@ public class MeetupDAOImpl implements MeetupDAO {
 		
 	}
 	
-	@Override
+	// takes a meetup and an address and updates info of an existing meetup and its address to the updated data.
+	@Override 
 	public Meetup updateMeetup(Meetup meetup, Address address) {
 		Meetup updatedMeetup = em.find(Meetup.class, meetup.getId());
 		Address updatedAddress = updatedMeetup.getMeetupAddress();
@@ -84,7 +90,6 @@ public class MeetupDAOImpl implements MeetupDAO {
 		if (meetup.getImgURL() != "" && meetup.getImgURL() != null) {
 			updatedMeetup.setImgURL(meetup.getImgURL());
 		}
-//		updatedMeetup.setActive(meetup.getActive());
 		updatedMeetup.setStartTime(meetup.getStartTime());
 		updatedMeetup.setEndTime(meetup.getEndTime());
 		updatedMeetup.setMaxAttendance(meetup.getMaxAttendance());
@@ -98,8 +103,11 @@ public class MeetupDAOImpl implements MeetupDAO {
 		return updatedMeetup;
 	}
 	
+	// persists a meetup into the database.
 	@Override
 	public Meetup createMeetup(Meetup meetup, User user, Address address) {
+		
+		// if image URL is empty, provide the default url
 		if(meetup.getImgURL() == "" || meetup.getImgURL() == null) {
 			meetup.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
 		}
@@ -116,6 +124,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 		return meetup;
 	}
 	
+	// if a active is set to 0, the meetup will not be publicly shown in the DB.
 	@Override
 	public Meetup setActiveToFalse(Meetup meetup) {
 		meetup = em.find(Meetup.class, meetup.getId());
@@ -125,6 +134,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 		
 	}
 	
+	// Returns a list of 3 most recently posted meetups which hava active set to true.
 	@Override
 	public List<Meetup> findRecentMeetups(){
 		String jpql = "SELECT meetup from Meetup meetup where active='1' ORDER BY createDate DESC";
@@ -133,12 +143,12 @@ public class MeetupDAOImpl implements MeetupDAO {
 		return recentMeetups;
 	}
 	
+	// returns a list of meetups, found by keyword which is searched for in the description, title, and city.
 	@Override
 	public List<Meetup> findMeetup(String meetup) {
 	List<Meetup> meetups = new ArrayList<>();
-	String query = "SELECT m FROM Meetup m WHERE m.title LIKE :title OR m.description LIKE :desc OR m.meetupAddress.city LIKE :desc";
+	String query = "SELECT m FROM Meetup m WHERE m.title LIKE :desc OR m.description LIKE :desc OR m.meetupAddress.city LIKE :desc";
 	meetups = em.createQuery(query, Meetup.class)
-			.setParameter("title", "%" + meetup + "%")
 			.setParameter("desc", "%" + meetup + "%")
 			.getResultList();
 	
@@ -146,6 +156,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 			
 	}
 	
+	//  Adds a meetup to the user's list of attended meetups and the user to the list of attendees of a meetup. Persists changes to the DB.
 	@Override
 	public Meetup addRSVPForMeetup(Meetup meetup, User user){
 
