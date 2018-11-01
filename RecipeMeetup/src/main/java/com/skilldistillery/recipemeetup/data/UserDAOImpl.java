@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.skilldistillery.recipemeetup.entities.Address;
 import com.skilldistillery.recipemeetup.entities.User;
 
+//This class manages database interactions where User entity is involved.
 @Transactional
 @Repository
 public class UserDAOImpl implements UserDAO {

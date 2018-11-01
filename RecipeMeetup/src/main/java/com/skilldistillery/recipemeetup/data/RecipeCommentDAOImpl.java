@@ -14,6 +14,7 @@ import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.RecipeComment;
 import com.skilldistillery.recipemeetup.entities.User;
 
+//This class manages database interactions where RecipeComment entity is involved.
 @Transactional
 @Repository
 public class RecipeCommentDAOImpl implements RecipeCommentDAO {

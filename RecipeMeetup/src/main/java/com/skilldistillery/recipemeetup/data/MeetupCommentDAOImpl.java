@@ -13,6 +13,7 @@ import com.skilldistillery.recipemeetup.entities.MeetupComment;
 import com.skilldistillery.recipemeetup.entities.MeetupComment;
 import com.skilldistillery.recipemeetup.entities.User;
 
+//This class manages database interactions where MeetupComment entity is involved.
 @Transactional
 @Repository
 public class MeetupCommentDAOImpl implements MeetupCommentDAO {
@@ -24,7 +25,7 @@ public class MeetupCommentDAOImpl implements MeetupCommentDAO {
 	// The method below will persist a Meetup comement to the database. 
 	@Override
 	public MeetupComment postMeetupComment(Meetup meetup, MeetupComment comment, User author) {
-		// Author has a list of Meetup Comments, so we add this comment to the list
+		// User has a list of Meetup Comments, so we add this comment to the list
 		author.addMeetupCommentPosted(comment);
 		
 		// We set the owner of the meetup comment to the user who posted the comment

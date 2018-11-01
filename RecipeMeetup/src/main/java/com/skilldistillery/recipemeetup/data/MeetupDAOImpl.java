@@ -14,6 +14,7 @@ import com.skilldistillery.recipemeetup.entities.Meetup;
 import com.skilldistillery.recipemeetup.entities.Recipe;
 import com.skilldistillery.recipemeetup.entities.User;
 
+//This class manages database interactions where Meetup entity is involved.
 @Transactional
 @Repository
 public class MeetupDAOImpl implements MeetupDAO {
