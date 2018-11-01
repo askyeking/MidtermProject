@@ -54,26 +54,33 @@ public class UserController {
 
 	}
 
-	
+	// The method below  selects a user from a database if username and password match an existing user in the DB
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView loginPage(User user, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 
+		
 		User validUser = null;
+		
+		// userDAO.isLegitimateUsername returns a user object if there is a user with a matching usrename in the database
 		validUser = userDAO.isLegitimateUsername(user);
 
+		
+		// if validUser was returned, password is checked in the userDAO.loginUser(user) method. Else an error is printed.
 		if (validUser != null && validUser.getActive()) {
 			validUser = null;
 			try {
 				validUser = userDAO.loginUser(user);
 			} catch (NoResultException e) {
 			}
+			// if valid user, set loggedInUser attribute to that user. Lasts for the duration of the session.
 			if (validUser != null) {
 				loggedIn = true;
 				session.setAttribute("loggedIn", loggedIn);
 				session.setAttribute("loggedInUser", validUser);
 				mv.setViewName("redirect:home.do");
 			} else {
+				// if password is wrong, print error
 				error.rejectValue("password", "error.password", "error message");
 				List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
 				List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
@@ -85,6 +92,7 @@ public class UserController {
 		}
 
 		else {
+			// If username is non-existent, reject value with an error
 			error.rejectValue("username", "error.username", "error message");
 			List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
 			List<Meetup> recentMeetups = meetupDAO.findRecentMeetups();
@@ -96,19 +104,19 @@ public class UserController {
 		return mv;
 	}
 
+	// the method below will send a user to the page where they can create an account.
 	@RequestMapping(path = "registrationLink.do", method = RequestMethod.GET)
 	private String registrationPage(HttpSession session) {
 		return "WEB-INF/views/register.jsp";
 	}
 
+	// The method below will persist a newly created user object (taken as a parameter), and user's address to the database.
 	@RequestMapping(path = "register.do", method = RequestMethod.POST)
 	public ModelAndView Register(User user, Address address, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User isUserValid = userDAO.isLegitimateUsername(user);
 		
 		if (isUserValid != null) {
-//			error.reject("username");
-//			error.rejectValue("username", "error.username", "error message");					//ask Alex
 			mv.setViewName("WEB-INF/views/register.jsp");
 		} else {
 			
@@ -123,7 +131,8 @@ public class UserController {
 
 		return mv;
 	}
-
+	
+	// The method below lets sets a view to user's profile page
 	@RequestMapping(path = "userProfile.do", method = RequestMethod.GET)
 	public ModelAndView showProfile(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -132,7 +141,8 @@ public class UserController {
 	}
 
 
-
+	//The method below lets a user view a profile of another user. it takes an int id which is used to identify the user who's info will be viewed;
+	// If a user viewing the profile is an admin or the account owner, they can chose to deactivate profile, as the Boolean pushed to the front-end is true;
 	@RequestMapping(path = "viewOtherProfile.do", method = RequestMethod.GET)
 	public ModelAndView viewOtherProfile(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -151,6 +161,7 @@ public class UserController {
 		return mv;
 	}
 	
+	// The method below will logout a user (the user in session is removed). 
 	@RequestMapping(path="logout.do", method=RequestMethod.GET)
 	public ModelAndView logout(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -165,6 +176,7 @@ public class UserController {
 		return mv;	
 	}
 	
+	// The method below will send user to a page where they can edit their information
 	@RequestMapping(path="edituser.do", method=RequestMethod.GET)
 	public ModelAndView editUser(HttpSession session ) {
 		ModelAndView mv = new ModelAndView();
@@ -178,7 +190,7 @@ public class UserController {
 	
 	
 	
-	
+	// The method below will submit changes made in users to the database by calling userDAO.updateUser method and passing in updated user and address information.
 	@RequestMapping(path= "editedUser.do", method = RequestMethod.POST)
 	public ModelAndView editedUser(User user, Address address, HttpSession session) {
 		
@@ -199,9 +211,8 @@ public class UserController {
 		return mv;
 	}
 	
-	
-	
-	
+	// The method below will set user account to inactive. 
+	// In addition, the method will call DAO methods that will set all recipes, meetups and comments the user posted to inactive;
 	@RequestMapping(path="deleteUser.do", method = RequestMethod.GET)
 	public ModelAndView deleteUser(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
