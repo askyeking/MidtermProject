@@ -80,8 +80,6 @@ public class PostController {
 		
 		meetup = meetupDAO.showMeetup(meetup);
 		User currentUser = (User) session.getAttribute("loggedInUser");
-		System.out.println(meetup.getMeetupOwner().getId());
-		System.out.println(currentUser.getId());
 		if((meetup.getMeetupOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
 			canEdit = true;
 		}
@@ -98,16 +96,22 @@ public class PostController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.POST)
+	// The method below takes a meetup that user liked as a command object, and uses session.getAttribute to get a user in session.
+	// it then calls a method through meetupDAO that adds a RSVP for meetup
+
+	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.GET)
 	public ModelAndView RSVPMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = (User) session.getAttribute("loggedInUser");
+		
+		//Calling method that adds RSVP to the DB
 		Meetup reservedMeetup = meetupDAO.addRSVPForMeetup(meetup, user);
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + reservedMeetup.getId());
 
 		return mv;
 	}
 	
+	// the method below adds a recipe to user's list of favorite recipes and persists the change to the DB
 	@RequestMapping(path="favoriteRecipe.do", method=RequestMethod.POST)
 	public ModelAndView favoriteRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -122,6 +126,7 @@ public class PostController {
 		
 	}
 	
+	// The method below adds a a liked recipe to user and vice versa in the DB.
 	@RequestMapping(path="likeRecipe.do", method=RequestMethod.POST)
 	public ModelAndView likeRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -137,6 +142,7 @@ public class PostController {
 		return mv;
 	}
 	
+	// The method below persists a recipe comment to the database
 	@RequestMapping(path="submitRecipeComment.do", method=RequestMethod.POST)
 	public ModelAndView postRecipeComment(Recipe recipe, RecipeComment comment, HttpSession session) {
 		recipe = recipeDAO.showRecipeById(recipe.getId());
@@ -147,6 +153,7 @@ public class PostController {
 		return mv;
 	}
 	
+	// The method below calls a meetupDAO method that persists a meetup comment to the DB
 	@RequestMapping(path="submitMeetupComment.do", method=RequestMethod.POST)
 	public ModelAndView postMeetupComment(Meetup meetup, MeetupComment comment, HttpSession session) {
 		meetup = meetupDAO.findSingleMeetup(meetup.getId());
@@ -157,19 +164,19 @@ public class PostController {
 		return mv;
 	}
 	
+	// The method below sets view to a page where the user can update meetup information
 	@RequestMapping(path="editMeetup.do", method=RequestMethod.GET)
 	public ModelAndView editMeetup(Meetup meetup, HttpSession session ) {
-		System.out.println(meetup);
 		
 		
 		ModelAndView mv = new ModelAndView();
 		meetup = meetupDAO.findSingleMeetup(meetup.getId());
-		System.out.println(meetup);
 		mv.addObject("meetup", meetup);
 		mv.setViewName("/WEB-INF/views/editMeetup.jsp");
 		return mv;
 	}
 	
+	// The method below takes updated information of a meetup and call a meetupDAO method that persists changes in the DB
 	@RequestMapping(path= "editedMeetup.do", method = RequestMethod.POST)
 	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -179,10 +186,12 @@ public class PostController {
 		
 		java.util.Date dt = new java.util.Date();
 		
+		// Since MySQL DateTime format is different from ISO (see the MySQL format below)
 		java.text.SimpleDateFormat sdf = 
 		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		try {
+			// parse string into Date
 			dt = sdf.parse(startTime);
 			meetup.setStartTime(dt);
 		} catch (ParseException e) {
@@ -190,17 +199,20 @@ public class PostController {
 		}
 		
 		
-		
+		//if meetup is retrieved, add meetupCreated object to the ModelAndView and redirect to a page that will show details of that  meetup
 		if (meetup != null) {
+			
 			meetup.setStartTime(dt);
 			meetup = meetupDAO.updateMeetup(meetup, address);
 			mv.addObject("meetupCreated", meetup);
 			mv.setViewName("redirect:showMeetupDetails.do?id="+meetup.getId());
 		}
 		else {
+			// else send the user to the edit page
 			editMeetup(meetup, session);
 		}
 		
+		//refresh the user in session
 		User user = (User) session.getAttribute("loggedInUser");
 		user= userDAO.getUserById(user.getId());
 		session.setAttribute("loggedInUser", user);
@@ -208,6 +220,8 @@ public class PostController {
 		return mv;
 	}
 	
+	
+	// The method below calls a DAO method which will Set Boolean Active to FALSE. posts with value FALSE are not shown in the front.
 	@RequestMapping(path="deleteMeetup.do", method = RequestMethod.POST)
 	public ModelAndView deleteMeetup(User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -221,6 +235,8 @@ public class PostController {
 		
 		return mv;
 	}
+	
+	// The method below calls a DAO method which will Set Boolean Active to FALSE. posts with value FALSE are not shown in the front.
 	@RequestMapping(path="deleteRecipe.do", method = RequestMethod.POST)
 	public ModelAndView deleteRecipe(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -234,6 +250,7 @@ public class PostController {
 		return mv;
 	}
 	
+	//The method below will call a DAO method that persists a newely created Recipe object (taken from createRecipe.jsp) in the database
 	@RequestMapping(path = "addedRecipe.do", method = RequestMethod.POST)
 	public ModelAndView addedRecipe(Recipe recipe, User user, HttpSession session) {
 		ModelAndView mv = new ModelAndView();

@@ -96,7 +96,6 @@ public class UserDAOImpl implements UserDAO {
 		em.persist(address);
 //		em.persist(user);
 		em.flush();
-		System.out.println(address);
 
 		return user;
 
@@ -107,33 +106,19 @@ public class UserDAOImpl implements UserDAO {
 
 		User updatedUser = em.find(User.class, user.getId());
 
-//		if(user.getImgURL() == "" || user.getImgURL() == null) {
-		System.out.println(updatedUser);
 		Address updatedAddress = updatedUser.getAddress();
-		System.out.println(updatedAddress);
 
-//		updatedUser.setActive(user.getActive());
 		updatedUser.setAdmin(user.getAdmin());
-//		updatedUser.setCreateDate(user.getCreateDate());
 		updatedUser.setDateOfBirth(user.getDateOfBirth());
 		updatedUser.setDescription(user.getDescription());
 		updatedUser.setEmail(user.getEmail());
-//		updatedUser.setRecipesFavorited(user.getRecipesFavorited());
 		updatedUser.setFirstName(user.getFirstName());
-//		updatedUser.setId(user.getId());
 
 		if (user.getImgURL() != "" && user.getImgURL() != null) {
 			updatedUser.setImgURL(user.getImgURL());
 		}
 
 		updatedUser.setLastName(user.getLastName());
-//		updatedUser.setLikedMeetupComments(user.getLikedMeetupComments());
-//		updatedUser.setLikedRecipeComments(user.getLikedRecipeComments());
-//		updatedUser.setLikedRecipes(user.getLikedRecipes());
-//		updatedUser.setMeetupCommentsPosted(user.getMeetupCommentsPosted());
-//		updatedUser.setMeetupsAttended(user.getMeetupsAttended());
-//		updatedUser.setMeetupsOwned(user.getMeetupsOwned());
-//		updatedUser.setPassword(user.getPassword());
 
 		if (user.getPassword() != "" && user.getPassword() != null) {
 			try {
@@ -151,8 +136,6 @@ public class UserDAOImpl implements UserDAO {
 			}
 		}
 
-//		updatedUser.setRecipeComments(user.getRecipeComments());
-//		updatedUser.setRecipesPosted(user.getRecipesPosted());
 		updatedUser.setUsername(user.getUsername());
 
 		updatedAddress.setStreet(address.getStreet());

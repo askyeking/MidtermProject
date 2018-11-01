@@ -36,17 +36,18 @@
 			<p>Start Time: ${meetup.startTime}</p>
 			<p>End Time: ${meetup.endTime}</p>
 			<c:if test="${canEditPost}">
-			${meetup.id}
-			${meetup.active}
 			
-			<form action="editMeetup.do" method="GET">
+			<%-- <form action="editMeetup.do" method="GET">
 					<input type="hidden" name="id" value="${meetup.id}" /> <input
 						type="submit" value="Edit" />
-				</form>
-				<form action="deleteMeetup.do" method="post">
+				</form> --%>
+				<a class="btn btn-primary" href="editMeetup.do?id=${meetup.id }" role="button">Edit</a>
+				<a class="btn btn-primary" href="deleteMeetup.do?id=${meetup.id }" role="button">Delete</a>
+				
+				<%-- <form action="deleteMeetup.do" method="post">
 					<input type="hidden" name="id" value="${meetup.id }" /> <input type="submit"
 						value="Delete" />
-				</form>
+				</form> --%>
 
 			</c:if>
 			<c:if test="${not empty listOfAttendees }">
@@ -55,11 +56,14 @@
 					<a href="viewOtherProfile.do?id=${attendee.id}">${attendee.firstName} ${attendee.lastName}</a>
 				</c:forEach> <br> <br>
 			Number of people attending: <p>${fn:length(listOfAttendees)} / ${meetup.maxAttendance}</p>
- 			<form action="RSVPMeetup.do" method="post">
+ 		<%-- 	<form action="RSVPMeetup.do" method="post">
 				<input type="hidden" name="id" value="${meetup.id}" /> <input
 					type="submit" value="RSVP" />
+			</form> --%>
 					<hr>
-			</form>
+			<a class="btn btn-primary" href="RSVPMeetup.do?id=${meetup.id }" role="button">RSVP</a>
+			
+			
 
 			</c:if>
 			<c:choose>

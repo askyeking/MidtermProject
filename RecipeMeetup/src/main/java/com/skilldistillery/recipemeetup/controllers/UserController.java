@@ -27,7 +27,8 @@ import com.skilldistillery.recipemeetup.entities.User;
 @Controller
 public class UserController {
 	private boolean loggedIn;
-
+	
+	// Autowires repositories so that making instances of DAO implementing classes is unnecessary.
 	@Autowired
 	private UserDAO userDAO;
 	@Autowired
@@ -39,6 +40,7 @@ public class UserController {
 	@Autowired
 	private MeetupCommentDAO meetupCommentDAO;
 	
+	// The method below sends a user to the login page, and adds a list of recent Recipes and recently added Meetups to the model
 	@RequestMapping(path = "index.do")
 	public ModelAndView index() {
 		List<Recipe> recentRecipes = recipeDAO.showRecentRecipes();
@@ -52,6 +54,7 @@ public class UserController {
 
 	}
 
+	
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView loginPage(User user, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -199,7 +202,6 @@ public class UserController {
 	
 	
 	
-	//Add SetActiveToFalse for comments
 	@RequestMapping(path="deleteUser.do", method = RequestMethod.GET)
 	public ModelAndView deleteUser(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
