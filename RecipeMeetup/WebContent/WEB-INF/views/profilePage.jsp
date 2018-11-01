@@ -19,30 +19,35 @@
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 			<br>
-			<br>
-			<br>
-			<br>
-			<form action="edituser.do" method="GET">
-				<input type="submit" value="Edit Profile">
-			</form>
 
-			<form action="deleteUser.do" method="Post">
-				<input type="submit" value="Delete Profile"> <input
-					type="hidden" name="id" value="${loggedInUser.id }">
-			</form>
-
-			<form action="createRecipe.do" method="GET">
-				<input type="submit" value="Create A New Recipe">
-			</form>
-			<form action="createMeetup.do" method="GET">
-				<input type="submit" value="Create A New Meetup">
-			</form>
+			<a class="btn btn-primary" href="edituser.do" role="button">Edit
+				Profile</a>
+			<a class="btn btn-primary" href="deleteUser.do" role="button">Delete
+				Profile</a>
+			<a class="btn btn-primary" href="createRecipe.do" role="button">Post
+				New Recipe</a>
+			<a class="btn btn-primary" href="createMeetup.do" role="button">Post
+				New Meetup</a>
 			<hr>
-			<img src="${loggedInUser.imgURL }" alt="User Profile Picture"
-				style="width: 170px; height: 170px;">
 
-			<h4>${loggedInUser.firstName}${loggedInUser.lastName}</h4>
-			<p>${loggedInUser.description}</p>
+
+
+			<div class="row">
+				<div class="col-sm-2">
+					<img src="${loggedInUser.imgURL }" alt="User Profile Picture"
+						style="width: 170px; height: 170px;">
+
+				</div>
+					<div class="col-sm-9">
+						<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
+						<p>${loggedInUser.description}</p>
+					</div>
+			</div>
+
+
+
+
+
 			<hr>
 
 			<c:choose>
@@ -126,7 +131,7 @@
 										<c:if test="${fn:length(loggedInUser.meetupsOwned) >= 3}">
 											<div class="col-sm-4">
 												<div class="card" style="width: 18rem;">
-									<c:if test="${not empty meetup.imgURL }">
+													<c:if test="${not empty meetup.imgURL }">
 														<img class="card-img-top" src="${meetup.imgURL  }"
 															alt="Card image cap">
 													</c:if>
