@@ -213,7 +213,7 @@ public class UserController {
 	public ModelAndView deleteUser(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = userDAO.getUserById(id);
-
+		User currentUser = (User) session.getAttribute("loggedInUser");
 		
 		List<Recipe> recipesPosted = user.getRecipesPosted();
 		List<Meetup> meetupsPosted = user.getMeetupsOwned();
@@ -242,7 +242,14 @@ public class UserController {
 		userDAO.setActiveToFalse(user);
 		
 		session.setAttribute("loggedInUser", user);
-		mv.setViewName("redirect:userProfile.do?id" + user.getId());
+		
+		
+		if(currentUser.getActive()) {
+			mv.setViewName("redirect:home.do");
+		}
+		else {
+			mv.setViewName("redirect:index.do");
+		}
 		
 		return mv;
 	}
