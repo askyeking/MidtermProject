@@ -2,10 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<c:if test="${not empty loggedInUser }">
-<%@include file="NavBar.jsp" %>
-</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +12,12 @@
 </head>
 <body>
 <img class="center-fit" src="media/table.jpg" alt="homescreen" />
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<c:if test="${not empty loggedInUser }">
+<%@include file="NavBar.jsp" %>
+</c:if>
 
-<body style="height: 1500px">
+<body>
 <div class="editMeetup">
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
