@@ -35,13 +35,13 @@
 				<h3>Start Date</h3>
 				<input type="datetime-local" name="ldt" required /><br>
 				<h3>Set a Meetup Picture</h3>
-				URL: <input type="url" name="imageURL" maxlength="45"><br> <br>
+				URL: <input type="url" name="imgURL"><br> <br>
 				
 				<h3>Address</h3>
-				Street: <input type="text" name="street" maxlength="190" placeholder="Street" aria-label="Street" required /><br>
-				City: <input type="text" name="city" maxlength="100" placeholder="City" aria-label="City" required /><br> <input
-					type="text" name="state" value="State" maxlength="2" required /><br>
-				Postal code: <input type="number" name="postalCode" min="00000" max="99999" placeholder="ZIP" aria-label="ZIP" required /><br>
+				<input type="text" name="street" maxlength="190" placeholder="Street" aria-label="Street" required /><br>
+				<input type="text" name="city" maxlength="100" placeholder="City" aria-label="City" required /><br> <input
+					type="text" name="state" maxlength="2" placeholder="State" aria-label="State" required /><br>
+				<input type="number" name="postalCode" min="00000" max="99999" placeholder="ZIP" aria-label="ZIP" required /><br>
 				
 				<input type="submit" value="Submit" />
 			</form>

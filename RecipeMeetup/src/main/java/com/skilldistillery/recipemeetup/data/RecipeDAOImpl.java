@@ -23,6 +23,13 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe createRecipe(Recipe recipe, User user) {
+		if(recipe.getImgURL() == "" || recipe.getImgURL() == null) {
+			recipe.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
+		}
+			
+			
+			
+		
 		user.addRecipeOwnedByUser(recipe);
 		recipe.setRecipeOwner(user);
 		

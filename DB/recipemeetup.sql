@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `create_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `active` TINYINT(1) NOT NULL DEFAULT '1',
   `admin` TINYINT(1) NOT NULL DEFAULT '0',
-  `img_url` VARCHAR(500) NOT NULL DEFAULT 'https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg',
+  `img_url` VARCHAR(500) NULL DEFAULT 'https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg',
   `email` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `instructions` TEXT NOT NULL,
   `category` VARCHAR(45) NULL,
   `post_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `img_url` VARCHAR(500) NOT NULL DEFAULT 'https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg',
+  `img_url` VARCHAR(500) NULL DEFAULT 'https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg',
   `author_id` INT(11) NOT NULL,
   `active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `meetup` (
   `address_id` INT(11) NOT NULL,
   `description` TEXT NOT NULL,
   `date_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `img_url` VARCHAR(500) NOT NULL DEFAULT 'https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg',
+  `img_url` VARCHAR(500) NULL DEFAULT 'https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg',
   `author_id` INT(11) NOT NULL,
   `active` TINYINT(1) NOT NULL DEFAULT '1',
   `start_time` DATETIME NOT NULL,
@@ -339,6 +339,7 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'fduser'@'localhost'
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 -- -----------------------------------------------------
 -- Data for table `address`
 -- -----------------------------------------------------
@@ -484,3 +485,4 @@ INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (3, 3);
 INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (5, 4);
 INSERT INTO `user_meetup` (`user_id`, `meetup_id`) VALUES (6, 5);
 COMMIT;
+

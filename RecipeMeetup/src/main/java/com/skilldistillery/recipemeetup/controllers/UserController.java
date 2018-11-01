@@ -52,8 +52,6 @@ public class UserController {
 		return mv;
 
 	}
-	
-	
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView loginPage(User user, Errors error, HttpSession session) {
@@ -97,16 +95,21 @@ public class UserController {
 	public ModelAndView Register(User user, Address address, Errors error, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User isUserValid = userDAO.isLegitimateUsername(user);
+		
+		System.out.println("***************************************");
+		System.out.println(user.getImgURL());
 
 		if (isUserValid != null) {
 			error.rejectValue("username", "error.username", "error message");
 			mv.setViewName("WEB-INF/views/register.jsp");
 		} else {
+			
 			user = userDAO.createUser(user, address);
 			mv.addObject("user", user);
 			loggedIn = true;
 			session.setAttribute("loggedIn", loggedIn);
 			session.setAttribute("loggedInUser", user);
+			
 
 			mv.setViewName("redirect:home.do");
 		}
@@ -127,8 +130,8 @@ public class UserController {
 		Recipe newRecipe = null;
 		user = (User) session.getAttribute("loggedInUser");
 		if (recipe != null) {
-			System.out.println(recipe);
-			System.out.println(recipeDAO);
+			System.out.println("***************************************");
+			System.out.println(recipe.getImgURL());
 			newRecipe = recipeDAO.createRecipe(recipe, user);
 			mv.addObject("recipe", newRecipe);
 			mv.setViewName("WEB-INF/views/recipe.jsp");
