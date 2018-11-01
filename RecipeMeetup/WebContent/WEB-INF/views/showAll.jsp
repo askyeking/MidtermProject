@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="resources/showAll.css" />
 <meta charset="UTF-8">
 <title>Home</title>
 
@@ -38,10 +39,9 @@
 						<c:if test="${meetup.active}">
 
 							<div class="center">
-								<div class="card text-center">
-									<div class="card-body" style="width: 40rem">
-										<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup"
-											height="300" width="auto">
+								<div class="card" style="width: 35rem;">
+									<img class="card-img-top" src="${meetup.imgURL }" alt="meetups">
+									<div class="card-body">
 										<h5 class="card-title">
 											<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a>
 										</h5>
@@ -50,7 +50,6 @@
 								</div>
 							</div>
 							
-	
 						</c:if>
 					</c:forEach>
 					<br>
@@ -70,12 +69,11 @@
 					<hr>
 					<c:forEach items="${recipes}" var="recipe">
 						<c:if test="${recipe.active}">
-						
-						<div class="center">
-								<div class="card text-center">
-									<div class="card-body" style="width: 40rem">
-										<img class="card-img-top" src="${recipe.imgURL }" alt="Recipe"
-											height="300" width="auto">
+
+							<div class="center">					
+							<div class="card" style="width: 35rem;">
+									<img class="card-img-top" src="${recipe.imgURL }" alt="recipes">
+									<div class="card-body">
 										<h5 class="card-title">
 											<a href="showRecipeDetails.do?id=${recipe.id }"><strong>${recipe.title}</strong></a>
 										</h5>
@@ -83,8 +81,8 @@
 									</div>
 								</div>
 							</div>
-						
-					
+
+
 						</c:if>
 					</c:forEach>
 					<br>

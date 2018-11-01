@@ -1,9 +1,10 @@
 @charset "UTF-8";
 
-.center{
-	width: 93%;
-	padding: 25px;
-	margin-left: 11%; 
+.card{
+	/* width: 93%;
+	padding: 10px; */
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .buttons {

@@ -18,13 +18,13 @@
 	<div id="carouselExampleIndicators" class="carousel slide"
 		data-ride="carousel">
 		<div class="carousel-inner">
-			<div class="carousel-item active">
+			<!-- <div class="carousel-item active">
 				<img class="d-block w-100" src="media/People Eating Together/adult-casual-chef-1418355.jpg" alt="1" height="700" width="auto">
-			</div>
-			<div class="carousel-item">
+			</div> -->
+			<!-- <div class="carousel-item">
 				<img class="d-block w-100" src="media/family.jpg" alt="2" height="700" width="auto">
-			</div>
-			<div class="carousel-item">
+			</div> -->
+			<div class="carousel-item active">
 				<img class="d-block w-100" src="media/People Eating Together/adults-aerial-barbecue-1260310.jpg" alt="3" height="700" width="auto">
 			</div>
 			<div class="carousel-item">
@@ -52,9 +52,7 @@
 		<c:when test="${not empty loggedInUser }">
 
 			<br>
-			<br>
-			<br>
-			<br>
+
 
 			<div class="buttons">
 				<a href="createRecipe.do" class="btn btn-primary btn-lg">Create
@@ -62,8 +60,7 @@
 					class="btn btn-primary btn-lg">Create A New Meetup</a>
 			</div>
 		
-			<br>
-			<br>
+
 			<br>
 			<br>
 
@@ -94,20 +91,11 @@
 							</c:forEach>
 						</div>
 					</div>
-					<br>
-					<br>
-					<br>
 						<div class="buttons">
 							<a href="showAllMeetups.do" class="btn btn-primary">Show More</a>
 						</div>
 				</c:when>
 			</c:choose>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
 			<br>
 			<br>
 			<br>
@@ -147,17 +135,11 @@
 					</form>  --%>
 					</div>
 					<br>
-					<br>
-					<br>
 						<div class="buttons">
 							<a href="showAllRecipes.do" class="btn btn-primary">Show More</a>
 						</div>
 				</c:when>
 			</c:choose>
-					<br>
-					<br>
-					<br>
-					<br>
 					<br>
 					<br>
 
