@@ -39,8 +39,10 @@
 				<h3>Meetup Name</h3>
 				<input type="text" name="title" value="${meetup.title }" maxlength="45" required /><br>
 				<h3>Description</h3>
-				<input type="text" name="description" value="${meetup.description }" maxlength="250"
-					style="height: 100px" /> <br>
+				<%-- <input type="text" name="description" value="${meetup.description }" maxlength="250"
+					style="height: 100px" /> --%>
+					<textarea name="description">${meetup.description }</textarea>
+					 <br>
 <!-- 				<h3>Start Time</h3>
 				<input type="datetime" name="startTime" value="" required /><br>
 				<h3>End Time</h3>
@@ -55,7 +57,7 @@
 				<h3>Set a Meetup Picture</h3>
 				URL: <input type="url" name="imageURL" value="" maxlength="45"><br> <br> 
 				<h3>Start Date<h3></h3>
-				<input type="datetime-local" name="ldt" value="" required /><br>
+				<input type="datetime-local" name="ldt" value="${meetup.startTime }" required /><br>
 				
 				<h3>Address</h3>
 				Street: <input type="text" name="street" value="${meetup.meetupAddress.street}" maxlength="190" required /><br>
