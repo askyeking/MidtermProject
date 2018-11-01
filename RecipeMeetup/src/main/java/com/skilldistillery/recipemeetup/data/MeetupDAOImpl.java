@@ -79,8 +79,11 @@ public class MeetupDAOImpl implements MeetupDAO {
 		
 		updatedMeetup.setTitle(meetup.getTitle());
 		updatedMeetup.setDescription(meetup.getDescription());
-		updatedMeetup.setImgURL(meetup.getImgURL());
-		updatedMeetup.setActive(meetup.getActive());
+		
+		if (meetup.getImgURL() != "" && meetup.getImgURL() != null) {
+			updatedMeetup.setImgURL(meetup.getImgURL());
+		}
+//		updatedMeetup.setActive(meetup.getActive());
 		updatedMeetup.setStartTime(meetup.getStartTime());
 		updatedMeetup.setEndTime(meetup.getEndTime());
 		updatedMeetup.setMaxAttendance(meetup.getMaxAttendance());
@@ -132,7 +135,7 @@ public class MeetupDAOImpl implements MeetupDAO {
 	@Override
 	public List<Meetup> findMeetup(String meetup) {
 	List<Meetup> meetups = new ArrayList<>();
-	String query = "SELECT m FROM Meetup m WHERE m.title LIKE :title OR m.description LIKE :desc";
+	String query = "SELECT m FROM Meetup m WHERE m.title LIKE :title OR m.description LIKE :desc OR m.meetupAddress.city LIKE :desc";
 	meetups = em.createQuery(query, Meetup.class)
 			.setParameter("title", "%" + meetup + "%")
 			.setParameter("desc", "%" + meetup + "%")
