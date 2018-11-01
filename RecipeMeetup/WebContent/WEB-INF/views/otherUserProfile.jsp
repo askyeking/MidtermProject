@@ -29,8 +29,26 @@
 			</div>
 			<div class="row">
 			<div class="col-sm-6">
-			<h4>${user.firstName}${user.lastName}</h4>
+			<h4>${user.firstName}&nbsp&nbsp${user.lastName}</h4>
 			<p>${user.description}</p>
+			
+			
+			
+			<c:if test="${canEditProfile}">
+                	
+                	 <div class="col-sm button">
+				      <form action="deleteUser.do" method="post">
+                   			 <input type="hidden" name="id" value="${user.id}" /> <input
+                        	type="submit" value="Delete" />
+             		</form>
+				    </div>
+				    
+				    
+            </c:if>
+            		
+            		
+			
+			
 			</div>
 			</div>
 			<c:choose>
