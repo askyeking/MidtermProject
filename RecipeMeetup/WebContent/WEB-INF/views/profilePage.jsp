@@ -38,9 +38,6 @@
 				<input type="submit" value="Create A New Meetup">
 			</form>
 			<hr>
-
-
-
 			<img src="${loggedInUser.imgURL }" alt="User Profile Picture"
 				style="width: 170px; height: 170px;">
 
@@ -109,39 +106,13 @@
 												</div>
 											</div>
 										</c:if>
-
-
 									</c:forEach>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</c:when>
 			</c:choose>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">
 					<h4>Recently Posted Meetups</h4>
@@ -151,16 +122,11 @@
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">
-
-
 									<c:forEach items="${loggedInUser.meetupsOwned}" var="meetup">
-										<%-- 									<c:if test="${meetup.active}">
- --%>
-
 										<c:if test="${fn:length(loggedInUser.meetupsOwned) >= 3}">
 											<div class="col-sm-4">
 												<div class="card" style="width: 18rem;">
-													<c:if test="${not empty meetup.imgURL }">
+									<c:if test="${not empty meetup.imgURL }">
 														<img class="card-img-top" src="${meetup.imgURL  }"
 															alt="Card image cap">
 													</c:if>
@@ -173,7 +139,6 @@
 												</div>
 											</div>
 										</c:if>
-
 										<c:if test="${fn:length(loggedInUser.meetupsOwned) == 2}">
 											<div class="col-sm-6">
 												<div class="card" style="width: 18rem;">
@@ -190,7 +155,6 @@
 												</div>
 											</div>
 										</c:if>
-
 										<c:if test="${fn:length(loggedInUser.meetupsOwned) == 1}">
 											<div class="col-sm-12">
 												<div class="card" style="width: 18rem;">
@@ -207,8 +171,6 @@
 												</div>
 											</div>
 										</c:if>
-										<%--  										</c:if>
- --%>
 									</c:forEach>
 								</div>
 							</div>
@@ -216,34 +178,6 @@
 					</div>
 				</c:when>
 			</c:choose>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">
 					<h4>Favorite Recipes</h4>
@@ -253,12 +187,6 @@
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">
-
-
-
-
-
-
 
 									<c:forEach items="${loggedInUser.recipesFavorited}"
 										var="favRecipe">
@@ -310,61 +238,20 @@
 												</div>
 											</div>
 										</c:if>
-
-
-
-
-
-
 									</c:forEach>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</c:when>
 			</c:choose>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">
 					<h4>Meetups Attended</h4>
-
 					<div class="container">
 						<div class="center">
 							<div class="row">
 								<div class="card-deck">
-
-
-
 									<c:forEach items="${loggedInUser.meetupsAttended}"
 										var="attended">
 
@@ -416,17 +303,13 @@
 												</div>
 											</div>
 										</c:if>
-										
 									</c:forEach>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</c:when>
 			</c:choose>
-
-
 		</c:when>
 		<c:otherwise>
 			<br>
@@ -436,19 +319,14 @@
 			<br>
 			<br>
 			<h3>Only a logged in user can view this page.</h3>
-
 			<form:form action="index.do" modelAttribute="user" method="GET">
 				<input type="submit" value="Login" />
 			</form:form>
-
-
 			<form:form action="registrationLink.do" modelAttribute="user"
 				method="GET">
 				<input type="submit" value="Register" />
 			</form:form>
-
 		</c:otherwise>
 	</c:choose>
-
 </body>
 </html>
