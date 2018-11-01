@@ -62,7 +62,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public List<Recipe> showRecentRecipes() {
-		String query = "SELECT recipes FROM Recipe recipes ORDER BY createDate DESC";
+		String query = "SELECT recipes FROM Recipe recipes where active='1' ORDER BY createDate DESC";
 		List<Recipe> recentRecipes = em.createQuery(query, Recipe.class)
 				.setMaxResults(3)
 				.getResultList();
