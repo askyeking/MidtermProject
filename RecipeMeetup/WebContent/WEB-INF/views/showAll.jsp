@@ -15,7 +15,6 @@
 
 <body style="height: 1500px">
 
-
 	<c:choose>
 		<c:when test="${not empty loggedInUser }">
 
@@ -30,7 +29,7 @@
 					<h3 align="center">Meetups</h3>
 					<div class="buttons">
 						<form action="createMeetup.do" method="GET">
-							<input type="submit" value="Create A New Meetup">
+							<input type="submit" value="Create A New Meetup" class="btn btn-primary">
 						</form>
 					</div>
 					<hr>
@@ -42,6 +41,7 @@
 								<div class="card" style="width: 35rem;">
 									<img class="card-img-top" src="${meetup.imgURL }" alt="meetups">
 									<div class="card-body">
+
 										<h5 class="card-title">
 											<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a>
 										</h5>
@@ -63,7 +63,7 @@
 					<h3 align="center">Recipes</h3>
 					<div class="buttons">
 						<form action="createRecipe.do" method="GET">
-							<input type="submit" value="Create A New Recipe">
+							<input type="submit" value="Create A New Recipe" class="btn btn-primary">
 						</form>
 					</div>
 					<hr>
@@ -89,9 +89,6 @@
 
 				</c:when>
 			</c:choose>
-
-
-
 
 		</c:when>
 		<c:otherwise>
