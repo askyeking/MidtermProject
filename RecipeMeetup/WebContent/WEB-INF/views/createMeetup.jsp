@@ -54,6 +54,7 @@
 
 		</c:when>
 		<c:otherwise>
+		<div class="notLoggedIn">
 		<br><br><br><br><br><br>
 			<h3>Only a logged in user can view this page.</h3>
 				
@@ -66,7 +67,7 @@
 					method="GET">
 					<input type="submit" value="Register" />
 				</form:form>
-			
+			</div>
 		</c:otherwise>
 		</c:choose>
 </body>
