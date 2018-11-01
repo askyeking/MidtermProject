@@ -21,12 +21,18 @@
 			<br>
 			<br>
 			<br>
-			<h4>${user.firstName}${user.lastName}</h4>
-			<p>${user.description}</p>
+			
 			<hr>
+			<div class="col-sm-6">
 			<img src="${user.imgURL }" alt="User Profile Picture"
 				style="width: 170px; height: 170px;">
-
+			</div>
+			<div class="row">
+			<div class="col-sm-6">
+			<h4>${user.firstName}${user.lastName}</h4>
+			<p>${user.description}</p>
+			</div>
+			</div>
 			<c:choose>
 				<c:when test="${not empty loggedInUser}">
 					<h4>Recently Posted Recipes</h4>

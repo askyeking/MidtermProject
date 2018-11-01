@@ -114,7 +114,19 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User updateUser(User user, Address address) {
 		
+		
+		
+		
 		User updatedUser = em.find(User.class, user.getId());
+		
+//		if(user.getImgURL() == "" || user.getImgURL() == null) {
+//			if(updatedUser.getImgURL() =="" || updatedUser.getImgURL() == null) {
+//			user.setImgURL("https://image.freepik.com/free-icon/fork-and-knife-in-cross_318-61306.jpg");
+//			}
+//			else {
+//			user.setImgURL(updatedUser.getImgURL() );
+//			}
+//		}
 		System.out.println(updatedUser);
 		Address updatedAddress = updatedUser.getAddress();
 		System.out.println(updatedAddress);
@@ -128,7 +140,11 @@ public class UserDAOImpl implements UserDAO {
 //		updatedUser.setRecipesFavorited(user.getRecipesFavorited());
 		updatedUser.setFirstName(user.getFirstName());
 //		updatedUser.setId(user.getId());
-		updatedUser.setImgURL(user.getImgURL());
+		
+		if(user.getImgURL() != "" && user.getImgURL() != null) {
+			updatedUser.setImgURL(user.getImgURL());
+		}
+		
 		updatedUser.setLastName(user.getLastName());
 //		updatedUser.setLikedMeetupComments(user.getLikedMeetupComments());
 //		updatedUser.setLikedRecipeComments(user.getLikedRecipeComments());
