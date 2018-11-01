@@ -199,7 +199,6 @@ public class UserController {
 	
 	
 	
-	//Add SetActiveToFalse for comments
 	@RequestMapping(path="deleteUser.do", method = RequestMethod.GET)
 	public ModelAndView deleteUser(int id, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
