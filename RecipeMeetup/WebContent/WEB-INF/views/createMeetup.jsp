@@ -35,7 +35,7 @@
 				<h3>Start Date</h3>
 				<input type="datetime-local" name="ldt" required /><br>
 				<h3>Set a Meetup Picture</h3>
-				URL: <input type="url" name="imageURL" maxlength="45"><br> <br>
+				URL: <input type="url" name="imgURL" maxlength="45"><br> <br>
 				
 				<h3>Address</h3>
 				<input type="text" name="street" maxlength="190" placeholder="Street" aria-label="Street" required /><br>
