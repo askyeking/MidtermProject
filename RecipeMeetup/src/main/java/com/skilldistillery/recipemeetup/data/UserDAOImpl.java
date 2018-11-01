@@ -141,7 +141,7 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.setFirstName(user.getFirstName());
 //		updatedUser.setId(user.getId());
 		
-		if(user.getImgURL() != "" || user.getImgURL() != null) {
+		if(user.getImgURL() != "" && user.getImgURL() != null) {
 			updatedUser.setImgURL(user.getImgURL());
 		}
 		
