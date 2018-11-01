@@ -80,8 +80,6 @@ public class PostController {
 		
 		meetup = meetupDAO.showMeetup(meetup);
 		User currentUser = (User) session.getAttribute("loggedInUser");
-		System.out.println(meetup.getMeetupOwner().getId());
-		System.out.println(currentUser.getId());
 		if((meetup.getMeetupOwner().getId() == currentUser.getId()) || currentUser.getAdmin()) {
 			canEdit = true;
 		}
@@ -98,16 +96,21 @@ public class PostController {
 		return mv;
 	}
 	
+	// The method below takes a meetup that user liked as a command object, and uses session.getAttribute to get a user in session.
+	// it then calls a method through meetupDAO that adds a RSVP for meetup
 	@RequestMapping(path = "RSVPMeetup.do", method = RequestMethod.POST)
 	public ModelAndView RSVPMeetup(Meetup meetup, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		User user = (User) session.getAttribute("loggedInUser");
+		
+		//Calling method that adds RSVP to the DB
 		Meetup reservedMeetup = meetupDAO.addRSVPForMeetup(meetup, user);
 		mv.setViewName("redirect:showMeetupDetails.do?id=" + reservedMeetup.getId());
 
 		return mv;
 	}
 	
+	// the method below adds a recipe to user's list of favorite recipes and persists the change to the DB
 	@RequestMapping(path="favoriteRecipe.do", method=RequestMethod.POST)
 	public ModelAndView favoriteRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -122,6 +125,7 @@ public class PostController {
 		
 	}
 	
+	// The method below adds a a liked recipe to user and vice versa in the DB.
 	@RequestMapping(path="likeRecipe.do", method=RequestMethod.POST)
 	public ModelAndView likeRecipe(Recipe recipe, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -137,6 +141,7 @@ public class PostController {
 		return mv;
 	}
 	
+	// The method below 
 	@RequestMapping(path="submitRecipeComment.do", method=RequestMethod.POST)
 	public ModelAndView postRecipeComment(Recipe recipe, RecipeComment comment, HttpSession session) {
 		recipe = recipeDAO.showRecipeById(recipe.getId());
