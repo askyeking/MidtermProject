@@ -15,7 +15,7 @@ public class passHasher {
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		String password = "osg123";
+		String password = "Prince23";
 		
 		md.update(password.getBytes());
 		byte[] digest = md.digest();
