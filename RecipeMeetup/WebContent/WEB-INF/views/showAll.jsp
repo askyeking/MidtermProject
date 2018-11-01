@@ -38,16 +38,10 @@
 						<c:if test="${meetup.active}">
 
 							<div class="center">
-<<<<<<< HEAD
-								<div class="card text-center">
-									<div class="card-body" style="width: 40rem">
-										<img class="card-img-top" src="${meetup.imgURL }" alt="Meetup"
-											height="300" width="100">
-=======
 								<div class="card" style="width: 35rem;">
 									<img class="card-img-top" src="${meetup.imgURL }" alt="meetups">
 									<div class="card-body">
->>>>>>> d4b6dc4e6447203bff509d46bc7e7f128b797cb4
+
 										<h5 class="card-title">
 											<a href="showMeetupDetails.do?id=${meetup.id }"><strong>${meetup.title}</strong></a>
 										</h5>
