@@ -55,9 +55,8 @@
 
 
 			<div class="buttons">
-				<a href="createRecipe.do" class="btn btn-primary btn-lg">Create
-					A New Recipe</a> <a href="createMeetup.do"
-					class="btn btn-primary btn-lg">Create A New Meetup</a>
+				<a href="createRecipe.do" class="btn btn-primary btn-lg">Create A New Recipe</a> 
+				<a href="createMeetup.do" class="btn btn-primary btn-lg">Create A New Meetup</a>
 			</div>
 		
 

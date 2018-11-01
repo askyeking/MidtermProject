@@ -234,6 +234,11 @@
 		<input type="url" name="imageURL" maxlength="100"><br><br>
 		
 		<input type="submit" value="Submit" /> 
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 			</form>
 		</c:when>
 		</c:choose>	
