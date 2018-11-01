@@ -61,11 +61,14 @@
 				placeholder="ZIP" aria-label="ZIP" required /><br>
 
 			<h3>Tell us a little about yourself</h3>
-			<input type="text" name="description" maxlength="500"
-				style="height: 200px" /> <br>
+			<!-- <input type="text" name="description" maxlength="500"
+				style="height: 200px" /> --> <br>
+			<textarea name="description"></textarea>	
+				
+				
 			<h3>Set your profile picture</h3>
 			<input type="url" name="imgURL"><br>
-			<br> <input type="submit" value="Submit" size="big" />
+			<br> <input type="submit" value="Submit" size="big" class="btn btn-primary"/>
 			<form:errors path="username">Invalid Username</form:errors>
 		</form>
 	</div>
