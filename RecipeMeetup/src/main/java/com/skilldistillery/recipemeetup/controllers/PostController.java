@@ -181,15 +181,10 @@ public class PostController {
 	public ModelAndView addedMeetup(Meetup meetup, String ldt,  Address address, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		String startTime = ldt.substring(0, 10) + " " + ldt.substring(11);
-		
-		User author = (User) session.getAttribute("loggedInUser");
-		
 		java.util.Date dt = new java.util.Date();
-		
 		// Since MySQL DateTime format is different from ISO (see the MySQL format below)
 		java.text.SimpleDateFormat sdf = 
 		     new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
-		
 		try {
 			// parse string into Date
 			dt = sdf.parse(startTime);
@@ -197,9 +192,8 @@ public class PostController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
-		//if meetup is retrieved, add meetupCreated object to the ModelAndView and redirect to a page that will show details of that  meetup
+		// if meetup is retrieved, add meetupCreated object to the ModelAndView and redirect 
+		// to a page that will show details of that  meetup
 		if (meetup != null) {
 			
 			meetup.setStartTime(dt);

@@ -249,7 +249,7 @@ public class UserController {
 		
 		
 		if(currentUser.getAdmin()) {
-			mv.setViewName("/WEB-INF/views/home.jsp");
+			mv.setViewName("redirect:home.do");
 		}
 		else {
 			mv.setViewName("redirect:index.do");

@@ -47,7 +47,7 @@
 			<c:if test="${canEditProfile}">
 
 				<div class="col-sm button">
-					<form action="deleteUser.do" method="post">
+					<form action="deleteUser.do" method="GET">
 						<input type="hidden" name="id" value="${user.id}" /> <input
 							type="submit" value="Delete" />
 					</form>
